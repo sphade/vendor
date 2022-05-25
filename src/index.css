@@ -1,13 +1,31 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+/* utility  classes */
+.center-element {
+  @apply flex justify-center items-center;
+}
+.default-transition {
+  @apply duration-150 ease-out;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* active nav-link */
+.active {
+  @apply bg-primary  !text-secondary hover:!bg-primary;
+}
+
+/* mui-tabs override */
+.MuiTab-root {
+  @apply !text-xs !font-semibold !capitalize;
+}
+.Mui-selected {
+  @apply !text-primary;
+}
+.MuiTabs-indicator {
+  @apply !bg-primary;
+}
+
+/* mui-checkbox override */
+.MuiCheckbox-root {
+  @apply !text-primary;
 }

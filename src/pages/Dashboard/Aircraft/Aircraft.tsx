@@ -1,0 +1,79 @@
+import { useState } from "react";
+import JetCard from "./JetCard";
+import addCircleIcon from "../../../assets/images/icons/add-circle.svg";
+import BookingCard from "../../../components/BookingCard";
+import NotificationProfileHeader from "../../../components/NotificationProfileHeader";
+import { Button, CTabs, SearchBar, TabPanel } from "../../../components";
+import { Add } from "@mui/icons-material";
+const Aircraft = () => {
+  const [value, setValue] = useState(0);
+
+  return (
+    <div className="bg-secondary   pt-10 px-5  h-full">
+      <header className="flex items-center justify-between">
+        <h1 className="text-2xl text-tertiary">
+          Aircraft <span className="text-gray-400">(105)</span>
+        </h1>
+        <NotificationProfileHeader />
+      </header>
+      <div className="flex items-center justify-between mt-10 ">
+        <CTabs
+          tabLabel={[{ label: "private jet" }, { label: "helicopter" }]}
+          value={value}
+          setValue={setValue}
+        />
+
+        <div className="flex gap-5">
+          <SearchBar />
+          <Button size="medium" variant="primary" iconLeft={addCircleIcon}>
+            add aircraft
+          </Button>
+        </div>
+      </div>
+
+      <TabPanel value={value} index={0}>
+        <div className="flex items-center justify-between flex-wrap p-2 border shadow rounded mt-5">
+          <JetCard />
+          <JetCard />
+          <JetCard />
+          <JetCard />
+          <JetCard />
+          <JetCard />
+          <JetCard />
+          <JetCard />
+          <JetCard />
+          <JetCard />
+          <JetCard />
+          <JetCard />
+        </div>
+      </TabPanel>
+      <TabPanel value={value} index={1}>
+        <div className="flex items-center justify-between flex-wrap p-2 border shadow rounded mt-5">
+          <BookingCard />
+          <BookingCard />
+          <BookingCard />
+          <BookingCard />
+          <BookingCard />
+          <BookingCard />
+          <BookingCard />
+          <BookingCard />
+          <BookingCard />
+          <BookingCard />
+          <BookingCard />
+          <BookingCard />
+          <BookingCard />
+          <BookingCard />
+          <BookingCard />
+          <BookingCard />
+          <BookingCard />
+          <BookingCard />
+          <BookingCard />
+          <BookingCard />
+        </div>
+      </TabPanel>
+      <Button iconLeft={<Add />}>create order</Button>
+    </div>
+  );
+};
+
+export default Aircraft;
