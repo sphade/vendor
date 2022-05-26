@@ -3,7 +3,10 @@ import { TextField } from "@mui/material";
 import { Link } from "react-router-dom";
 import { CheckBox, PasswordInput, Button } from "../../components";
 import { CameraBoxIcon, CameraIcon } from "../../assets/images/icons";
+import PhoneInput from "react-phone-input-2";
+import { useState } from "react";
 const Register = () => {
+  const [phone, setPhone] = useState("");
   return (
     <div className="w-[664px] px-[100px] rounded-lg shadow-lg  mb-[100px] py-10 border  relative   bg-secondary">
       <div className="mb-10 text-center">
@@ -32,7 +35,15 @@ const Register = () => {
       <form className="space-y-4">
         <TextField fullWidth label="Business Name" type={"text"} />
         <TextField fullWidth label="Email Address" type={"email"} />
-        <TextField fullWidth label="phone number" type={"number"} />
+        <PhoneInput
+          country={"ng"}
+          value={phone}
+          placeholder="phonenumber"
+          enableSearch={true}
+          containerClass="w-full "
+          inputClass="w-full "
+          onChange={(phone) => setPhone(phone)}
+        />
         <TextField fullWidth label="Business Address" type={"email"} />
         <PasswordInput />
         <PasswordInput />

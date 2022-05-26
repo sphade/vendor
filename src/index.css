@@ -37,9 +37,19 @@
 }
 
 /* mui-switch overide */
-.MuiSwitch-thumb {
+/* .MuiSwitch-thumb {
   @apply !bg-green-900 !text-red-900;
 }
 .MuiSwitch-track {
   @apply !bg-green-900;
+} */
+/* mui-table override */
+.MuiDataGrid-columnHeadersInner {
+  @apply !text-gray-400;
 }
+.MuiDataGrid-checkboxInput {
+  @apply !text-green-400;
+}
+/* .MuiList-root {
+  @apply !rounded-lg !shadow !w-[205px] !py-1 !border !divide-y !flex !flex-col;
+} */

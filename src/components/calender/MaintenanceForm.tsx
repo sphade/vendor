@@ -1,8 +1,7 @@
-import { Switch } from "@mui/material";
-import React from "react";
 import Button from "../Button";
 import Chip from "../Chip";
 import SelectInput from "../SelectInput";
+import SwitchCustomized from "../SwitchCustomized";
 const MaintenanceForm = () => {
   return (
     <div className="px-[65px] py-10 border border-[#BDBDBD] w-[520px] rounded-md ">
@@ -29,9 +28,7 @@ const MaintenanceForm = () => {
             <Chip variant="success"> starting</Chip>
             <SelectInput />
           </div>
-          {
-            // TODO: ieoeie
-          }
+
           <div className="space-y-2">
             <Chip variant="warning"> ending</Chip>
             <SelectInput />
@@ -43,7 +40,7 @@ const MaintenanceForm = () => {
           </h2>
           <div className="flex items-center justify-between">
             <p className="text-gray-700">status</p>
-            <Switch size="medium" />
+            <SwitchCustomized />
           </div>
         </div>
         <div className="py-6">

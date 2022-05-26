@@ -1,4 +1,9 @@
-import { NotificationProfileHeader, SearchBar } from "../../../components";
+import {
+  NotificationProfileHeader,
+  ProfileDropDown,
+  SearchBar,
+} from "../../../components";
+import Table from "../../../table/Table";
 const Transactions = () => {
   return (
     <div>
@@ -13,6 +18,7 @@ const Transactions = () => {
           <p className="px-3">Latest date</p>
         </div>
       </div>
+      <Table />
     </div>
   );
 };

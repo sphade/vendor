@@ -48,7 +48,6 @@ const Overview = () => {
           />
           <ActivitiesCard />
         </div>
-
         <Table />
       </main>
     </div>

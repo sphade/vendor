@@ -11,7 +11,7 @@ import {
   Overview,
   Transactions,
 } from "./pages/Dashboard";
-import { ForgotPassword, Login, Register } from "./pages/Auth";
+import { ForgotPassword, Login, Register, Verify } from "./pages/Auth";
 
 function App(): JSX.Element {
   const navigate = useNavigate();
@@ -33,6 +33,7 @@ function App(): JSX.Element {
             <Route path="register" element={<Register />} />
             <Route path="login" element={<Login />} />
             <Route path="forgot-password/*" element={<ForgotPassword />} />
+            <Route path="verify/*" element={<Verify />} />
           </Route>
           {/* protected routes */}
           <Route element={<DashboardLayout />}>
@@ -42,6 +43,7 @@ function App(): JSX.Element {
             <Route path="calender" element={<Calender />} />
             <Route path="transactions" element={<Transactions />} />
           </Route>
+          <Route path="*" element={<h1>page not found</h1>} />
         </Routes>
       </div>
       {/* <div className="center-element xl:hidden h-screen">
