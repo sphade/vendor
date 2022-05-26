@@ -6,12 +6,12 @@ import NotificationProfileHeader from "../../../components/NotificationProfileHe
 import { Button, CTabs, SearchBar, TabPanel } from "../../../components";
 import { Add } from "@mui/icons-material";
 const Aircraft = () => {
-  const [value, setValue] = useState(0);
+  const [value, setValue] = useState<number>(0);
 
   return (
-    <div className="bg-secondary   pt-10 px-5  h-full">
-      <header className="flex items-center justify-between">
-        <h1 className="text-2xl text-tertiary">
+    <div>
+      <header className="header">
+        <h1 className="header-heading">
           Aircraft <span className="text-gray-400">(105)</span>
         </h1>
         <NotificationProfileHeader />

@@ -9,6 +9,12 @@
   @apply duration-150 ease-out;
 }
 
+.header {
+  @apply flex items-center justify-between mb-3;
+}
+.header-heading {
+  @apply text-2xl text-tertiary capitalize font-medium;
+}
 /* active nav-link */
 .active {
   @apply bg-primary  !text-secondary hover:!bg-primary;
@@ -28,4 +34,12 @@
 /* mui-checkbox override */
 .MuiCheckbox-root {
   @apply !text-primary;
+}
+
+/* mui-switch overide */
+.MuiSwitch-thumb {
+  @apply !bg-green-900 !text-red-900;
+}
+.MuiSwitch-track {
+  @apply !bg-green-900;
 }

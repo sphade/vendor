@@ -22,27 +22,32 @@ function App(): JSX.Element {
     if (location.pathname === "/") {
       navigate("/overview", { replace: true });
     }
-  }, [location,navigate]);
+  }, [location, navigate]);
 
   return (
-    <div className="">
-      <Routes>
-        {/* public routes */}
-        <Route element={<AuthLayout />}>
-          <Route path="register" element={<Register />} />
-          <Route path="login" element={<Login />} />
-          <Route path="forgot-password/*" element={<ForgotPassword />} />
-        </Route>
-        {/* protected routes */}
-        <Route element={<DashboardLayout />}>
-          <Route path="overview" element={<Overview />} />
-          <Route path="aircraft" element={<Aircraft />} />
-          <Route path="booking" element={<Booking />} />
-          <Route path="calender" element={<Calender />} />
-          <Route path="transactions" element={<Transactions />} />
-        </Route>
-      </Routes>
-    </div>
+    <>
+      <div className=" xl:block">
+        <Routes>
+          {/* public routes */}
+          <Route element={<AuthLayout />}>
+            <Route path="register" element={<Register />} />
+            <Route path="login" element={<Login />} />
+            <Route path="forgot-password/*" element={<ForgotPassword />} />
+          </Route>
+          {/* protected routes */}
+          <Route element={<DashboardLayout />}>
+            <Route path="overview" element={<Overview />} />
+            <Route path="aircraft" element={<Aircraft />} />
+            <Route path="booking" element={<Booking />} />
+            <Route path="calender" element={<Calender />} />
+            <Route path="transactions" element={<Transactions />} />
+          </Route>
+        </Routes>
+      </div>
+      {/* <div className="center-element xl:hidden h-screen">
+        this screen is not supported
+      </div> */}
+    </>
   );
 }
 

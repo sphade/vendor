@@ -10,9 +10,9 @@ import { AddCircleIcon } from "../../../assets/images/icons";
 
 const Booking = () => {
   return (
-    <div className="pt-10 px-5 bg-secondary ">
-      <header className="flex items-center justify-between mb-3">
-        <h1 className="text-2xl text-tertiary capitalize font-medium">
+    <div >
+      <header className="header">
+        <h1 className="header-heading">
           booking
         </h1>
         <NotificationProfileHeader />

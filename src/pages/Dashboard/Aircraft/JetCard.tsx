@@ -1,3 +1,4 @@
+import { MoreHoriz } from "@mui/icons-material";
 import { IconButton } from "@mui/material";
 import { DotIcon } from "../../../assets/images/icons";
 import jetPic from "../../../assets/images/icons/plane.png";
@@ -14,7 +15,8 @@ const JetCard = () => {
             Night Sky 6000
           </h3>
           <IconButton>
-            <img src={DotIcon} alt={DotIcon} className='p-3 ' />
+            <img src={DotIcon} alt={DotIcon} className="py-3 " />
+            {/* <MoreHoriz fontSize='medium'/> */}
           </IconButton>
         </div>
         <div className="py-4 space-y-2">

@@ -1,24 +1,27 @@
-import React from "react";
-
-export const ChipPrimary = () => {
+import classnames from "classnames";
+const Chip = ({ variant='success',children }: { variant?: "success" | "warning", children:string }) => {
   return (
     <div
-    className="rounded-xl text-blue-700 bg-blue-200  center-element w-fit px-2 py-1   capitalize text-base font-semibold"
+      className={classnames(
+        "rounded-xl   center-element w-fit px-2 py-1   capitalize text-base font-semibold",
+        {
+          "text-blue-600 bg-blue-100": variant === "success",
+          "text-red-600 bg-red-100": variant === "warning",
+        }
+      )}
     >
-      startin
+      {children}
     </div>
   );
 };
+export default Chip;
 
-
-export const ChipWarning = () => {
-  return (
-    <div
-      className="rounded-xl text-red-700 bg-red-200 center-element w-fit px-2 py-1   capitalize text-base font-semibold"
-    >
-      startin
-    </div>
-  );
-};
-
-
+// export const ChipWarning = () => {
+//   return (
+//     <div
+//       className="rounded-xl text-red-700 bg-red-200 center-element w-fit px-2 py-1   capitalize text-base font-semibold"
+//     >
+//       startin
+//     </div>
+//   );
+// };

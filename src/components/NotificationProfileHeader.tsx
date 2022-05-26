@@ -23,7 +23,7 @@ const NotificationProfileHeader = () => {
         </div>
         <IconButton component='span'>
 
-        <img src={dropdownIcon} alt="avatarIcon" className="h-3 w-5" onClick={handleClick} />
+        <img src={dropdownIcon} alt="avatarIcon" className="py-2" onClick={handleClick} />
         </IconButton>
 
         <Menu

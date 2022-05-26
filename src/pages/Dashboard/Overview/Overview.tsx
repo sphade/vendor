@@ -13,7 +13,7 @@ import {
 
 const Overview = () => {
   return (
-    <div className="bg-secondary  pt-10 px-5   ">
+    <div >
       <header className="flex items-center justify-between">
         <div className="flex items-center justify-between max-w-3xl  w-full">
           <div className="space-y-2">

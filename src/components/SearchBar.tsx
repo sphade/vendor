@@ -1,12 +1,28 @@
-import React from 'react'
-import SearchIcon from "../assets/images/icons/Search.png"
-const SearchBar = () => {
-  return (
-    <div className='rounded-md border border-gray-400 flex w-[250px]  py-1'>
-      <img src={SearchIcon} alt=""className='mx-2' />
-      <input type="text" className='outline-none bg-transparent' placeholder='Search' />
-    </div>
-  )
+import React, { FC } from "react";
+import SearchIcon from "../assets/images/icons/Search.png";
+import ClassNames from "classnames";
+interface ISearchBar {
+  size?: "small" | "medium";
 }
+const SearchBar:FC<ISearchBar> = ({ size = "small" }) => {
+  return (
+    <div
+      className={ClassNames(
+        "rounded-md border border-gray-400 flex h-10  py-1",
+        {
+          "w-[250px]": size === "small",
+          "w-[350px]":size==="medium",
+        }
+      )}
+    >
+      <img src={SearchIcon} alt="" className="mx-2 py-1" />
+      <input
+        type="text"
+        className="outline-none bg-transparent"
+        placeholder="Search"
+      />
+    </div>
+  );
+};
 
-export default SearchBar
+export default SearchBar;
