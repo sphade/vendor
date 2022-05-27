@@ -1,6 +1,5 @@
 import { AddCircleOutlineOutlined } from "@mui/icons-material";
 import { TextField } from "@mui/material";
-import { Link } from "react-router-dom";
 import { CheckBox, PasswordInput, Button } from "../../components";
 import { CameraBoxIcon, CameraIcon } from "../../assets/images/icons";
 import PhoneInput from "react-phone-input-2";

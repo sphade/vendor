@@ -12,7 +12,9 @@ const ForgotPassword2 = () => {
           A reset code would be sent to you shortly
         </p>
         <TextField fullWidth label="Phone Number" className="mb-10" />
-        <Button variant="tertiary"  full >send code</Button>
+        <Button variant="tertiary" full>
+          send code
+        </Button>
         <p className="text-center mt-3">
           Didn't get the code,{" "}
           <span className="text-primary font-semibold">use Email</span>

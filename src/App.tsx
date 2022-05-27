@@ -1,5 +1,5 @@
-import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "./app/store";
+// import { useDispatch, useSelector } from "react-redux";
+// import { RootState } from "./app/store";
 import { Routes, Route, useNavigate, useLocation } from "react-router-dom";
 import DashboardLayout from "./layout/DashboardLayout";
 import AuthLayout from "./layout/AuthLayout";
@@ -17,11 +17,11 @@ import Profile from "./pages/Profile";
 function App(): JSX.Element {
   const navigate = useNavigate();
   const location = useLocation();
-  const count = useSelector((state: RootState) => state.counter.value);
-  const dispatch = useDispatch();
+  // const count = useSelector((state: RootState) => state.counter.value);
+  // const dispatch = useDispatch();
   useEffect(() => {
     if (location.pathname === "/") {
-      navigate("/overview", { replace: true });
+      navigate("/register", { replace: true });
     }
   }, [location, navigate]);
 
@@ -44,7 +44,7 @@ function App(): JSX.Element {
             <Route path="calender" element={<Calender />} />
             <Route path="transactions" element={<Transactions />} />
           </Route>
-          <Route path='profile' element={<Profile/> }/>
+          <Route path="profile" element={<Profile />} />
           <Route path="*" element={<h1>page not found</h1>} />
         </Routes>
       </div>

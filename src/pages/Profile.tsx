@@ -10,7 +10,13 @@ const Profile = () => {
       <img src={avatarIcon} alt="" />
       <form>
         <TextField />
-        <TextField fullWidth disabled label="Business Name" type={"text"} value='lawal lawal alwal alwal alwal' />
+        <TextField
+          fullWidth
+          disabled
+          label="Business Name"
+          type={"text"}
+          value="lawal lawal alwal alwal alwal"
+        />
         <TextField fullWidth label="Email Address" type={"email"} />
         <PhoneInput
           country={"ng"}
@@ -19,13 +25,11 @@ const Profile = () => {
           containerClass="w-full "
           inputClass="w-full "
           disabled
-          value='lawal alwal alwal'
+          value="lawal alwal alwal"
         />
         <TextField fullWidth label="Business Address" type={"email"} />
-              <PasswordInput />
-              <Button full>
-edit profile
-              </Button>
+        <PasswordInput placeholder="password" />
+        <Button full>edit profile</Button>
       </form>
     </div>
   );

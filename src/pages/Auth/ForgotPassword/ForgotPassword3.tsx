@@ -14,7 +14,9 @@ const ForgotPassword3 = () => {
           <PasswordInput />
           <PasswordInput />
         </div>
-        <Button variant="tertiary"  full>reset password</Button>
+        <Button variant="tertiary" full>
+          reset password
+        </Button>
       </div>
     </div>
   );
