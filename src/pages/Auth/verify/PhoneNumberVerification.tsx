@@ -3,8 +3,8 @@ import OtpInput from "react-otp-input";
 import { Button } from "../../../components";
 
 const PhoneNumberVerification = () => {
-  const [otp, setOtp] = useState<any>("");
-  const handleChange = (otp: any) => setOtp({ otp });
+  const [otp, setOtp] = useState<string>("");
+  const handleChange = (otp: string) => setOtp(otp);
 
   return (
     <div className="w-[680px] py-10 bg-white   rounded-lg shadow-lg text-center ">

@@ -45,7 +45,7 @@
 } */
 /* mui-table override */
 .MuiDataGrid-columnHeadersInner {
-  @apply !text-gray-400;
+  @apply !text-gray-700 !font-semibold
 }
 .MuiDataGrid-checkboxInput {
   @apply !text-green-400;

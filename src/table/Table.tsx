@@ -10,21 +10,16 @@ const rows: GridRowsProp = [
 ];
 
 const columns: GridColDef[] = [
-  { field: "id", headerName: "ID", sortable: false },
-  {
-    field: "firstName",
-    // headerName: "First Name",
-    width: 300,
-    type: "firstName",
-    renderHeader: () => (
-      <strong>
-        {"birtday"}
-        <span>hsjs</span>
-      </strong>
-    ),
-  },
+  { field: "aircraftName", headerName: "Aircraft Name",width:110 },
+  { field: "aircraftType", headerName: "Aircraft Type",width:110 },
+  { field: "noOfFlight", headerName: "No of flight" },
+  { field: "location", headerName: "Location" },
+  { field: "serviceType", headerName: "Service Type",width:110 },
+  { field: "amount", headerName: "Amount (Last Trip)",width:150 },
+  { field: "date&type", headerName: "Date & Time" },
+  { field: "status", headerName: "Status" },
 
-  { field: "lastName", headerName: "Last Name" },
+  { field: "availability", headerName: "Availability" },
 ];
 
 export default function Table() {
@@ -37,6 +32,7 @@ export default function Table() {
         checkboxSelection
         disableSelectionOnClick
         disableColumnMenu={true}
+        rowHeight={50}
       />
     </div>
   );

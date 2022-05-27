@@ -12,6 +12,7 @@ import {
   Transactions,
 } from "./pages/Dashboard";
 import { ForgotPassword, Login, Register, Verify } from "./pages/Auth";
+import Profile from "./pages/Profile";
 
 function App(): JSX.Element {
   const navigate = useNavigate();
@@ -43,6 +44,7 @@ function App(): JSX.Element {
             <Route path="calender" element={<Calender />} />
             <Route path="transactions" element={<Transactions />} />
           </Route>
+          <Route path='profile' element={<Profile/> }/>
           <Route path="*" element={<h1>page not found</h1>} />
         </Routes>
       </div>
