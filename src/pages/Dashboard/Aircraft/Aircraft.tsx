@@ -4,7 +4,6 @@ import addCircleIcon from "../../../assets/images/icons/add-circle.svg";
 import BookingCard from "../../../components/BookingCard";
 import NotificationProfileHeader from "../../../components/NotificationProfileHeader";
 import { Button, CTabs, SearchBar, TabPanel } from "../../../components";
-import { Add } from "@mui/icons-material";
 const Aircraft = () => {
   const [value, setValue] = useState<number>(0);
 
@@ -71,7 +70,7 @@ const Aircraft = () => {
           <BookingCard />
         </div>
       </TabPanel>
-      <Button iconLeft={<Add />}>create order</Button>
+      <Button iconLeft={addCircleIcon}>create order</Button>
     </div>
   );
 };

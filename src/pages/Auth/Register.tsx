@@ -1,5 +1,4 @@
-import { AddCircleOutlineOutlined } from "@mui/icons-material";
-import { TextField } from "@mui/material";
+import TextField from "@mui/material/TextField";
 import { CheckBox, PasswordInput, Button } from "../../components";
 import { CameraBoxIcon, CameraIcon } from "../../assets/images/icons";
 import PhoneInput from "react-phone-input-2";
@@ -26,7 +25,7 @@ const Register = () => {
           />
         </div>
         <div className="flex items-center justify-center gap-2 text-blue-600 text-xs">
-          <AddCircleOutlineOutlined color="primary" fontSize="medium" />
+          {/* <AddCircleOutlineOutlined color="primary" fontSize="medium" /> */}
           <span className="font-semibold  uppercase">add business logo</span>
         </div>
       </div>
@@ -39,9 +38,10 @@ const Register = () => {
           value={phone}
           placeholder="phonenumber"
           enableSearch={true}
-          containerClass="w-full "
-          inputClass="w-full "
+          containerClass="!w-full "
+          inputClass="!w-full "
           onChange={(phone) => setPhone(phone)}
+
         />
         <TextField fullWidth label="Business Address" type={"email"} />
         <PasswordInput />

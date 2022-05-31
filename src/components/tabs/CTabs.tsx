@@ -10,12 +10,7 @@ const CTabs = ({
   value: number;
   setValue: React.Dispatch<React.SetStateAction<number>>;
 }) => {
-  function a11yProps(index: number) {
-    return {
-      id: `simple-tab-${index}`,
-      "aria-controls": `simple-tabpanel-${index}`,
-    };
-  }
+  
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
   };

@@ -1,4 +1,5 @@
 import { NotificationProfileHeader, SearchBar } from "../../../components";
+import TableM from "../../../table/Table";
 const Transactions = () => {
   return (
     <div>
@@ -14,6 +15,7 @@ const Transactions = () => {
           <p className="px-3">Latest date</p>
         </div>
       </div>
+      <TableM />
     </div>
   );
 };

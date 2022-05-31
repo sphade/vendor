@@ -17,3 +17,5 @@ export { default as CalenderActiveIcon } from "./calenderA.svg";
 export { default as NoOfTripsIcon } from "./noOftrips.svg";
 export { default as TotalAmountIcon } from "./totalAmount.svg";
 export { default as TotalAirIcon } from "./totalAir.png";
+export { default as EyeIcon } from "./eye.svg";
+export { default as EyeCloseIcon } from "./eyeClose.svg";

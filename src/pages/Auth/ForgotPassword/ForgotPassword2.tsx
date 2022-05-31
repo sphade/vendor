@@ -1,4 +1,4 @@
-import { TextField } from "@mui/material";
+import  TextField  from "@mui/material/TextField";
 import { Button } from "../../../components";
 
 const ForgotPassword2 = () => {
@@ -11,7 +11,7 @@ const ForgotPassword2 = () => {
         <p className="text-center text-base text-gray-600 mb-10">
           A reset code would be sent to you shortly
         </p>
-        <TextField fullWidth label="Phone Number" className="mb-10" />
+        <TextField fullWidth label="Phone Number" className="!mb-10" />
         <Button variant="tertiary" full>
           send code
         </Button>

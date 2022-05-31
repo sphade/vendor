@@ -1,4 +1,3 @@
-import Table from "../../../table/Table";
 import {
   ActivitiesCard,
   NotificationProfileHeader,
@@ -10,6 +9,7 @@ import {
   TotalAirIcon,
   TotalAmountIcon,
 } from "../../../assets/images/icons";
+import TableM from "../../../table/Table";
 
 const Overview = () => {
   return (
@@ -57,7 +57,7 @@ const Overview = () => {
               view more
             </p>
           </div>
-          <Table />
+          <TableM />
         </div>
       </main>
     </div>

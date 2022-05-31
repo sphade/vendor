@@ -1,39 +1,234 @@
-import { DataGrid, GridRowsProp, GridColDef } from "@mui/x-data-grid";
+import Table from "rc-table";
+import { Button } from "../components";
 
-const rows: GridRowsProp = [
+const columns = [
   {
-    id: 1,
-    lastName: "lawal",
-    firstName: "<div>lawal</div>",
+    title: "Aircraft Name",
+    dataIndex: "aircraftName",
+    key: "aircraftName",
+    width: 300,
   },
-  { id: 2, lastName: "lawal", firstName: "adebola" },
+  {
+    title: "Aircraft Type",
+    dataIndex: "aircraftType",
+    key: "aircraftType",
+    width: 300,
+  },
+  {
+    title: "No. of flight",
+    dataIndex: "noOfFlight",
+    key: "noOfFlight",
+    width: 300,
+  },
+  {
+    title: "Location",
+    dataIndex: "location",
+    key: "location",
+    width: 300,
+  },
+  {
+    title: "Service Type",
+    dataIndex: "serviceType",
+    key: "serviceType",
+    width: 300,
+  },
+  {
+    title: "Amount (last Trip)",
+    dataIndex: "amount",
+    key: "amount",
+    width: 300,
+  },
+  {
+    title: "Date & Time",
+    dataIndex: "dateTime",
+    key: "dateTime",
+    width: 300,
+    render: (text: { date: string; time: string }) => (
+      <div className="text-black">
+        {text.date} <br /> <span className="text-gray-400">{text.time}</span>
+      </div>
+    ),
+  },
+  {
+    title: "Status",
+    dataIndex: "status",
+    key: "status",
+    width: 300,
+    render: (text: string) => (
+      <div className="text-green-500 font-bold">{text}</div>
+    ),
+  },
+  {
+    title: "Availability",
+    dataIndex: "availability",
+    key: "availability",
+    render: (text: string) => <div>{text}</div>,
+    // width: 300,
+    fixed: true,
+    // colSpan:3900,
+    className: "bg-red-900",
+  },
 ];
 
-const columns: GridColDef[] = [
-  { field: "aircraftName", headerName: "Aircraft Name",width:110 },
-  { field: "aircraftType", headerName: "Aircraft Type",width:110 },
-  { field: "noOfFlight", headerName: "No of flight" },
-  { field: "location", headerName: "Location" },
-  { field: "serviceType", headerName: "Service Type",width:110 },
-  { field: "amount", headerName: "Amount (Last Trip)",width:150 },
-  { field: "date&type", headerName: "Date & Time" },
-  { field: "status", headerName: "Status" },
-
-  { field: "availability", headerName: "Availability" },
+const data = [
+  {
+    aircraftName: "sky-night-6000",
+    aircraftType: "private jet",
+    noOfFlight: "250",
+    location: "MM 1",
+    serviceType: "Air chater",
+    amount: "$1,400,00",
+    dateTime: { date: "14-mar-2022", time: "11:30 Am" },
+    status: "Active",
+    availability: "yes",
+  },
+  {
+    aircraftName: "sky-night-6000",
+    aircraftType: "private jet",
+    noOfFlight: "250",
+    location: "MM 1",
+    serviceType: "Air chater",
+    amount: "$1,400,00",
+    dateTime: { date: "14-mar-2022", time: "11:30 Am" },
+    status: "Active",
+    availability: "yes",
+  },
+  {
+    aircraftName: "sky-night-6000",
+    aircraftType: "private jet",
+    noOfFlight: "250",
+    location: "MM 1",
+    serviceType: "Air chater",
+    amount: "$1,400,00",
+    dateTime: { date: "14-mar-2022", time: "11:30 Am" },
+    status: "Active",
+    availability: "yes",
+  },
+  {
+    aircraftName: "sky-night-6000",
+    aircraftType: "private jet",
+    noOfFlight: "250",
+    location: "MM 1",
+    serviceType: "Air chater",
+    amount: "$1,400,00",
+    dateTime: { date: "14-mar-2022", time: "11:30 Am" },
+    status: "Active",
+    availability: "yes",
+  },
+  {
+    aircraftName: "sky-night-6000",
+    aircraftType: "private jet",
+    noOfFlight: "250",
+    location: "MM 1",
+    serviceType: "Air chater",
+    amount: "$1,400,00",
+    dateTime: { date: "14-mar-2022", time: "11:30 Am" },
+    status: "Active",
+    availability: "yes",
+  },
+  {
+    aircraftName: "sky-night-6000",
+    aircraftType: "private jet",
+    noOfFlight: "250",
+    location: "MM 1",
+    serviceType: "Air chater",
+    amount: "$1,400,00",
+    dateTime: { date: "14-mar-2022", time: "11:30 Am" },
+    status: "Active",
+    availability: "yes",
+  },
+  {
+    aircraftName: "sky-night-6000",
+    aircraftType: "private jet",
+    noOfFlight: "250",
+    location: "MM 1",
+    serviceType: "Air chater",
+    amount: "$1,400,00",
+    dateTime: { date: "14-mar-2022", time: "11:30 Am" },
+    status: "Active",
+    availability: "yes",
+  },
+  {
+    aircraftName: "sky-night-6000",
+    aircraftType: "private jet",
+    noOfFlight: "250",
+    location: "MM 1",
+    serviceType: "Air chater",
+    amount: "$1,400,00",
+    dateTime: { date: "14-mar-2022", time: "11:30 Am" },
+    status: "Active",
+    availability: "yes",
+  },
+  {
+    aircraftName: "sky-night-6000",
+    aircraftType: "private jet",
+    noOfFlight: "250",
+    location: "MM 1",
+    serviceType: "Air chater",
+    amount: "$1,400,00",
+    dateTime: { date: "14-mar-2022", time: "11:30 Am" },
+    status: "Active",
+    availability: "yes",
+  },
+  {
+    aircraftName: "sky-night-6000",
+    aircraftType: "private jet",
+    noOfFlight: "250",
+    location: "MM 1",
+    serviceType: "Air chater",
+    amount: "$1,400,00",
+    dateTime: { date: "14-mar-2022", time: "11:30 Am" },
+    status: "Active",
+    availability: "yes",
+  },
+  {
+    aircraftName: "sky-night-6000",
+    aircraftType: "private jet",
+    noOfFlight: "250",
+    location: "MM 1",
+    serviceType: "Air chater",
+    amount: "$1,400,00",
+    dateTime: { date: "14-mar-2022", time: "11:30 Am" },
+    status: "Active",
+    availability: "yes",
+  },
+  {
+    aircraftName: "sky-night-6000",
+    aircraftType: "private jet",
+    noOfFlight: "250",
+    location: "MM 1",
+    serviceType: "Air chater",
+    amount: "$1,400,00",
+    dateTime: { date: "14-mar-2022", time: "11:30 Am" },
+    status: "Active",
+    availability: "yes",
+  },
+  {
+    aircraftName: "sky-night-6000",
+    aircraftType: "private jet",
+    noOfFlight: "250",
+    location: "MM 1",
+    serviceType: "Air chater",
+    amount: "$1,400,00",
+    dateTime: { date: "14-mar-2022", time: "11:30 Am" },
+    status: "Active",
+    availability: "yes",
+  },
 ];
 
-export default function Table() {
+const TableM = () => {
   return (
-    <div className="w-full h-[700px]">
-      <DataGrid
-        rows={rows}
-        columns={columns}
-        pageSize={10}
-        checkboxSelection
-        disableSelectionOnClick
-        disableColumnMenu={true}
-        rowHeight={50}
-      />
-    </div>
+    <Table
+      columns={columns}
+      data={data}
+      className="text-[#828282] w-full flex text-center text-base font-thin h-[300px] overflow-scroll "
+      rowClassName=" border text-gray-900  hover:bg-gray-100 !mx-[400px]"
+      tableLayout="fixed"
+      indentSize={10}
+      showHeader={true}
+      sticky={true}
+    />
   );
-}
+};
+
+export default TableM;

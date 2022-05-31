@@ -1,4 +1,4 @@
-import {  TextField } from "@mui/material";
+import TextField from "@mui/material/TextField";
 import { Button, PasswordInput } from "../../components";
 
 const Login = () => {
@@ -14,14 +14,16 @@ const Login = () => {
         sign in
       </h1>
       <div className="space-y-5">
-        <TextField fullWidth label="Email Address" type="email"  />
-       <PasswordInput/>
+        <TextField fullWidth label="Email Address" type="email" />
+        <PasswordInput placeholder="password" />
       </div>
       <p className="float-right text-xs mt-2 clear-both  text-gray-900 capitalize">
         forgot password?
       </p>
       <div className="mt-[50px] ">
-        <Button   full={true} variant="primary" >sign in</Button>
+        <Button full={true} variant="primary">
+          sign in
+        </Button>
       </div>
     </form>
   );

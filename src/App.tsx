@@ -21,13 +21,13 @@ function App(): JSX.Element {
   // const dispatch = useDispatch();
   useEffect(() => {
     if (location.pathname === "/") {
-      navigate("/register", { replace: true });
+      navigate("/login", { replace: true });
     }
   }, [location, navigate]);
 
   return (
     <>
-      <div className=" xl:block">
+      <div className=" xl:block bg-[#E5E5E5]">
         <Routes>
           {/* public routes */}
           <Route element={<AuthLayout />}>
@@ -45,7 +45,7 @@ function App(): JSX.Element {
             <Route path="transactions" element={<Transactions />} />
           </Route>
           <Route path="profile" element={<Profile />} />
-          <Route path="*" element={<h1>page not found</h1>} />
+          {/* <Route path="*" element={<h1>page not found</h1>} /> */}
         </Routes>
       </div>
       {/* <div className="center-element xl:hidden h-screen">
