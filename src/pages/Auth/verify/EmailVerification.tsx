@@ -1,5 +1,6 @@
 import { useState } from "react";
 import OtpInput from "react-otp-input";
+import { Link } from "react-router-dom";
 import { Button } from "../../../components";
 
 const EmailVerification = () => {
@@ -35,7 +36,9 @@ const EmailVerification = () => {
         <Button full={true}>resend code</Button>
         <p className="text-base text-gray-600 pt-2">
           Didn't get code?{" "}
-          <span className="text-primary font-semibold">use phone number</span>
+          <Link to="/verify/number">
+            <span className="text-primary font-semibold">use phone number</span>
+          </Link>
         </p>
       </div>
     </div>

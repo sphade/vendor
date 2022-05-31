@@ -14,7 +14,6 @@ import {
 import { ForgotPassword, Login, Register, Verify } from "./pages/Auth";
 import Profile from "./pages/Profile";
 import GetHelp from "./pages/GetHelp";
-import AircraftDetails from "./pages/Dashboard/Aircraft/AircraftDetails";
 
 function App(): JSX.Element {
   const navigate = useNavigate();
@@ -41,8 +40,8 @@ function App(): JSX.Element {
           {/* protected routes */}
           <Route element={<DashboardLayout />}>
             <Route path="overview" element={<Overview />} />
-            <Route path="aircraft" element={<Aircraft />} />
-            <Route path="aircraft/details" element={<AircraftDetails />} />
+            <Route path="aircraft/*" element={<Aircraft />} />
+            {/* <Route path="aircraft/details" element={<AircraftDetails />} /> */}
             <Route path="booking" element={<Booking />} />
             <Route path="calender" element={<Calender />} />
             <Route path="transactions" element={<Transactions />} />

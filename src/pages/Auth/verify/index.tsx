@@ -1,4 +1,3 @@
-import React from "react";
 import { Route, Routes } from "react-router-dom";
 import AccountCreated from "./AccountCreated";
 import EmailVerification from "./EmailVerification";

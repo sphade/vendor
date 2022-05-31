@@ -4,7 +4,7 @@ import jetPic from "../../../assets/images/icons/plane.png";
 
 const JetCard = () => {
   return (
-    <div className="w-64 h-[376px] rounded-md shadow p-2 bg-secondary">
+    <div className="w-64  rounded-md shadow-md border p-2 bg-secondary">
       <div className=" rounded-t-md h-[100px] overflow-hidden">
         <img src={jetPic} alt={jetPic} className="" />
       </div>

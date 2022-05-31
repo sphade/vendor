@@ -12,7 +12,7 @@ const ForgotPassword1 = () => {
         </p>
       </div>
 
-      <form className="">
+      <form className="!mb-5">
         <CheckBox label="Email" id="email" />
         <CheckBox label="Phone Number" id="phone" />
       </form>

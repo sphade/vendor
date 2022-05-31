@@ -31,7 +31,7 @@ const Aircraft = () => {
       </div>
 
       <TabPanel value={value} index={0}>
-        <div className="flex items-center justify-between flex-wrap p-2 border shadow rounded mt-5">
+        <div className="flex items-center justify-between flex-wrap p-2 border shadow rounded mt-5 gap-1">
           <JetCard />
           <JetCard />
           <JetCard />

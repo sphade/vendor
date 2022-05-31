@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import successIcon from "../../../assets/images/icons/success-icon.svg";
 import { Button } from "../../../components";
 const AccountCreated = () => {
@@ -8,14 +9,16 @@ const AccountCreated = () => {
           <img src={successIcon} alt="successIcon" />
         </div>
         <h3 className="text-tertiary text-center uppercase text-lg font-bold mb-3">
-        ACCOUNT CREATED SUCCESSFULLY
+          ACCOUNT CREATED SUCCESSFULLY
         </h3>
         <p className="text-center text-base text-gray-600 mb-10">
-        A mail will be sent to you to confirm sign up
+          A mail will be sent to you to confirm sign up
         </p>
-        <Button variant="primary" full>
-        get started
-        </Button>
+        <Link to="/overview">
+          <Button variant="primary" full>
+            get started
+          </Button>
+        </Link>
       </div>
     </div>
   );

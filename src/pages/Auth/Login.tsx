@@ -1,4 +1,5 @@
 import TextField from "@mui/material/TextField";
+import { Link } from "react-router-dom";
 import { Button, PasswordInput } from "../../components";
 
 const Login = () => {
@@ -17,9 +18,12 @@ const Login = () => {
         <TextField fullWidth label="Email Address" type="email" />
         <PasswordInput placeholder="password" />
       </div>
-      <p className="float-right text-xs mt-2 clear-both  text-gray-900 capitalize">
-        forgot password?
-      </p>
+      <Link to="/forgot-password/step-1">
+        <p className="float-right text-xs mt-2 clear-both  text-gray-900 capitalize">
+          forgot password?
+        </p>
+      </Link>
+
       <div className="mt-[50px] ">
         <Button full={true} variant="primary">
           sign in

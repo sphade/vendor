@@ -1,5 +1,4 @@
 import Table from "rc-table";
-import { Button } from "../components";
 
 const columns = [
   {
@@ -64,9 +63,9 @@ const columns = [
     key: "availability",
     render: (text: string) => <div>{text}</div>,
     // width: 300,
-    fixed: true,
+    // fixed: true,
     // colSpan:3900,
-    className: "bg-red-900",
+    // className: "bg-red-900",
   },
 ];
 
@@ -221,7 +220,7 @@ const TableM = () => {
     <Table
       columns={columns}
       data={data}
-      className="text-[#828282] w-full flex text-center text-base font-thin h-[300px] overflow-scroll "
+      className="text-[#828282] w-full flex text-base font-thin h-[300px] overflow-scroll "
       rowClassName=" border text-gray-900  hover:bg-gray-100 !mx-[400px]"
       tableLayout="fixed"
       indentSize={10}

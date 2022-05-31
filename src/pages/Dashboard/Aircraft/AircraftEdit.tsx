@@ -1,8 +1,9 @@
-import { Button, NotificationProfileHeader } from "../../../components";
+import { NotificationProfileHeader, SelectInput } from "../../../components";
 import aircraftPicture from "../../../assets/images/plane-4.png";
 import insidePlane from "../../../assets/images/plane-3.png";
-import { ArrowLeftIcon, EditIcon } from "../../../assets/images/icons";
-const AircraftDetails = () => {
+import { ArrowLeftIcon } from "../../../assets/images/icons";
+import { TextField } from "@mui/material";
+const AircraftEdit = () => {
   return (
     <div>
       <header className="header !mb-5">
@@ -10,35 +11,34 @@ const AircraftDetails = () => {
           <img
             src={ArrowLeftIcon}
             alt={ArrowLeftIcon}
-            className="cursor-pointer border-primary border-2 rounded-full "
+            className="cursor-pointer border-primary  rounded-full "
           />
-          <h1 className="header-heading">sky Night</h1>
+          <h1 className="header-heading">edit sky Night 9000</h1>
         </div>
-        <div className="flex items-center gap-24">
-          <div className="flex items-center">
-            <img src={EditIcon} alt={EditIcon} />
-            <p className="uppercase text-tertiary font-bold">Edit</p>
-          </div>
 
-          <NotificationProfileHeader />
-        </div>
+        <NotificationProfileHeader />
       </header>
       <main>
         <div className="rounded-lg  p-6 w-[522px] mx-auto font-semibold border mb-3 border-[#BDBDBD]">
-          <img
-            src={aircraftPicture}
-            alt={aircraftPicture}
-            className="h-[230px] w-full object-contain "
-          />
-          <div className="divide-y divide-[#BDBDBD] text-sm">
-            <div className="py-4 flex items-center justify-between">
-              <p className="capitalize text-[#828282]">aircraft Name: </p>
-              <p className="capitalize text-tertiary">night sky 6000</p>
-            </div>{" "}
-            <div className="py-4 flex items-center justify-between">
-              <p className="capitalize text-[#828282]">Service typr: </p>
-              <p className="capitalize text-tertiary">night sky 6000</p>
-            </div>{" "}
+          <div>
+            <p className="capitalize text-tertiary ">photos</p>
+            <img
+              src={aircraftPicture}
+              alt={aircraftPicture}
+              className="h-[230px] w-full object-contain "
+            />
+          </div>
+
+          <div className=" text-sm">
+            <TextField value="sky night 3000" label="Aircraft Name" fullWidth />
+            <div className="flex gap-5">
+              <div className="flex-1">
+                <SelectInput />
+              </div>
+              <div className="flex-1">
+                <SelectInput />
+              </div>{" "}
+            </div>
             <div className="py-4 flex items-center justify-between">
               <p className="capitalize text-[#828282]">aircraft type: </p>
               <p className="capitalize text-tertiary">night sky 6000</p>
@@ -137,9 +137,7 @@ const AircraftDetails = () => {
                   </div>
                 </div>
               </div>
-              <div className="mt-5">
-                <Button full>edit</Button>
-              </div>
+              <div className="mt-5">{/* <Button full>edit</Button> */}</div>
             </div>
           </div>
         </div>
@@ -148,4 +146,4 @@ const AircraftDetails = () => {
   );
 };
 
-export default AircraftDetails;
+export default AircraftEdit;
