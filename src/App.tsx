@@ -13,6 +13,8 @@ import {
 } from "./pages/Dashboard";
 import { ForgotPassword, Login, Register, Verify } from "./pages/Auth";
 import Profile from "./pages/Profile";
+import GetHelp from "./pages/GetHelp";
+import AircraftDetails from "./pages/Dashboard/Aircraft/AircraftDetails";
 
 function App(): JSX.Element {
   const navigate = useNavigate();
@@ -27,7 +29,7 @@ function App(): JSX.Element {
 
   return (
     <>
-      <div className=" xl:block bg-[#E5E5E5]">
+      <div className=" xl:block bg-[#E5E5E5] min-h-screen">
         <Routes>
           {/* public routes */}
           <Route element={<AuthLayout />}>
@@ -40,11 +42,13 @@ function App(): JSX.Element {
           <Route element={<DashboardLayout />}>
             <Route path="overview" element={<Overview />} />
             <Route path="aircraft" element={<Aircraft />} />
+            <Route path="aircraft/details" element={<AircraftDetails />} />
             <Route path="booking" element={<Booking />} />
             <Route path="calender" element={<Calender />} />
             <Route path="transactions" element={<Transactions />} />
           </Route>
           <Route path="profile" element={<Profile />} />
+          <Route path="get-help" element={<GetHelp />} />
           {/* <Route path="*" element={<h1>page not found</h1>} /> */}
         </Routes>
       </div>

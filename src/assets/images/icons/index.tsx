@@ -19,3 +19,8 @@ export { default as TotalAmountIcon } from "./totalAmount.svg";
 export { default as TotalAirIcon } from "./totalAir.png";
 export { default as EyeIcon } from "./eye.svg";
 export { default as EyeCloseIcon } from "./eyeClose.svg";
+export { default as ArrowBackIcon } from "./arrowBack.svg";
+export { default as EmailIcon } from "./email.svg";
+export { default as PhoneIcon } from "./phone.svg";
+export { default as ArrowLeftIcon } from "./ArrowLeft.svg";
+export { default as EditIcon } from "./edit-2.svg";

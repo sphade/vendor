@@ -7,9 +7,9 @@
     font-family: hind;
     src: url("./assets/fonts/hind/Hind-Light.ttf") format("truetype");
   }
-  html {
+  /* html {
     font-family: hind;
-  }
+  } */
 }
 /* utility  classes */
 .center-element {
