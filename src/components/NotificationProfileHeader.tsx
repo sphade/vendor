@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 import notificationIcon from "../assets/images/icons/notification.png";
-import { IconButton, Menu, MenuItem } from "@mui/material";
+import { IconButton } from "@mui/material";
 import avatarIcon from "../assets/images/icons/avatar.png";
 import dropdownIcon from "../assets/images/icons/dropdown.png";
 import { Avatar } from "@mui/material";

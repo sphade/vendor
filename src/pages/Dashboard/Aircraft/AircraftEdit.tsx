@@ -1,18 +1,17 @@
-import { NotificationProfileHeader, SelectInput } from "../../../components";
+import {
+  BackButton,
+  NotificationProfileHeader,
+  SelectInput,
+} from "../../../components";
 import aircraftPicture from "../../../assets/images/plane-4.png";
 import insidePlane from "../../../assets/images/plane-3.png";
-import { ArrowLeftIcon } from "../../../assets/images/icons";
 import { TextField } from "@mui/material";
 const AircraftEdit = () => {
   return (
     <div>
       <header className="header !mb-5">
-        <div className="space-x-3 flex items-center">
-          <img
-            src={ArrowLeftIcon}
-            alt={ArrowLeftIcon}
-            className="cursor-pointer border-primary  rounded-full "
-          />
+        <div className="space-x-3 flex items-center ">
+          <BackButton />
           <h1 className="header-heading">edit sky Night 9000</h1>
         </div>
 
@@ -29,10 +28,15 @@ const AircraftEdit = () => {
             />
           </div>
 
-          <div className=" text-sm">
-            <TextField value="sky night 3000" label="Aircraft Name" fullWidth />
+          <div className=" text-sm ">
+            <TextField
+              value="sky night 3000"
+              label="Aircraft Name"
+              className="!mb-5"
+              fullWidth
+            />
             <div className="flex gap-5">
-              <div className="flex-1">
+              <div className="flex-1 ">
                 <SelectInput />
               </div>
               <div className="flex-1">

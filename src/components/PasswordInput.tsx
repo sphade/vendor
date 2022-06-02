@@ -17,9 +17,17 @@ const PasswordInput = ({ placeholder }: { placeholder?: string }) => {
               onClick={() => setShowPassword((showPassword) => !showPassword)}
             >
               {showPassword ? (
-                <img src={EyeIcon} alt={EyeIcon} />
+                <img
+                  src={EyeIcon}
+                  alt={EyeIcon}
+                  className="w-[25px] h-[25px] "
+                />
               ) : (
-                <img src={EyeCloseIcon} alt={EyeCloseIcon} />
+                <img
+                  src={EyeCloseIcon}
+                  alt={EyeCloseIcon} 
+                  className="w-[25px] h-[25px]"
+                />
               )}
             </IconButton>
           </InputAdornment>

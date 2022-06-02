@@ -1,17 +1,14 @@
-import { Button, NotificationProfileHeader } from "../../../components";
+import { BackButton, Button, NotificationProfileHeader } from "../../../components";
 import aircraftPicture from "../../../assets/images/plane-4.png";
 import insidePlane from "../../../assets/images/plane-3.png";
-import { ArrowLeftIcon, EditIcon } from "../../../assets/images/icons";
+import {  EditIcon } from "../../../assets/images/icons";
 const AircraftDetails = () => {
   return (
     <div>
       <header className="header !mb-5">
         <div className="space-x-3 flex items-center">
-          <img
-            src={ArrowLeftIcon}
-            alt={ArrowLeftIcon}
-            className="cursor-pointer border-primary border-2 rounded-full "
-          />
+          <BackButton/>
+          
           <h1 className="header-heading">sky Night</h1>
         </div>
         <div className="flex items-center gap-24">

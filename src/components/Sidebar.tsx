@@ -26,7 +26,7 @@ const Sidebar = (props: Props) => {
             <li key={id}>
               <NavLink
                 to={link}
-                className="py-2 px-5 rounded-r-full  flex items-center gap-5 text-gray-700 hover:bg-opacity-25 default-transition"
+                className="hover:bg-[#efefef]  py-2 px-5 rounded-r-full   flex items-center gap-5 text-gray-700  default-transition"
               >
                 {({ isActive }) => (
                   <>
