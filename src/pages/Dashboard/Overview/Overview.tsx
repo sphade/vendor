@@ -1,4 +1,3 @@
-import Table from "../../../table/Table";
 import {
   ActivitiesCard,
   NotificationProfileHeader,
@@ -10,10 +9,11 @@ import {
   TotalAirIcon,
   TotalAmountIcon,
 } from "../../../assets/images/icons";
+import TableM from "../../../table/Table";
 
 const Overview = () => {
   return (
-    <div >
+    <div>
       <header className="flex items-center justify-between">
         <div className="flex items-center justify-between max-w-3xl  w-full">
           <div className="space-y-2">
@@ -48,7 +48,17 @@ const Overview = () => {
           />
           <ActivitiesCard />
         </div>
-        <Table />
+        <div className="border rounded-lg mt-10">
+          <div className="flex items-center justify-between py-5 px-5">
+            <h3 className="font-semibold text-lg text-tertiary  capitalize">
+              table of aircraft
+            </h3>
+            <p className="rounded-lg py-1.5 bg-orange-100 font-medium text-base text-primary border-2 border-orange-200 px-3">
+              view more
+            </p>
+          </div>
+          <TableM />
+        </div>
       </main>
     </div>
   );

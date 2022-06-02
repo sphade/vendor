@@ -15,3 +15,4 @@ export { default as MaintenanceForm } from "./calender/MaintenanceForm";
 export { default as SelectInput } from "./SelectInput";
 export { default as SwitchCustomized } from "./SwitchCustomized";
 export { default as ProfileDropDown } from "./ProfileDropDown";
+export { default as BackButton } from "./BackButton";

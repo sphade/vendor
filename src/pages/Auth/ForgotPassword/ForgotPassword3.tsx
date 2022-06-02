@@ -8,13 +8,15 @@ const ForgotPassword3 = () => {
           Reset Password
         </h3>
         <p className="text-center text-base text-gray-600 mb-10">
-          You can now create a new passwaord
+          You can now create a new password
         </p>
         <div className="space-y-5 mb-10">
           <PasswordInput />
           <PasswordInput />
         </div>
-        <Button variant="tertiary"  full>reset password</Button>
+        <Button variant="tertiary" full>
+          reset password
+        </Button>
       </div>
     </div>
   );

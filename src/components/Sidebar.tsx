@@ -2,29 +2,38 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import profileIcon from "../assets/images/icons/profileIcon.svg";
 import planeIcon from "../assets/images/icons/planeIcon.svg";
-import logo from "../assets/images/icons/Logo.png";
+import { LogoIcon, WalletActiveIcon } from "../assets/images/icons";
 type Props = {};
 interface IState {
-  sidebarOptions: { text: string; link: string; Icon: string }[];
+  sidebarOptions: {
+    text: string;
+    link: string;
+    Icon: string;
+    ActiveIcon: string;
+  }[];
 }
 
 const Sidebar = (props: Props) => {
   return (
     <section className="w-[230px] bg-secondary h-screen  sticky top-0 left-0">
       <div className="font-bold text-2xl pl-5 pt-10 h-[160px] ">
-        <img src={logo}></img>
+        <img src={LogoIcon} alt={LogoIcon}></img>
       </div>
 
       <nav>
         <ul className="space-y-6 mr-5">
-          {sidebarOptions.map(({ Icon, link, text }, id) => (
+          {sidebarOptions.map(({ Icon, link, text, ActiveIcon }, id) => (
             <li key={id}>
               <NavLink
                 to={link}
-                className="py-2 px-5 rounded-r-full  flex items-center gap-5 text-gray-700 hover:bg-orange-100 default-transition"
+                className="hover:bg-[#efefef]  py-2 px-5 rounded-r-full   flex items-center gap-5 text-gray-700  default-transition"
               >
-                <img src={Icon} alt={text} />
-                <p className="capitalize text-lg font-semibold ">{text}</p>
+                {({ isActive }) => (
+                  <>
+                    <img src={isActive ? ActiveIcon : Icon} alt={text} />
+                    <p className="capitalize text-lg font-semibold ">{text}</p>
+                  </>
+                )}
               </NavLink>
             </li>
           ))}
@@ -41,25 +50,30 @@ const sidebarOptions: IState["sidebarOptions"] = [
     text: "overview",
     link: "/overview",
     Icon: profileIcon,
+    ActiveIcon: WalletActiveIcon,
   },
   {
     text: "aircraft",
     link: "/aircraft",
     Icon: planeIcon,
+    ActiveIcon: WalletActiveIcon,
   },
   {
     text: "booking",
     link: "/booking",
     Icon: profileIcon,
+    ActiveIcon: WalletActiveIcon,
   },
   {
     text: "transactions",
     link: "/transactions",
     Icon: profileIcon,
+    ActiveIcon: WalletActiveIcon,
   },
   {
     text: "calender",
     link: "/calender",
     Icon: planeIcon,
+    ActiveIcon: WalletActiveIcon,
   },
 ];

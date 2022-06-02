@@ -1,5 +1,3 @@
-import React from "react";
-import TotalAirLogo from "../assets/images/icons/totalAir.png";
 
 const ActivitiesCard = () => {
   return (

@@ -12,12 +12,12 @@ const ForgotPassword1 = () => {
         </p>
       </div>
 
-      <form className="">
+      <form className="!mb-5">
         <CheckBox label="Email" id="email" />
         <CheckBox label="Phone Number" id="phone" />
       </form>
-      <Link to="step-2">
-        <Button disabled={true} full variant="tertiary">
+      <Link to="/forgot-password/step-2">
+        <Button full variant="tertiary">
           confirm
         </Button>
       </Link>

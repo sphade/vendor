@@ -1,5 +1,7 @@
-import React from "react";
-import { Info, MaintenanceForm, NotificationProfileHeader } from "../../../components";
+import {
+  MaintenanceForm,
+  NotificationProfileHeader,
+} from "../../../components";
 
 const Calender = () => {
   return (
@@ -14,7 +16,7 @@ const Calender = () => {
           about it’s unavailability by toggling active or inactive on the
           dashboard.
         </div>
-        <MaintenanceForm/>
+        <MaintenanceForm />
       </div>
     </div>
   );

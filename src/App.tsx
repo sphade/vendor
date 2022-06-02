@@ -1,5 +1,5 @@
-import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "./app/store";
+// import { useDispatch, useSelector } from "react-redux";
+// import { RootState } from "./app/store";
 import { Routes, Route, useNavigate, useLocation } from "react-router-dom";
 import DashboardLayout from "./layout/DashboardLayout";
 import AuthLayout from "./layout/AuthLayout";
@@ -12,21 +12,23 @@ import {
   Transactions,
 } from "./pages/Dashboard";
 import { ForgotPassword, Login, Register, Verify } from "./pages/Auth";
+import Profile from "./pages/Profile";
+import GetHelp from "./pages/GetHelp";
 
 function App(): JSX.Element {
   const navigate = useNavigate();
   const location = useLocation();
-  const count = useSelector((state: RootState) => state.counter.value);
-  const dispatch = useDispatch();
+  // const count = useSelector((state: RootState) => state.counter.value);
+  // const dispatch = useDispatch();
   useEffect(() => {
     if (location.pathname === "/") {
-      navigate("/overview", { replace: true });
+      navigate("/login", { replace: true });
     }
   }, [location, navigate]);
 
   return (
     <>
-      <div className=" xl:block">
+      <div className=" xl:block bg-[#E5E5E5] min-h-screen">
         <Routes>
           {/* public routes */}
           <Route element={<AuthLayout />}>
@@ -38,12 +40,15 @@ function App(): JSX.Element {
           {/* protected routes */}
           <Route element={<DashboardLayout />}>
             <Route path="overview" element={<Overview />} />
-            <Route path="aircraft" element={<Aircraft />} />
+            <Route path="aircraft/*" element={<Aircraft />} />
+            {/* <Route path="aircraft/details" element={<AircraftDetails />} /> */}
             <Route path="booking" element={<Booking />} />
             <Route path="calender" element={<Calender />} />
             <Route path="transactions" element={<Transactions />} />
           </Route>
-          <Route path="*" element={<h1>page not found</h1>} />
+          <Route path="profile" element={<Profile />} />
+          <Route path="get-help" element={<GetHelp />} />
+          {/* <Route path="*" element={<h1>page not found</h1>} /> */}
         </Routes>
       </div>
       {/* <div className="center-element xl:hidden h-screen">

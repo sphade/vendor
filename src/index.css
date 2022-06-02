@@ -1,6 +1,16 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+/* font */
+@layer base {
+  @font-face {
+    font-family: hind;
+    src: url("./assets/fonts/hind/Hind-Light.ttf") format("truetype");
+  }
+  /* html {
+    font-family: hind;
+  } */
+}
 /* utility  classes */
 .center-element {
   @apply flex justify-center items-center;
@@ -17,7 +27,7 @@
 }
 /* active nav-link */
 .active {
-  @apply bg-primary  !text-secondary hover:!bg-primary;
+  @apply bg-primary  !text-secondary hover:!bg-primary hover:opacity-80;
 }
 
 /* mui-tabs override */
@@ -35,21 +45,3 @@
 .MuiCheckbox-root {
   @apply !text-primary;
 }
-
-/* mui-switch overide */
-/* .MuiSwitch-thumb {
-  @apply !bg-green-900 !text-red-900;
-}
-.MuiSwitch-track {
-  @apply !bg-green-900;
-} */
-/* mui-table override */
-.MuiDataGrid-columnHeadersInner {
-  @apply !text-gray-400;
-}
-.MuiDataGrid-checkboxInput {
-  @apply !text-green-400;
-}
-/* .MuiList-root {
-  @apply !rounded-lg !shadow !w-[205px] !py-1 !border !divide-y !flex !flex-col;
-} */

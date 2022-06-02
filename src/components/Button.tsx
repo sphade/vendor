@@ -1,6 +1,5 @@
 import classNames from "classnames";
 import React, { FC } from "react";
-import { Link } from "react-router-dom";
 interface IButton {
   children: string;
   loading?: Boolean;
@@ -28,7 +27,7 @@ const Button: FC<IButton> = ({
   return (
     <button
       className={classNames(
-        "hover:scale-105 default-transition center-element  uppercase  text-secondary rounded-md cursor-pointer  h-fit disabled:opacity-50 disabled:cursor-not-allowed",
+        "hover:opacity-80 default-transition center-element  uppercase  text-secondary rounded-md cursor-pointer  h-fit disabled:opacity-50 disabled:cursor-not-allowed",
         {
           "w-full": full,
           "text-base py-3 px-5 font-semibold": size === "big",
