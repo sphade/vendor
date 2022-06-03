@@ -5,7 +5,7 @@ import Button from "./Button";
 
 const BookingCard = () => {
   return (
-    <div className="w-64 min-h-[376px] rounded-md shadow p-4 bg-secondary">
+    <div className="w-64 min-h-[376px] rounded-md shadow p-4 bg-secondary border ">
       <div className=" rounded-t-md h-[100px] object-cover overflow-hidden">
         <img src={bookingPic} alt={bookingPic} className="w-full h-full" />
       </div>

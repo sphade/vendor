@@ -41,8 +41,7 @@ function App(): JSX.Element {
           <Route element={<DashboardLayout />}>
             <Route path="overview" element={<Overview />} />
             <Route path="aircraft/*" element={<Aircraft />} />
-            {/* <Route path="aircraft/details" element={<AircraftDetails />} /> */}
-            <Route path="booking" element={<Booking />} />
+            <Route path="booking/*" element={<Booking />} />
             <Route path="calender" element={<Calender />} />
             <Route path="transactions" element={<Transactions />} />
           </Route>

@@ -17,8 +17,8 @@ const CTabs = ({
   return (
     <>
       <Tabs value={value} onChange={handleChange}>
-        {tabLabel.map(({ label }: { label?: string }) => (
-          <Tab label={label} />
+        {tabLabel.map(({ label }: { label?: string },id) => (
+          <Tab label={label} key={ id}/>
         ))}
       </Tabs>
     </>

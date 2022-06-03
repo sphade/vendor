@@ -4,7 +4,11 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 
-export default function ControlledOpenSelect() {
+export default function ControlledOpenSelect({
+  className,
+}: {
+  className?: string;
+}) {
   const [age, setAge] = React.useState<string | number>("");
   const [open, setOpen] = React.useState(false);
 
@@ -33,6 +37,8 @@ export default function ControlledOpenSelect() {
           value={age}
           label="Age"
           onChange={handleChange}
+          className={className}
+         
         >
           <MenuItem value="">
             <em>None</em>

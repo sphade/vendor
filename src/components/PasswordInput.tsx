@@ -8,6 +8,7 @@ const PasswordInput = ({ placeholder }: { placeholder?: string }) => {
   return (
     <TextField
       label={placeholder}
+      
       fullWidth
       type={showPassword ? "text" : "password"}
       InputProps={{
@@ -25,7 +26,7 @@ const PasswordInput = ({ placeholder }: { placeholder?: string }) => {
               ) : (
                 <img
                   src={EyeCloseIcon}
-                  alt={EyeCloseIcon} 
+                  alt={EyeCloseIcon}
                   className="w-[25px] h-[25px]"
                 />
               )}

@@ -8,7 +8,7 @@ interface IButton {
   variant?: "primary" | "outlinePrimary" | "tertiary" | "outlineTertiary";
   full?: Boolean;
   disabled?: boolean;
-  Link?: string;
+
   size?: "medium" | "small" | "big";
   onClick?: () => void;
 }
@@ -20,7 +20,7 @@ const Button: FC<IButton> = ({
   full,
   variant = "primary",
   disabled,
-  Link,
+
   size = "big",
   onClick,
 }) => {
