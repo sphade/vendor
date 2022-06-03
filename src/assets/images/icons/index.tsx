@@ -24,3 +24,5 @@ export { default as EmailIcon } from "./email.svg";
 export { default as PhoneIcon } from "./phone.svg";
 export { default as ArrowLeftIcon } from "./ArrowLeft.svg";
 export { default as EditIcon } from "./edit-2.svg";
+export { default as PlusIcon } from "./plus.svg";
+export { default as MinusIcon } from "./minus.svg";

@@ -25,7 +25,7 @@ const Profile = () => {
         >
           <TextField
             fullWidth
-            disabled
+            aria-readonly
             label="Business Name"
             type={"text"}
             value="lawal lawal alwal alwal alwal"
@@ -37,7 +37,6 @@ const Profile = () => {
             enableSearch={true}
             containerClass="w-full "
             inputClass="w-full "
-            disabled
             value="lawal alwal alwal"
           />
           <TextField fullWidth label="Business Address" type={"email"} />
