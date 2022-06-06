@@ -1,14 +1,15 @@
 import TextField from "@mui/material/TextField";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Button, PasswordInput } from "../../components";
 
 const Login = () => {
+  const navigate = useNavigate();
   return (
     <form
       className="rounded-lg bg-white center w-[460px]  shadow-xl  p-10"
       onSubmit={(e) => {
         e.preventDefault();
-        alert("submited");
+        navigate("/overview", { replace: true, });
       }}
     >
       <h1 className="text-tertiary text-center uppercase text-base font-bold mb-10">
