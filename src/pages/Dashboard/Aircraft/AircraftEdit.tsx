@@ -1,11 +1,14 @@
 import {
   BackButton,
+  Button,
   NotificationProfileHeader,
   SelectInput,
+  SwitchCustomized,
 } from "../../../components";
 import aircraftPicture from "../../../assets/images/plane-4.png";
-import { TextField } from "@mui/material";
 import { MinusIcon, PlusIcon } from "../../../assets/images/icons";
+import { TextField } from "@mui/material";
+
 const AircraftEdit = () => {
   return (
     <div>
@@ -28,7 +31,7 @@ const AircraftEdit = () => {
             />
           </div>
 
-          <div className=" text-sm ">
+          <div className=" text-sm mt-10">
             <TextField
               value="sky night 3000"
               label="Aircraft Name"
@@ -60,8 +63,10 @@ const AircraftEdit = () => {
               <input className="flex-1 border h-10 px-3 rounded-lg border-[#828282]" />
             </div>
           </div>
-          <div className="mb-10 pb-5 border-b border-[#BDBDBD]">
-            <p className="capitalize text-tertiary mb-3">description</p>
+          <div className="mb-5 pb-5 border-b border-[#BDBDBD]">
+            <p className="capitalize text-tertiary mb-3 font-semibold">
+              description
+            </p>
             <div className="px-5 py-4 border-[#BDBDBD] border rounded-lg">
               <p className="text-sm text-[#333333]">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit.
@@ -70,6 +75,77 @@ const AircraftEdit = () => {
               </p>
             </div>
           </div>
+          <div className="space-y-5 pb-10 mb-10 border-b border-[#BDBDBD]">
+            <p className="capitalize text-tertiary font-semibold ">
+              specification
+            </p>
+            <div>
+              <p className="capitalize text-tertiary font-semibold text-sm mb-3">
+                performance
+              </p>
+              <div className="flex flex-wrap gap-5 items-center">
+                <TextField
+                  className="!w-[225]"
+                  InputProps={{
+                    startAdornment: (
+                      <SelectInput
+                        size="small"
+                        className="!w-24 !border-0 !outline-none"
+                      />
+                    ),
+                  }}
+                />
+
+                <TextField
+                  className="!w-[225]"
+                  InputProps={{
+                    startAdornment: (
+                      <SelectInput
+                        size="small"
+                        className="!w-24 !border-0 !outline-none"
+                      />
+                    ),
+                  }}
+                />
+              </div>
+            </div>
+            <div>
+              <p className="capitalize text-tertiary font-semibold text-sm mb-3">
+                interior
+              </p>
+              <div className="flex flex-wrap gap-5 items-center">
+                <div className="flex items-center gap-5 w-full">
+                  <SelectInput
+                    className="!w-[100px] !bg-gray-200 !outline-none !border-0"
+                    size="small"
+                  />
+                  <input className="flex-1 border h-10 px-3 w-full rounded-lg border-[#828282]" />
+                </div>
+                <div className="flex items-center gap-5 w-full">
+                  <SelectInput
+                    className="!w-[100px] !bg-gray-200 !outline-none !border-0"
+                    size="small"
+                  />
+                  <input className="flex-1 border h-10 px-3 w-full rounded-lg border-[#828282]" />
+                </div>
+                <div className="flex items-center gap-5 w-full">
+                  <SelectInput
+                    className="!w-[100px] !bg-gray-200 !outline-none !border-0"
+                    size="small"
+                  />
+                  <input className="flex-1 border h-10 px-3 w-full rounded-lg border-[#828282]" />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="flex justify-between mb-5 pb-5 border-b border-[#BDBDBD]">
+            <p className="text-xl text-gray-500 capitalize">wine bar</p>
+            <div className="flex flex-col justify-center items-center">
+              <SwitchCustomized />
+              <p className="capitalize -ml-5">available</p>
+            </div>
+          </div>
+          <Button full>save</Button>
         </div>
       </main>
     </div>

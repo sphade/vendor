@@ -2,15 +2,28 @@ import TextField from "@mui/material/TextField";
 import React from "react";
 import PhoneInput from "react-phone-input-2";
 import avatarIcon from "../assets/images/icons/avatar.png";
-import { Button, PasswordInput } from "../components";
-import ProfileModal from "../components/profile/ProfileModal.jsx";
+import {
+  Button,
+  EmailModal,
+  PasswordInput,
+  EmailVerificationModal,
+} from "../components";
 
 const Profile = () => {
-  const [modalIsOpen, setModalIsOpen] = React.useState(false);
+  const [emailModalState, setEmailModalState] = React.useState(false);
+  const [emailVerificationModalState, setEmailVerificationModalState] =
+    React.useState(true);
 
   return (
     <div className="border">
-      <ProfileModal modalIsOpen={modalIsOpen} setModalIsOpen={setModalIsOpen} />
+      <EmailModal
+        modalState={emailModalState}
+        setModalState={setEmailModalState}
+      />
+      <EmailVerificationModal
+        modalState={emailVerificationModalState}
+        setModalState={setEmailVerificationModalState}
+      />
       <div className="w-[684px] mx-auto text-center shadow-lg border bg-secondary rounded-lg my-10">
         <h1 className="text-2xl text-tertiary font-semibold capitalize my-10">
           edit profile
@@ -20,7 +33,7 @@ const Profile = () => {
           className="space-y-5 w-[390px] mx-auto mb-10"
           onSubmit={(e: any) => {
             e.preventDefault();
-            setModalIsOpen(true);
+            setEmailModalState(true);
           }}
         >
           <TextField

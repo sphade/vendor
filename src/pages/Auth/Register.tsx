@@ -41,11 +41,10 @@ const Register = () => {
           containerClass="!w-full "
           inputClass="!w-full "
           onChange={(phone) => setPhone(phone)}
-
         />
         <TextField fullWidth label="Business Address" type={"email"} />
-        <PasswordInput />
-        <PasswordInput />
+        <PasswordInput placeholder="password" />
+        <PasswordInput placeholder="confirm password" />
         <div className="flex items-center justify-between w-full gap-3">
           <CheckBox />
           <p className="text-sm ">

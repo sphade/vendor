@@ -27,6 +27,7 @@ export default function ControlledOpenSelect({
       className={className}
       fullWidth
       size={size}
+     
     >
       <MenuItem value="">
         <em>None</em>

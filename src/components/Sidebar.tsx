@@ -2,7 +2,12 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import profileIcon from "../assets/images/icons/profileIcon.svg";
 import planeIcon from "../assets/images/icons/planeIcon.svg";
-import { LogoIcon, WalletActiveIcon } from "../assets/images/icons";
+import {
+  CategoryActiveIcon,
+  
+  LogoIcon,
+  WalletActiveIcon,
+} from "../assets/images/icons";
 type Props = {};
 interface IState {
   sidebarOptions: {
@@ -73,7 +78,7 @@ const sidebarOptions: IState["sidebarOptions"] = [
   {
     text: "calender",
     link: "/calender",
-    Icon: planeIcon,
-    ActiveIcon: WalletActiveIcon,
+    Icon: profileIcon,
+    ActiveIcon: CategoryActiveIcon,
   },
 ];

@@ -1,28 +1,31 @@
+import { Skeleton } from "@mui/material";
+
 const JetCardSkeleton = () => {
   return (
-    <div className="w-64 h-[376px] rounded-md shadow p-2">
-      <div className=" rounded-t-md h-[100px] bg-gray-300 animate-pulse overflow-hidden"></div>
+    <div className="w-64 h-[401px] rounded-md shadow p-2">
+      {/* <div className=" rounded-t-md mb-3 h-[100px] bg-gray-300 animate-pulse overflow-hidden"></div> */}
+      <Skeleton height={100} variant="rectangular" className="mb-5 rounded-t" />
       <div className="divide-y ">
         <div className="flex items-center py-4 justify-between">
-          <p className="text-tertiary bg-gray-300 animate-pulse font-semibold capitalize text-base h-5 w-24"></p>
-          <p className="bg-gray-300 animate-pulse h-5 w-5"></p>
+          <Skeleton variant="text" width={100} />
+          <Skeleton variant="text" width={40} />
         </div>
-        <div className="py-4 space-y-2">
+        <div className="py-4 space-y-2 ">
           <div className="flex justify-between text-xs text-gray-400">
-            <p className="bg-gray-300 animate-pulse w-10 h-4"></p>{" "}
-            <p className="w-10 h-4 bg-gray-300 animate-pulse"> </p>
+            <Skeleton variant="text" width={60} />
+            <Skeleton variant="text" width={60} />
           </div>
           <div className="flex justify-between text-tertiary capitalize font-semibold text-sm">
-            <p className="bg-gray-300 w-10 h-4 animate-pulse"></p>{" "}
-            <p className="bg-gray-300 w-10 h-4 animate-pulse"> </p>
+            <Skeleton variant="text" width={60} />
+            <Skeleton variant="text" width={60} />
           </div>
         </div>
         <div className="py-4 center-element flex-col space-y-1">
-          <p className="text-gray-400 text-xs capitalize bg-gray-300 animate-pulse h-4 w-20"></p>
-          <p className="text-tertiary font-semibold bg-gray-300 animate-pulse w-4 h-4"></p>
+          <Skeleton variant="text" width={60} />
+          <Skeleton variant="text" width={40} />
         </div>
         <div className="center-element py-2">
-          <button className="uppercase py-2 px-4 bg-orange-100 animate-pulse rounded-md w-[70px] h-[30px] font-bold text-sm"></button>
+          <Skeleton variant="rectangular" width={70} height={30} className='rounded !bg-orange-50' />
         </div>
       </div>
     </div>

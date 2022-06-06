@@ -1,11 +1,12 @@
-import { useState } from "react";
-import OtpInput from "react-otp-input";
+// import { useState } from "react";
+import ReactCodeInput from "react-code-input";
+// import OtpInput from "react-otp-input";
 import { Link } from "react-router-dom";
 import { Button } from "../../../components";
 
 const PhoneNumberVerification = () => {
-  const [otp, setOtp] = useState<string>("");
-  const handleChange = (otp: string) => setOtp(otp);
+  // const [otp, setOtp] = useState<string>("");
+  // const handleChange = (otp: string) => setOtp(otp);
 
   return (
     <div className="w-[680px] py-10 bg-white   rounded-lg shadow-lg text-center ">
@@ -18,17 +19,21 @@ const PhoneNumberVerification = () => {
           <span className="text-primary font-semibold">+234 7049723597</span>
         </p>
 
-        <OtpInput
-          value={otp}
-          onChange={handleChange}
-          numInputs={6}
+        <ReactCodeInput
+          type="text"
+          name={""}
+          inputMode={"tel"}
+          fields={6}
+          autoFocus={true}
+          // onChange={handleChange}
           inputStyle={{
             height: "48px",
             width: "48px",
             border: "1px solid #BDBDBD",
             backgroundColor: "transparent",
             borderRadius: "5px",
-            margin: "10px",
+            margin: "7px",
+            textAlign: "center",
           }}
         />
         <p className="text-gray-600 py-6">

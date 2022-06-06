@@ -1,11 +1,19 @@
-import { useState } from "react";
-import OtpInput from "react-otp-input";
+// import { useState } from "react";
+import ReactCodeInput from "react-code-input";
+// import OtpInput from "react-otp-input";
 import { Link } from "react-router-dom";
 import { Button } from "../../../components";
 
 const EmailVerification = () => {
-  const [otp, setOtp] = useState<string>();
-  const handleChange = (otp: string) => setOtp(otp);
+  /**
+   * email verification page
+   */
+  // const [otp, setOtp] = useState<string>();
+
+  // const handleChange = (otpInput: string) => {
+  //   setOtp(otpInput);
+  //   console.log(otp);
+  // };
 
   return (
     <div className="w-[680px] py-10 bg-white   rounded-lg shadow-lg text-center ">
@@ -15,8 +23,7 @@ const EmailVerification = () => {
           Enter the 6 digit verification code sent to: <br />
           <span className="text-primary font-semibold">hugobauz@gmail.com</span>
         </p>
-
-        <OtpInput
+        {/* <OtpInput
           value={otp}
           onChange={handleChange}
           numInputs={6}
@@ -27,6 +34,23 @@ const EmailVerification = () => {
             backgroundColor: "transparent",
             borderRadius: "5px",
             margin: "10px",
+          }}
+        /> */}
+        <ReactCodeInput
+          type="text"
+          name={""}
+          inputMode={"tel"}
+          fields={6}
+          autoFocus={true}
+          // onChange={handleChange}
+          inputStyle={{
+            height: "48px",
+            width: "48px",
+            border: "1px solid #BDBDBD",
+            backgroundColor: "transparent",
+            borderRadius: "5px",
+            margin: "7px",
+            textAlign: "center",
           }}
         />
         <p className="text-gray-600 py-6">

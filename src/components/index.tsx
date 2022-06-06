@@ -16,3 +16,5 @@ export { default as SelectInput } from "./SelectInput";
 export { default as SwitchCustomized } from "./SwitchCustomized";
 export { default as ProfileDropDown } from "./ProfileDropDown";
 export { default as BackButton } from "./BackButton";
+export { default as Otp } from "./Otp";
+export { EmailModal, EmailVerificationModal } from "./modal/ProfileModal";

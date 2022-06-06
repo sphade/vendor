@@ -1,23 +1,23 @@
 import { IconButton } from "@mui/material";
-import { DotIcon } from "../../../assets/images/icons";
+import { ArrowRightOrangeIcon, DotIcon } from "../../../assets/images/icons";
 import jetPic from "../../../assets/images/icons/plane.png";
 
 const JetCard = () => {
   return (
-    <div className="w-64  rounded-md shadow-md border p-2 bg-secondary">
+    <div className="w-64  rounded-md shadow-lg  p-2 bg-secondary">
       <div className=" rounded-t-md h-[100px] overflow-hidden">
         <img src={jetPic} alt={jetPic} className="" />
       </div>
       <div className="divide-y ">
-        <div className="flex items-center py-4 justify-between">
+        <div className="flex items-center py-2 justify-between">
           <h3 className="text-tertiary font-semibold capitalize text-base">
             Night Sky 6000
           </h3>
           <IconButton>
-            <img src={DotIcon} alt={DotIcon} className="py-3 " />
+            <img src={DotIcon} alt={DotIcon} className="py-2 " />
           </IconButton>
         </div>
-        <div className="py-4 space-y-2">
+        <div className="py-2 space-y-2">
           <div className="flex justify-between text-xs text-gray-400">
             <p>service Type :</p> <p> Aircraft type :</p>
           </div>
@@ -30,9 +30,10 @@ const JetCard = () => {
           <p className="text-gray-400 text-xs capitalize">seat capacity:</p>
           <p className="text-tertiary font-semibold">20</p>
         </div>
-        <div className="center-element py-2">
-          <button className="uppercase py-2 px-4 bg-orange-50 rounded-md text-primary font-bold text-sm">
-            more <span> &gt; </span>
+        <div className="center-element py-4">
+          <button className="uppercase py-2 px-4 gap-2 shadow bg-orange-50 rounded-md text-primary font-bold text-sm w-[95px] flex items-center">
+            more
+            <img src={ArrowRightOrangeIcon} alt={ArrowRightOrangeIcon} />
           </button>
         </div>
       </div>
