@@ -19,7 +19,7 @@ function App(): JSX.Element {
   const navigate = useNavigate();
   const location = useLocation();
   // const count = useSelector((state: RootState) => state.counter.value);
-  
+
   useEffect(() => {
     if (location.pathname === "/") {
       navigate("/login", { replace: true });

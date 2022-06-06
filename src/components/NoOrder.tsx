@@ -1,5 +1,6 @@
-import { Button } from "..";
-import { AddCircleIcon, NoOrderIcon } from "../../assets/images/icons";
+import { Link } from "react-router-dom";
+import { Button } from ".";
+import { AddCircleIcon, NoOrderIcon } from "../assets/images/icons";
 
 const NoOrder = () => {
   return (
@@ -13,9 +14,11 @@ const NoOrder = () => {
           You currently have no order history. All upcoming and order history
           will appear here.
         </p>
-        <Button variant="primary" full size="medium" iconLeft={AddCircleIcon}>
-          Create order
-        </Button>
+        <Link to="form" className="block">
+          <Button variant="primary" full size="medium" iconLeft={AddCircleIcon}>
+            Create order
+          </Button>
+        </Link>
       </div>
     </div>
   );

@@ -1,3 +1,4 @@
+import { Avatar } from "@mui/material";
 import TextField from "@mui/material/TextField";
 import React from "react";
 import PhoneInput from "react-phone-input-2";
@@ -12,7 +13,7 @@ import {
 const Profile = () => {
   const [emailModalState, setEmailModalState] = React.useState(false);
   const [emailVerificationModalState, setEmailVerificationModalState] =
-    React.useState(true);
+    React.useState(false);
 
   return (
     <div className="border">
@@ -28,7 +29,16 @@ const Profile = () => {
         <h1 className="text-2xl text-tertiary font-semibold capitalize my-10">
           edit profile
         </h1>
-        <img src={avatarIcon} alt={avatarIcon} className="h-32 mb-10 mx-auto" />
+        {/* <img src={avatarIcon} alt={avatarIcon} className="h-32 mb-10 mx-auto" /> */}
+        <Avatar
+          src={avatarIcon}
+          alt="avatarIcon"
+          className="!h-32 !w-32 mb-10 mx-auto"
+          sx={{
+            h: "128px",
+          }}
+        />
+
         <form
           className="space-y-5 w-[390px] mx-auto mb-10"
           onSubmit={(e: any) => {
@@ -48,8 +58,8 @@ const Profile = () => {
             country={"ng"}
             placeholder="phone Number"
             enableSearch={true}
-            containerClass="w-full "
-            inputClass="w-full "
+            containerClass="!w-full "
+            inputClass="!w-full "
             value="lawal alwal alwal"
           />
           <TextField fullWidth label="Business Address" type={"email"} />

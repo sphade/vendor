@@ -1,11 +1,12 @@
 import React from "react";
-import bookingPic from "../assets/images/icons/heli.svg";
-import dot from "../assets/images/icons/dot.svg";
-import Button from "./Button";
+import bookingPic from "../../assets/images/icons/heli.svg";
+import { DotIcon } from "../../assets/images/icons";
+import Button from "../Button";
+import { IconButton } from "@mui/material";
 
 const BookingCard = () => {
   return (
-    <div className="w-64 min-h-[376px] rounded-md shadow p-4 bg-secondary border ">
+    <div className="w-64 min-h-[376px] rounded-md shadow-lg p-4 bg-secondary  ">
       <div className=" rounded-t-md h-[100px] object-cover overflow-hidden">
         <img src={bookingPic} alt={bookingPic} className="w-full h-full" />
       </div>
@@ -14,7 +15,9 @@ const BookingCard = () => {
           <h3 className="text-tertiary font-semibold capitalize text-base">
             Night Sky 6000
           </h3>
-          <img src={dot} alt={dot} />
+          <IconButton>
+            <img src={DotIcon} alt={DotIcon} className="py-2 " />
+          </IconButton>
         </div>
         <div>
           <div className="py-4 space-y-2">

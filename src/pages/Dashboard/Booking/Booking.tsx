@@ -7,14 +7,13 @@ import {
 } from "../../../components";
 import { SetStateAction } from "react";
 import { AddCircleIcon } from "../../../assets/images/icons";
+import { Link } from "react-router-dom";
 
 const Booking = () => {
   return (
-    <div >
+    <div>
       <header className="header">
-        <h1 className="header-heading">
-          booking
-        </h1>
+        <h1 className="header-heading">booking</h1>
         <NotificationProfileHeader />
       </header>
       <Info />
@@ -29,11 +28,11 @@ const Booking = () => {
             throw new Error("Function not implemented.");
           }}
         />
-        <div className="flex gap-5">
+        <Link to="form" className="flex gap-5">
           <Button size="medium" variant="primary" iconLeft={AddCircleIcon}>
             Create order
           </Button>
-        </div>
+        </Link>
       </div>
       <>
         {/* <div className="flex justify-between flex-wrap">

@@ -5,7 +5,7 @@ import { Button, PasswordInput } from "../../components";
 const Login = () => {
   return (
     <form
-      className="rounded-lg bg-white center w-[460px]  shadow  p-10"
+      className="rounded-lg bg-white center w-[460px]  shadow-xl  p-10"
       onSubmit={(e) => {
         e.preventDefault();
         alert("submited");

@@ -1,11 +1,16 @@
 import { useState } from "react";
-import JetCard from "./JetCard";
 import addCircleIcon from "../../../assets/images/icons/add-circle.svg";
-import BookingCard from "../../../components/BookingCard";
+import BookingCard from "../../../components/cards/BookingCard";
 import NotificationProfileHeader from "../../../components/NotificationProfileHeader";
-import { Button, CTabs, SearchBar, TabPanel } from "../../../components";
-// import JetCardSkeleton from "../../../skeleton/JetCardSkeleton";
+import {
+  Button,
+  CTabs,
+  JetCard,
+  SearchBar,
+  TabPanel,
+} from "../../../components";
 import { ArchiveIcon } from "../../../assets/images/icons";
+import { Link } from "react-router-dom";
 const Aircraft = () => {
   const [value, setValue] = useState<number>(0);
 
@@ -39,11 +44,25 @@ const Aircraft = () => {
       <TabPanel value={value} index={0}>
         <div className="flex  justify-between flex-wrap p-2 border shadow rounded mt-5 gap-1">
           <JetCard />
+          <JetCard />
+          <JetCard />
+          <JetCard />
+          <JetCard />
+          <JetCard />
+          <JetCard />
+          <JetCard />
+          <JetCard />
+          <JetCard />
+          <JetCard />
+          <JetCard />
+          <JetCard />
+          <JetCard />
+          <JetCard />
           {/* <JetCardSkeleton /> */}
         </div>
       </TabPanel>
       <TabPanel value={value} index={1}>
-        <div className="flex items-center justify-between flex-wrap p-2 border shadow rounded mt-5 gap-1">
+        <div className="flex  justify-between flex-wrap p-2 border shadow rounded mt-5 gap-1">
           <BookingCard />
           <BookingCard />
           <BookingCard />
@@ -66,7 +85,9 @@ const Aircraft = () => {
           <BookingCard />
         </div>
       </TabPanel>
-      <Button iconLeft={addCircleIcon}>create order</Button>
+      <Link to="/booking/form">
+        <Button iconLeft={addCircleIcon}>create order</Button>
+      </Link>
     </div>
   );
 };

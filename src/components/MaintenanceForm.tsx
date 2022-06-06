@@ -1,7 +1,7 @@
-import Button from "../Button";
-import Chip from "../Chip";
-import SelectInput from "../SelectInput";
-import SwitchCustomized from "../SwitchCustomized";
+import Button from "./Button";
+import Chip from "./Chip";
+import SelectInput from "./SelectInput";
+import SwitchCustomized from "./SwitchCustomized";
 const MaintenanceForm = () => {
   return (
     <div className="px-[65px] py-10 border border-[#BDBDBD] w-[520px] rounded-md ">

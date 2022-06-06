@@ -8,7 +8,6 @@ const PasswordInput = ({ placeholder }: { placeholder?: string }) => {
   return (
     <TextField
       label={placeholder}
-      
       fullWidth
       type={showPassword ? "text" : "password"}
       InputProps={{
