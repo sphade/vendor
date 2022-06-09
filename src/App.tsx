@@ -51,7 +51,7 @@ function App(): JSX.Element {
           {/* <Route path="*" element={<h1>page not found</h1>} /> */}
         </Routes>
       </div>
-      <ScreenNotSupported />
+      {/* <ScreenNotSupported /> */}
     </>
   );
 }
