@@ -14,7 +14,7 @@ const NoOrder = () => {
           You currently have no order history. All upcoming and order history
           will appear here.
         </p>
-        <Link to="form" className="block">
+        <Link to="create-order" className="block">
           <Button variant="primary" full size="medium" iconLeft={AddCircleIcon}>
             Create order
           </Button>

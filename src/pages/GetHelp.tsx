@@ -14,7 +14,7 @@ const GetHelp = () => {
         </h1>
 
         <div className="flex items-center mb-10 gap-5">
-          <img src={ArrowBackIcon} alt={ArrowBackIcon} />
+          <img src={ArrowBackIcon} alt='ArrowBackIcon' />
           <p className="text-gray-500 font-semibold">
             Email:{" "}
             <span className=" text-tertiary">
@@ -24,7 +24,7 @@ const GetHelp = () => {
         </div>
 
         <div className="flex items-center mb-8 gap-5">
-          <img src={ArrowBackIcon} alt={ArrowBackIcon} />
+          <img src={ArrowBackIcon} alt='ArrowBackIcon' />
           <p className="text-gray-500 font-semibold">
             Email:{"   "}
             <span className=" text-tertiary">

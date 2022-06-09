@@ -52,17 +52,35 @@ const Profile = () => {
             label="Business Name"
             type={"text"}
             value="lawal lawal alwal alwal alwal"
+            InputProps={{
+              readOnly: true,
+            }}
           />
-          <TextField fullWidth label="Email Address" type={"email"} />
+          <TextField
+            fullWidth
+            label="Email Address"
+            type={"email"}
+            InputProps={{
+              readOnly: true,
+            }}
+          />
           <PhoneInput
             country={"ng"}
             placeholder="phone Number"
             enableSearch={true}
-            containerClass="!w-full "
+            containerClass="!w-full"
             inputClass="!w-full "
-            value="lawal alwal alwal"
+            value="12344222"
+            disabled
           />
-          <TextField fullWidth label="Business Address" type={"email"} />
+          <TextField
+            fullWidth
+            InputProps={{
+              readOnly: true,
+            }}
+            label="Business Address"
+            type={"email"}
+          />
           <PasswordInput placeholder="password" />
           <Button full>edit profile</Button>
         </form>

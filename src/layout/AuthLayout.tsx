@@ -7,7 +7,7 @@ const AuthLayout = () => {
     <div className="bg-[#f3f3f3] min-h-screen grid place-items-center">
       <div>
         <header className="center-element my-10 ">
-          <img src={LogoPremium} alt={LogoPremium} />
+          <img src={LogoPremium} alt="LogoPremium" />
         </header>
         <main>
           <Outlet />

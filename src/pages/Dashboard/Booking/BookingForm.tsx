@@ -1,13 +1,12 @@
 import {
   BackButton,
   Button,
+  DateAndTimePicker,
   NotificationProfileHeader,
   SelectInput,
 } from "../../../components";
 import planeImg from "../../../assets/images/plane-4.png";
 import {
-  CalenderIcon,
-  ClockIcon,
   CompassIcon,
   LocationIcon,
   ToAndFroIcon,
@@ -28,7 +27,7 @@ const BookingForm = () => {
         <div className="w-[920px] px-20 mx-auto border-[#BDBDBD] border rounded-lg pt-[32px] p-10">
           <img
             src={planeImg}
-            alt={planeImg}
+            alt='icon'
             className="w-[760px] h-[323px] object-cover "
           />
           <div>
@@ -47,41 +46,23 @@ const BookingForm = () => {
             </div>
             <div className="flex mb-8">
               <div className="border w-full py-3 rounded flex items-center gap-4 px-6 border-[#828282] ">
-                <img src={CompassIcon} alt={CompassIcon} />
+                <img src={CompassIcon} alt='icon' />
                 <p className="capitalize text-base">departure</p>
               </div>
               <img
                 src={ToAndFroIcon}
-                alt={ToAndFroIcon}
+                alt='icon'
                 className="-mx-1  z-50"
               />
               <div className="border w-full py-3 rounded flex items-center gap-4 px-6 border-[#828282] ">
-                <img src={LocationIcon} alt={LocationIcon} />
+                <img src={LocationIcon} alt='icon' />
                 <p className="capitalize text-base">departure</p>
               </div>
             </div>
 
             <div className="flex items-center gap-6 mb-14">
-              <div className="border divide-x divide-[#828282] w-full py-3 rounded flex items-center  px-6 border-[#828282] ">
-                <div className="flex gap-2 items-center pr-6">
-                  <img src={CalenderIcon} alt={CalenderIcon} />
-                  <p className="capitalize text-base">departure date</p>
-                </div>
-                <div className="flex gap-2 items-center pl-6">
-                  <img src={ClockIcon} alt={ClockIcon} />
-                  <p className=" text-base">12:00 pm</p>
-                </div>
-              </div>
-              <div className="border divide-x divide-[#828282] w-full py-3 rounded flex items-center  px-6 border-[#828282] ">
-                <div className="flex gap-2 items-center pr-6">
-                  <img src={CalenderIcon} alt={CalenderIcon} />
-                  <p className="capitalize text-base">departure date</p>
-                </div>
-                <div className="flex gap-2 items-center pl-6">
-                  <img src={ClockIcon} alt={ClockIcon} />
-                  <p className=" text-base">12:00 pm</p>
-                </div>
-              </div>
+              <DateAndTimePicker />
+              <DateAndTimePicker />
             </div>
             <div className="w-[218px] mx-auto">
               <Button full>create order</Button>

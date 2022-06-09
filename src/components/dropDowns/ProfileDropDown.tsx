@@ -1,7 +1,7 @@
 import { Popover } from "@mui/material";
 import { Link } from "react-router-dom";
 import classNames from "classnames";
-import { ArrowRightSmallIcon } from "../assets/images/icons";
+import { ArrowRightSmallIcon } from "../../assets/images/icons";
 const ProfileDropDown = ({
   anchorEl,
   setAnchorEl,
@@ -57,7 +57,7 @@ const ProfileDropDown = ({
             {name === "logout" ? (
               ""
             ) : (
-              <img src={ArrowRightSmallIcon} alt={ArrowRightSmallIcon} />
+              <img src={ArrowRightSmallIcon} alt='icon' />
             )}
           </Link>
         ))}

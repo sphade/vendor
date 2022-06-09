@@ -1,239 +1,228 @@
 // import Table from "rc-table";
 
-// const columns = [
-//   {
-//     title: "Aircraft Name",
-//     dataIndex: "aircraftName",
-//     key: "aircraftName",
-//     width: 300,
-//   },
-//   {
-//     title: "Aircraft Type",
-//     dataIndex: "aircraftType",
-//     key: "aircraftType",
-//     width: 300,
-//   },
-//   {
-//     title: "No. of flight",
-//     dataIndex: "noOfFlight",
-//     key: "noOfFlight",
-//     width: 300,
-//   },
-//   {
-//     title: "Location",
-//     dataIndex: "location",
-//     key: "location",
-//     width: 300,
-//   },
-//   {
-//     title: "Service Type",
-//     dataIndex: "serviceType",
-//     key: "serviceType",
-//     width: 300,
-//   },
-//   {
-//     title: "Amount (last Trip)",
-//     dataIndex: "amount",
-//     key: "amount",
-//     width: 300,
-//   },
-//   {
-//     title: "Date & Time",
-//     dataIndex: "dateTime",
-//     key: "dateTime",
-//     width: 300,
-//     render: (text: { date: string; time: string }) => (
-//       <div className="text-black">
-//         {text.date} <br /> <span className="text-gray-400">{text.time}</span>
-//       </div>
-//     ),
-//   },
-//   {
-//     title: "Status",
-//     dataIndex: "status",
-//     key: "status",
-//     width: 300,
-//     render: (text: string) => (
-//       <div className="text-green-500 font-bold">{text}</div>
-//     ),
-//   },
-//   {
-//     title: "Availability",
-//     dataIndex: "availability",
-//     key: "availability",
-//     render: (text: string) => <div>{text}</div>,
-//     width: 300,
-//     fixed: true,
-//     colSpan:3900,
-//     className: "bg-red-900",
-//   },
-// ];
+import {
+  Checkbox,
+  Table,
+  TableBody,
+  TableCell,
+  TableContainer,
+  TableFooter,
+  TableHead,
+  TableRow,
+} from "@mui/material";
 
-// const data = [
-//   {
-//     aircraftName: "sky-night-6000",
-//     aircraftType: "private jet",
-//     noOfFlight: "250",
-//     location: "MM 1",
-//     serviceType: "Air chater",
-//     amount: "$1,400,00",
-//     dateTime: { date: "14-mar-2022", time: "11:30 Am" },
-//     status: "Active",
-//     availability: "yes",
-//   },
-//   {
-//     aircraftName: "sky-night-6000",
-//     aircraftType: "private jet",
-//     noOfFlight: "250",
-//     location: "MM 1",
-//     serviceType: "Air chater",
-//     amount: "$1,400,00",
-//     dateTime: { date: "14-mar-2022", time: "11:30 Am" },
-//     status: "Active",
-//     availability: "yes",
-//   },
-//   {
-//     aircraftName: "sky-night-6000",
-//     aircraftType: "private jet",
-//     noOfFlight: "250",
-//     location: "MM 1",
-//     serviceType: "Air chater",
-//     amount: "$1,400,00",
-//     dateTime: { date: "14-mar-2022", time: "11:30 Am" },
-//     status: "Active",
-//     availability: "yes",
-//   },
-//   {
-//     aircraftName: "sky-night-6000",
-//     aircraftType: "private jet",
-//     noOfFlight: "250",
-//     location: "MM 1",
-//     serviceType: "Air chater",
-//     amount: "$1,400,00",
-//     dateTime: { date: "14-mar-2022", time: "11:30 Am" },
-//     status: "Active",
-//     availability: "yes",
-//   },
-//   {
-//     aircraftName: "sky-night-6000",
-//     aircraftType: "private jet",
-//     noOfFlight: "250",
-//     location: "MM 1",
-//     serviceType: "Air chater",
-//     amount: "$1,400,00",
-//     dateTime: { date: "14-mar-2022", time: "11:30 Am" },
-//     status: "Active",
-//     availability: "yes",
-//   },
-//   {
-//     aircraftName: "sky-night-6000",
-//     aircraftType: "private jet",
-//     noOfFlight: "250",
-//     location: "MM 1",
-//     serviceType: "Air chater",
-//     amount: "$1,400,00",
-//     dateTime: { date: "14-mar-2022", time: "11:30 Am" },
-//     status: "Active",
-//     availability: "yes",
-//   },
-//   {
-//     aircraftName: "sky-night-6000",
-//     aircraftType: "private jet",
-//     noOfFlight: "250",
-//     location: "MM 1",
-//     serviceType: "Air chater",
-//     amount: "$1,400,00",
-//     dateTime: { date: "14-mar-2022", time: "11:30 Am" },
-//     status: "Active",
-//     availability: "yes",
-//   },
-//   {
-//     aircraftName: "sky-night-6000",
-//     aircraftType: "private jet",
-//     noOfFlight: "250",
-//     location: "MM 1",
-//     serviceType: "Air chater",
-//     amount: "$1,400,00",
-//     dateTime: { date: "14-mar-2022", time: "11:30 Am" },
-//     status: "Active",
-//     availability: "yes",
-//   },
-//   {
-//     aircraftName: "sky-night-6000",
-//     aircraftType: "private jet",
-//     noOfFlight: "250",
-//     location: "MM 1",
-//     serviceType: "Air chater",
-//     amount: "$1,400,00",
-//     dateTime: { date: "14-mar-2022", time: "11:30 Am" },
-//     status: "Active",
-//     availability: "yes",
-//   },
-//   {
-//     aircraftName: "sky-night-6000",
-//     aircraftType: "private jet",
-//     noOfFlight: "250",
-//     location: "MM 1",
-//     serviceType: "Air chater",
-//     amount: "$1,400,00",
-//     dateTime: { date: "14-mar-2022", time: "11:30 Am" },
-//     status: "Active",
-//     availability: "yes",
-//   },
-//   {
-//     aircraftName: "sky-night-6000",
-//     aircraftType: "private jet",
-//     noOfFlight: "250",
-//     location: "MM 1",
-//     serviceType: "Air chater",
-//     amount: "$1,400,00",
-//     dateTime: { date: "14-mar-2022", time: "11:30 Am" },
-//     status: "Active",
-//     availability: "yes",
-//   },
-//   {
-//     aircraftName: "sky-night-6000",
-//     aircraftType: "private jet",
-//     noOfFlight: "250",
-//     location: "MM 1",
-//     serviceType: "Air chater",
-//     amount: "$1,400,00",
-//     dateTime: { date: "14-mar-2022", time: "11:30 Am" },
-//     status: "Active",
-//     availability: "yes",
-//   },
-//   {
-//     aircraftName: "sky-night-6000",
-//     aircraftType: "private jet",
-//     noOfFlight: "250",
-//     location: "MM 1",
-//     serviceType: "Air chater",
-//     amount: "$1,400,00",
-//     dateTime: { date: "14-mar-2022", time: "11:30 Am" },
-//     status: "Active",
-//     availability: "yes",
-//   },
-// ];
+const data = [
+  {
+    aircraftName: "sky-night-6000",
+    aircraftType: "private jet",
+    noOfFlight: "250",
+    location: "MM 1",
+    serviceType: "Air chater",
+    amount: "$1,400,00",
+    dateTime: "14-mar-2022",
 
-// const TableM = () => {
-//   return (
-//     <Table
-//       columns={columns}
-//       data={data}
-//       className="text-[#828282] w-full flex text-base font-thin h-[300px] overflow-scroll "
-//       rowClassName=" border text-gray-900  hover:bg-gray-100 !mx-[400px]"
-//       tableLayout="fixed"
-//       indentSize={10}
-//       showHeader={true}
-//       sticky={true}
-//     />
-//   );
-// };
+    status: "Active",
+    availability: "yes",
+  },
+  {
+    aircraftName: "sky-night-6000",
+    aircraftType: "private jet",
+    noOfFlight: "250",
+    location: "MM 1",
+    serviceType: "Air chater",
+    amount: "$1,400,00",
+    dateTime: "14-mar-2022",
 
+    status: "Active",
+    availability: "yes",
+  },
+  {
+    aircraftName: "sky-night-6000",
+    aircraftType: "private jet",
+    noOfFlight: "250",
+    location: "MM 1",
+    serviceType: "Air chater",
+    amount: "$1,400,00",
+    dateTime: "14-mar-2022",
+
+    status: "Active",
+    availability: "yes",
+  },
+  {
+    aircraftName: "sky-night-6000",
+    aircraftType: "private jet",
+    noOfFlight: "250",
+    location: "MM 1",
+    serviceType: "Air chater",
+    amount: "$1,400,00",
+    dateTime: "14-mar-2022",
+
+    status: "Active",
+    availability: "yes",
+  },
+  {
+    aircraftName: "sky-night-6000",
+    aircraftType: "private jet",
+    noOfFlight: "250",
+    location: "MM 1",
+    serviceType: "Air chater",
+    amount: "$1,400,00",
+    dateTime: "14-mar-2022",
+
+    status: "Active",
+    availability: "yes",
+  },
+  {
+    aircraftName: "sky-night-6000",
+    aircraftType: "private jet",
+    noOfFlight: "250",
+    location: "MM 1",
+    serviceType: "Air chater",
+    amount: "$1,400,00",
+    dateTime: "14-mar-2022",
+
+    status: "Active",
+    availability: "yes",
+  },
+  {
+    aircraftName: "sky-night-6000",
+    aircraftType: "private jet",
+    noOfFlight: "250",
+    location: "MM 1",
+    serviceType: "Air chater",
+    amount: "$1,400,00",
+    dateTime: "14-mar-2022",
+
+    status: "Active",
+    availability: "yes",
+  },
+  {
+    aircraftName: "sky-night-6000",
+    aircraftType: "private jet",
+    noOfFlight: "250",
+    location: "MM 1",
+    serviceType: "Air chater",
+    amount: "$1,400,00",
+    dateTime: "14-mar-2022",
+
+    status: "Active",
+    availability: "yes",
+  },
+  {
+    aircraftName: "sky-night-6000",
+    aircraftType: "private jet",
+    noOfFlight: "250",
+    location: "MM 1",
+    serviceType: "Air chater",
+    amount: "$1,400,00",
+    dateTime: "14-mar-2022",
+
+    status: "Active",
+    availability: "yes",
+  },
+  {
+    aircraftName: "sky-night-6000",
+    aircraftType: "private jet",
+    noOfFlight: "250",
+    location: "MM 1",
+    serviceType: "Air chater",
+    amount: "$1,400,00",
+    dateTime: "14-mar-2022",
+
+    status: "Active",
+    availability: "yes",
+  },
+  {
+    aircraftName: "sky-night-6000",
+    aircraftType: "private jet",
+    noOfFlight: "250",
+    location: "MM 1",
+    serviceType: "Air chater",
+    amount: "$1,400,00",
+    dateTime: "14-mar-2022",
+
+    status: "Active",
+    availability: "yes",
+  },
+  {
+    aircraftName: "sky-night-6000",
+    aircraftType: "private jet",
+    noOfFlight: "250",
+    location: "MM 1",
+    serviceType: "Air chater",
+    amount: "$1,400,00",
+    dateTime: "14-mar-2022",
+
+    status: "Active",
+    availability: "yes",
+  },
+  {
+    aircraftName: "sky-night-6000",
+    aircraftType: "private jet",
+    noOfFlight: "250",
+    location: "MM 1",
+    serviceType: "Air chater",
+    amount: "$1,400,00",
+    dateTime: "14-mar-2022",
+    status: "Active",
+    availability: "yes",
+  },
+];
+
+const HeadCell = ({ children }: { children: string }) => {
+  return (
+    <TableCell className="!text-gray-500 !capitalize ">{children}</TableCell>
+  );
+};
+const BodyCell = ({ children }: { children: any }) => {
+  return <TableCell className="">{children}</TableCell>;
+};
 // export default TableM;
-
 const TableM = () => {
-  return <div>TableM</div>;
+  return (
+    <div>
+      <TableContainer>
+        <Table>
+          <TableHead className="!text-3xl">
+            <TableRow className="!text-3xl">
+              <TableCell padding="checkbox">
+                <Checkbox />
+              </TableCell>
+              <HeadCell>Aircraft Name</HeadCell>
+
+              <HeadCell>Aircraft Type</HeadCell>
+              <HeadCell>Location</HeadCell>
+              <HeadCell>Service Type</HeadCell>
+              <HeadCell>Amount (last Trip)</HeadCell>
+              <HeadCell>Date & Time</HeadCell>
+              <HeadCell>Status</HeadCell>
+              <HeadCell>Availability</HeadCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {data.map((row) => (
+              <TableRow className="!text-center hover:bg-gray-100 default-transition">
+                <TableCell padding="checkbox">
+                  <Checkbox />
+                </TableCell>
+                <BodyCell>{row.aircraftName}</BodyCell>
+                <BodyCell>{row.aircraftType}</BodyCell>
+                <BodyCell>{row.amount}</BodyCell>
+                <BodyCell>{row.noOfFlight}</BodyCell>
+                <BodyCell>{row.availability}</BodyCell>
+                <BodyCell>{row.location}</BodyCell>
+                <BodyCell>
+                  <p className="text-primary">{row.status}</p>
+                </BodyCell>
+                <BodyCell>{row.dateTime}</BodyCell>
+              </TableRow>
+            ))}
+          </TableBody>
+          <TableFooter></TableFooter>
+        </Table>
+      </TableContainer>
+    </div>
+  );
 };
 
 export default TableM;

@@ -3,11 +3,9 @@ import TextField from "@mui/material/TextField";
 import { FC } from "react";
 
 import Button from "../Button";
-interface IState {
-  modalState: boolean;
-  setModalState: React.Dispatch<React.SetStateAction<boolean>>;
-}
-export const EmailModal: FC<IState> = ({ modalState, setModalState }) => {
+import { IModal } from "./interface";
+
+export const EmailModal: FC<IModal> = ({ modalState, setModalState }) => {
   function closeModal() {
     setModalState(false);
   }
@@ -25,7 +23,7 @@ export const EmailModal: FC<IState> = ({ modalState, setModalState }) => {
   );
 };
 
-export const EmailVerificationModal: FC<IState> = ({
+export const EmailVerificationModal: FC<IModal> = ({
   modalState,
   setModalState,
 }) => {

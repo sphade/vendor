@@ -33,9 +33,9 @@ const Button: FC<IButton> = ({
           "text-base py-3 px-5 font-semibold": size === "big",
           "text-sm py-2 px-4 font-bold": size === "medium",
           "text-xs py-1.5 px-3.5 font-bold": size === "small",
-          "border-2  border-primary text-primary bg-secondary":
+          "border  border-primary text-primary bg-secondary":
             variant === "outlinePrimary",
-          "border-2  border-tertiary text-tertiary bg-secondary":
+          "border  border-tertiary text-tertiary bg-secondary":
             variant === "outlineTertiary",
           "bg-tertiary": variant === "tertiary",
           "bg-primary": variant === "primary",
@@ -44,9 +44,9 @@ const Button: FC<IButton> = ({
       onClick={onClick}
       disabled={disabled}
     >
-      {iconLeft && <img src={iconLeft} alt={iconLeft} className="pr-3" />}
+      {iconLeft && <img src={iconLeft} alt="icon" className="pr-3" />}
       <span>{loading ? "loading..." : children}</span>
-      {iconRight && <img src={iconRight} alt={iconRight} className="pl-3" />}
+      {iconRight && <img src={iconRight} alt="icon" className="pl-3" />}
     </button>
   );
 };

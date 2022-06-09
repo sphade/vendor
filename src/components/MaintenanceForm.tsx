@@ -1,5 +1,6 @@
 import Button from "./Button";
 import Chip from "./Chip";
+import DateAndTimePicker from "./DateAndTimePicker";
 import SelectInput from "./SelectInput";
 import SwitchCustomized from "./SwitchCustomized";
 const MaintenanceForm = () => {
@@ -26,12 +27,12 @@ const MaintenanceForm = () => {
           </h2>
           <div className="space-y-2">
             <Chip variant="success"> starting</Chip>
-            <SelectInput />
+            <DateAndTimePicker />
           </div>
 
           <div className="space-y-2">
             <Chip variant="warning"> ending</Chip>
-            <SelectInput />
+            <DateAndTimePicker />
           </div>
         </div>
         <div>

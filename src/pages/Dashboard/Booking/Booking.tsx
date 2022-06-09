@@ -28,7 +28,7 @@ const Booking = () => {
             throw new Error("Function not implemented.");
           }}
         />
-        <Link to="form" className="flex gap-5">
+        <Link to="create-order" className="flex gap-5">
           <Button size="medium" variant="primary" iconLeft={AddCircleIcon}>
             Create order
           </Button>

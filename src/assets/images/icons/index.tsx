@@ -34,3 +34,8 @@ export { default as CalenderIcon } from "./calender.svg";
 export { default as ArrowRightSmallIcon } from "./arrowRightSmall.svg";
 export { default as ArchiveIcon } from "./archive.svg";
 export { default as ArrowRightOrangeIcon } from "./ArrowRightOrange.svg";
+export { default as ArrowRight2Icon } from "./arrowRight2.svg";
+export { default as FolderIcon } from "./folder.svg";
+export { default as TrashIcon } from "./trash.svg";
+export { default as AddAircraftIcon } from "./addAircraft.svg";
+export { default as AddAircraftSmallIcon } from "./addAircraftSmall.svg";

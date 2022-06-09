@@ -42,6 +42,6 @@
 }
 
 /* mui-checkbox override */
-.MuiCheckbox-root {
+/* .MuiCheckbox-root {
   @apply !text-primary;
-}
+} */

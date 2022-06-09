@@ -15,12 +15,12 @@ const Register = () => {
         <div className=" relative h-[100px] ">
           <img
             src={CameraBoxIcon}
-            alt={CameraBoxIcon}
+            alt="CameraBoxIcon"
             className="absolute top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2"
           />
           <img
             src={CameraIcon}
-            alt={CameraIcon}
+            alt="CameraIcon"
             className="absolute top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2"
           />
         </div>

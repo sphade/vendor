@@ -14,6 +14,7 @@ import {
 import { ForgotPassword, Login, Register, Verify } from "./pages/Auth";
 import Profile from "./pages/Profile";
 import GetHelp from "./pages/GetHelp";
+import { ScreenNotSupported } from "./components";
 
 function App(): JSX.Element {
   const navigate = useNavigate();
@@ -28,7 +29,7 @@ function App(): JSX.Element {
 
   return (
     <>
-      <div className=" xl:block bg-[#E5E5E5] min-h-screen">
+      <div className=" lg:block hiddenw bg-[#E5E5E5] min-h-screen">
         <Routes>
           {/* public routes */}
           <Route element={<AuthLayout />}>
@@ -50,9 +51,7 @@ function App(): JSX.Element {
           {/* <Route path="*" element={<h1>page not found</h1>} /> */}
         </Routes>
       </div>
-      {/* <div className="center-element xl:hidden h-screen">
-        this screen is not supported
-      </div> */}
+      <ScreenNotSupported />
     </>
   );
 }

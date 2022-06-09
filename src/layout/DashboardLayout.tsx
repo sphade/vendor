@@ -3,7 +3,9 @@ import { Outlet, useLocation } from "react-router-dom";
 import { useEffect } from "react";
 
 const DashboardLayout = () => {
-  const { pathname } = useLocation();
+
+  const { pathname,   } = useLocation();
+
   useEffect(() => {
     const scrollRestoration = "scrollRestoration" in window.history;
     if (scrollRestoration) {
@@ -11,6 +13,7 @@ const DashboardLayout = () => {
     }
     window.scrollTo(0, 0);
   }, [pathname]);
+
   return (
     <div className="flex bg-[#E5E5E5]">
       <Sidebar />

@@ -1,14 +1,16 @@
 import React from "react";
-import bookingPic from "../../assets/images/icons/heli.svg";
-import { DotIcon } from "../../assets/images/icons";
+// import bookingPic from "../../assets/images/icons/heli.svg";
+import bookingPic from "../../assets/images/plane5.png";
+import { ArrowRight2Icon, DotIcon } from "../../assets/images/icons";
 import Button from "../Button";
 import { IconButton } from "@mui/material";
+import { Link } from "react-router-dom";
 
 const BookingCard = () => {
   return (
-    <div className="w-64 min-h-[376px] rounded-md shadow-lg p-4 bg-secondary  ">
+    <div className="w-64 min-h-[376px] border rounded-md shadow-lg p-4 bg-secondary  ">
       <div className=" rounded-t-md h-[100px] object-cover overflow-hidden">
-        <img src={bookingPic} alt={bookingPic} className="w-full h-full" />
+        <img src={bookingPic} alt="bookingPic" className="w-full h-full" />
       </div>
       <div className="divide-y ">
         <div className="flex items-center py-4 justify-between">
@@ -16,7 +18,7 @@ const BookingCard = () => {
             Night Sky 6000
           </h3>
           <IconButton>
-            <img src={DotIcon} alt={DotIcon} className="py-2 " />
+            <img src={DotIcon} alt="DotIcon" className="py-2 " />
           </IconButton>
         </div>
         <div>
@@ -38,13 +40,15 @@ const BookingCard = () => {
           </div>
         </div>
 
-        <div className="flex justify-between items-center pt-5">
-          <Button variant="outlinePrimary" size="small">
+        <div className="flex gap-3 justify-between items-center pt-5">
+          <Button variant="outlinePrimary" size="medium">
             details
           </Button>
-          <Button size="medium" variant="primary" iconRight=">>">
-            book
-          </Button>
+          <Link to="../form">
+            <Button full size="medium" iconRight={ArrowRight2Icon}>
+              book
+            </Button>
+          </Link>
         </div>
       </div>
     </div>

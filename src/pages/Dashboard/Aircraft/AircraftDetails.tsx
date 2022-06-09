@@ -18,7 +18,7 @@ const AircraftDetails = () => {
         </div>
         <div className="flex items-center gap-24">
           <div className="flex items-center">
-            <img src={EditIcon} alt={EditIcon} />
+            <img src={EditIcon} alt="EditIcon" />
             <p className="uppercase text-tertiary font-bold">Edit</p>
           </div>
 
@@ -29,7 +29,7 @@ const AircraftDetails = () => {
         <div className="rounded-lg  p-6 w-[522px] mx-auto font-semibold border mb-3 border-[#BDBDBD]">
           <img
             src={aircraftPicture}
-            alt={aircraftPicture}
+            alt="aircraftPicture"
             className="h-[230px] w-full object-contain "
           />
           <div className="divide-y divide-[#BDBDBD] text-sm">
@@ -65,10 +65,10 @@ const AircraftDetails = () => {
             <div className="py-4 flex flex-col gap-3 ">
               <p className="capitalize text-[#828282]">photos: </p>
               <div className=" flex justify-between items-center">
-                <img src={insidePlane} alt={insidePlane} />
-                <img src={insidePlane} alt={insidePlane} />
-                <img src={insidePlane} alt={insidePlane} />
-                <img src={insidePlane} alt={insidePlane} />
+                <img src={insidePlane} alt="insidePlane" />
+                <img src={insidePlane} alt="insidePlane" />
+                <img src={insidePlane} alt="insidePlane" />
+                <img src={insidePlane} alt="insidePlane" />
               </div>
             </div>
             <div className="py-4 flex flex-col gap-3 ">

@@ -26,7 +26,7 @@ const AircraftEdit = () => {
             <p className="capitalize text-tertiary ">photos</p>
             <img
               src={aircraftPicture}
-              alt={aircraftPicture}
+              alt='icon'
               className="h-[230px] w-full object-contain "
             />
           </div>
@@ -47,9 +47,9 @@ const AircraftEdit = () => {
                 seat capacity
               </span>
               <div className="flex items-center w-[150px] justify-between">
-                <img src={MinusIcon} alt={MinusIcon} />
+                <img src={MinusIcon} alt='icon' />
                 <span className="text-tertiary font-semibold text-xl">20</span>
-                <img src={PlusIcon} alt={PlusIcon} />
+                <img src={PlusIcon} alt='icon' />
               </div>
             </div>
           </div>

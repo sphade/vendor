@@ -5,7 +5,7 @@ import NotificationProfileHeader from "../../../components/NotificationProfileHe
 import {
   Button,
   CTabs,
-  JetCard,
+  AircraftCard,
   SearchBar,
   TabPanel,
 } from "../../../components";
@@ -31,34 +31,36 @@ const Aircraft = () => {
 
         <div className="flex gap-5">
           <div className="border rounded flex items-center px-3.5  gap-2.5 border-gray-300">
-            <img src={ArchiveIcon} alt={ArchiveIcon} />
+            <img src={ArchiveIcon} alt="ArchiveIcon" />
             <p className="capitalize  text-gray-700">archive</p>
           </div>
           <SearchBar />
-          <Button size="medium" variant="primary" iconLeft={addCircleIcon}>
-            add aircraft
-          </Button>
+          <Link to="add">
+            <Button size="medium" variant="primary" iconLeft={addCircleIcon}>
+              add aircraft
+            </Button>
+          </Link>
         </div>
       </div>
 
       <TabPanel value={value} index={0}>
         <div className="flex  justify-between flex-wrap p-2 border shadow rounded mt-5 gap-1">
-          <JetCard />
-          <JetCard />
-          <JetCard />
-          <JetCard />
-          <JetCard />
-          <JetCard />
-          <JetCard />
-          <JetCard />
-          <JetCard />
-          <JetCard />
-          <JetCard />
-          <JetCard />
-          <JetCard />
-          <JetCard />
-          <JetCard />
-          {/* <JetCardSkeleton /> */}
+          <AircraftCard />
+          <AircraftCard />
+          <AircraftCard />
+          <AircraftCard />
+          <AircraftCard />
+          <AircraftCard />
+          <AircraftCard />
+          <AircraftCard />
+          <AircraftCard />
+          <AircraftCard />
+          <AircraftCard />
+          <AircraftCard />
+          <AircraftCard />
+          <AircraftCard />
+          <AircraftCard />
+          {/* <AircraftCardSkeleton /> */}
         </div>
       </TabPanel>
       <TabPanel value={value} index={1}>

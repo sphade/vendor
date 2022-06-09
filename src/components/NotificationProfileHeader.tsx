@@ -4,7 +4,7 @@ import { IconButton } from "@mui/material";
 import avatarIcon from "../assets/images/icons/avatar.png";
 import dropdownIcon from "../assets/images/icons/dropdown.png";
 import { Avatar } from "@mui/material";
-import ProfileDropDown from "./ProfileDropDown";
+import ProfileDropDown from "./dropDowns/ProfileDropDown";
 const NotificationProfileHeader = () => {
   const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(
     null
