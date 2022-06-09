@@ -14,7 +14,7 @@ import {
 import { ForgotPassword, Login, Register, Verify } from "./pages/Auth";
 import Profile from "./pages/Profile";
 import GetHelp from "./pages/GetHelp";
-import { ScreenNotSupported } from "./components";
+// import { ScreenNotSupported } from "./components";
 
 function App(): JSX.Element {
   const navigate = useNavigate();
