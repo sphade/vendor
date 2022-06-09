@@ -15,7 +15,7 @@ import { TextField } from "@mui/material";
 import planeAdd from "../../../assets/images/plane6.png";
 import { useState } from "react";
 const AircraftAdd = () => {
-  const [showAddPic, setShowAddPic] = useState<boolean>(false);
+  const [showAddPic] = useState<boolean>(false);
   return (
     <div>
       <header className="header !mb-5">

@@ -1,8 +1,6 @@
 import { Modal } from "@mui/material";
-import TextField from "@mui/material/TextField";
 import { FC } from "react";
 
-import Button from "../Button";
 import { IModal } from "./interface";
 const DeleteModal: FC<IModal> = ({ modalState, setModalState }) => {
   function closeModal() {

@@ -1,4 +1,4 @@
-import React, { SetStateAction, useState } from "react";
+import { useState } from "react";
 import {
   BackButton,
   CTabs,
