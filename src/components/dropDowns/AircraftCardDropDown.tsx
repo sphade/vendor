@@ -7,6 +7,8 @@ import {
   FolderIcon,
   TrashIcon,
 } from "../../assets/images/icons";
+import { useDispatch } from "react-redux";
+import { toggleDeleteModal } from "../../redux/slices/ModalSlice";
 
 const AircraftCardDropDown = ({
   dropDownState,
@@ -18,6 +20,7 @@ const AircraftCardDropDown = ({
   const handleClose = () => {
     setDropDownState(null);
   };
+  const dispatch = useDispatch();
 
   const open = Boolean(dropDownState);
   const id = open ? "simple-popover" : undefined;
@@ -63,18 +66,18 @@ const AircraftCardDropDown = ({
           </Link>
         </li>
 
-        <li>
-          <Link
-            to="/"
-            className={classNames(
-              "py-3 capitalize flex items-center justify-between  text-sm font-semibold px-4 text-red-500 cursor-pointer default-transition hover:bg-gray-100 "
-            )}
-          >
-            <span className="flex items-center gap-2">
-              <img src={TrashIcon} alt="icon" />
-              delete
-            </span>
-          </Link>
+        <li
+          className={classNames(
+            "py-3 capitalize flex items-center justify-between  text-sm font-semibold px-4 text-red-500 cursor-pointer default-transition hover:bg-gray-100 "
+          )}
+          onClick={() => {
+            dispatch(toggleDeleteModal());
+          }}
+        >
+          <span className="flex items-center gap-2">
+            <img src={TrashIcon} alt="icon" />
+            delete
+          </span>
         </li>
       </ul>
     </Popover>

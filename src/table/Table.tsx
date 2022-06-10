@@ -175,7 +175,7 @@ const HeadCell = ({ children }: { children: string }) => {
   );
 };
 const BodyCell = ({ children }: { children: any }) => {
-  return <TableCell className="">{children}</TableCell>;
+  return <TableCell className="!capitalize !font-semibold">{children}</TableCell>;
 };
 // export default TableM;
 const TableM = () => {
@@ -191,6 +191,7 @@ const TableM = () => {
               <HeadCell>Aircraft Name</HeadCell>
 
               <HeadCell>Aircraft Type</HeadCell>
+              <HeadCell>No of flight</HeadCell>
               <HeadCell>Location</HeadCell>
               <HeadCell>Service Type</HeadCell>
               <HeadCell>Amount (last Trip)</HeadCell>
@@ -207,7 +208,7 @@ const TableM = () => {
                 </TableCell>
                 <BodyCell>{row.aircraftName}</BodyCell>
                 <BodyCell>{row.aircraftType}</BodyCell>
-                <BodyCell>{row.amount}</BodyCell>
+                <BodyCell>{row.noOfFlight}</BodyCell>
                 <BodyCell>{row.noOfFlight}</BodyCell>
                 <BodyCell>{row.availability}</BodyCell>
                 <BodyCell>{row.location}</BodyCell>

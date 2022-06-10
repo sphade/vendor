@@ -8,14 +8,18 @@ import {
   AircraftCard,
   SearchBar,
   TabPanel,
+  DeleteModal,
 } from "../../../components";
 import { ArchiveIcon } from "../../../assets/images/icons";
 import { Link } from "react-router-dom";
+
 const Aircraft = () => {
   const [value, setValue] = useState<number>(0);
 
   return (
     <div>
+      <DeleteModal />
+
       <header className="header">
         <h1 className="header-heading">
           Aircraft <span className="text-gray-400">(105)</span>
@@ -87,9 +91,6 @@ const Aircraft = () => {
           <BookingCard />
         </div>
       </TabPanel>
-      <Link to="/booking/form">
-        <Button iconLeft={addCircleIcon}>create order</Button>
-      </Link>
     </div>
   );
 };

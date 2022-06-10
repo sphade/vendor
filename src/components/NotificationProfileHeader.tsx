@@ -10,7 +10,7 @@ const NotificationProfileHeader = () => {
     null
   );
 
-  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+  const handleIconClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
   };
 
@@ -27,7 +27,7 @@ const NotificationProfileHeader = () => {
         <IconButton
           className=" !relative"
           component="span"
-          onClick={handleClick}
+          onClick={handleIconClick}
         >
           <img src={dropdownIcon} alt="avatarIcon" className="py-2" />
         </IconButton>

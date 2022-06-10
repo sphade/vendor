@@ -4,10 +4,8 @@ import { Link } from "react-router-dom";
 import { ArrowRightOrangeIcon, DotIcon } from "../../assets/images/icons";
 import jetPic from "../../assets/images/icons/plane.png";
 import AircraftCardDropDown from "../dropDowns/AircraftCardDropDown";
-import DeleteModal from "../modal/DeleteModal";
 
 const AircraftCard = () => {
-  const [modalState, setModalState] = React.useState(false);
   const [dropDownState, setDropDownState] =
     React.useState<HTMLButtonElement | null>(null);
 
@@ -16,7 +14,6 @@ const AircraftCard = () => {
   };
   return (
     <div className="w-64 border rounded-md shadow-lg  p-2 bg-secondary">
-      <DeleteModal modalState={modalState} setModalState={setModalState} />
       <div className=" rounded-t-md h-[100px] overflow-hidden">
         <img src={jetPic} alt="jetPic" className="" />
       </div>

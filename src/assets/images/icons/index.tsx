@@ -39,3 +39,7 @@ export { default as FolderIcon } from "./folder.svg";
 export { default as TrashIcon } from "./trash.svg";
 export { default as AddAircraftIcon } from "./addAircraft.svg";
 export { default as AddAircraftSmallIcon } from "./addAircraftSmall.svg";
+export { default as TrashModalIcon } from "./trashModal.svg";
+export { default as UnArchiveIcon } from "./unArchive.svg";
+export { default as TrashGrayIcon } from "./trashGray.svg";
+export { default as PolygonIcon } from "./polygon.svg";

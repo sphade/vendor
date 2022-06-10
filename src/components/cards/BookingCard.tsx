@@ -44,7 +44,7 @@ const BookingCard = () => {
           <Button variant="outlinePrimary" size="medium">
             details
           </Button>
-          <Link to="../form">
+          <Link to="../form" className="flex-1">
             <Button full size="medium" iconRight={ArrowRight2Icon}>
               book
             </Button>

@@ -4,9 +4,9 @@ import "./index.css";
 import "react-phone-input-2/lib/material.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import { store } from "./app/store";
 import { Provider } from "react-redux";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { store } from "./redux/store";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
