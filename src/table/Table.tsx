@@ -10,6 +10,7 @@ import {
   TableHead,
   TableRow,
 } from "@mui/material";
+import { CalenderDropDownActiveIcon } from "../assets/images/icons";
 
 const data = [
   {
@@ -175,7 +176,9 @@ const HeadCell = ({ children }: { children: string }) => {
   );
 };
 const BodyCell = ({ children }: { children: any }) => {
-  return <TableCell className="!capitalize !font-semibold">{children}</TableCell>;
+  return (
+    <TableCell className="!capitalize !font-medium">{children}</TableCell>
+  );
 };
 // export default TableM;
 const TableM = () => {
@@ -195,7 +198,7 @@ const TableM = () => {
               <HeadCell>Location</HeadCell>
               <HeadCell>Service Type</HeadCell>
               <HeadCell>Amount (last Trip)</HeadCell>
-              <HeadCell>Date & Time</HeadCell>
+              {/* <HeadCell>Date & Time</HeadCell> */}
               <HeadCell>Status</HeadCell>
               <HeadCell>Availability</HeadCell>
             </TableRow>
@@ -215,7 +218,13 @@ const TableM = () => {
                 <BodyCell>
                   <p className="text-primary">{row.status}</p>
                 </BodyCell>
-                <BodyCell>{row.dateTime}</BodyCell>
+                {/* <BodyCell>{row.dateTime}</BodyCell> */}
+                <BodyCell>
+                  <img
+                    src={CalenderDropDownActiveIcon}
+                    alt="CalenderDropDownActiveIcon"
+                  />
+                </BodyCell>
               </TableRow>
             ))}
           </TableBody>
