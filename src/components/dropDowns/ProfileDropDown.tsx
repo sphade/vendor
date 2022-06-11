@@ -40,8 +40,9 @@ const ProfileDropDown = ({
         vertical: "bottom",
         horizontal: "left",
       }}
+      PaperProps={{ className: "!rounded-lg" }}
     >
-      <ul className="rounded-lg bg-white  w-[205px] py-1 border divide-y flex flex-col">
+      <ul className=" bg-white   w-[205px] py-1 border divide-y flex flex-col">
         {dropDownItem.map(({ name, link }, id) => (
           <Link
             to={link}
@@ -57,7 +58,7 @@ const ProfileDropDown = ({
             {name === "logout" ? (
               ""
             ) : (
-              <img src={ArrowRightSmallIcon} alt='icon' />
+              <img src={ArrowRightSmallIcon} alt="icon" />
             )}
           </Link>
         ))}

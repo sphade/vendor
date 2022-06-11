@@ -35,6 +35,7 @@ const AircraftCardDropDown = ({
         vertical: "bottom",
         horizontal: "left",
       }}
+      PaperProps={{ className: "!rounded-lg" }}
     >
       <ul className="rounded-lg bg-white  w-[180px]   border divide-y flex flex-col">
         <li>

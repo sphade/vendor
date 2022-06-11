@@ -5,7 +5,7 @@
 @layer base {
   @font-face {
     font-family: hind;
-    src: url("./assets/fonts/hind/Hind-Light.ttf") format("truetype");
+    src: url("./assets/fonts/hind/Hind-Regular.ttf") format("truetype");
   }
   /* html {
     font-family: hind;
@@ -42,6 +42,6 @@
 }
 
 /* mui-checkbox override */
-/* .MuiCheckbox-root {
+.MuiCheckbox-root {
   @apply !text-primary;
-} */
+}

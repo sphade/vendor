@@ -35,9 +35,7 @@ const BookingCreateOrder = () => {
           <SearchBar size="medium" />
         </div>
         <TabPanel value={value} index={0}>
-          <div className="flex  justify-between flex-wrap p-2 border shadow rounded mt-5 gap-1">
-            <BookingCard />
-            <BookingCard />
+          <div className="flex  justify-evenly flex-wrap p-2 border shadow rounded mt-5 gap-1">
             <BookingCard />
             <BookingCard />
             <BookingCard />

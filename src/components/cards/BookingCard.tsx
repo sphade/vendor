@@ -5,8 +5,15 @@ import { ArrowRight2Icon, DotIcon } from "../../assets/images/icons";
 import Button from "../Button";
 import { IconButton } from "@mui/material";
 import { Link } from "react-router-dom";
+import AircraftCardDropDown from "../dropDowns/AircraftCardDropDown";
 
 const BookingCard = () => {
+  const [dropDownState, setDropDownState] =
+    React.useState<HTMLButtonElement | null>(null);
+
+  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    setDropDownState(event.currentTarget);
+  };
   return (
     <div className="w-64 min-h-[376px] border rounded-md shadow-lg p-4 bg-secondary  ">
       <div className=" rounded-t-md h-[100px] object-cover overflow-hidden">
@@ -17,9 +24,13 @@ const BookingCard = () => {
           <h3 className="text-tertiary font-semibold capitalize text-base">
             Night Sky 6000
           </h3>
-          <IconButton>
+          <IconButton onClick={handleClick}>
             <img src={DotIcon} alt="DotIcon" className="py-2 " />
           </IconButton>
+          <AircraftCardDropDown
+            dropDownState={dropDownState}
+            setDropDownState={setDropDownState}
+          />
         </div>
         <div>
           <div className="py-4 space-y-2">

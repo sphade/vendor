@@ -205,7 +205,7 @@ const TableM = () => {
           </TableHead>
           <TableBody>
             {data.map((row) => (
-              <TableRow className="!text-center hover:bg-gray-100 default-transition">
+              <TableRow  className="!text-center  hover:bg-gray-100 default-transition">
                 <TableCell padding="checkbox">
                   <Checkbox />
                 </TableCell>

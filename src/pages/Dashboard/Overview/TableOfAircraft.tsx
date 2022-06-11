@@ -1,11 +1,14 @@
 import { PolygonIcon } from "../../../assets/images/icons";
-import { NotificationProfileHeader, SearchBar } from "../../../components";
+import { BackButton, NotificationProfileHeader, SearchBar } from "../../../components";
 import TableM from "../../../table/Table";
 const TableOfAircraft = () => {
   return (
     <div>
-      <header className="header">
-        <h1 className="header-heading">table of aircraft</h1>
+          <header className="header">
+          <div className="space-x-3 flex items-center ">
+          <BackButton />
+          <h1 className="header-heading">table of aircraft</h1>
+        </div>
         <NotificationProfileHeader />
       </header>
       <div className="flex justify-end items-center space-x-5 mt-7">
@@ -19,7 +22,9 @@ const TableOfAircraft = () => {
           </div>
         </div>
       </div>
-      <TableM />
+      <div className="border rounded-lg mt-6">
+        <TableM />
+      </div>
     </div>
   );
 };
