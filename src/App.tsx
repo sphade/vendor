@@ -40,7 +40,7 @@ function App(): JSX.Element {
           </Route>
           {/* protected routes */}
           <Route element={<DashboardLayout />}>
-            <Route path="overview" element={<Overview />} />
+            <Route path="overview/*" element={<Overview />} />
             <Route path="aircraft/*" element={<Aircraft />} />
             <Route path="booking/*" element={<Booking />} />
             <Route path="calender" element={<Calender />} />

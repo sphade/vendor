@@ -1,12 +1,17 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import profileIcon from "../assets/images/icons/profileIcon.svg";
-import planeIcon from "../assets/images/icons/planeIcon.svg";
 import {
   CategoryActiveIcon,
-  
+  CategoryIcon,
   LogoIcon,
+  NoteTextActiveIcon,
+  NoteTextIcon,
+  PlaneActiveIcon,
+  PlaneIcon,
+  ProfileActiveIcon,
+  ProfileIcon,
   WalletActiveIcon,
+  WalletIcon,
 } from "../assets/images/icons";
 type Props = {};
 interface IState {
@@ -54,31 +59,31 @@ const sidebarOptions: IState["sidebarOptions"] = [
   {
     text: "overview",
     link: "/overview",
-    Icon: profileIcon,
-    ActiveIcon: WalletActiveIcon,
+    Icon: CategoryIcon,
+    ActiveIcon: CategoryActiveIcon,
   },
   {
     text: "aircraft",
     link: "/aircraft",
-    Icon: planeIcon,
-    ActiveIcon: WalletActiveIcon,
+    Icon: PlaneIcon,
+    ActiveIcon: PlaneActiveIcon,
   },
   {
     text: "booking",
     link: "/booking",
-    Icon: profileIcon,
-    ActiveIcon: WalletActiveIcon,
+    Icon: ProfileIcon,
+    ActiveIcon: ProfileActiveIcon,
   },
   {
     text: "transactions",
     link: "/transactions",
-    Icon: profileIcon,
+    Icon: WalletIcon,
     ActiveIcon: WalletActiveIcon,
   },
   {
     text: "calender",
     link: "/calender",
-    Icon: profileIcon,
-    ActiveIcon: CategoryActiveIcon,
+    Icon: NoteTextIcon,
+    ActiveIcon: NoteTextActiveIcon,
   },
 ];

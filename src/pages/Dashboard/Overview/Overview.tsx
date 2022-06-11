@@ -6,10 +6,12 @@ import {
 } from "../../../components";
 import {
   NoOfTripsIcon,
+  PolygonOrangeIcon,
   TotalAirIcon,
   TotalAmountIcon,
 } from "../../../assets/images/icons";
 import TableM from "../../../table/Table";
+import { Link } from "react-router-dom";
 
 const Overview = () => {
   return (
@@ -53,9 +55,13 @@ const Overview = () => {
             <h3 className="font-semibold text-lg text-tertiary  capitalize">
               table of aircraft
             </h3>
-            <p className="rounded-lg py-1.5 bg-orange-100 font-medium text-base text-primary border-2 border-orange-200 px-3">
-              view more
-            </p>
+            <Link
+              to="table-of-aircraft"
+              className="rounded-lg  py-2 cursor-pointer bg-[#FFF6F4] font-medium text-base text-primary border-2 border-[#FFDED6] flex gap-2 px-3"
+            >
+              <span>View more</span>
+              <img src={PolygonOrangeIcon} alt="icon" />
+            </Link>
           </div>
           <TableM />
         </div>

@@ -34,10 +34,13 @@ const Aircraft = () => {
         />
 
         <div className="flex gap-5">
-          <div className="border rounded flex items-center px-3.5  gap-2.5 border-gray-300">
+          <Link
+            to="archive"
+            className="border rounded flex items-center px-3.5  gap-2.5 border-gray-300"
+          >
             <img src={ArchiveIcon} alt="ArchiveIcon" />
             <p className="capitalize  text-gray-700">archive</p>
-          </div>
+          </Link>
           <SearchBar />
           <Link to="add">
             <Button size="medium" variant="primary" iconLeft={addCircleIcon}>
