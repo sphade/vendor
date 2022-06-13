@@ -20,4 +20,4 @@ export { default as Otp } from "./Otp";
 export { default as DateAndTimePicker } from "./DateAndTimePicker";
 export { default as ScreenNotSupported } from "./ScreenNotSupported";
 export { EmailModal, EmailVerificationModal } from "./modal/ProfileModal";
-export { default as  DeleteModal} from "./modal/DeleteModal";
+export { default as DeleteModal } from "./modal/DeleteModal";
