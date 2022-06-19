@@ -41,7 +41,7 @@ const MaintenanceForm = () => {
           </h2>
           <div className="flex items-center justify-between">
             <p className="text-gray-700">status</p>
-            <SwitchCustomized />
+            {/* <SwitchCustomized /> */}
           </div>
         </div>
         <div className="py-6">

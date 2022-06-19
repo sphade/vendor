@@ -1,12 +1,30 @@
 import { Checkbox } from "@mui/material";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import { TrashGrayIcon, UnArchiveIcon } from "../../../assets/images/icons";
 import {
+  AircraftArchivedCard,
   AircraftCard,
   BackButton,
   NotificationProfileHeader,
 } from "../../../components";
+import DeleteArchiveModal from "../../../components/modal/DeleteArchiveModal";
+import { toggleDeleteArchiveModal } from "../../../redux/slices/ModalSlice";
 
 const AircraftArchive = () => {
+  const dispatch = useDispatch();
+  const arc = [1, 2, 3, 4];
+  const [checkedState, setCheckedState] = useState(
+    new Array(arc.length).fill(false)
+  );
+  let checker = (arr: any) => arr.some((arr: any) => arr === false);
+  const handleCheckChange = (position: any) => {
+    const updateCheckedState = checkedState.map((item, index) =>
+      index === position ? !item : item
+    );
+    setCheckedState(updateCheckedState);
+    console.log(checkedState);
+  };
   return (
     <div>
       <header className="header !mb-5">
@@ -18,41 +36,32 @@ const AircraftArchive = () => {
         <NotificationProfileHeader />
       </header>
       <main className="border rounded-lg p-3 ">
-        <div className="py-5 rounded divide-gray-600 border shadow-lg divide-x flex items-center w-fit ml-3">
-          <div className="px-5 flex items-center gap-2">
-            <img src={UnArchiveIcon} alt="UnArchiveIcon" />
-            <p className="capitalize">unarchive</p>
+        <DeleteArchiveModal />
+        {checker(checkedState) ? (
+          <div className="py-5 rounded divide-gray-600 border shadow-lg divide-x flex items-center w-fit ml-3">
+            <div className="px-5 flex items-center gap-2 cursor-pointer">
+              <img src={UnArchiveIcon} alt="UnArchiveIcon" />
+              <p className="capitalize">unarchive</p>
+            </div>
+            <div
+              className="px-5  flex items-center gap-2 cursor-pointer"
+              onClick={() => dispatch(toggleDeleteArchiveModal())}
+            >
+              <img src={TrashGrayIcon} alt="TrashGrayIcon" />
+              <p className="capitalize">delete permanently</p>
+            </div>
           </div>
-          <div className="px-5  flex items-center gap-2">
-            <img src={TrashGrayIcon} alt="TrashGrayIcon" />
-            <p className="capitalize">delete permanently</p>
-          </div>
-        </div>
+        ) : null}
         <div className="flex flex-wrap justify-between gap-5 mt-5">
-          <div className="flex gap-4 items-start">
-            <Checkbox />
-            <AircraftCard />
-          </div>
-          <div className="flex gap-4 items-start">
-            <Checkbox />
-            <AircraftCard />
-          </div>{" "}
-          <div className="flex gap-4 items-start">
-            <Checkbox />
-            <AircraftCard />
-          </div>{" "}
-          <div className="flex gap-4 items-start">
-            <Checkbox />
-            <AircraftCard />
-          </div>{" "}
-          <div className="flex gap-4 items-start">
-            <Checkbox />
-            <AircraftCard />
-          </div>{" "}
-          <div className="flex gap-4 items-start">
-            <Checkbox />
-            <AircraftCard />
-          </div>
+          {arc.map((num) => (
+            <div className="flex gap-4 items-start">
+              <Checkbox
+                checked={checkedState[num]}
+                onChange={() => handleCheckChange(num)}
+              />
+              <AircraftCard />
+            </div>
+          ))}
         </div>
       </main>
     </div>

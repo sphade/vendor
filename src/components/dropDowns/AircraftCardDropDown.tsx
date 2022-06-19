@@ -73,6 +73,7 @@ const AircraftCardDropDown = ({
           )}
           onClick={() => {
             dispatch(toggleDeleteModal());
+            handleClose();
           }}
         >
           <span className="flex items-center gap-2">

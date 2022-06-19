@@ -1,5 +1,5 @@
 // import Table from "rc-table";
-
+import Paper from '@mui/material/Paper';
 import {
   Checkbox,
   Table,
@@ -10,6 +10,7 @@ import {
   TableHead,
   TableRow,
 } from "@mui/material";
+import { BodyCell, HeadCell } from "../Instance";
 
 const data = [
   {
@@ -104,27 +105,18 @@ const data = [
   },
 ];
 
-const HeadCell = ({ children }: { children: string }) => {
-  return (
-    <TableCell className="!text-gray-500 !capitalize ">{children}</TableCell>
-  );
-};
-const BodyCell = ({ children }: { children: any }) => {
-  return (
-    <TableCell className="!text-tertiary !capitalize !font-medium ">
-      {children}
-    </TableCell>
-  );
-};
 // export default TableM;
 const TransactionTable = () => {
   return (
     <div>
-      <TableContainer>
+      <TableContainer component={Paper}>
         <Table>
           <TableHead className="!text-3xl">
             <TableRow className="!text-3xl">
-              <TableCell padding="checkbox">
+              <TableCell 
+               
+              padding="checkbox"
+              >
                 <Checkbox />
               </TableCell>
               <HeadCell>Aircraft Name</HeadCell>
@@ -139,8 +131,11 @@ const TransactionTable = () => {
           </TableHead>
           <TableBody>
             {data.map((row) => (
-              <TableRow className="!text-center hover:bg-gray-100 default-transition">
-                <TableCell padding="checkbox">
+              <TableRow key={row.aircraftName} className="!text-center hover:bg-gray-100 default-transition">
+                <TableCell
+                 
+                  padding="checkbox"
+                >
                   <Checkbox />
                 </TableCell>
                 <BodyCell>{row.aircraftName}</BodyCell>

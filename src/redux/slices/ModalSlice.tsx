@@ -2,9 +2,11 @@ import { createSlice } from "@reduxjs/toolkit";
 
 interface IModalSlice {
   deleteModal: boolean;
+  deleteArchiveModal: boolean;
 }
 const initialState: IModalSlice = {
   deleteModal: false,
+  deleteArchiveModal: false,
 };
 
 const ModalSlice = createSlice({
@@ -14,10 +16,14 @@ const ModalSlice = createSlice({
     toggleDeleteModal: (state) => {
       state.deleteModal = !state.deleteModal;
     },
+    toggleDeleteArchiveModal: (state) => {
+      state.deleteArchiveModal = !state.deleteArchiveModal;
+    },
   },
 });
 
-export const { toggleDeleteModal } = ModalSlice.actions;
+export const { toggleDeleteModal, toggleDeleteArchiveModal } =
+  ModalSlice.actions;
 
 export default ModalSlice.reducer;
 // export const modalSelector = (state) => state.overview;

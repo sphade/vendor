@@ -2,11 +2,11 @@ import {
   BackButton,
   Button,
   NotificationProfileHeader,
+  SeatCapacity,
   SelectInput,
   SwitchCustomized,
 } from "../../../components";
 import aircraftPicture from "../../../assets/images/plane-4.png";
-import { MinusIcon, PlusIcon } from "../../../assets/images/icons";
 import { TextField } from "@mui/material";
 
 const AircraftEdit = () => {
@@ -26,7 +26,7 @@ const AircraftEdit = () => {
             <p className="capitalize text-tertiary ">photos</p>
             <img
               src={aircraftPicture}
-              alt='icon'
+              alt="icon"
               className="h-[230px] w-full object-contain "
             />
           </div>
@@ -39,19 +39,26 @@ const AircraftEdit = () => {
               fullWidth
             />
             <div className="flex gap-5 mb-5">
-              <SelectInput />
+              <SelectInput
+                label="what ever you wantwhat ever you want"
+                options={[
+                  {
+                    name: "try",
+                    value: "try",
+                  },
+                  {
+                    name: "try",
+                    value: "try",
+                  },
+                  {
+                    name: "try",
+                    value: "try",
+                  },
+                ]}
+              />
               <SelectInput />
             </div>
-            <div className="bg-gray-200 rounded mb-10 flex justify-between items-center border-[#b9b9b9] border px-5 py-3 ">
-              <span className="pr-5 capitalize text-base  border-r text-[#828282] border-[#828282]">
-                seat capacity
-              </span>
-              <div className="flex items-center w-[150px] justify-between">
-                <img src={MinusIcon} alt='icon' />
-                <span className="text-tertiary font-semibold text-xl">20</span>
-                <img src={PlusIcon} alt='icon' />
-              </div>
-            </div>
+            {/* <SeatCapacity /> */}
           </div>
           <div className="mb-10">
             <p className="capitalize text-tertiary mb-3">travel fee</p>
@@ -141,7 +148,7 @@ const AircraftEdit = () => {
           <div className="flex justify-between mb-5 pb-5 border-b border-[#BDBDBD]">
             <p className="text-xl text-gray-500 capitalize">wine bar</p>
             <div className="flex flex-col justify-center items-center">
-              <SwitchCustomized />
+              {/* <SwitchCustomized /> */}
               <p className="capitalize -ml-5">available</p>
             </div>
           </div>

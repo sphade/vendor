@@ -10,10 +10,21 @@ import {
   TotalAirIcon,
   TotalAmountIcon,
 } from "../../../assets/images/icons";
-import TableM from "../../../table/Table";
 import { Link } from "react-router-dom";
+import { useOverview, useOverviewTable } from "../../../hooks/queries";
+import useFormatNumber from "../../../hooks/useFormatNumber";
+import { Skeleton } from "@mui/material";
+import OverviewTable from "../../../table/overview/OverviewTable";
 
 const Overview = () => {
+  const { overviewData, overviewLoading } = useOverview();
+  const overviewTable = useOverviewTable();
+  const formatedNum = useFormatNumber(1000000000);
+  console.log(
+    "🚀 ~ file: Overview.tsx ~ line 22 ~ Overview ~ formatedNum",
+    formatedNum
+  );
+
   return (
     <div>
       <header className="flex items-center justify-between">
@@ -33,19 +44,38 @@ const Overview = () => {
           <TotalCard
             color="#E5FFF0"
             text="total No of aircraft"
-            num="200"
+            num={
+              overviewLoading ? (
+                <Skeleton variant="circular" width={40} height={40} />
+              ) : (
+                overviewData?.totalAircraft 
+              )
+            }
             logo={TotalAirIcon}
           />
           <TotalCard
             color="#FFF9E5"
             text="Total No of trips"
-            num="1200"
+            num={
+              overviewLoading ? (
+                <Skeleton variant="circular" width={40} height={40} />
+              ) : (
+                overviewData?.trips 
+              )
+            }
             logo={NoOfTripsIcon}
           />
+          {/* format the response */}
           <TotalCard
             color="#F3E6FF"
             text="Total amount"
-            num="N6m"
+            num={
+              overviewLoading ? (
+                <Skeleton variant="circular" width={40} height={40} />
+              ) : (
+                overviewData?.totalAmount 
+              )
+            }
             logo={TotalAmountIcon}
           />
           <ActivitiesCard />
@@ -63,7 +93,7 @@ const Overview = () => {
               <img src={PolygonOrangeIcon} alt="icon" />
             </Link>
           </div>
-          <TableM />
+          <OverviewTable />
         </div>
       </main>
     </div>

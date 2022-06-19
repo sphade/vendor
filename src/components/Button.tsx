@@ -1,3 +1,4 @@
+import { CircularProgress } from "@mui/material";
 import classNames from "classnames";
 import { FC } from "react";
 interface IButton {
@@ -29,6 +30,8 @@ const Button: FC<IButton> = ({
       className={classNames(
         "hover:opacity-80 default-transition center-element  uppercase  text-secondary rounded-md cursor-pointer  h-fit disabled:opacity-50 disabled:cursor-not-allowed",
         {
+          "cursor-progress opacity-75": loading,
+          "cursor-not-allowed opacity-50": disabled,
           "w-full": full,
           "text-base py-3 px-5 font-semibold": size === "big",
           "text-sm py-2 px-4 font-bold": size === "medium",
@@ -45,7 +48,13 @@ const Button: FC<IButton> = ({
       disabled={disabled}
     >
       {iconLeft && <img src={iconLeft} alt="icon" className="pr-3" />}
-      <span>{loading ? "loading..." : children}</span>
+      <span>
+        {loading ? (
+          <CircularProgress  size={22} />
+        ) : (
+          children
+        )}
+      </span>
       {iconRight && <img src={iconRight} alt="icon" className="pl-3" />}
     </button>
   );

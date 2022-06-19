@@ -1,21 +1,41 @@
 import {
   BackButton,
   Button,
+  InteriorInput,
   NotificationProfileHeader,
+  PerformanceInput,
+  SeatCapacity,
   SelectInput,
   SwitchCustomized,
 } from "../../../components";
 import {
   AddAircraftIcon,
   AddAircraftSmallIcon,
-  MinusIcon,
-  PlusIcon,
 } from "../../../assets/images/icons";
 import { TextField } from "@mui/material";
 import planeAdd from "../../../assets/images/plane6.png";
 import { useState } from "react";
+import { useForm } from "react-hook-form";
+import ImageUploading from "react-images-uploading";
 const AircraftAdd = () => {
+  const {
+    register,
+    handleSubmit,
+    control,
+    formState: { errors },
+  } = useForm();
   const [showAddPic] = useState<boolean>(false);
+  const [capacity, setCapacity] = useState<number>(0);
+  const [bar, setBar] = useState<boolean>(true);
+  const onSubmit = (data: {}) =>
+    alert(JSON.stringify({ ...data, capacity, bar }));
+  const [images, setImages] = useState([]);
+  const maxNumber = 4;
+
+  const onImageChange = (imageList: any, addUpdateIndex: any) => {
+    console.log(imageList, addUpdateIndex);
+    setImages(imageList);
+  };
   return (
     <div>
       <header className="header !mb-5">
@@ -29,7 +49,10 @@ const AircraftAdd = () => {
       <main>
         <div>
           {!showAddPic ? (
-            <div className="rounded-lg  p-6 w-[522px] mx-auto font-semibold border mb-3 border-[#BDBDBD]">
+            <form
+              onSubmit={handleSubmit(onSubmit)}
+              className="rounded-lg  p-6 w-[522px] mx-auto font-semibold border mb-3 border-[#BDBDBD]"
+            >
               <div>
                 <p className="capitalize text-tertiary ">photos</p>
                 <img
@@ -41,27 +64,20 @@ const AircraftAdd = () => {
 
               <div className=" text-sm mt-10">
                 <TextField
-                  value="sky night 3000"
                   label="Aircraft Name"
                   className="!mb-5"
                   fullWidth
+                  {...register("brand", {
+                    required: "this field is required",
+                  })}
+                  error={errors.brand}
+                  helperText={errors.brand && errors.brand.message}
                 />
                 <div className="flex gap-5 mb-5">
                   <SelectInput />
                   <SelectInput />
                 </div>
-                <div className="bg-gray-100 rounded mb-10 flex justify-between items-center border-[#b9b9b9] border px-5 py-3 ">
-                  <span className="pr-5 capitalize text-base  border-r text-[#828282] border-[#828282]">
-                    seat capacity
-                  </span>
-                  <div className="flex items-center w-[150px] justify-between">
-                    <img src={MinusIcon} alt="MinusIcon" />
-                    <span className="text-tertiary font-semibold text-xl">
-                      20
-                    </span>
-                    <img src={PlusIcon} alt="PlusIcon" />
-                  </div>
-                </div>
+                <SeatCapacity capacity={capacity} setCapacity={setCapacity} />
               </div>
               <div className="mb-10">
                 <p className="capitalize text-tertiary mb-3">travel fee</p>
@@ -70,7 +86,10 @@ const AircraftAdd = () => {
                     className="!w-[100px] !bg-gray-100 !outline-none !border-0"
                     size="small"
                   />
-                  <input className="flex-1 border h-10 px-3 rounded-lg border-[#828282]" />
+                  <input
+                    className="flex-1 border h-10 px-3 rounded-lg border-[#828282]"
+                    {...register("travelFee")}
+                  />
                 </div>
               </div>
               <div className="mb-5 pb-5  border-[#BDBDBD]">
@@ -82,105 +101,186 @@ const AircraftAdd = () => {
                   rows={4}
                   multiline
                   placeholder="Not more than 250 characters"
+                  {...register("description", {
+                    required: "this field is required",
+                    maxLength: {
+                      value: 250,
+                      message: "no more than 250 characters",
+                    },
+                  })}
+                  error={errors.description}
+                  helperText={errors.description && errors.description.message}
                 />
               </div>
-              <div className="space-y-5 pb-10 mb-10 border-b border-[#BDBDBD]">
+              <div className="space-y-5  mb-10  border-[#BDBDBD]">
                 <p className="capitalize text-tertiary font-semibold ">
                   specification
                 </p>
                 <div>
-                  <p className="capitalize text-tertiary font-semibold text-sm mb-3">
+                  <p className="capitalize text-tertiary font-semibold text-sm mb-7">
                     performance
                   </p>
-                  <div className="flex flex-wrap gap-5 items-center">
-                    <TextField
-                      className="!w-[225]"
-                      InputProps={{
-                        startAdornment: (
-                          <SelectInput
-                            size="small"
-                            className="!w-24 !border-0 !outline-none"
-                          />
-                        ),
+                  <div className="flex items-center flex-wrap gap-y-8 justify-between">
+                    <PerformanceInput
+                      label="travel hours"
+                      name="travelHours"
+                      placeholder="Hours"
+                      register={register}
+                      rule={{
+                        required: "this field is required",
                       }}
+                      errors={errors.travelHours}
                     />
-
-                    <TextField
-                      className="!w-[225]"
-                      InputProps={{
-                        startAdornment: (
-                          <SelectInput
-                            size="small"
-                            className="!w-24 !border-0 !outline-none"
-                          />
-                        ),
+                    <PerformanceInput
+                      label="max speed"
+                      name="maxSpeed"
+                      placeholder="km/h"
+                      register={register}
+                      rule={{
+                        required: "this field is required",
                       }}
+                      errors={errors.maxSpeed}
                     />
+                    <PerformanceInput
+                      label="max distance"
+                      name="maxRange"
+                      placeholder="km"
+                      register={register}
+                      rule={{
+                        required: "this field is required",
+                      }}
+                      errors={errors.maxRange}
+                    />
+                    {/* <PerformanceInput label="max distance" placeholder="km" /> */}
                   </div>
                 </div>
                 <div>
-                  <p className="capitalize text-tertiary font-semibold text-sm mb-3">
+                  <p className="capitalize text-tertiary font-semibold text-sm mt-3 mb-7">
                     interior
                   </p>
-                  <div className="flex flex-wrap gap-5 items-center">
-                    <div className="flex items-center gap-5 w-full">
-                      <SelectInput
-                        className="!w-[100px] !bg-gray-100 !outline-none !border-0"
-                        size="small"
-                      />
-                      <input className="flex-1 border h-10 px-3 w-full rounded-lg border-[#828282]" />
-                    </div>
-                    <div className="flex items-center gap-5 w-full">
-                      <SelectInput
-                        className="!w-[100px] !bg-gray-100 !outline-none !border-0"
-                        size="small"
-                      />
-                      <input className="flex-1 border h-10 px-3 w-full rounded-lg border-[#828282]" />
-                    </div>
-                    <div className="flex items-center gap-5 w-full">
-                      <SelectInput
-                        className="!w-[100px] !bg-gray-100 !outline-none !border-0"
-                        size="small"
-                      />
-                      <input className="flex-1 border h-10 px-3 w-full rounded-lg border-[#828282]" />
-                    </div>
+                  <div className="flex flex-col gap-5 items-center">
+                    <InteriorInput
+                      name="cabinWidth"
+                      placeholder="Cabin Width"
+                      register={register}
+                      rule={{
+                        required: "this field is required",
+                      }}
+                      errors={errors.cabinWidth}
+                    />
+                    <InteriorInput
+                      name="cabinLength"
+                      placeholder="Cabin Length"
+                      register={register}
+                      rule={{
+                        required: "this field is required",
+                      }}
+                      errors={errors.cabinLength}
+                    />
+                    <InteriorInput
+                      name="cabinHeight"
+                      placeholder="Cabin Height"
+                      register={register}
+                      rule={{
+                        required: "this field is required",
+                      }}
+                      errors={errors.cabinHeight}
+                    />
                   </div>
                 </div>
               </div>
-              <div className="flex justify-between mb-5 pb-5 border-b border-[#BDBDBD]">
+              <div className="flex justify-between mb-5  border-[#BDBDBD]">
                 <p className="text-xl text-gray-500 capitalize">win bar</p>
                 <div className="flex flex-col justify-center items-center">
-                  <SwitchCustomized />
-                  <p className="capitalize -ml-5">available</p>
+                  <SwitchCustomized checked={bar} setChecked={setBar} />
+                  {bar ? (
+                    <p className="capitalize -ml-5">available</p>
+                  ) : (
+                    <p className="capitalize -ml-5 text-gray-500">
+                      Unavailable
+                    </p>
+                  )}
                 </div>
               </div>
               <Button full>add</Button>
-            </div>
+            </form>
           ) : (
-            <div className="w-[522px] mb-5 border-[#BDBDBD] px-12 border rounded-lg mx-auto ">
-              <div className="flex items-center justify-between py-5">
-                <p className="text-tertiary font-bold">
-                  Drag and drop to change photo order.
-                </p>
-                <p className="font-semibold text-gray-500">
-                  1/<span className="font-bold text-tertiary ">4</span> photos
-                </p>
-              </div>
-              <img
-                src={planeAdd}
-                alt="planeAdd"
-                className="w-full mb-6 rounded-lg h-[205px] object-cover "
-              />
-              <img
-                src={AddAircraftSmallIcon}
-                alt="AddAircraftSmallIcon"
-                className="w-[133px] rounded-lg h-[90px] object-cover mb-[164px] border-t border-b border-dashed  border-tertiary "
-                />
-                <div className='mb-[32px]'>
-
-              <Button full>save</Button>
+            <ImageUploading
+              multiple
+              value={images}
+              onChange={onImageChange}
+              maxNumber={maxNumber}
+              dataURLKey="data_url"
+            >
+              {({
+                imageList,
+                onImageUpload,
+                onImageRemoveAll,
+                onImageUpdate,
+                onImageRemove,
+                isDragging,
+                dragProps,
+              }) => (
+                <div className="w-[522px] mb-5 border-[#BDBDBD] px-12 border rounded-lg mx-auto ">
+                  <div className="flex items-center justify-between py-5">
+                    <p className="text-tertiary font-bold">
+                      Drag and drop to change photo order.
+                    </p>
+                    <p className="font-semibold text-gray-500">
+                      {imageList.length}/
+                      <span className="font-bold text-tertiary ">
+                        {maxNumber}
+                      </span>{" "}
+                      photos
+                    </p>
+                  </div>
+                  <img
+                    src={planeAdd}
+                    alt="planeAdd"
+                    className="w-full mb-6 rounded-lg h-[205px] object-cover "
+                  />
+                  <div className="flex gap-2 mb-[164px] flex-wrap">
+                    {imageList.map((image, index) => (
+                      <div key={index} className="image-item">
+                        <img
+                          src={image["data_url"]}
+                          alt=""
+                          className="w-[133px] rounded-lg h-[90px] object-cover"
+                        />
+                        <div className="flex flex-col gap-1 mt-1">
+                          <button
+                            onClick={() => onImageUpdate(index)}
+                            className="rounded text-xs bg-blue-500 p-1 text-white"
+                          >
+                            Update
+                          </button>
+                          <button
+                            onClick={() => onImageRemove(index)}
+                            className="rounded text-xs bg-red-500 p-1 text-white"
+                          >
+                            Remove
+                          </button>
+                        </div>
+                      </div>
+                    ))}
+                    {imageList.length < 4 && (
+                      <img
+                        src={AddAircraftSmallIcon}
+                        alt="AddAircraftSmallIcon"
+                        onClick={onImageUpload}
+                        {...dragProps}
+                        className={`w-[133px] cursor-pointer rounded-lg h-[90px] object-cover  border-t border-b border-dashed  border-tertiary ${
+                          isDragging && " cursor-drag"
+                        } `}
+                      />
+                    )}
+                  </div>
+                  <div className="mb-[32px]">
+                    <Button full>save</Button>
+                  </div>
                 </div>
-            </div>
+              )}
+            </ImageUploading>
           )}
         </div>
       </main>

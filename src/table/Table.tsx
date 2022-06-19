@@ -20,7 +20,7 @@ const data = [
     location: "MM 1",
     serviceType: "Air chater",
     amount: "$1,400,00",
-    dateTime: "14-mar-2022",
+    dateTime: { date: "14-mar-2022", time: "1:30pm" },
 
     status: "Active",
     availability: "yes",
@@ -32,7 +32,7 @@ const data = [
     location: "MM 1",
     serviceType: "Air chater",
     amount: "$1,400,00",
-    dateTime: "14-mar-2022",
+    dateTime: { date: "14-mar-2022", time: "1:30pm" },
 
     status: "Active",
     availability: "yes",
@@ -44,7 +44,7 @@ const data = [
     location: "MM 1",
     serviceType: "Air chater",
     amount: "$1,400,00",
-    dateTime: "14-mar-2022",
+    dateTime: { date: "14-mar-2022", time: "1:30pm" },
 
     status: "Active",
     availability: "yes",
@@ -56,7 +56,7 @@ const data = [
     location: "MM 1",
     serviceType: "Air chater",
     amount: "$1,400,00",
-    dateTime: "14-mar-2022",
+    dateTime: { date: "14-mar-2022", time: "1:30pm" },
 
     status: "Active",
     availability: "yes",
@@ -68,7 +68,7 @@ const data = [
     location: "MM 1",
     serviceType: "Air chater",
     amount: "$1,400,00",
-    dateTime: "14-mar-2022",
+    dateTime: { date: "14-mar-2022", time: "1:30pm" },
 
     status: "Active",
     availability: "yes",
@@ -80,7 +80,7 @@ const data = [
     location: "MM 1",
     serviceType: "Air chater",
     amount: "$1,400,00",
-    dateTime: "14-mar-2022",
+    dateTime: { date: "14-mar-2022", time: "1:30pm" },
 
     status: "Active",
     availability: "yes",
@@ -92,7 +92,7 @@ const data = [
     location: "MM 1",
     serviceType: "Air chater",
     amount: "$1,400,00",
-    dateTime: "14-mar-2022",
+    dateTime: { date: "14-mar-2022", time: "1:30pm" },
 
     status: "Active",
     availability: "yes",
@@ -104,7 +104,7 @@ const data = [
     location: "MM 1",
     serviceType: "Air chater",
     amount: "$1,400,00",
-    dateTime: "14-mar-2022",
+    dateTime: { date: "14-mar-2022", time: "1:30pm" },
 
     status: "Active",
     availability: "yes",
@@ -116,7 +116,7 @@ const data = [
     location: "MM 1",
     serviceType: "Air chater",
     amount: "$1,400,00",
-    dateTime: "14-mar-2022",
+    dateTime: { date: "14-mar-2022", time: "1:30pm" },
 
     status: "Active",
     availability: "yes",
@@ -128,7 +128,7 @@ const data = [
     location: "MM 1",
     serviceType: "Air chater",
     amount: "$1,400,00",
-    dateTime: "14-mar-2022",
+    dateTime: { date: "14-mar-2022", time: "1:30pm" },
 
     status: "Active",
     availability: "yes",
@@ -140,7 +140,7 @@ const data = [
     location: "MM 1",
     serviceType: "Air chater",
     amount: "$1,400,00",
-    dateTime: "14-mar-2022",
+    dateTime: { date: "14-mar-2022", time: "1:30pm" },
 
     status: "Active",
     availability: "yes",
@@ -152,7 +152,7 @@ const data = [
     location: "MM 1",
     serviceType: "Air chater",
     amount: "$1,400,00",
-    dateTime: "14-mar-2022",
+    dateTime: { date: "14-mar-2022", time: "1:30pm" },
 
     status: "Active",
     availability: "yes",
@@ -164,7 +164,7 @@ const data = [
     location: "MM 1",
     serviceType: "Air chater",
     amount: "$1,400,00",
-    dateTime: "14-mar-2022",
+    dateTime: { date: "15-mar-2022", time: "1:30pm" },
     status: "Active",
     availability: "yes",
   },
@@ -177,7 +177,7 @@ const HeadCell = ({ children }: { children: string }) => {
 };
 const BodyCell = ({ children }: { children: any }) => {
   return (
-    <TableCell className="!capitalize !font-medium">{children}</TableCell>
+    <TableCell className="!capitalize !text-[#1E1E1E]">{children}</TableCell>
   );
 };
 // export default TableM;
@@ -198,14 +198,14 @@ const TableM = () => {
               <HeadCell>Location</HeadCell>
               <HeadCell>Service Type</HeadCell>
               <HeadCell>Amount (last Trip)</HeadCell>
-              {/* <HeadCell>Date & Time</HeadCell> */}
+              <HeadCell>Date & Time</HeadCell>
               <HeadCell>Status</HeadCell>
               <HeadCell>Availability</HeadCell>
             </TableRow>
           </TableHead>
           <TableBody>
             {data.map((row) => (
-              <TableRow  className="!text-center  hover:bg-gray-100 default-transition">
+              <TableRow key={row.aircraftName} className="!text-center  hover:bg-gray-50 default-transition">
                 <TableCell padding="checkbox">
                   <Checkbox />
                 </TableCell>
@@ -213,10 +213,15 @@ const TableM = () => {
                 <BodyCell>{row.aircraftType}</BodyCell>
                 <BodyCell>{row.noOfFlight}</BodyCell>
                 <BodyCell>{row.noOfFlight}</BodyCell>
-                <BodyCell>{row.availability}</BodyCell>
+                <BodyCell>
+                  <p>{row.dateTime.date}</p>
+                  <br />
+                  <p className="text-gray-400 text-sm ">{row.dateTime.time}</p>
+                </BodyCell>
+                <BodyCell>{row.location}</BodyCell>
                 <BodyCell>{row.location}</BodyCell>
                 <BodyCell>
-                  <p className="text-primary">{row.status}</p>
+                  <p className="text-green-500 font-semibold">{row.status}</p>
                 </BodyCell>
                 {/* <BodyCell>{row.dateTime}</BodyCell> */}
                 <BodyCell>

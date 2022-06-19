@@ -12,10 +12,11 @@ import {
 } from "../../../components";
 import { ArchiveIcon } from "../../../assets/images/icons";
 import { Link } from "react-router-dom";
+import { useAircraft } from "../../../hooks/queries";
 
 const Aircraft = () => {
   const [value, setValue] = useState<number>(0);
-
+  const aircraft = useAircraft();
   return (
     <div>
       <DeleteModal />
@@ -52,7 +53,7 @@ const Aircraft = () => {
 
       <TabPanel value={value} index={0}>
         <div className="flex  justify-between flex-wrap p-2 border shadow rounded mt-5 gap-1">
-          <AircraftCard />
+          <AircraftCard {...aircraft.data} />
           <AircraftCard />
           <AircraftCard />
           <AircraftCard />

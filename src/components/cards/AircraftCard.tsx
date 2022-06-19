@@ -5,7 +5,7 @@ import { ArrowRightOrangeIcon, DotIcon } from "../../assets/images/icons";
 import jetPic from "../../assets/images/icons/plane.png";
 import AircraftCardDropDown from "../dropDowns/AircraftCardDropDown";
 
-const AircraftCard = () => {
+const AircraftCard = (props: any) => {
   const [dropDownState, setDropDownState] =
     React.useState<HTMLButtonElement | null>(null);
 
@@ -19,8 +19,9 @@ const AircraftCard = () => {
       </div>
       <div className="divide-y ">
         <div className="flex items-center py-2 justify-between">
-          <h3 className="text-tertiary font-semibold capitalize text-base">
-            Night Sky 6000
+          <h3 className="text-[#1E1E1E] font-semibold capitalize text-base">
+            {props.brand}
+            {props.model}
           </h3>
           <IconButton onClick={handleClick}>
             <img src={DotIcon} alt="DotIcon" className="py-2 " />
@@ -31,17 +32,17 @@ const AircraftCard = () => {
           />
         </div>
         <div className="py-2 space-y-2">
-          <div className="flex justify-between text-xs text-gray-400">
+          <div className="flex justify-between text-xs text-[#828282]">
             <p>Service type :</p> <p> Aircraft type :</p>
           </div>
-          <div className="flex justify-between text-tertiary capitalize font-semibold text-sm">
-            <p>charter</p> <p> Private Jet</p>
+          <div className="flex justify-between text-[#1E1E1E] capitalize font-semibold text-sm">
+            <p>{ props.serviceType}</p> <p>{props.airCraftType}</p>
           </div>
         </div>
 
         <div className="py-4 center-element flex-col space-y-1">
-          <p className="text-gray-400 text-xs capitalize">seat capacity:</p>
-          <p className="text-tertiary font-semibold">20</p>
+          <p className="text-[#828282] text-xs capitalize">seat capacity:</p>
+          <p className="text-[#1E1E1E] font-semibold">{props.capacity}</p>
         </div>
         <div className="center-element py-4">
           <Link to="details">

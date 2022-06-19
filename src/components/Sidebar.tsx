@@ -25,7 +25,7 @@ interface IState {
 
 const Sidebar = (props: Props) => {
   return (
-    <section className="w-[230px] bg-secondary h-screen  sticky top-0 left-0">
+    <section className="w-[230px] z-50 bg-secondary h-screen  sticky top-0 left-0">
       <div className="font-bold text-2xl pl-5 pt-10 h-[160px] ">
         <img src={LogoIcon} alt={LogoIcon}></img>
       </div>
@@ -36,7 +36,7 @@ const Sidebar = (props: Props) => {
             <li key={id}>
               <NavLink
                 to={link}
-                className="hover:bg-[#f3f3f3]  py-2 px-5 rounded-r-full   flex items-center gap-5 text-gray-700  default-transition"
+                className="hover:bg-[#f3f3f3]  py-2 px-5 rounded-r-full   flex items-center gap-5 text-[#4F4F4F]  default-transition"
               >
                 {({ isActive }) => (
                   <>

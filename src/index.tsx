@@ -7,18 +7,28 @@ import reportWebVitals from "./reportWebVitals";
 import { Provider } from "react-redux";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { store } from "./redux/store";
-
+import { QueryClient, QueryClientProvider } from "react-query";
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnWindowFocus: false,
+      staleTime: 1000 * 60 * 5,
+    },
+  },
+});
 root.render(
   <React.StrictMode>
     <Router>
-      <Provider store={store}>
-        <Routes>
-          <Route path="/*" element={<App />} />
-        </Routes>
-      </Provider>
+      <QueryClientProvider client={queryClient}>
+        <Provider store={store}>
+          <Routes>
+            <Route path="/*" element={<App />} />
+          </Routes>
+        </Provider>
+      </QueryClientProvider>
     </Router>
   </React.StrictMode>
 );

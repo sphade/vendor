@@ -6,7 +6,7 @@ const TotalCard = ({
 }: {
   text: string;
   logo: string;
-  num: string;
+  num: any;
   color: string;
 }) => {
   return (
@@ -20,7 +20,7 @@ const TotalCard = ({
         <p className="text-tertiary font-semibold text-base ">{text}</p>
         <img src={logo} alt={logo} />
       </div>
-      <p className="font-bold text-2xl">{num}</p>
+      <p className="font-bold text-2xl">{num || "0"}</p>
     </div>
   );
 };

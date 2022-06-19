@@ -4,6 +4,7 @@ import { Routes, Route, useNavigate, useLocation } from "react-router-dom";
 import DashboardLayout from "./layout/DashboardLayout";
 import AuthLayout from "./layout/AuthLayout";
 import { useEffect } from "react";
+
 import {
   Aircraft,
   Booking,
@@ -14,6 +15,7 @@ import {
 import { ForgotPassword, Login, Register, Verify } from "./pages/Auth";
 import Profile from "./pages/Profile";
 import GetHelp from "./pages/GetHelp";
+import RequireAuth from "./hoc/RequireAuth";
 // import { ScreenNotSupported } from "./components";
 
 function App(): JSX.Element {
@@ -23,7 +25,7 @@ function App(): JSX.Element {
 
   useEffect(() => {
     if (location.pathname === "/") {
-      navigate("/login", { replace: true });
+      navigate("/overview", { replace: true });
     }
   }, [location, navigate]);
 
@@ -39,15 +41,18 @@ function App(): JSX.Element {
             <Route path="verify/*" element={<Verify />} />
           </Route>
           {/* protected routes */}
-          <Route element={<DashboardLayout />}>
-            <Route path="overview/*" element={<Overview />} />
-            <Route path="aircraft/*" element={<Aircraft />} />
-            <Route path="booking/*" element={<Booking />} />
-            <Route path="calender" element={<Calender />} />
-            <Route path="transactions" element={<Transactions />} />
+          <Route element={<RequireAuth />}>
+            <Route element={<DashboardLayout />}>
+              <Route path="overview/*" element={<Overview />} />
+              <Route path="aircraft/*" element={<Aircraft />} />
+              <Route path="booking/*" element={<Booking />} />
+              <Route path="calender" element={<Calender />} />
+              <Route path="transactions" element={<Transactions />} />
+            </Route>
+            <Route path="profile" element={<Profile />} />
+            <Route path="get-help" element={<GetHelp />} />
           </Route>
-          <Route path="profile" element={<Profile />} />
-          <Route path="get-help" element={<GetHelp />} />
+
           {/* <Route path="*" element={<h1>page not found</h1>} /> */}
         </Routes>
       </div>

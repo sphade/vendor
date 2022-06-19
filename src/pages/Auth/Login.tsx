@@ -2,24 +2,21 @@ import TextField from "@mui/material/TextField";
 import { Link } from "react-router-dom";
 import { Button, PasswordInput } from "../../components";
 import { useForm } from "react-hook-form";
+import { useLogin } from "../../hooks/mutations";
 
 const Login = () => {
+  const login = useLogin();
   const {
     register,
     handleSubmit,
     control,
     formState: { errors },
   } = useForm();
-  const onSubmit = (data: {}) => alert(JSON.stringify(data));
-
-  // const navigate = useNavigate();
+  const onSubmit = (data: {}) => login.mutate(data);
   return (
     <form
       className="rounded-lg bg-white center w-[460px]  shadow-xl  p-10"
-      onSubmit={
-        handleSubmit(onSubmit)
-        // navigate("/overview", { replace: true });
-      }
+      onSubmit={handleSubmit(onSubmit)}
     >
       <h1 className="text-tertiary text-center uppercase text-base font-bold mb-10">
         sign in
@@ -54,14 +51,15 @@ const Login = () => {
           label="password"
         />
       </div>
-      <Link to="/forgot-password/step-1">
-        <p className="float-right text-xs mt-2 clear-both  text-gray-900 capitalize">
-          forgot password?
-        </p>
+      <Link
+        to="/forgot-password/step-1"
+        className="float-right text-xs mt-2 clear-both  text-gray-900 capitalize hover:text-primary default-transistion"
+      >
+        forgot password?
       </Link>
 
       <div className="mt-[50px] ">
-        <Button full={true} variant="primary">
+        <Button full={true} loading={login.isLoading} variant="primary">
           sign in
         </Button>
       </div>

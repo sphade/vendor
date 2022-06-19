@@ -1,10 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
+import AuthSlice from "./slices/AuthSlice";
 import DropDownSlice from "./slices/DropDownSlice";
 import ModalSlice from "./slices/ModalSlice";
 export const store = configureStore({
   reducer: {
     modal: ModalSlice,
     dropDown: DropDownSlice,
+    auth: AuthSlice,
   },
 });
 

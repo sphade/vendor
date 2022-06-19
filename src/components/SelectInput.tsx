@@ -7,34 +7,40 @@ import { TextField } from "@mui/material";
 export default function ControlledOpenSelect({
   className,
   size,
+  options,
+  label
 }: {
   className?: string;
   size?: "small" | "medium";
+  options?: {
+    value: string | number;
+    name: string | number;
+    }[];
+  label?:string
 }) {
-  const [age, setAge] = React.useState<string | number>("");
+  const [value, setValue] = React.useState<string | number>("");
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setAge(event.target.value);
+    setValue(event.target.value);
   };
 
   return (
     <TextField
       select
       id="demo-controlled-open-select"
-      value={age}
-      label="Age"
+      value={value}
+      label={label}
       onChange={handleChange}
       className={className}
       fullWidth
       size={size}
-     
     >
       <MenuItem value="">
         <em>None</em>
       </MenuItem>
-      <MenuItem value={10}>Ten</MenuItem>
-      <MenuItem value={20}>Twenty</MenuItem>
-      <MenuItem value={30}>Thirty</MenuItem>
+      {options?.map(({ value, name }) => (
+        <MenuItem value={value}>{name}</MenuItem>
+      ))}
     </TextField>
   );
 }

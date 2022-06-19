@@ -2,6 +2,8 @@ import { Popover } from "@mui/material";
 import { Link } from "react-router-dom";
 import classNames from "classnames";
 import { ArrowRightSmallIcon } from "../../assets/images/icons";
+import localforage from "localforage";
+import { useLogout } from "../../hooks";
 const ProfileDropDown = ({
   anchorEl,
   setAnchorEl,
@@ -9,6 +11,7 @@ const ProfileDropDown = ({
   anchorEl: any;
   setAnchorEl: any;
 }) => {
+  const logout = useLogout()
   const handleClose = () => {
     setAnchorEl(null);
   };
@@ -47,6 +50,12 @@ const ProfileDropDown = ({
           <Link
             to={link}
             key={id}
+            onClick={() => {
+              if (name === "logout") {
+                logout()
+              }
+              
+            }}
             className={classNames(
               "py-3 capitalize flex items-center justify-between text-sm font-semibold text-gray-700 cursor-pointer default-transition hover:bg-gray-100 px-5",
               {
