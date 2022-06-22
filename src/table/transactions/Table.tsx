@@ -1,7 +1,8 @@
 // import Table from "rc-table";
-import Paper from '@mui/material/Paper';
+import Paper from "@mui/material/Paper";
 import {
   Checkbox,
+  Skeleton,
   Table,
   TableBody,
   TableCell,
@@ -106,17 +107,14 @@ const data = [
 ];
 
 // export default TableM;
-const TransactionTable = () => {
+const TransactionTable = ({ loading }: { loading?: boolean }) => {
   return (
     <div>
       <TableContainer component={Paper}>
         <Table>
           <TableHead className="!text-3xl">
             <TableRow className="!text-3xl">
-              <TableCell 
-               
-              padding="checkbox"
-              >
+              <TableCell padding="checkbox">
                 <Checkbox />
               </TableCell>
               <HeadCell>Aircraft Name</HeadCell>
@@ -130,25 +128,29 @@ const TransactionTable = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {data.map((row) => (
-              <TableRow key={row.aircraftName} className="!text-center hover:bg-gray-100 default-transition">
-                <TableCell
-                 
-                  padding="checkbox"
-                >
-                  <Checkbox />
-                </TableCell>
-                <BodyCell>{row.aircraftName}</BodyCell>
-                <BodyCell>{row.aircraftType}</BodyCell>
-                <BodyCell>{row.serviceType}</BodyCell>
-                <BodyCell>{row.destination}</BodyCell>
-                <BodyCell>{row.dateTime}</BodyCell>
-                <BodyCell>{row.amount}</BodyCell>
-                <BodyCell>
-                  <p className="text-green-500">{row.status}</p>
-                </BodyCell>
-              </TableRow>
-            ))}
+            {loading
+              ? [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(() => (
+                  <Skeleton width={"100%"} height={40} />
+                ))
+              : data.map((row) => (
+                  <TableRow
+                    key={row.aircraftName}
+                    className="!text-center hover:bg-gray-100 default-transition"
+                  >
+                    <TableCell padding="checkbox">
+                      <Checkbox />
+                    </TableCell>
+                    <BodyCell>{row.aircraftName}</BodyCell>
+                    <BodyCell>{row.aircraftType}</BodyCell>
+                    <BodyCell>{row.serviceType}</BodyCell>
+                    <BodyCell>{row.destination}</BodyCell>
+                    <BodyCell>{row.dateTime}</BodyCell>
+                    <BodyCell>{row.amount}</BodyCell>
+                    <BodyCell>
+                      <p className="text-green-500">{row.status}</p>
+                    </BodyCell>
+                  </TableRow>
+                ))}
           </TableBody>
           <TableFooter></TableFooter>
         </Table>

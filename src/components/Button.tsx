@@ -28,10 +28,10 @@ const Button: FC<IButton> = ({
   return (
     <button
       className={classNames(
-        "hover:opacity-80 default-transition center-element  uppercase  text-secondary rounded-md cursor-pointer  h-fit disabled:opacity-50 disabled:cursor-not-allowed",
+        "hover:opacity-80 default-transition shadow center-element  uppercase  text-secondary rounded-md cursor-pointer  h-fit disabled:opacity-50 disabled:cursor-not-allowed",
         {
           "cursor-progress opacity-75": loading,
-          "cursor-not-allowed opacity-50": disabled,
+          "cursor-not-allowed !bg-[#E0E0E0]": disabled,
           "w-full": full,
           "text-base py-3 px-5 font-semibold": size === "big",
           "text-sm py-2 px-4 font-bold": size === "medium",
@@ -45,12 +45,17 @@ const Button: FC<IButton> = ({
         }
       )}
       onClick={onClick}
-      disabled={disabled}
+      // disabled={disabled}
     >
       {iconLeft && <img src={iconLeft} alt="icon" className="pr-3" />}
       <span>
         {loading ? (
-          <CircularProgress  size={22} />
+          <CircularProgress
+            size={22}
+            sx={{
+              color: "white",
+            }}
+          />
         ) : (
           children
         )}

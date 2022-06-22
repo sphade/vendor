@@ -20,3 +20,69 @@ export const createAircraft = async (data: Record<string, unknown>) => {
   const response = await axios.post("vendor/aircraft", data);
   return response.data.data;
 };
+export const forgotPassword = async (data: Record<string, unknown>) => {
+  const response = await axios.post("user/forget-password", data);
+  return response.data.data;
+};
+export const getVendorBooking = async () => {
+  const response = await axios.get("vendor/orders");
+  return response.data.data;
+};
+export const getUser = async () => {
+  const response = await axios.get("user/profile");
+  return response.data.data;
+};
+export const getTransaction = async () => {
+  const response = await axios.get("vendor/transactions");
+  return response.data.data;
+};
+export const archiveAircraft = async (id: Record<string, unknown>) => {
+  const response = await axios.patch(`aircraft/${id}/archive`);
+  return response.data.data;
+};
+export const editAircraft = async (
+  id: Record<string, unknown>,
+  data: Record<string, unknown>
+) => {
+  const response = await axios.patch(`products/aircraft/${id}`, data);
+  return response.data.data;
+};
+export const updateProfilePicture = async (data: Record<string, unknown>) => {
+  const response = await axios.post(`user/photo`, data);
+  return response.data.data;
+};
+export const RequestUpdatePhoneNumberOtp = async (
+  data: Record<string, unknown>
+) => {
+  const response = await axios.post(`user/change-phone-otp`, data);
+  return response.data.data;
+};
+export const RequestUpdateEmailOtp = async (
+  data: Record<string, unknown>
+) => {
+  const response = await axios.post(`user/change-email-otp`, data);
+  return response.data.data;
+};
+export const changePhoneNumber = async (data: Record<string, unknown>) => {
+  const response = await axios.patch(`user/change-phone`, data);
+  return response.data.data;
+};
+export const changeEmail = async (data: Record<string, unknown>) => {
+  const response = await axios.patch(`user/change-email`, data);
+  return response.data.data;
+};
+export const checkAircraftAvailability = async (
+  id: Record<string, unknown>
+) => {
+  const response = await axios.patch(
+    `vendor/aircraft/${id}/check-availability`
+  );
+  return response.data.data;
+};
+export const listAircraftForPooling = async (
+  id: Record<string, unknown>,
+  data: Record<string, unknown>
+) => {
+  const response = await axios.post(`/list-pooling/aircraft/${id}`, data);
+  return response.data.data;
+};

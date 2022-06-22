@@ -1,176 +1,87 @@
-// import Table from "rc-table";
-import Paper from "@mui/material/Paper";
-
+import * as React from "react";
+import Box from "@mui/material/Box";
 import {
-  Checkbox,
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableFooter,
-  TableHead,
-  TableRow,
-} from "@mui/material";
-import { format } from "date-fns";
-import {
-  CalenderDropDownActiveIcon,
-  CalenderDropDownIcon,
-} from "../../assets/images/icons";
-import { BodyCell, HeadCell } from "../Instance";
-
-const data = [
+  DataGrid,
+  GridColDef,
+  GridValueGetterParams,
+  GridSelectionModel,
+} from "@mui/x-data-grid";
+import LinearProgress from "@mui/material/LinearProgress";
+import { Button } from "../../components";
+const columns: GridColDef[] = [
+  { field: "id", headerName: "ID", width: 90 },
   {
-    id: "a61a6c5a-e024-4f14-88a2-d0e19deedaa5",
-    tag: "elepaq-5000-2000-asaba",
-    airCraftType: "private jet",
-    serviceType: "jet pooling",
-    brand: "Elepaq",
-    model: "5000",
-    year: 2000,
-    price: 50000,
-    description: "this hkkfsf is helicopter that take whatevere",
-    capacity: 50,
-    bar: true,
-    cabinLength: "51.00",
-    cabinHeight: "52.00",
-    cabinWidth: "50.00",
-    baggageCapacity: 500,
-    flightHours: "52",
-    maxRange: 520,
-    maxSpeed: "550.00",
-    maxAltitude: 500,
-    isAvailable: true,
-    isArchived: false,
-    status: "Active",
-    maintenanceFrom: null,
-    maintenanceTo: null,
-    createdAt: "2022-04-13T14:37:12.689Z",
-    updatedAt: "2022-04-20T20:06:31.018Z",
-    location: "Murtala Muhammed International Airport",
-    totalFlights: 2,
-    lastTripAmount: 50000,
-    lastTripDate: "2022-02-01T08:45:00.000Z",
+    field: "firstName",
+    headerName: "First name",
+    width: 150,
+    editable: true,
   },
   {
-    id: "a61a6c5a-e024-4f14-88a2-d0e19deedaa5",
-    tag: "elepaq-5000-2000-asaba",
-    airCraftType: "private jet",
-    serviceType: "jet pooling",
-    brand: "Elepaq",
-    model: "5000",
-    year: 2000,
-    price: 50000,
-    description: "this hkkfsf is helicopter that take whatevere",
-    capacity: 50,
-    bar: true,
-    cabinLength: "51.00",
-    cabinHeight: "52.00",
-    cabinWidth: "50.00",
-    baggageCapacity: 500,
-    flightHours: "52",
-    maxRange: 520,
-    maxSpeed: "550.00",
-    maxAltitude: 500,
-    isAvailable: true,
-    isArchived: false,
-    status: "Active",
-    maintenanceFrom: null,
-    maintenanceTo: null,
-    createdAt: "2022-04-13T14:37:12.689Z",
-    updatedAt: "2022-04-20T20:06:31.018Z",
-    location: "Murtala Muhammed International Airport",
-    totalFlights: 2,
-    lastTripAmount: 50000,
-    lastTripDate: "2022-02-01T08:45:00.000Z",
+    field: "lastName",
+    headerName: "Last name",
+    width: 150,
+    editable: true,
+  },
+  {
+    field: "age",
+    headerName: "Age",
+    type: "number",
+    width: 110,
+    editable: true,
+    headerClassName: "super-app-theme--header",
+    headerAlign: "center",
+    renderCell(params) {
+      return <Button> lawal</Button>;
+    },
+  },
+  {
+    field: "fullName",
+    headerName: "Full name",
+    description: "This column has a value getter and is not sortable.",
+    sortable: false,
+    width: 160,
+    valueGetter: (params: GridValueGetterParams) =>
+      `${params.row.firstName || ""} ${params.row.lastName || ""}`,
   },
 ];
 
-// export default TableM;
-const OverviewTable = ({ loading }: { loading?: boolean }) => {
+const rows: any[] = [
+  { id: 1, lastName: "Snow", firstName: "Jon", age: 35 },
+  { id: 2, lastName: "Lannister", firstName: "Cersei", age: 42 },
+  { id: 3, lastName: "Lannister", firstName: "Jaime", age: 45 },
+  { id: 4, lastName: "Stark", firstName: "Arya", age: 16 },
+  { id: 5, lastName: "Targaryen", firstName: "Daenerys", age: null },
+  { id: 6, lastName: "Melisandre", firstName: null, age: 150 },
+  { id: 7, lastName: "Clifford", firstName: "Ferrara", age: 44 },
+  { id: 8, lastName: "Frances", firstName: "Rossini", age: 36 },
+  { id: 9, lastName: "Roxie", firstName: "Harvey", age: 65 },
+];
+
+export default function DataGridDemo() {
+  const [selectionModel, setSelectionModel] =
+    React.useState<GridSelectionModel>([]);
   return (
-    <div>
-      <TableContainer component={Paper}>
-        <Table>
-          <TableHead className="!text-3xl">
-            <TableRow className="!text-3xl">
-              <TableCell padding="checkbox">
-                <Checkbox />
-              </TableCell>
-              <HeadCell>Aircraft Name</HeadCell>
-
-              <HeadCell>Aircraft Type</HeadCell>
-              <HeadCell>No of flight</HeadCell>
-              <HeadCell>Location</HeadCell>
-              <HeadCell>Service Type</HeadCell>
-              <HeadCell>Amount (last Trip)</HeadCell>
-              <HeadCell>Date & Time</HeadCell>
-              <HeadCell>Status</HeadCell>
-              <HeadCell>Availability</HeadCell>
-            </TableRow>
-          </TableHead>
-
-          <TableBody>
-            {data.map((row) => (
-              <TableRow
-                key={row.id}
-                className="!text-center  hover:bg-gray-50 default-transition"
-                sx={{
-                  "&:last-child td, &:last-child th": { border: 0 },
-                }}
-              >
-                <TableCell padding="checkbox">
-                  <Checkbox />
-                </TableCell>
-                <BodyCell>
-                  {row.brand}
-                  {row.model}
-                </BodyCell>
-                <BodyCell>{row.airCraftType}</BodyCell>
-                <BodyCell>{row.totalFlights}</BodyCell>
-                <BodyCell>{row.location && "m m i"}</BodyCell>
-                <BodyCell>{row.serviceType}</BodyCell>
-                <BodyCell>{row.lastTripAmount}</BodyCell>
-                <BodyCell>
-                  <p>{format(new Date(row.lastTripDate), "dd-MM-yyyy")}</p>
-                  <br />
-                </BodyCell>
-                <BodyCell>
-                  {row.status === "Active" ? (
-                    <p className="text-green-500 font-semibold">Active</p>
-                  ) : (
-                    <p className="text-green-500 font-semibold">inActive</p>
-                  )}
-                </BodyCell>
-                {/* <BodyCell>
-                  <p>{row.dateTime.date}</p>
-                  <br />
-                  <p className="text-gray-400 text-sm ">{row.dateTime.time}</p>
-                </BodyCell>
-                <BodyCell>{row.location}</BodyCell>
-                <BodyCell>{row.location}</BodyCell>
-                <BodyCell>
-                  <p className="text-green-500 font-semibold">{row.status}</p>
-                </BodyCell> */}
-                {/* <BodyCell>{row.dateTime}</BodyCell> */}
-                <BodyCell>
-                  <img
-                    src={
-                      row.isAvailable
-                        ? CalenderDropDownActiveIcon
-                        : CalenderDropDownIcon
-                    }
-                    alt="CalenderDropDownIcon"
-                    className="py-1"
-                  />
-                </BodyCell>
-              </TableRow>
-            ))}
-          </TableBody>
-          <TableFooter></TableFooter>
-        </Table>
-      </TableContainer>
-    </div>
+    <Box sx={{ height: 700, width: "100%" }}>
+      <DataGrid
+        rows={rows}
+        // rowHeight={265}
+        columns={columns}
+        pageSize={10}
+        rowsPerPageOptions={[10]}
+        checkboxSelection
+        disableSelectionOnClick
+        selectionModel={selectionModel}
+        onSelectionModelChange={(newSelectionModel) => {
+          setSelectionModel(newSelectionModel);
+          console.log(newSelectionModel);
+        }}
+        keepNonExistentRowsSelected
+        loading={true}
+        components={{
+          LoadingOverlay: LinearProgress,
+        }}
+        pagination
+      />
+    </Box>
   );
-};
-
-export default OverviewTable;
+}

@@ -1,0 +1,1 @@
+export const emailValidation = /^[A-Z0-9._%+-]+@[A-z0-9.-]+\.[A-Z]{2,}$/i

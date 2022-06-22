@@ -1,36 +1,47 @@
-import * as React from "react";
-
+import React from "react";
 import MenuItem from "@mui/material/MenuItem";
-
 import { TextField } from "@mui/material";
+import { useController } from "react-hook-form";
 
-export default function ControlledOpenSelect({
+const SelectInput = ({
   className,
-  size,
+  control,
+  size = "medium",
   options,
-  label
+  label,
+  name,
+  rules,
 }: {
   className?: string;
-  size?: "small" | "medium";
-  options?: {
-    value: string | number;
-    name: string | number;
-    }[];
-  label?:string
-}) {
-  const [value, setValue] = React.useState<string | number>("");
-
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setValue(event.target.value);
-  };
+  control?: any;
+  size?: "medium" | "small";
+  options?: { value: string | number; name: string | number }[];
+  label?: string;
+  name?: any;
+  rules?: any;
+}) => {
+  const {
+    field: { onChange, onBlur, value, ref },
+    fieldState: { invalid, error },
+  } = useController({
+    name: name,
+    control,
+    rules: rules,
+    defaultValue: "",
+  });
 
   return (
     <TextField
+      onChange={onChange} // send value to hook form
+      onBlur={onBlur} // notify when input is touched/blur
+      value={value} // input value
+      name={name} // send down the input name
+      inputRef={ref}
+      error={invalid}
+      helperText={invalid && error?.message}
       select
       id="demo-controlled-open-select"
-      value={value}
       label={label}
-      onChange={handleChange}
       className={className}
       fullWidth
       size={size}
@@ -39,8 +50,12 @@ export default function ControlledOpenSelect({
         <em>None</em>
       </MenuItem>
       {options?.map(({ value, name }) => (
-        <MenuItem value={value}>{name}</MenuItem>
+        <MenuItem key={name} value={value}>
+          {name}
+        </MenuItem>
       ))}
     </TextField>
   );
-}
+};
+
+export default SelectInput;

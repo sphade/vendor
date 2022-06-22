@@ -1,6 +1,8 @@
 import { PolygonIcon } from "../../../assets/images/icons";
 import { BackButton, NotificationProfileHeader, SearchBar } from "../../../components";
 import TableM from "../../../table/Table";
+import DataGridDemo from "../../../table/overview/OverviewTable";
+
 const TableOfAircraft = () => {
   return (
     <div>
@@ -23,7 +25,7 @@ const TableOfAircraft = () => {
         </div>
       </div>
       <div className="border rounded-lg mt-6">
-        <TableM />
+       <DataGridDemo/>
       </div>
     </div>
   );

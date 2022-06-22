@@ -37,11 +37,11 @@ const BookingForm = () => {
             <div className="mt-10 flex items-center gap-10 mb-10 ">
               <div className="w-[158px] space-y-3">
                 <p className="font-semibold text-gray-700">Service type</p>
-                <SelectInput className="!-py-12" size="small" />
+                {/* <SelectInput className="!-py-12" size="small" /> */}
               </div>
               <div className="w-[158px] space-y-3">
                 <p className="font-semibold text-gray-700">Trip type</p>
-                <SelectInput className="!-py-12" size="small" />
+                {/* <SelectInput className="!-py-12" size="small" /> */}
               </div>
             </div>
             <div className="flex mb-8">

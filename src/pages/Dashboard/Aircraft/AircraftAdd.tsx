@@ -5,18 +5,19 @@ import {
   NotificationProfileHeader,
   PerformanceInput,
   SeatCapacity,
-  SelectInput,
+  // SelectInput,
   SwitchCustomized,
 } from "../../../components";
 import {
   AddAircraftIcon,
   AddAircraftSmallIcon,
 } from "../../../assets/images/icons";
-import { Input, TextField } from "@mui/material";
-import planeAdd from "../../../assets/images/plane6.png";
+import { TextField } from "@mui/material";
 import { useState } from "react";
-import { useForm } from "react-hook-form";
+import {  useForm } from "react-hook-form";
 import ImageUploading from "react-images-uploading";
+import SelectInput from "../../../components/SelectInput";
+import { useCreateAircraft } from "../../../hooks/mutations";
 const AircraftAdd = () => {
   const {
     register,
@@ -24,18 +25,24 @@ const AircraftAdd = () => {
     control,
     formState: { errors },
   } = useForm();
+  const createAircraft = useCreateAircraft();
   const [showAddPic, setShowAddPic] = useState<boolean>(false);
   const [capacity, setCapacity] = useState<number>(0);
+  const [model, setModel] = useState<string>('3000');
   const [bar, setBar] = useState<boolean>(true);
-  const onSubmit = (data: {}) =>
-    alert(JSON.stringify({ ...data, capacity, bar }));
-  const [images, setImages] = useState([]);
+  const [images, setImages] = useState<any[]>([]);
+
+  const onSubmit = (data: {}) => {
+    createAircraft.mutate({ ...data, capacity, bar, model,  });
+    alert(JSON.stringify({ ...data, capacity, bar, model,  }));
+  };
   const maxNumber = 4;
 
   const onImageChange = (imageList: any, addUpdateIndex: any) => {
-    console.log(imageList, addUpdateIndex);
     setImages(imageList);
+    console.log(...imageList);
   };
+
   return (
     <div>
       <header className="header !mb-5">
@@ -52,7 +59,7 @@ const AircraftAdd = () => {
           value={images}
           onChange={onImageChange}
           maxNumber={maxNumber}
-          dataURLKey="data_url"
+          dataURLKey="image"
         >
           {({
             imageList,
@@ -71,13 +78,13 @@ const AircraftAdd = () => {
                 <div>
                   <p className="capitalize text-tertiary ">photos</p>
                   <img
-                    src={AddAircraftIcon}
+                    src={(imageList && imageList[0]?.image) || AddAircraftIcon}
                     alt="aircraftPicture"
                     onClick={() => {
-                       onImageUpload();
+                      onImageUpload();
                       setShowAddPic(true);
                     }}
-                    className="h-[230px] w-full cursor-pointer object-contain "
+                    className="h-[230px] w-full cursor-pointer object-cover "
                   />
                 </div>
 
@@ -93,18 +100,47 @@ const AircraftAdd = () => {
                     helperText={errors.brand && errors.brand.message}
                   />
                   <div className="flex gap-5 mb-5">
-                    <SelectInput />
-                    <SelectInput />
+                    <SelectInput
+                      control={control}
+                      className="la"
+                      label="Aircraft Type"
+                      options={[
+                        {
+                          value: "privateJet",
+                          name: "Private jet",
+                        },
+                        { value: "helicopter", name: "Helicopter" },
+                      ]}
+                      rules={{
+                        required: "this field is required",
+                      }}
+                      name="serviceType"
+                      size="medium"
+                    />
+
+                    <SelectInput
+                      control={control}
+                      className="la"
+                      label="Service Type"
+                      options={[
+                        {
+                          value: "privateJet",
+                          name: "Private jet",
+                        },
+                        { value: "helicopter", name: "Helicopter" },
+                      ]}
+                      rules={{
+                        required: "this field is required",
+                      }}
+                      name="airCraftType"
+                      size="medium"
+                    />
                   </div>
                   <SeatCapacity capacity={capacity} setCapacity={setCapacity} />
                 </div>
                 <div className="mb-10">
                   <p className="capitalize text-tertiary mb-3">travel fee</p>
                   <div className="flex  gap-5 relative">
-                    <SelectInput
-                      className="!w-[100px] !overflow-hidden !bg-gray-100 !outline-none !border-0"
-                      size="small"
-                    />
                     <div className="flex-1">
                       <input
                         className={` border w-full focus:ring-blue-500 h-10 px-3 rounded-lg border-[#828282] ${
@@ -238,8 +274,7 @@ const AircraftAdd = () => {
                 <Button full>add</Button>
               </form>
             ) : (
-                <div className="w-[522px] mb-5 border-[#BDBDBD] px-12 border rounded-lg mx-auto ">
-                  
+              <div className="w-[522px] mb-5 border-[#BDBDBD] px-12 border rounded-lg mx-auto ">
                 <div className="flex items-center justify-between py-5">
                   <p className="text-tertiary font-bold">
                     Drag and drop to change photo order.
@@ -253,49 +288,57 @@ const AircraftAdd = () => {
                   </p>
                 </div>
                 <img
-                  src={(imageList && imageList[0]?.data_url) || AddAircraftIcon}
+                  src={(imageList && imageList[0]?.image) || AddAircraftIcon}
                   alt="planeAdd"
-                  className="w-full mb-6 rounded-lg h-[205px] object-cover "
+                  className="w-full mb-6 rounded-lg h-[205px] object-fit "
                 />
                 <div className="flex gap-2 mb-[164px] flex-wrap">
-                  {imageList.map((image, index) => (
-                    <div key={index}>
-                      <img
-                        src={image["data_url"]}
-                        alt=""
-                        className="w-[133px] rounded-lg h-[90px] object-cover"
-                      />
-                      <div className="flex flex-col gap-1 mt-1">
-                        <button
-                          onClick={() => onImageUpdate(index)}
-                          className="rounded text-xs bg-blue-500 p-1 text-white"
-                        >
-                          Update
-                        </button>
-                        <button
-                          onClick={() => onImageRemove(index)}
-                          className="rounded text-xs bg-red-500 p-1 text-white"
-                        >
-                          Remove
-                        </button>
+                  {imageList.map((image, index) => {
+                    return (
+                      <div key={index}>
+                        <img
+                          src={image["image"]}
+                          alt=""
+                          className="w-[133px] rounded-lg h-[90px] object-fit"
+                        />
+                        <div className="flex flex-col gap-1 mt-1">
+                          <button
+                            onClick={() => onImageUpdate(index)}
+                            className="rounded text-xs bg-blue-500 p-1 text-white"
+                          >
+                            Update
+                          </button>
+                          <button
+                            onClick={() => onImageRemove(index)}
+                            className="rounded text-xs bg-red-500 p-1 text-white"
+                          >
+                            Remove
+                          </button>
+                        </div>
                       </div>
-                    </div>
-                  ))}
+                    );
+                  })}
                   {imageList.length < 4 && (
                     <img
                       src={AddAircraftSmallIcon}
                       alt="AddAircraftSmallIcon"
                       onClick={onImageUpload}
                       {...dragProps}
-                      className={`w-[133px] cursor-pointer rounded-lg h-[90px] object-cover  border-t border-b border-dashed  border-tertiary ${
-                    
-                    isDragging  && " cursor-drag"
+                      className={`w-[133px] cursor-pointer rounded-lg h-[90px] object-fit   ${
+                        isDragging && " !cursor-grabbing"
                       } `}
                     />
                   )}
                 </div>
                 <div className="mb-[32px]">
-                  <Button full>save</Button>
+                  <Button
+                    full
+                    onClick={() => {
+                      setShowAddPic(false);
+                    }}
+                  >
+                    save
+                  </Button>
                 </div>
               </div>
             )

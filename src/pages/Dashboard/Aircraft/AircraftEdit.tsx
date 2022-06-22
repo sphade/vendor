@@ -39,7 +39,7 @@ const AircraftEdit = () => {
               fullWidth
             />
             <div className="flex gap-5 mb-5">
-              <SelectInput
+              {/* <SelectInput
                 label="what ever you wantwhat ever you want"
                 options={[
                   {
@@ -55,18 +55,18 @@ const AircraftEdit = () => {
                     value: "try",
                   },
                 ]}
-              />
-              <SelectInput />
+              /> */}
+              {/* <SelectInput /> */}
             </div>
             {/* <SeatCapacity /> */}
           </div>
           <div className="mb-10">
             <p className="capitalize text-tertiary mb-3">travel fee</p>
             <div className="flex items-center gap-5">
-              <SelectInput
+              {/* <SelectInput
                 className="!w-[100px] !bg-gray-200 !outline-none !border-0"
                 size="small"
-              />
+              /> */}
               <input className="flex-1 border h-10 px-3 rounded-lg border-[#828282]" />
             </div>
           </div>
@@ -82,7 +82,7 @@ const AircraftEdit = () => {
               </p>
             </div>
           </div>
-          <div className="space-y-5 pb-10 mb-10 border-b border-[#BDBDBD]">
+          {/* <div className="space-y-5 pb-10 mb-10 border-b border-[#BDBDBD]">
             <p className="capitalize text-tertiary font-semibold ">
               specification
             </p>
@@ -144,7 +144,7 @@ const AircraftEdit = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
           <div className="flex justify-between mb-5 pb-5 border-b border-[#BDBDBD]">
             <p className="text-xl text-gray-500 capitalize">wine bar</p>
             <div className="flex flex-col justify-center items-center">

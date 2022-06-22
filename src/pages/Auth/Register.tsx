@@ -1,8 +1,9 @@
 import TextField from "@mui/material/TextField";
 import { CheckBox, PasswordInput, Button } from "../../components";
 import { CameraBoxIcon, CameraIcon } from "../../assets/images/icons";
-import PhoneInput from "react-phone-input-2";
+// import PhoneInput from "react-phone-input-2";
 import { Controller, useForm } from "react-hook-form";
+import { emailValidation } from "../../validation/emailValidation";
 const Register = () => {
   // const [phone, setPhone] = useState("");
   const {
@@ -56,14 +57,14 @@ const Register = () => {
           {...register("email", {
             required: "this field is required",
             pattern: {
-              value: /^[A-Z0-9._%+-]+@[A-z0-9.-]+\.[A-Z]{2,}$/i,
+              value: emailValidation,
               message: "invalid email format",
             },
           })}
           helperText={errors.email && errors.email.message}
           error={errors.email}
         />
-        <Controller
+        {/* <Controller
           name="phoneNumber"
           control={control}
           rules={{
@@ -90,7 +91,7 @@ const Register = () => {
               }}
             />
           )}
-        />
+        /> */}
 
         <TextField
           fullWidth

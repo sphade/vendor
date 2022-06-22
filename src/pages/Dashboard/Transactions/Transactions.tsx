@@ -20,7 +20,7 @@ const Transactions = () => {
         </div>
       </div>
       <div className="border rounded-lg mt-6">
-        <TransactionTable />
+        <TransactionTable loading={true} />
       </div>
     </div>
   );
