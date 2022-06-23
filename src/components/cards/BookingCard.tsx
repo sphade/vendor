@@ -21,7 +21,7 @@ const BookingCard = () => {
       </div>
       <div className="divide-y ">
         <div className="flex items-center py-4 justify-between">
-          <h3 className="text-tertiary font-semibold capitalize text-base">
+          <h3 className="text-tertiary font-hindBold font-semibold capitalize text-base">
             Night Sky 6000
           </h3>
           <IconButton onClick={handleClick}>
@@ -37,7 +37,7 @@ const BookingCard = () => {
             <div className="flex justify-between text-xs text-gray-400">
               <p>Range :</p> <p> Speed :</p>
             </div>
-            <div className="flex justify-between text-tertiary capitalize font-semibold text-sm">
+            <div className="flex justify-between text-tertiary capitalize font-hindBold font-semibold text-sm">
               <p>6000-90433 tms</p> <p> 600mah</p>
             </div>
           </div>
@@ -45,7 +45,7 @@ const BookingCard = () => {
             <div className="flex justify-between text-xs text-gray-400">
               <p>Capacity :</p> <p> year :</p>
             </div>
-            <div className="flex justify-between text-tertiary capitalize font-semibold text-sm">
+            <div className="flex justify-between text-tertiary capitalize font-hindBold font-semibold text-sm">
               <p>16 passengers</p> <p> 2016</p>
             </div>
           </div>

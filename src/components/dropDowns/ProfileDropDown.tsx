@@ -57,7 +57,7 @@ const ProfileDropDown = ({
               
             }}
             className={classNames(
-              "py-3 capitalize flex items-center justify-between text-sm font-semibold text-gray-700 cursor-pointer default-transition hover:bg-gray-100 px-5",
+              "py-3 capitalize flex items-center justify-between text-sm font-medium text-gray-700 cursor-pointer default-transition hover:bg-gray-100 px-5",
               {
                 "!text-primary": name === "logout",
               }

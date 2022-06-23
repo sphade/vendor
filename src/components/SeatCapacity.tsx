@@ -24,7 +24,7 @@ const SeatCapacity = ({
           className={`cursor-pointer ${!capacity && "cursor-not-allowed"}`}
         />
 
-        <span className="text-tertiary  font-semibold text-xl">{capacity}</span>
+        <span className="text-tertiary  font-semibold font-hindBold text-xl">{capacity}</span>
         <img
           src={PlusIcon}
           alt="icon"

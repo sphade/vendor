@@ -1,6 +1,6 @@
 module.exports = {
   content: ["./index.html", "./src/**/*.{vue,js,ts,jsx,tsx}"],
-  
+
   theme: {
     extend: {
       colors: {
@@ -11,6 +11,7 @@ module.exports = {
     },
     fontFamily: {
       hind: ["hind", "san-serif"],
+      hindBold: ["hindBold", "san-serif"],
     },
   },
   plugins: [],

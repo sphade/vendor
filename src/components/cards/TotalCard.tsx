@@ -17,10 +17,10 @@ const TotalCard = ({
       className={`h-[200px] p-5 flex flex-col justify-between rounded-lg  `}
     >
       <div className=" flex items-center justify-between">
-        <p className="text-tertiary font-semibold text-base ">{text}</p>
+        <p className="text-tertiary font-hindBold font-semibold text-base ">{text}</p>
         <img src={logo} alt={logo} />
       </div>
-      <p className="font-bold text-2xl">{num || "0"}</p>
+      <p className="font-bold font-hindBold text-2xl">{num || "0"}</p>
     </div>
   );
 };

@@ -41,7 +41,7 @@ const Sidebar = (props: Props) => {
                 {({ isActive }) => (
                   <>
                     <img src={isActive ? ActiveIcon : Icon} alt={text} />
-                    <p className="capitalize text-lg font-semibold ">{text}</p>
+                    <p className="capitalize text-lg font-medium ">{text}</p>
                   </>
                 )}
               </NavLink>

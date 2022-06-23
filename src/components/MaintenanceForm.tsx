@@ -16,7 +16,7 @@ const MaintenanceForm = () => {
   } = useForm();
   return (
     <div className="px-[65px] py-10 border border-[#BDBDBD] w-[520px] rounded-md ">
-      <h1 className="font-bold capitalize text-tertiary text-2xl mb-6">
+      <h1 className="font-bold font-hindBold capitalize text-tertiary text-2xl mb-6">
         maintenance form
       </h1>
       <div className="divide-y space-y-6 divide-[#BDBDBD]">
@@ -83,7 +83,7 @@ const MaintenanceForm = () => {
           </div>
         </div>
         <div className="space-y-6">
-          <h2 className="capitalize text-tertiary text-lg font-semibold pt-6">
+          <h2 className="capitalize text-tertiary text-lg font-semibold font-hindBold pt-6">
             Set Maintenance Date and Time
           </h2>
           <div className="space-y-2">
@@ -97,7 +97,7 @@ const MaintenanceForm = () => {
           </div>
         </div>
         <div>
-          <h2 className="capitalize text-tertiary text-lg font-semibold py-6">
+          <h2 className="capitalize text-tertiary text-lg font-semibold font-hindBold py-6">
             Set Maintenance Date and Time
           </h2>
           <div className="flex items-center justify-between">

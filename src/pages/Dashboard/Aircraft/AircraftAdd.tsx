@@ -73,7 +73,7 @@ const AircraftAdd = () => {
             !showAddPic ? (
               <form
                 onSubmit={handleSubmit(onSubmit)}
-                className="rounded-lg  p-6 w-[522px] mx-auto font-semibold border mb-3 border-[#BDBDBD]"
+                className="rounded-lg  p-6 w-[522px] mx-auto font-semibold font-hindBold border mb-3 border-[#BDBDBD]"
               >
                 <div>
                   <p className="capitalize text-tertiary ">photos</p>
@@ -160,7 +160,7 @@ const AircraftAdd = () => {
                   </div>
                 </div>
                 <div className="mb-5 pb-5  border-[#BDBDBD]">
-                  <p className="capitalize text-tertiary mb-3 font-semibold">
+                  <p className="capitalize text-tertiary mb-3 font-semibold font-hindBold">
                     description
                   </p>
                   <TextField
@@ -182,11 +182,11 @@ const AircraftAdd = () => {
                   />
                 </div>
                 <div className="space-y-5  mb-10  border-[#BDBDBD]">
-                  <p className="capitalize text-tertiary font-semibold ">
+                  <p className="capitalize text-tertiary font-semibold font-hindBold ">
                     specification
                   </p>
                   <div>
-                    <p className="capitalize text-tertiary font-semibold text-sm mb-7">
+                    <p className="capitalize text-tertiary font-semibold font-hindBold text-sm mb-7">
                       performance
                     </p>
                     <div className="flex items-center flex-wrap gap-y-8 justify-between">
@@ -224,7 +224,7 @@ const AircraftAdd = () => {
                     </div>
                   </div>
                   <div>
-                    <p className="capitalize text-tertiary font-semibold text-sm mt-3 mb-7">
+                    <p className="capitalize text-tertiary font-semibold font-hindBold text-sm mt-3 mb-7">
                       interior
                     </p>
                     <div className="flex flex-col gap-5 items-center">
@@ -279,7 +279,7 @@ const AircraftAdd = () => {
                   <p className="text-tertiary font-bold">
                     Drag and drop to change photo order.
                   </p>
-                  <p className="font-semibold text-gray-500">
+                  <p className="font-semibold font-hindBold text-gray-500">
                     {imageList.length}/
                     <span className="font-bold text-tertiary ">
                       {maxNumber}

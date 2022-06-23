@@ -20,27 +20,24 @@ const Overview = () => {
   const { overviewData, overviewLoading } = useOverview();
   const overviewTable = useOverviewTable();
   const formatedNum = useFormatNumber(1000000000);
-  console.log(
-    "🚀 ~ file: Overview.tsx ~ line 22 ~ Overview ~ formatedNum",
-    formatedNum
-  );
+  
 
   return (
     <div>
       <header className="flex items-center justify-between">
         <div className="flex items-center justify-between max-w-3xl  w-full">
           <div className="space-y-2">
-            <h1 className="text-base text-tertiary font-semibold">
+            <h1 className="text-base text-tertiary font-hindBold font-semibold">
               DashBoard Overview
             </h1>
-            <p className="text-gray-400 font-medium text-sm">06/feb/2022</p>
+            <p className="text-gray-600 font-medium text-sm">06/feb/2022</p>
           </div>
           <SearchBar />
         </div>
         <NotificationProfileHeader />
       </header>
       <main>
-        <div className=" grid gap-2 grid-cols-4 grid-flow-col mt-10 ">
+        <div className=" grid gap-5 grid-cols-4 grid-flow-col mt-10 ">
           <TotalCard
             color="#E5FFF0"
             text="total No of aircraft"
@@ -82,7 +79,7 @@ const Overview = () => {
         </div>
         <div className="border rounded-lg mt-10">
           <div className="flex items-center justify-between py-5 px-5">
-            <h3 className="font-semibold text-lg text-tertiary  capitalize">
+            <h3 className="font-semibold font-hindBold text-lg text-tertiary  capitalize">
               table of aircraft
             </h3>
             <Link

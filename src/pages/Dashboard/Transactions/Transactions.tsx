@@ -1,5 +1,7 @@
+import { DataGrid } from "@mui/x-data-grid";
 import { PolygonIcon } from "../../../assets/images/icons";
 import { NotificationProfileHeader, SearchBar } from "../../../components";
+import { transactionColumn } from "../../../table/Columns";
 import TransactionTable from "../../../table/transactions/Table";
 const Transactions = () => {
   return (
@@ -20,7 +22,27 @@ const Transactions = () => {
         </div>
       </div>
       <div className="border rounded-lg mt-6">
-        <TransactionTable loading={true} />
+        <DataGrid
+          rows={[]}
+          getCellClassName={() =>
+            "text-tertiary font-medium capitalize  !font-hind  "
+          }
+          rowHeight={70}
+          columns={transactionColumn}
+          autoHeight={true}
+          // pageSize={4}
+          rowsPerPageOptions={[10]}
+          checkboxSelection
+          disableSelectionOnClick
+          // selectionModel={selectionModel}
+          // onSelectionModelChange={(newSelectionModel) => {
+          //   setSelectionModel(newSelectionModel);
+          //   console.log(newSelectionModel);
+          // }}
+          keepNonExistentRowsSelected
+          // loading={true}
+          components={{}}
+        />
       </div>
     </div>
   );

@@ -5,11 +5,15 @@
 @layer base {
   @font-face {
     font-family: hind;
-    src: url("./assets/fonts/hind/Hind-Regular.ttf") format("truetype");
+    src: url("./assets/fonts/hind/Hind-Medium.ttf") format("truetype");
   }
-  /* html {
+  @font-face {
+    font-family: hindBold;
+    src: url("./assets/fonts/hind/Hind-SemiBold.ttf") format("truetype");
+  }
+  html {
     font-family: hind;
-  } */
+  }
 }
 /* utility  classes */
 .center-element {
@@ -23,7 +27,7 @@
   @apply flex items-center justify-between mb-3;
 }
 .header-heading {
-  @apply text-2xl text-tertiary capitalize font-medium;
+  @apply text-2xl text-tertiary capitalize font-semibold font-hindBold;
 }
 /* active nav-link */
 .active {
@@ -34,11 +38,12 @@
 .MuiTab-root {
   @apply !text-xs !font-semibold !capitalize;
 }
+
 .Mui-selected {
-  @apply !text-primary;
+  @apply !text-primary !font-hind;
 }
 .MuiTabs-indicator {
-  @apply !bg-primary;
+  @apply !bg-primary !font-hind;
 }
 
 /* mui-checkbox override */
