@@ -1,9 +1,12 @@
 import { DataGrid } from "@mui/x-data-grid";
 import { PolygonIcon } from "../../../assets/images/icons";
 import { NotificationProfileHeader, SearchBar } from "../../../components";
+import { useTransactionTable } from "../../../hooks/queries";
 import { transactionColumn } from "../../../table/Columns";
 import TransactionTable from "../../../table/transactions/Table";
 const Transactions = () => {
+  const transactionTable = useTransactionTable();
+  console.log(transactionTable.data)
   return (
     <div>
       <header className="header">
@@ -23,7 +26,7 @@ const Transactions = () => {
       </div>
       <div className="border rounded-lg mt-6">
         <DataGrid
-          rows={[]}
+          rows={transactionTable.data || []}
           getCellClassName={() =>
             "text-tertiary font-medium capitalize  !font-hind  "
           }
@@ -40,7 +43,7 @@ const Transactions = () => {
           //   console.log(newSelectionModel);
           // }}
           keepNonExistentRowsSelected
-          // loading={true}
+          loading={transactionTable.isLoading}
           components={{}}
         />
       </div>

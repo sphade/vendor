@@ -8,7 +8,7 @@ const ForgotPassword = () => {
   const location = useLocation();
   const navigate = useNavigate();
   useEffect(() => {
-    if (location.pathname == "/forgot-password/") {
+    if (location.pathname === "/forgot-password/") {
       navigate("step-1", { replace: true });
     }
   }, [location, navigate]);

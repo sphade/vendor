@@ -37,12 +37,12 @@ const AircraftCardDropDown = ({
       }}
       PaperProps={{ className: "!rounded-lg" }}
     >
-      <ul className="rounded-lg bg-white  w-[180px]   border divide-y flex flex-col">
+      <ul className="rounded-lg bg-white  w-[180px] font-hindBold   border divide-y flex flex-col">
         <li>
           <Link
             to="edit"
             className={classNames(
-              "py-3 capitalize flex items-center justify-between text-sm font-semibold px-4 text-gray-700 cursor-pointer default-transition hover:bg-gray-100 "
+              "py-3 capitalize flex items-center justify-between text-sm  font-semibold px-4 text-gray-700 cursor-pointer default-transition hover:bg-gray-100 "
             )}
           >
             <span className="flex items-center gap-2">

@@ -4,6 +4,14 @@ export const loginUser = async (data: Record<string, unknown>) => {
   const response = await axios.post("vendor/login", data);
   return response.data.data;
 };
+export const resendVerifyOtp = async (data: Record<string, unknown>) => {
+  const response = await axios.post("user/resend-verify-otp", data);
+  return response.data.data;
+};
+export const signup = async (data: Record<string, unknown>) => {
+  const response = await axios.post("vendor/signup", data);
+  return response.data.data;
+};
 export const getOverview = async () => {
   const response = await axios.get("vendor/overview");
   return response.data.data;

@@ -1,5 +1,5 @@
-const useFormatNumber = (number: number) => {
-  return number.toFixed(2).replace(/\d(?=(\d{3})+\.)/g, "$&,");
+const useFormatNumber = (number: number | string) => {
+  return number.toLocaleString("en-US");
 };
 
 export default useFormatNumber;

@@ -1,9 +1,17 @@
 import TextField from "@mui/material/TextField";
-import { CheckBox, PasswordInput, Button } from "../../components";
+import { PasswordInput, Button } from "../../components";
 import { CameraBoxIcon, CameraIcon } from "../../assets/images/icons";
-// import PhoneInput from "react-phone-input-2";
+import PhoneInput from "react-phone-input-2";
 import { Controller, useForm } from "react-hook-form";
 import { emailValidation } from "../../validation/emailValidation";
+import { Checkbox } from "@mui/material";
+import ImageUploading from "react-images-uploading";
+import { useSignup } from "../../hooks/mutations";
+import { useDispatch } from "react-redux";
+import { setSignUpInfo } from "../../redux/slices/SignUpInfoSlice";
+import { useSnackbar } from "notistack";
+import { useNavigate } from "react-router-dom";
+
 const Register = () => {
   // const [phone, setPhone] = useState("");
   const {
@@ -13,7 +21,24 @@ const Register = () => {
     watch,
     formState: { errors },
   } = useForm();
-  const onSubmit = (data: {}) => alert(JSON.stringify(data));
+  const dispatch = useDispatch();
+  const signup = useSignup();
+  const { enqueueSnackbar } = useSnackbar();
+
+
+  const onSubmit = (data: any) => {
+    if (!data.acceptTerms) {
+      enqueueSnackbar('please accept the terms and conditions', {
+        variant: "info",
+      });
+      return
+    }
+    else {
+      dispatch(setSignUpInfo(data));
+    signup.mutate({ email: data.email, phone: data.phone });
+    }
+    
+  };
   return (
     <div className="w-[664px] px-[100px] rounded-lg shadow-lg  mb-[100px] py-10 border  relative   bg-secondary">
       <div className="mb-10 text-center">
@@ -34,12 +59,14 @@ const Register = () => {
           />
         </div>
         <div className="flex items-center justify-center gap-2 text-blue-600 text-xs">
-          <span className="font-semibold  uppercase">add business logo</span>
+          <span className="font-semibold font-hindBold  uppercase">
+            add business logo
+          </span>
           {/* <input type="file" /> */}
         </div>
       </div>
 
-      <form className="space-y-4" onSubmit={handleSubmit(onSubmit)}>
+      <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
         <TextField
           fullWidth
           label="Business Name"
@@ -64,8 +91,8 @@ const Register = () => {
           helperText={errors.email && errors.email.message}
           error={errors.email}
         />
-        {/* <Controller
-          name="phoneNumber"
+        <Controller
+          name="phone"
           control={control}
           rules={{
             required: "this field is required",
@@ -91,7 +118,7 @@ const Register = () => {
               }}
             />
           )}
-        /> */}
+        />
 
         <TextField
           fullWidth
@@ -126,11 +153,17 @@ const Register = () => {
         />
 
         <div className="flex items-center justify-between w-full gap-3">
-          <CheckBox />
-          <p className="text-sm ">
+          <Controller
+            name="acceptTerms"
+            control={control}
+         
+            render={({ field }) => <Checkbox {...field} id='terms' name='terms' />}
+          />
+          
+          <label className="text-sm " id='terms'  htmlFor="terms"  >
             By creating a Bossbus Premium Account, I understand and agree to
             Bossbus’s Privacy Notice and Terms of Use
-          </p>
+          </label>
         </div>
         <div className="pt-5">
           <Button full variant="primary">

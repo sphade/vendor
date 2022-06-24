@@ -12,11 +12,12 @@ import {
 } from "../../../components";
 import { ArchiveIcon } from "../../../assets/images/icons";
 import { Link } from "react-router-dom";
-import { useAircraft } from "../../../hooks/queries";
-
+import { useAircraft,useOverviewTable } from "../../../hooks/queries";
+import JetCardSkeleton from "../../../skeleton/JetCardSkeleton";
 const Aircraft = () => {
   const [value, setValue] = useState<number>(0);
   const aircraft = useAircraft();
+
   return (
     <div>
       <DeleteModal />
@@ -52,22 +53,15 @@ const Aircraft = () => {
       </div>
 
       <TabPanel value={value} index={0}>
-        <div className="flex  justify-between flex-wrap p-2 border shadow rounded mt-5 gap-1">
-          <AircraftCard {...aircraft.data} />
-          <AircraftCard />
-          <AircraftCard />
-          <AircraftCard />
-          <AircraftCard />
-          <AircraftCard />
-          <AircraftCard />
-          <AircraftCard />
-          <AircraftCard />
-          <AircraftCard />
-          <AircraftCard />
-          <AircraftCard />
-          <AircraftCard />
-          <AircraftCard />
-          <AircraftCard />
+        <div className="flex   flex-wrap p-2 border shadow rounded mt-5 gap-1">
+          {aircraft.isLoading
+            ? [1, 2, 3].map((id) => (
+                <JetCardSkeleton key={id} />
+              ))
+            : aircraft.data?.map((data: any, id: number) => (
+                <AircraftCard {...data} key={id} />
+              ))}
+
           {/* <AircraftCardSkeleton /> */}
         </div>
       </TabPanel>

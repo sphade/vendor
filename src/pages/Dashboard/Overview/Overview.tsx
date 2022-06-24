@@ -14,13 +14,18 @@ import { Link } from "react-router-dom";
 import { useOverview, useOverviewTable } from "../../../hooks/queries";
 import useFormatNumber from "../../../hooks/useFormatNumber";
 import { Skeleton } from "@mui/material";
-import OverviewTable from "../../../table/overview/OverviewTable";
+
+import { aircraftColumns } from "../../../table/Columns";
+import { DataGrid } from "@mui/x-data-grid";
 
 const Overview = () => {
   const { overviewData, overviewLoading } = useOverview();
   const overviewTable = useOverviewTable();
+  console.log(
+    "🚀 ~ file: Overview.tsx ~ line 24 ~ Overview ~ overviewTable",
+    overviewTable
+  );
   const formatedNum = useFormatNumber(1000000000);
-  
 
   return (
     <div>
@@ -45,7 +50,7 @@ const Overview = () => {
               overviewLoading ? (
                 <Skeleton variant="circular" width={40} height={40} />
               ) : (
-                overviewData?.totalAircraft 
+                overviewData?.totalAircraft
               )
             }
             logo={TotalAirIcon}
@@ -57,7 +62,7 @@ const Overview = () => {
               overviewLoading ? (
                 <Skeleton variant="circular" width={40} height={40} />
               ) : (
-                overviewData?.trips 
+                overviewData?.trips
               )
             }
             logo={NoOfTripsIcon}
@@ -70,12 +75,16 @@ const Overview = () => {
               overviewLoading ? (
                 <Skeleton variant="circular" width={40} height={40} />
               ) : (
-                overviewData?.totalAmount 
+                overviewData?.totalAmount
               )
             }
             logo={TotalAmountIcon}
           />
-          <ActivitiesCard />
+          <ActivitiesCard
+            loading={overviewLoading}
+            revenue={overviewData?.last30Days?.revenue}
+            booking={overviewData?.last30Days?.totalBooking}
+          />
         </div>
         <div className="border rounded-lg mt-10">
           <div className="flex items-center justify-between py-5 px-5">
@@ -90,7 +99,27 @@ const Overview = () => {
               <img src={PolygonOrangeIcon} alt="icon" />
             </Link>
           </div>
-          <OverviewTable />
+          <DataGrid
+            rows={overviewTable.data || []}
+            getCellClassName={() =>
+              "text-tertiary font-medium capitalize  !font-hind  "
+            }
+            rowHeight={70}
+            columns={aircraftColumns}
+            autoHeight={true}
+            // pageSize={4}
+            rowsPerPageOptions={[10]}
+            checkboxSelection
+            disableSelectionOnClick
+            // selectionModel={selectionModel}
+            // onSelectionModelChange={(newSelectionModel) => {
+            //   setSelectionModel(newSelectionModel);
+            //   console.log(newSelectionModel);
+            // }}
+            keepNonExistentRowsSelected
+            loading={overviewTable.isLoading}
+            components={{}}
+          />
         </div>
       </main>
     </div>

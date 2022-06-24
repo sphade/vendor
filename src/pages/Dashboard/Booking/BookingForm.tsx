@@ -31,16 +31,16 @@ const BookingForm = () => {
             className="w-[760px] h-[323px] object-cover "
           />
           <div>
-            <h1 className="font-semibold capitalize text-tertiary text-2xl p-4 border-b border-[#BDBDBD]  ">
+            <h1 className="font-semibold font-hindBold capitalize text-tertiary text-2xl p-4 border-b border-[#BDBDBD]  ">
               challenger 6000
             </h1>
             <div className="mt-10 flex items-center gap-10 mb-10 ">
               <div className="w-[158px] space-y-3">
-                <p className="font-semibold text-gray-700">Service type</p>
+                <p className="font-semibold font-hindBold text-gray-700">Service type</p>
                 {/* <SelectInput className="!-py-12" size="small" /> */}
               </div>
               <div className="w-[158px] space-y-3">
-                <p className="font-semibold text-gray-700">Trip type</p>
+                <p className="font-semibold font-hindBold text-gray-700">Trip type</p>
                 {/* <SelectInput className="!-py-12" size="small" /> */}
               </div>
             </div>

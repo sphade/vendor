@@ -80,7 +80,7 @@ const columns: GridColDef[] = [
   },
 ];
 
-const rows: any[] = [
+export const aircraftRows: any[] = [
   {
     id: Math.random() * 10,
     aircraftName: "sky-night-15000",
@@ -257,7 +257,7 @@ export default function DataGridDemo() {
   return (
     <Box sx={{ width: "100%", }}>
       <DataGrid
-        rows={rows}
+        rows={[]}
         getCellClassName={() =>
           "text-tertiary font-medium capitalize  !font-hind  "
         }

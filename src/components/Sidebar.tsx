@@ -27,7 +27,7 @@ const Sidebar = (props: Props) => {
   return (
     <section className="w-[230px] z-50 bg-secondary h-screen  sticky top-0 left-0">
       <div className="font-bold text-2xl pl-5 pt-10 h-[160px] ">
-        <img src={LogoIcon} alt={LogoIcon}></img>
+        <img src={LogoIcon} alt="LogoIcon" />
       </div>
 
       <nav>

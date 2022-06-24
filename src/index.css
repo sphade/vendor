@@ -40,10 +40,10 @@
 }
 
 .Mui-selected {
-  @apply !text-primary !font-hind;
+  @apply !text-primary !font-hindBold;
 }
 .MuiTabs-indicator {
-  @apply !bg-primary !font-hind;
+  @apply !bg-primary !font-hindBold;
 }
 
 /* mui-checkbox override */

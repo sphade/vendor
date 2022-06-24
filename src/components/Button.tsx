@@ -28,9 +28,9 @@ const Button: FC<IButton> = ({
   return (
     <button
       className={classNames(
-        "hover:opacity-80 default-transition  center-element  uppercase  text-secondary rounded-md cursor-pointer  h-fit disabled:opacity-50 disabled:cursor-not-allowed",
+        "hover:opacity-80 default-transition  center-element font-hindBold  uppercase  text-secondary rounded-md cursor-pointer  h-fit disabled:opacity-50 disabled:cursor-not-allowed",
         {
-          "cursor-progress opacity-75": loading,
+          " opacity-75": loading,
           "cursor-not-allowed !bg-[#E0E0E0]": disabled,
           "w-full": full,
           "text-base py-3 px-5 font-semibold": size === "big",
@@ -45,7 +45,7 @@ const Button: FC<IButton> = ({
         }
       )}
       onClick={onClick}
-      // disabled={disabled}
+      disabled={disabled}
     >
       {iconLeft && <img src={iconLeft} alt="icon" className="pr-3" />}
       <span>
