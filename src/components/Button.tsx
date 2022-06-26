@@ -28,10 +28,10 @@ const Button: FC<IButton> = ({
   return (
     <button
       className={classNames(
-        "hover:opacity-80 default-transition  center-element font-hindBold  uppercase  text-secondary rounded-md cursor-pointer  h-fit disabled:opacity-50 disabled:cursor-not-allowed",
+        "hover:opacity-80 default-transition   center-element font-hindBold  uppercase  text-secondary rounded-md cursor-pointer  h-fit disabled:opacity-50 disabled:cursor-not-allowed",
         {
           " opacity-75": loading,
-          "cursor-not-allowed !bg-[#E0E0E0]": disabled,
+          "cursor-not-allowed !bg-[#d2d2d2]": disabled,
           "w-full": full,
           "text-base py-3 px-5 font-semibold": size === "big",
           "text-sm py-2 px-4 font-bold": size === "medium",

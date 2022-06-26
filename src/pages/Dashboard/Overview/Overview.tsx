@@ -1,5 +1,6 @@
 import {
   ActivitiesCard,
+  Loading,
   NotificationProfileHeader,
   SearchBar,
   TotalCard,
@@ -21,10 +22,7 @@ import { DataGrid } from "@mui/x-data-grid";
 const Overview = () => {
   const { overviewData, overviewLoading } = useOverview();
   const overviewTable = useOverviewTable();
-  console.log(
-    "🚀 ~ file: Overview.tsx ~ line 24 ~ Overview ~ overviewTable",
-    overviewTable
-  );
+
   const formatedNum = useFormatNumber(1000000000);
 
   return (
@@ -48,7 +46,7 @@ const Overview = () => {
             text="total No of aircraft"
             num={
               overviewLoading ? (
-                <Skeleton variant="circular" width={40} height={40} />
+                <Skeleton animation="wave" variant="circular" width={40} height={40} />
               ) : (
                 overviewData?.totalAircraft
               )
@@ -60,7 +58,7 @@ const Overview = () => {
             text="Total No of trips"
             num={
               overviewLoading ? (
-                <Skeleton variant="circular" width={40} height={40} />
+                <Skeleton animation="wave" variant="circular" width={40} height={40} />
               ) : (
                 overviewData?.trips
               )
@@ -73,7 +71,7 @@ const Overview = () => {
             text="Total amount"
             num={
               overviewLoading ? (
-                <Skeleton variant="circular" width={40} height={40} />
+                <Skeleton animation="wave" variant="circular" width={40} height={40} />
               ) : (
                 overviewData?.totalAmount
               )
@@ -118,7 +116,10 @@ const Overview = () => {
             // }}
             keepNonExistentRowsSelected
             loading={overviewTable.isLoading}
-            components={{}}
+            components={{
+              LoadingOverlay: Loading,
+  
+            }}
           />
         </div>
       </main>

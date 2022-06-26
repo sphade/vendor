@@ -37,7 +37,7 @@ export const useAircraft = ({ isArchived, category }: any) => {
   const { enqueueSnackbar } = useSnackbar();
 
   return useQuery(
-    "aircraft",
+    ["aircraft", isArchived, category],
     () => getVendorAircraft({ isArchived, category }),
     {
       onError(error: any) {
@@ -47,11 +47,12 @@ export const useAircraft = ({ isArchived, category }: any) => {
       },
     }
   );
-};export const useAircraftIsArchive = ({ isArchived, category }: any) => {
+};
+export const useAircraftIsArchive = ({ isArchived, category }: any) => {
   const { enqueueSnackbar } = useSnackbar();
 
   return useQuery(
-    "aircraftArchive",
+    ["aircraftArchive", isArchived, category],
     () => getVendorAircraft({ isArchived, category }),
     {
       onError(error: any) {

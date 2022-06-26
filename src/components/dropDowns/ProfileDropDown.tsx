@@ -11,7 +11,7 @@ const ProfileDropDown = ({
   anchorEl: any;
   setAnchorEl: any;
 }) => {
-  const logout = useLogout()
+  const logout = useLogout();
   const handleClose = () => {
     setAnchorEl(null);
   };
@@ -52,9 +52,8 @@ const ProfileDropDown = ({
             key={id}
             onClick={() => {
               if (name === "logout") {
-                logout()
+                localforage.clear();
               }
-              
             }}
             className={classNames(
               "py-3 capitalize flex items-center justify-between text-sm font-medium text-gray-700 cursor-pointer default-transition hover:bg-gray-100 px-5",

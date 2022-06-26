@@ -1,7 +1,7 @@
 import { Avatar } from "@mui/material";
 import TextField from "@mui/material/TextField";
 import localforage from "localforage";
-import React from "react";
+import React, { useEffect } from "react";
 import PhoneInput from "react-phone-input-2";
 import avatarIcon from "../assets/images/icons/avatar.png";
 import {
@@ -10,15 +10,31 @@ import {
   EmailVerificationModal,
   BackButton,
   PasswordInput,
+  Loading,
 } from "../components";
 
 const Profile = () => {
   const [edit, setEdit] = React.useState(false);
+  const [loading, setLoading] = React.useState(true);
   const [emailModalState, setEmailModalState] = React.useState(false);
   const [emailVerificationModalState, setEmailVerificationModalState] =
     React.useState(false);
   const [user, setUser] = React.useState<any>();
-  localforage.getItem("user", (err, val) => setUser(val));
+  useEffect(() => {
+    localforage.getItem("user", (err, val) => {
+      setUser(val)
+    setLoading(false)
+    });
+    
+  }, [])
+  if (loading) {
+    return (
+      <div className='w-full h-screen'>
+        <Loading/>
+
+      </div>
+    )
+  }
   return (
     <div className="flex gap-5 mx-auto items-start  w-fit py-20 relative  ">
       <BackButton />

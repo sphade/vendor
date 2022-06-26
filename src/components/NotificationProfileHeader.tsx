@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import notificationIcon from "../assets/images/icons/notification.png";
 import { IconButton } from "@mui/material";
 import dropdownIcon from "../assets/images/icons/dropdown.png";
@@ -8,7 +8,9 @@ import localforage from "localforage";
 
 const NotificationProfileHeader = () => {
   const [user, setUser] = React.useState<any>();
-  localforage.getItem("user", (err, val) => setUser(val));
+  useEffect(() => {
+    localforage.getItem("user", (err, val) => setUser(val));
+  }, []);
 
   const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(
     null

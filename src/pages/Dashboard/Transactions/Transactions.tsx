@@ -1,6 +1,6 @@
 import { DataGrid } from "@mui/x-data-grid";
 import { PolygonIcon } from "../../../assets/images/icons";
-import { NotificationProfileHeader, SearchBar } from "../../../components";
+import { Loading, NotificationProfileHeader, SearchBar } from "../../../components";
 import { useTransactionTable } from "../../../hooks/queries";
 import { transactionColumn } from "../../../table/Columns";
 import TransactionTable from "../../../table/transactions/Table";
@@ -44,7 +44,10 @@ const Transactions = () => {
           // }}
           keepNonExistentRowsSelected
           loading={transactionTable.isLoading}
-          components={{}}
+          components={{
+            LoadingOverlay: Loading,
+
+          }}
         />
       </div>
     </div>

@@ -18,13 +18,16 @@ const EmailVerification = () => {
     reset,
     isOver,
     isRunning,
-  } = useCountdown({ seconds: 10 });
+  } = useCountdown({ seconds: 30 });
   const [userInfo, setUserInfo] = useState<any>();
   const [loading, setLoading] = useState<boolean>(true);
-  localforage.getItem("signUpInfo", (err, value) => {
-    setUserInfo(value);
-    setLoading(false);
-  });
+  useEffect(() => {
+    localforage.getItem("signUpInfo", (err, value) => {
+      setUserInfo(value);
+      setLoading(false);
+    });
+  }, []);
+
   useEffect(() => {
     startOtpCountdown();
   }, [startOtpCountdown]);
@@ -40,18 +43,28 @@ const EmailVerification = () => {
   };
   const onSubmit = () => {
     createVendor.mutate({
-      email: userInfo.email,
-      password: userInfo.password,
-      name: userInfo.businessName,
-      phone: `+${userInfo.phone}`,
+      email: userInfo?.email,
+      password: userInfo?.password,
+      name: userInfo?.businessName,
+      phone: `+${userInfo?.phone}`,
       otp: otp,
-      address: userInfo.businessAddress,
+      address: userInfo?.businessAddress,
     });
     localforage.removeItem("signUpInfo");
   };
   const singUpInfo = useSelector(
     (state: RootState) => state.signUpInfo.signUpInfo
   );
+  const onResendOtp = () => {
+    resendOtp.mutate({
+      email: userInfo?.email,
+      phone: `+${userInfo?.phone}`,
+    });
+    if (resendOtp.isSuccess) {
+      reset();
+      return;
+    }
+  };
   if (loading) {
     return (
       <div className="w-[680px] h-[430px] py-10 bg-white   rounded-lg shadow-lg text-center ">
@@ -66,7 +79,7 @@ const EmailVerification = () => {
         <p className="text-base text-gray-600 pb-6">
           Enter the 6 digit verification code sent to: <br />
           <span className="text-primary font-semibold">
-            {singUpInfo?.email || userInfo.email}
+            {singUpInfo?.email || userInfo?.email}
           </span>
         </p>
         {/* <OtpInput
@@ -110,23 +123,25 @@ const EmailVerification = () => {
         ) : (
           <p className="text-gray-600 py-6">you can now resend otp</p>
         )}
+        <div className="flex items-center gap-5">
+          <Button
+            full={true}
+            disabled={!isOver}
+            onClick={onResendOtp}
+            loading={resendOtp.isLoading}
+          >
+            resend code
+          </Button>
+          <Button
+            full={true}
+            disabled={otp.length < 6 || isOver}
+            onClick={onSubmit}
+            loading={createVendor.isLoading}
+          >
+            send otp
+          </Button>
+        </div>
 
-        <Button
-          full={true}
-          disabled={!isOver}
-          onClick={() => {
-            console.log(otp);
-          }}
-        >
-          resend code
-        </Button>
-        <Button
-          full={true}
-          // disabled={!isOver}
-          onClick={onSubmit}
-        >
-          send otp
-        </Button>
         <p className="text-base text-gray-600 pt-2">
           Didn't get code?{" "}
           <Link to="/verify/number">

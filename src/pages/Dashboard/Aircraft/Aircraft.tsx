@@ -20,10 +20,7 @@ const Aircraft = () => {
   const [value, setValue] = useState<number>(0);
   const aircraft = useAircraft({ isArchived: false, category: "private jet" });
   const helicopter = useAircraft({ isArchived: false, category: "helicopter" });
-  console.log(
-    "🚀 ~ file: Aircraft.tsx ~ line 20 ~ Aircraft ~ aircraft",
-    aircraft.data
-  );
+  
 
   return (
     <div>
@@ -62,10 +59,7 @@ const Aircraft = () => {
       <TabPanel value={value} index={0}>
         <div className="flex   flex-wrap p-2 border shadow rounded mt-5 gap-1">
           {aircraft.isLoading ? (
-            // [1, 2, 3].map((id) => <JetCardSkeleton key={id} />)
-          <div className='h-[300px] w-full'>
-            <Loading/>
-          </div>
+            [1, 2, 3].map((id) => <JetCardSkeleton key={id} />)
           ) : !aircraft.data?.length ? (
             <NoAircraft />
           ) : (
@@ -73,12 +67,11 @@ const Aircraft = () => {
               <AircraftCard {...data} key={id} />
             ))
           )}
-
           {/* <AircraftCardSkeleton /> */}
         </div>
       </TabPanel>
       <TabPanel value={value} index={1}>
-        <div className="flex  justify-between flex-wrap p-2 border shadow rounded mt-5 gap-1">
+        <div className="flex   flex-wrap p-2 border shadow rounded mt-5 gap-1">
           {helicopter.isLoading ? (
             [1, 2, 3].map((id) => <JetCardSkeleton key={id} />)
           ) : !helicopter.data?.length ? (

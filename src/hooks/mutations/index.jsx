@@ -88,7 +88,7 @@ export const useResendVerifyOtp = () => {
 
   return useMutation(resendVerifyOtp, {
     onSuccess(data) {
-      navigate("verify/email");
+      navigate("/verify/email");
       enqueueSnackbar(
         data.message || "Check email and phone for verification otp",
         {
@@ -97,7 +97,7 @@ export const useResendVerifyOtp = () => {
       );
     },
     onError(error) {
-      navigate("verify/email");
+     
 
       enqueueSnackbar(error.response?.data?.error || error.message, {
         variant: "error",

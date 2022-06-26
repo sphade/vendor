@@ -2,6 +2,7 @@ import {
   Button,
   CTabs,
   Info,
+  Loading,
   NoOrder,
   NotificationProfileHeader,
 } from "../../../components";
@@ -58,8 +59,12 @@ const Booking = () => {
           //   console.log(newSelectionModel);
           // }}
           keepNonExistentRowsSelected
-          // loading={true}
-          components={{}}
+          loading={true}
+          components={{
+            NoRowsOverlay: NoOrder,
+            LoadingOverlay: Loading,
+
+          }}
         />
 
         <NoOrder />
