@@ -7,7 +7,7 @@ import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { Button, Loading } from "../../../components";
 import { useCountdown } from "../../../hooks";
-import { useResendVerifyOtp } from "../../../hooks/mutations";
+import { useCreateVendor, useResendVerifyOtp } from "../../../hooks/mutations";
 import { RootState } from "../../../redux/store";
 
 const EmailVerification = () => {
@@ -29,7 +29,7 @@ const EmailVerification = () => {
     startOtpCountdown();
   }, [startOtpCountdown]);
   const resendOtp = useResendVerifyOtp();
-
+  const createVendor = useCreateVendor();
   /**
    * email verification page
    */
@@ -37,6 +37,17 @@ const EmailVerification = () => {
 
   const handleChange = (otpInput: string) => {
     setOtp(otpInput);
+  };
+  const onSubmit = () => {
+    createVendor.mutate({
+      email: userInfo.email,
+      password: userInfo.password,
+      name: userInfo.businessName,
+      phone: `+${userInfo.phone}`,
+      otp: otp,
+      address: userInfo.businessAddress,
+    });
+    localforage.removeItem("signUpInfo");
   };
   const singUpInfo = useSelector(
     (state: RootState) => state.signUpInfo.signUpInfo
@@ -109,10 +120,19 @@ const EmailVerification = () => {
         >
           resend code
         </Button>
+        <Button
+          full={true}
+          // disabled={!isOver}
+          onClick={onSubmit}
+        >
+          send otp
+        </Button>
         <p className="text-base text-gray-600 pt-2">
           Didn't get code?{" "}
           <Link to="/verify/number">
-            <span className="text-primary font-semibold">use phone number</span>
+            <span className="text-primary font-hindBold font-semibold">
+              use phone number
+            </span>
           </Link>
         </p>
       </div>

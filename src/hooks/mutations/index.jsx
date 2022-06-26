@@ -2,6 +2,7 @@ import { useMutation, useQueryClient } from "react-query";
 import {
   archiveAircraft,
   createAircraft,
+  createVendor,
   loginUser,
   resendVerifyOtp,
   signup,
@@ -41,7 +42,7 @@ export const useSignup = () => {
 
   return useMutation(signup, {
     onSuccess(data) {
-      navigate("verify/email");
+      navigate("/verify/email");
       enqueueSnackbar(" successful", {
         variant: "success",
       });
@@ -55,6 +56,32 @@ export const useSignup = () => {
     onSettled() {},
   });
 };
+
+export const useCreateVendor = () => {
+  const navigate = useNavigate();
+  const { enqueueSnackbar } = useSnackbar();
+
+  return useMutation(createVendor, {
+    onSuccess(data) {
+      navigate("/verify/account-created");
+      // enqueueSnackbar(" successful", {
+      //   variant: "success",
+      // });
+      // oddprowax@hamham.uk
+      // vendortesting
+    },
+    onError(error) {
+    
+      enqueueSnackbar(error.response?.data?.error || error.message, {
+        variant: "error",
+      });
+    },
+    onSettled() {
+
+    },
+  });
+};
+
 export const useResendVerifyOtp = () => {
   const navigate = useNavigate();
   const { enqueueSnackbar } = useSnackbar();

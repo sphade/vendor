@@ -37,7 +37,7 @@ const Register = () => {
     else {
       dispatch(setSignUpInfo(data));
       localforage.setItem('signUpInfo',data)
-    signup.mutate({ email: data.email, phone: data.phone });
+    signup.mutate({ email: data.email, phone: `+${data.phone}` });
     }
     
   };

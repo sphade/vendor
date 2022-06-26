@@ -14,7 +14,7 @@ const AccountCreated = () => {
         <p className="text-center text-base text-gray-600 mb-10">
           A mail will be sent to you to confirm sign up
         </p>
-        <Link to="/overview">
+        <Link to="/login">
           <Button variant="primary" full>
             get started
           </Button>

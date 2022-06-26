@@ -12,6 +12,10 @@ export const signup = async (data: Record<string, unknown>) => {
   const response = await axios.post("vendor/signup", data);
   return response.data.data;
 };
+export const createVendor = async (data: Record<string, unknown>) => {
+  const response = await axios.post("vendor/create", data);
+  return response.data.data;
+};
 export const getOverview = async () => {
   const response = await axios.get("vendor/overview");
   return response.data.data;
