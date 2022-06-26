@@ -20,7 +20,7 @@ const AircraftCard = (props: any) => {
       <div className="divide-y ">
         <div className="flex items-center py-2 justify-between">
           <h3 className="text-[#1E1E1E] font-semibold font-hindBold capitalize text-base">
-            {props.tag}
+          {props?.brand} {props?.model}
           </h3>
           <IconButton onClick={handleClick}>
             <img src={DotIcon} alt="DotIcon" className="py-2 " />
@@ -46,7 +46,7 @@ const AircraftCard = (props: any) => {
           </p>
         </div>
         <div className="center-element py-4">
-          <Link to={`details`}>
+          <Link to={`/aircraft/details`}>
             <button
               onClick={async () => {
                 localforage.setItem("aircraftDetails", props);

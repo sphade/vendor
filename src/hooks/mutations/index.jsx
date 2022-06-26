@@ -1,5 +1,6 @@
 import { useMutation, useQueryClient } from "react-query";
 import {
+  archiveAircraft,
   createAircraft,
   loginUser,
   resendVerifyOtp,
@@ -41,13 +42,12 @@ export const useSignup = () => {
   return useMutation(signup, {
     onSuccess(data) {
       navigate("verify/email");
-      enqueueSnackbar(" successfully login", {
+      enqueueSnackbar(" successful", {
         variant: "success",
       });
     },
     onError(error) {
-      navigate("/verify/email");
-
+    
       enqueueSnackbar(error.response?.data?.error || error.message, {
         variant: "error",
       });
@@ -105,11 +105,9 @@ export const useForgotPasswordSendCode = () => {
 
 export const useCreateAircraft = () => {
   const { enqueueSnackbar } = useSnackbar();
-  const navigate = useNavigate();
 
   return useMutation(createAircraft, {
     onSuccess(data) {
-      navigate("/aircraft");
       enqueueSnackbar("Aircraft successfully created", {
         variant: "success",
       });
@@ -120,5 +118,29 @@ export const useCreateAircraft = () => {
       });
     },
     onSettled() {},
+  });
+};
+export const useArchiveAircraft = (id) => {
+  const queryClient = useQueryClient();
+
+  const { enqueueSnackbar } = useSnackbar();
+  const navigate = useNavigate();
+
+  return useMutation(()=>archiveAircraft(id), {
+    onSuccess(data) {
+      // enqueueSnackbar("Aircraft unArchived successfully", {
+      //   variant: "success",
+      // });
+      navigate("/aircraft");
+    },
+    onError(error) {
+      enqueueSnackbar(error.response?.data?.error || error.message, {
+        variant: "error",
+      });
+    },
+    onSettled() {
+      queryClient.invalidateQueries('aircraft')
+      queryClient.invalidateQueries('aircraftArchive')
+    },
   });
 };

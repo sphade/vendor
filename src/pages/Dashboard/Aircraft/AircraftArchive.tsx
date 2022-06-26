@@ -9,9 +9,12 @@ import {
   NotificationProfileHeader,
 } from "../../../components";
 import DeleteArchiveModal from "../../../components/modal/DeleteArchiveModal";
+import { useAircraftIsArchive } from "../../../hooks/queries";
 import { toggleDeleteArchiveModal } from "../../../redux/slices/ModalSlice";
 
 const AircraftArchive = () => {
+  const aircraftArchive = useAircraftIsArchive({ isArchived: true });
+
   const dispatch = useDispatch();
   const arc = [1, 2, 3, 4];
   const [checkedState, setCheckedState] = useState(
@@ -53,13 +56,10 @@ const AircraftArchive = () => {
           </div>
         ) : null}
         <div className="flex flex-wrap justify-between gap-5 mt-5">
-          {arc.map((num) => (
-            <div className="flex gap-4 items-start">
-              <Checkbox
-                checked={checkedState[num]}
-                onChange={() => handleCheckChange(num)}
-              />
-              <AircraftCard />
+          {aircraftArchive.data?.map((data: any, id: number) => (
+            <div className="flex gap-4 items-start" key={id}>
+              <Checkbox />
+              <AircraftCard {...data} />
             </div>
           ))}
         </div>

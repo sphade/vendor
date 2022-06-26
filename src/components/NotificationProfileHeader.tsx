@@ -23,7 +23,7 @@ const NotificationProfileHeader = () => {
       <img src={notificationIcon} alt="notificationIcon" />
 
       <div className="flex !relative items-center space-x-2 pl-2">
-        <Avatar src={user && user.photo} alt={"AvatarIcon"} />
+        <Avatar src={user && user.photo} alt={user?.name} />
         <div>
           <h3 className="text-tertiary font-semibold font-hindBold text-base">
             {user?.name}

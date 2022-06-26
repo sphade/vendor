@@ -6,28 +6,35 @@ import {
 import aircraftPicture from "../../../assets/images/plane-4.png";
 import insidePlane from "../../../assets/images/plane-3.png";
 import { EditIcon } from "../../../assets/images/icons";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import localforage from "localforage";
 const AircraftDetails = () => {
-  const [details, setDetails] = useState<any>({});
+
+  const [details, setDetails] = useState<any>();
   const [loading, setLoading] = useState<boolean>(true);
   useEffect(() => {
     localforage.getItem("aircraftDetails", (err, val) => {
+      
+
       setDetails(val);
       setLoading(false);
     });
-  });
+  }, []);
+
   if (loading) {
     return <h1>loading....</h1>;
   }
+ 
   return (
     <div>
       <header className="header !mb-5">
         <div className="space-x-3 flex items-center">
           <BackButton />
 
-          <h1 className="header-heading">{details?.brand} {details?.model}</h1>
+          <h1 className="header-heading">
+            {details?.brand} {details?.model}
+          </h1>
         </div>
         <div className="flex items-center gap-24">
           <div className="flex items-center">
@@ -41,7 +48,7 @@ const AircraftDetails = () => {
       <main>
         <div className="rounded-lg  p-6 w-[522px] mx-auto font-medium border mb-3 border-[#BDBDBD]">
           <img
-            src={details.ProductImages[0]?.url}
+            src={details?.ProductImages[0]?.url}
             alt="aircraftPicture"
             className="h-[230px] w-full object-cover "
           />
@@ -86,7 +93,12 @@ const AircraftDetails = () => {
               <p className="capitalize text-[#828282]">photos: </p>
               <div className=" flex gap-2 items-center">
                 {details.ProductImages.map((image: any, id: number) => (
-                  <img src={image.url} alt="images" key={id} className='w-[103px] h-[69px] rounded' />
+                  <img
+                    src={image.url}
+                    alt="images"
+                    key={id}
+                    className="w-[103px] h-[69px] rounded"
+                  />
                 ))}
               </div>
             </div>

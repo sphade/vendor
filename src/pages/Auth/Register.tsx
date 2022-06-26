@@ -11,6 +11,7 @@ import { useDispatch } from "react-redux";
 import { setSignUpInfo } from "../../redux/slices/SignUpInfoSlice";
 import { useSnackbar } from "notistack";
 import { useNavigate } from "react-router-dom";
+import localforage from "localforage";
 
 const Register = () => {
   // const [phone, setPhone] = useState("");
@@ -35,6 +36,7 @@ const Register = () => {
     }
     else {
       dispatch(setSignUpInfo(data));
+      localforage.setItem('signUpInfo',data)
     signup.mutate({ email: data.email, phone: data.phone });
     }
     
@@ -110,8 +112,8 @@ const Register = () => {
                 required: true,
               }}
               isValid={() => {
-                if (errors.phoneNumber) {
-                  return errors.phoneNumber.message;
+                if (errors.phone) {
+                  return errors.phone.message;
                 } else {
                   return true;
                 }
@@ -166,7 +168,7 @@ const Register = () => {
           </label>
         </div>
         <div className="pt-5">
-          <Button full variant="primary">
+          <Button full variant="primary" loading={signup.isLoading}>
             sign in
           </Button>
         </div>

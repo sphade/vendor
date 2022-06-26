@@ -9,14 +9,21 @@ import {
   SearchBar,
   TabPanel,
   DeleteModal,
+  NoAircraft,
+  Loading,
 } from "../../../components";
 import { ArchiveIcon } from "../../../assets/images/icons";
 import { Link } from "react-router-dom";
-import { useAircraft,useOverviewTable } from "../../../hooks/queries";
+import { useAircraft } from "../../../hooks/queries";
 import JetCardSkeleton from "../../../skeleton/JetCardSkeleton";
 const Aircraft = () => {
   const [value, setValue] = useState<number>(0);
-  const aircraft = useAircraft();
+  const aircraft = useAircraft({ isArchived: false, category: "private jet" });
+  const helicopter = useAircraft({ isArchived: false, category: "helicopter" });
+  console.log(
+    "🚀 ~ file: Aircraft.tsx ~ line 20 ~ Aircraft ~ aircraft",
+    aircraft.data
+  );
 
   return (
     <div>
@@ -54,39 +61,33 @@ const Aircraft = () => {
 
       <TabPanel value={value} index={0}>
         <div className="flex   flex-wrap p-2 border shadow rounded mt-5 gap-1">
-          {aircraft.isLoading
-            ? [1, 2, 3].map((id) => (
-                <JetCardSkeleton key={id} />
-              ))
-            : aircraft.data?.map((data: any, id: number) => (
-                <AircraftCard {...data} key={id} />
-              ))}
+          {aircraft.isLoading ? (
+            // [1, 2, 3].map((id) => <JetCardSkeleton key={id} />)
+          <div className='h-[300px] w-full'>
+            <Loading/>
+          </div>
+          ) : !aircraft.data?.length ? (
+            <NoAircraft />
+          ) : (
+            aircraft.data?.map((data: any, id: number) => (
+              <AircraftCard {...data} key={id} />
+            ))
+          )}
 
           {/* <AircraftCardSkeleton /> */}
         </div>
       </TabPanel>
       <TabPanel value={value} index={1}>
         <div className="flex  justify-between flex-wrap p-2 border shadow rounded mt-5 gap-1">
-          <BookingCard />
-          <BookingCard />
-          <BookingCard />
-          <BookingCard />
-          <BookingCard />
-          <BookingCard />
-          <BookingCard />
-          <BookingCard />
-          <BookingCard />
-          <BookingCard />
-          <BookingCard />
-          <BookingCard />
-          <BookingCard />
-          <BookingCard />
-          <BookingCard />
-          <BookingCard />
-          <BookingCard />
-          <BookingCard />
-          <BookingCard />
-          <BookingCard />
+          {helicopter.isLoading ? (
+            [1, 2, 3].map((id) => <JetCardSkeleton key={id} />)
+          ) : !helicopter.data?.length ? (
+            <NoAircraft />
+          ) : (
+            helicopter.data?.map((data: any, id: number) => (
+              <AircraftCard {...data} key={id} />
+            ))
+          )}
         </div>
       </TabPanel>
     </div>

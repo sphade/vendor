@@ -20,8 +20,13 @@ export const getOverviewTable = async () => {
   const response = await axios.get("vendor/aircraft/table");
   return response.data.data;
 };
-export const getVendorAircraft = async () => {
-  const response = await axios.get("vendor/aircraft");
+export const getVendorAircraft = async ({ isArchived, category }: any) => {
+  const response = await axios.get("vendor/aircraft", {
+    params: {
+      isArchived,
+      category,
+    },
+  });
   return response.data.data;
 };
 export const createAircraft = async (data: Record<string, unknown>) => {
@@ -45,7 +50,7 @@ export const getTransaction = async () => {
   return response.data.data;
 };
 export const archiveAircraft = async (id: Record<string, unknown>) => {
-  const response = await axios.patch(`aircraft/${id}/archive`);
+  const response = await axios.patch(`vendor/aircraft/${id}/archive`);
   return response.data.data;
 };
 export const editAircraft = async (
@@ -65,9 +70,7 @@ export const RequestUpdatePhoneNumberOtp = async (
   const response = await axios.post(`user/change-phone-otp`, data);
   return response.data.data;
 };
-export const RequestUpdateEmailOtp = async (
-  data: Record<string, unknown>
-) => {
+export const RequestUpdateEmailOtp = async (data: Record<string, unknown>) => {
   const response = await axios.post(`user/change-email-otp`, data);
   return response.data.data;
 };

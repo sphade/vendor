@@ -1,10 +1,11 @@
 // import { useState } from "react";
+import localforage from "localforage";
 import { useEffect, useState } from "react";
 import ReactCodeInput from "react-code-input";
 import { useSelector } from "react-redux";
 // import OtpInput from "react-otp-input";
 import { Link } from "react-router-dom";
-import { Button } from "../../../components";
+import { Button, Loading } from "../../../components";
 import { useCountdown } from "../../../hooks";
 import { useResendVerifyOtp } from "../../../hooks/mutations";
 import { RootState } from "../../../redux/store";
@@ -17,29 +18,45 @@ const EmailVerification = () => {
     reset,
     isOver,
     isRunning,
-  } = useCountdown({ seconds:10 });
+  } = useCountdown({ seconds: 10 });
+  const [userInfo, setUserInfo] = useState<any>();
+  const [loading, setLoading] = useState<boolean>(true);
+  localforage.getItem("signUpInfo", (err, value) => {
+    setUserInfo(value);
+    setLoading(false);
+  });
   useEffect(() => {
     startOtpCountdown();
   }, [startOtpCountdown]);
-  const resendOtp = useResendVerifyOtp()
+  const resendOtp = useResendVerifyOtp();
 
   /**
    * email verification page
    */
-  const [otp, setOtp] = useState<string>('');
+  const [otp, setOtp] = useState<string>("");
 
   const handleChange = (otpInput: string) => {
     setOtp(otpInput);
   };
-  const singUpInfo = useSelector((state: RootState) => state.signUpInfo.signUpInfo)
-
+  const singUpInfo = useSelector(
+    (state: RootState) => state.signUpInfo.signUpInfo
+  );
+  if (loading) {
+    return (
+      <div className="w-[680px] h-[430px] py-10 bg-white   rounded-lg shadow-lg text-center ">
+        <Loading />
+      </div>
+    );
+  }
   return (
     <div className="w-[680px] py-10 bg-white   rounded-lg shadow-lg text-center ">
       <div className=" space-y-3 w-[400px] mx-auto">
         <h1 className=" uppercase text-lg font-bold ">email verification</h1>
         <p className="text-base text-gray-600 pb-6">
           Enter the 6 digit verification code sent to: <br />
-          <span className="text-primary font-semibold">{ singUpInfo?.email || ''}</span>
+          <span className="text-primary font-semibold">
+            {singUpInfo?.email || userInfo.email}
+          </span>
         </p>
         {/* <OtpInput
           value={otp}
@@ -83,9 +100,13 @@ const EmailVerification = () => {
           <p className="text-gray-600 py-6">you can now resend otp</p>
         )}
 
-        <Button full={true} disabled={!isOver} onClick={() => {
-          console.log(otp)
-        }}>
+        <Button
+          full={true}
+          disabled={!isOver}
+          onClick={() => {
+            console.log(otp);
+          }}
+        >
           resend code
         </Button>
         <p className="text-base text-gray-600 pt-2">
