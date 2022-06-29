@@ -6,23 +6,26 @@ import Button from "../Button";
 import { IconButton } from "@mui/material";
 import { Link } from "react-router-dom";
 import AircraftCardDropDown from "../dropDowns/AircraftCardDropDown";
+import localforage from "localforage";
 
-const BookingCard = () => {
+const BookingCard = (props:any) => {
   const [dropDownState, setDropDownState] =
     React.useState<HTMLButtonElement | null>(null);
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    localforage.setItem("selectedAircraft", props);
+
     setDropDownState(event.currentTarget);
   };
   return (
     <div className="w-64 min-h-[376px] border rounded-md shadow-lg p-4 bg-secondary  ">
       <div className=" rounded-t-md h-[100px] object-cover overflow-hidden">
-        <img src={bookingPic} alt="bookingPic" className="w-full h-full" />
+        <img src={props.ProductImages[0].url} alt="bookingPic" className="w-full h-full bg-gray-300" />
       </div>
       <div className="divide-y ">
         <div className="flex items-center py-4 justify-between">
           <h3 className="text-tertiary font-hindBold font-semibold capitalize text-base">
-            Night Sky 6000
+          {props?.brand} {props?.model}
           </h3>
           <IconButton onClick={handleClick}>
             <img src={DotIcon} alt="DotIcon" className="py-2 " />
@@ -38,7 +41,7 @@ const BookingCard = () => {
               <p>Range :</p> <p> Speed :</p>
             </div>
             <div className="flex justify-between text-tertiary capitalize font-hindBold font-semibold text-sm">
-              <p>6000-90433 tms</p> <p> 600mah</p>
+              <p>{props?.maxRange} tms</p> <p>{props?.maxSpeed} mah</p>
             </div>
           </div>
           <div className=" pb-4 space-y-2">
@@ -46,7 +49,7 @@ const BookingCard = () => {
               <p>Capacity :</p> <p> year :</p>
             </div>
             <div className="flex justify-between text-tertiary capitalize font-hindBold font-semibold text-sm">
-              <p>16 passengers</p> <p> 2016</p>
+              <p>{props?.capacity} passengers</p> <p> {props.year}</p>
             </div>
           </div>
         </div>

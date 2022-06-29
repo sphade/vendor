@@ -82,19 +82,7 @@ const EmailVerification = () => {
             {singUpInfo?.email || userInfo?.email}
           </span>
         </p>
-        {/* <OtpInput
-          value={otp}
-          onChange={handleChange}
-          numInputs={6}
-          inputStyle={{
-            height: "48px",
-            width: "48px",
-            border: "1px solid #BDBDBD",
-            backgroundColor: "transparent",
-            borderRadius: "5px",
-            margin: "10px",
-          }}
-        /> */}
+    
         <ReactCodeInput
           type="text"
           name={""}

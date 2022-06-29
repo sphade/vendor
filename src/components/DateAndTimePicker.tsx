@@ -2,22 +2,22 @@ import { CalenderIcon, ClockIcon } from "../assets/images/icons";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+import { TimePicker } from "@mui/x-date-pickers/TimePicker";
 import { MobileDatePicker } from "@mui/x-date-pickers/MobileDatePicker";
 import { InputAdornment, TextField } from "@mui/material";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { DateTimePicker } from "@mui/x-date-pickers";
-const DateAndTimePicker = ({
-  date,
-  time,
-}: {
-  date?: string;
-  time?: string;
-}) => {
-  const [value, setValue] = useState<Date | null | string>(null);
+import { format } from "date-fns";
+
+const DateAndTimePicker = ({ date }: { date?: string }) => {
+  const [value, setValue] = useState<any>(new Date());
   const [open, setOpen] = useState(false);
+  const [time, setTime] = useState<any>(new Date());
+  const [openTime, setOpenTime] = useState(false);
+  const clockElement = useRef<any>();
   return (
-    <div className="border divide-x divide-[#828282] cursor-pointer w-full py-3 rounded flex items-center  px-6 border-[#828282] ">
-      <LocalizationProvider dateAdapter={AdapterDateFns}>
+    <LocalizationProvider dateAdapter={AdapterDateFns}>
+      <div className="border divide-x divide-[#828282] cursor-pointer w-full py-3 rounded flex items-center  px-6 border-[#828282] ">
         <MobileDatePicker
           label={"label"}
           inputFormat="dd/MM/yyyy"
@@ -26,7 +26,6 @@ const DateAndTimePicker = ({
           minDate={new Date()}
           onChange={(newValue) => {
             setValue(newValue);
-            console.log(value);
           }}
           onClose={() => {
             setOpen(false);
@@ -38,27 +37,37 @@ const DateAndTimePicker = ({
             >
               <img src={CalenderIcon} alt="icon" />
               <p className="capitalize text-base">
-                {value?.toString() || "departure date"}
+                {format(value, "dd/MMM/yyyy") || "departure date"}
               </p>
             </div>
           )}
         />
-      </LocalizationProvider>
-      <LocalizationProvider dateAdapter={AdapterDateFns}>
-        <DateTimePicker
-          renderInput={(props) => <TextField {...props} />}
-          label="DateTimePicker"
-          value={value}
-          onChange={(newValue) => {
-            setValue(newValue);
+        <TimePicker
+          label="Time"
+          ref={clockElement}
+          value={time}
+          open={openTime}
+          onClose={() => {
+            setOpenTime(false);
           }}
+          onChange={(value) => {
+            setTime(value);
+          }}
+          renderInput={(params: any) => (
+            <div
+              className="flex gap-2 items-center pl-6"
+              onClick={() => setOpenTime(true)}
+              ref={params.inputRef}
+            >
+              <img src={ClockIcon} alt="icon" />
+              <p className=" text-base">
+              {format(time, "dd/MMM/yyyy") || "departure time"}
+              </p>
+            </div>
+          )}
         />
-      </LocalizationProvider>
-      <div className="flex gap-2 items-center pl-6">
-        <img src={ClockIcon} alt="icon" />
-        <p className=" text-base">{time}</p>
       </div>
-    </div>
+    </LocalizationProvider>
     //   renderInput={(params) =>     <div className="flex gap-2 items-center pr-6">
     //   <img src={CalenderIcon} alt="icon" />
     //   <p className="capitalize text-base">{date || "departure date"}</p>

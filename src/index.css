@@ -31,7 +31,7 @@
 }
 /* active nav-link */
 .active {
-  @apply bg-primary  !text-secondary hover:!bg-primary hover:opacity-80;
+  @apply bg-primary   !text-secondary hover:!bg-primary hover:opacity-80;
 }
 
 /* mui-tabs override */

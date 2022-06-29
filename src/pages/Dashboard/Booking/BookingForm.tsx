@@ -11,7 +11,22 @@ import {
   LocationIcon,
   ToAndFroIcon,
 } from "../../../assets/images/icons";
+import { useForm } from "react-hook-form";
+import { useState } from "react";
 const BookingForm = () => {
+  const [serviceType, setServiceType] = useState<any>("");
+  const {
+    register,
+    handleSubmit,
+    control,
+    watch,
+    formState: { errors },
+  } = useForm({
+    defaultValues: {
+      serviceType: "charter",
+      tripType:'roundtrip'
+    },
+  });
   return (
     <div>
       <header className="header !mb-5">
@@ -27,7 +42,7 @@ const BookingForm = () => {
         <div className="w-[920px] px-20 mx-auto border-[#BDBDBD] border rounded-lg pt-[32px] p-10">
           <img
             src={planeImg}
-            alt='icon'
+            alt="icon"
             className="w-[760px] h-[323px] object-cover "
           />
           <div>
@@ -36,26 +51,61 @@ const BookingForm = () => {
             </h1>
             <div className="mt-10 flex items-center gap-10 mb-10 ">
               <div className="w-[158px] space-y-3">
-                <p className="font-semibold font-hindBold text-gray-700">Service type</p>
+                <p className="font-semibold font-hindBold text-gray-700">
+                  Service type
+                </p>
                 {/* <SelectInput className="!-py-12" size="small" /> */}
+                <SelectInput
+                  control={control}
+                  className="la"
+                  options={[
+                    {
+                      value: "charter",
+                      name: "Charter",
+                    },
+                    { value: "jetPooling", name: "jet pooling" },
+                  ]}
+                  rules={{
+                    required: "this field is required",
+                  }}
+                  name="serviceType"
+                  size="small"
+                />
               </div>
               <div className="w-[158px] space-y-3">
-                <p className="font-semibold font-hindBold text-gray-700">Trip type</p>
-                {/* <SelectInput className="!-py-12" size="small" /> */}
+                {watch("serviceType") === "jetPooling" ? null : (
+                  <>
+                    <p className="font-semibold font-hindBold text-gray-700">
+                      Trip type
+                    </p>
+                    <SelectInput
+                      control={control}
+                      className=""
+                      // label="Trip Type"
+                      options={[
+                        {
+                          value: "roundtrip",
+                          name: "RoundTrip",
+                        },
+                      ]}
+                      rules={{
+                        required: "this field is required",
+                      }}
+                      name="tripType"
+                      size="small"
+                    />
+                  </>
+                )}
               </div>
             </div>
             <div className="flex mb-8">
               <div className="border w-full py-3 rounded flex items-center gap-4 px-6 border-[#828282] ">
-                <img src={CompassIcon} alt='icon' />
+                <img src={CompassIcon} alt="icon" />
                 <p className="capitalize text-base">departure</p>
               </div>
-              <img
-                src={ToAndFroIcon}
-                alt='icon'
-                className="-mx-1  z-50"
-              />
+              <img src={ToAndFroIcon} alt="icon" className="-mx-1  z-50" />
               <div className="border w-full py-3 rounded flex items-center gap-4 px-6 border-[#828282] ">
-                <img src={LocationIcon} alt='icon' />
+                <img src={LocationIcon} alt="icon" />
                 <p className="capitalize text-base">departure</p>
               </div>
             </div>

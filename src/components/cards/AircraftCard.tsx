@@ -15,7 +15,7 @@ const AircraftCard = (props: any) => {
   return (
     <div className="w-64 border rounded-md shadow-lg  p-2 bg-secondary">
       <div className=" rounded-t-md h-[100px] overflow-hidden">
-        <img src={props.ProductImages[0].url} alt="jetPic" className="" />
+        <img src={props.ProductImages[0].url} alt="jetPic" className="bg-gray-300" />
       </div>
       <div className="divide-y ">
         <div className="flex items-center py-2 justify-between">

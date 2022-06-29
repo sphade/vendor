@@ -6,22 +6,26 @@ import {
   loginUser,
   resendVerifyOtp,
   signup,
+  RequestUpdateEmailOtp,
+  changeEmail,
+  updateProfilePicture,
 } from "../../services/api";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useSnackbar } from "notistack";
-import useAppStorage from "../useAppStorage";
+import localforage from "localforage";
+import { useDispatch } from "react-redux";
+import { toggleEmailVerificationModal } from "../../redux/slices/ModalSlice";
 
 export const useLogin = () => {
   const { enqueueSnackbar } = useSnackbar();
   const queryClient = useQueryClient();
 
   const navigate = useNavigate();
-  const { addToStore } = useAppStorage();
   const location = useLocation();
   const origin = location.state?.from?.pathname || "/overview";
   return useMutation(loginUser, {
     async onSuccess(data) {
-      await addToStore("user", data);
+      localforage.setItem("user", data);
       navigate(origin, { replace: true });
       enqueueSnackbar(" successfully login", {
         variant: "success",
@@ -32,7 +36,9 @@ export const useLogin = () => {
         variant: "error",
       });
     },
-    onSettled() {},
+    onSettled() {
+      queryClient.invalidateQueries("user");
+    },
   });
 };
 
@@ -48,12 +54,50 @@ export const useSignup = () => {
       });
     },
     onError(error) {
-    
       enqueueSnackbar(error.response?.data?.error || error.message, {
         variant: "error",
       });
     },
     onSettled() {},
+  });
+};
+export const useEmailOtp = () => {
+  const { enqueueSnackbar } = useSnackbar();
+  return useMutation(RequestUpdateEmailOtp, {
+    onSuccess(data) {
+      enqueueSnackbar(" check your email for otp", {
+        variant: "success",
+      });
+    },
+    onError(error) {
+      enqueueSnackbar(error.response?.data?.error || error.message, {
+        variant: "error",
+      });
+    },
+    onSettled() {},
+  });
+};
+export const useChangeEmail = () => {
+  const queryClient = useQueryClient();
+
+  const { enqueueSnackbar } = useSnackbar();
+const dispatch = useDispatch()
+  return useMutation(changeEmail, {
+    onSuccess(data) {
+      enqueueSnackbar(" email has been changed", {
+        variant: "success",
+      });
+      // dispatch(toggleEmailVerificationModal())
+    },
+    onError(error) {
+      enqueueSnackbar(error.response?.data?.error || error.message, {
+        variant: "error",
+      });
+    },
+    onSettled() {
+      queryClient.invalidateQueries("user");
+
+    },
   });
 };
 
@@ -71,14 +115,11 @@ export const useCreateVendor = () => {
       // vendortesting
     },
     onError(error) {
-    
       enqueueSnackbar(error.response?.data?.error || error.message, {
         variant: "error",
       });
     },
-    onSettled() {
-
-    },
+    onSettled() {},
   });
 };
 
@@ -97,8 +138,6 @@ export const useResendVerifyOtp = () => {
       );
     },
     onError(error) {
-     
-
       enqueueSnackbar(error.response?.data?.error || error.message, {
         variant: "error",
       });
@@ -111,11 +150,9 @@ export const useForgotPasswordSendCode = () => {
   const { enqueueSnackbar } = useSnackbar();
 
   const navigate = useNavigate();
-  const { addToStore } = useAppStorage();
 
   return useMutation(loginUser, {
     async onSuccess(data) {
-      await addToStore("user", data);
       navigate(origin, { replace: true });
       enqueueSnackbar(" successfully login", {
         variant: "success",
@@ -153,7 +190,7 @@ export const useArchiveAircraft = (id) => {
   const { enqueueSnackbar } = useSnackbar();
   const navigate = useNavigate();
 
-  return useMutation(()=>archiveAircraft(id), {
+  return useMutation(() => archiveAircraft(id), {
     onSuccess(data) {
       // enqueueSnackbar("Aircraft unArchived successfully", {
       //   variant: "success",
@@ -166,8 +203,29 @@ export const useArchiveAircraft = (id) => {
       });
     },
     onSettled() {
-      queryClient.invalidateQueries('aircraft')
-      queryClient.invalidateQueries('aircraftArchive')
+      queryClient.invalidateQueries("aircraft");
+      queryClient.invalidateQueries("aircraftArchive");
+    },
+  });
+};
+export const useChangeProfilePicture = () => {
+  const queryClient = useQueryClient();
+
+  const { enqueueSnackbar } = useSnackbar();
+
+  return useMutation(updateProfilePicture, {
+    onSuccess(data) {
+      // enqueueSnackbar("Aircraft unArchived successfully", {
+      //   variant: "success",
+      // });
+    },
+    onError(error) {
+      enqueueSnackbar(error.response?.data?.error || error.message, {
+        variant: "error",
+      });
+    },
+    onSettled() {
+      queryClient.invalidateQueries("user");
     },
   });
 };

@@ -18,9 +18,8 @@ import { useAircraft } from "../../../hooks/queries";
 import JetCardSkeleton from "../../../skeleton/JetCardSkeleton";
 const Aircraft = () => {
   const [value, setValue] = useState<number>(0);
-  const aircraft = useAircraft({ isArchived: false, category: "private jet" });
+  const privateJet = useAircraft({ isArchived: false, category: "private jet" });
   const helicopter = useAircraft({ isArchived: false, category: "helicopter" });
-  
 
   return (
     <div>
@@ -57,21 +56,22 @@ const Aircraft = () => {
       </div>
 
       <TabPanel value={value} index={0}>
-        <div className="flex   flex-wrap p-2 border shadow rounded mt-5 gap-1">
-          {aircraft.isLoading ? (
-            [1, 2, 3].map((id) => <JetCardSkeleton key={id} />)
-          ) : !aircraft.data?.length ? (
+        <div className="flex justify-between  flex-wrap p-2 border shadow rounded mt-5 gap-1">
+          {privateJet.isLoading ? (
+            [1, 2, 3, 4].map((id) => <JetCardSkeleton key={id} />)
+          ) : !privateJet.data?.length ? (
             <NoAircraft />
           ) : (
-            aircraft.data?.map((data: any, id: number) => (
+            privateJet.data?.map((data: any, id: number) => (
               <AircraftCard {...data} key={id} />
             ))
           )}
+          {privateJet.isFetching && <JetCardSkeleton />}
           {/* <AircraftCardSkeleton /> */}
         </div>
       </TabPanel>
       <TabPanel value={value} index={1}>
-        <div className="flex   flex-wrap p-2 border shadow rounded mt-5 gap-1">
+        <div className="flex  justify-between  flex-wrap p-2 border shadow rounded mt-5 gap-1">
           {helicopter.isLoading ? (
             [1, 2, 3].map((id) => <JetCardSkeleton key={id} />)
           ) : !helicopter.data?.length ? (

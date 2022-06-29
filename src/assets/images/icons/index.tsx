@@ -51,3 +51,4 @@ export { default as PolygonOrangeIcon } from "./PolygonOrange.svg";
 export { default as NoteTextIcon } from "./note-text.svg";
 export { default as NoteTextActiveIcon } from "./note-textA.svg";
 export { default as LoadingLogoIcon } from "./loadingLogo.svg";
+export { default as ChangePictureIcon } from "./changePicture.svg";

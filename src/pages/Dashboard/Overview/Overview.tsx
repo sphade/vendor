@@ -18,7 +18,7 @@ import { Skeleton } from "@mui/material";
 
 import { aircraftColumns } from "../../../table/Columns";
 import { DataGrid } from "@mui/x-data-grid";
-
+import { format } from "date-fns";
 const Overview = () => {
   const { overviewData, overviewLoading } = useOverview();
   const overviewTable = useOverviewTable();
@@ -33,7 +33,9 @@ const Overview = () => {
             <h1 className="text-base text-tertiary font-hindBold font-semibold">
               DashBoard Overview
             </h1>
-            <p className="text-gray-600 font-medium text-sm">06/feb/2022</p>
+            <p className="text-gray-600 font-medium text-sm">
+              {format(new Date(), "dd/MMM/yyyy")}
+            </p>
           </div>
           <SearchBar />
         </div>
@@ -46,7 +48,12 @@ const Overview = () => {
             text="total No of aircraft"
             num={
               overviewLoading ? (
-                <Skeleton animation="wave" variant="circular" width={40} height={40} />
+                <Skeleton
+                  animation="wave"
+                  variant="circular"
+                  width={40}
+                  height={40}
+                />
               ) : (
                 overviewData?.totalAircraft
               )
@@ -58,7 +65,12 @@ const Overview = () => {
             text="Total No of trips"
             num={
               overviewLoading ? (
-                <Skeleton animation="wave" variant="circular" width={40} height={40} />
+                <Skeleton
+                  animation="wave"
+                  variant="circular"
+                  width={40}
+                  height={40}
+                />
               ) : (
                 overviewData?.trips
               )
@@ -71,7 +83,12 @@ const Overview = () => {
             text="Total amount"
             num={
               overviewLoading ? (
-                <Skeleton animation="wave" variant="circular" width={40} height={40} />
+                <Skeleton
+                  animation="wave"
+                  variant="circular"
+                  width={40}
+                  height={40}
+                />
               ) : (
                 overviewData?.totalAmount
               )
@@ -118,7 +135,6 @@ const Overview = () => {
             loading={overviewTable.isLoading}
             components={{
               LoadingOverlay: Loading,
-  
             }}
           />
         </div>

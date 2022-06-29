@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Button, PasswordInput } from "../../components";
 import { useForm } from "react-hook-form";
 import { useLogin } from "../../hooks/mutations";
+import { emailValidation } from "../../validation/emailValidation";
 
 const Login = () => {
   const login = useLogin();
@@ -26,7 +27,7 @@ const Login = () => {
           {...register("email", {
             required: "this field is required",
             pattern: {
-              value: /^[A-Z0-9._%+-]+@[A-z0-9.-]+\.[A-Z]{2,}$/i,
+              value: emailValidation,
               message: "invalid email format",
             },
           })}
@@ -63,6 +64,13 @@ const Login = () => {
           sign in
         </Button>
       </div>
+      <p className="text-xs mt-2">
+        Don't have an account,
+        <Link to="/register" className="text-primary">
+          {" "}
+          Register
+        </Link>
+      </p>
     </form>
   );
 };

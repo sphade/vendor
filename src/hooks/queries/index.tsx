@@ -3,7 +3,9 @@ import {
   getOverview,
   getOverviewTable,
   getTransaction,
+  getUser,
   getVendorAircraft,
+  getVendorOrder,
 } from "../../services/api";
 import { useSnackbar } from "notistack";
 
@@ -62,4 +64,26 @@ export const useAircraftIsArchive = ({ isArchived, category }: any) => {
       },
     }
   );
+};
+export const useUser = () => {
+  const { enqueueSnackbar } = useSnackbar();
+
+  return useQuery("user", getUser, {
+    onError(error: any) {
+      enqueueSnackbar(error.response?.data?.error || error.message, {
+        variant: "error",
+      });
+    },
+  });
+};
+export const useOrder = () => {
+  const { enqueueSnackbar } = useSnackbar();
+
+  return useQuery("order", getVendorOrder, {
+    onError(error: any) {
+      enqueueSnackbar(error.response?.data?.error || error.message, {
+        variant: "error",
+      });
+    },
+  });
 };

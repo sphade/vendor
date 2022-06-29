@@ -31,10 +31,10 @@ const AircraftAdd = () => {
   const [model, setModel] = useState<string>('3000');
   const [bar, setBar] = useState<boolean>(true);
   const [images, setImages] = useState<any[]>([]);
+  const [year, setYear] = useState<any>('2000');
 
   const onSubmit = (data: {}) => {
-    createAircraft.mutate({ ...data, capacity, bar, model,  });
-    alert(JSON.stringify({ ...data, capacity, bar, model,  }));
+    createAircraft.mutate({ ...data, capacity, bar, model,year  });
   };
   const maxNumber = 4;
 
@@ -102,26 +102,8 @@ const AircraftAdd = () => {
                   <div className="flex gap-5 mb-5">
                     <SelectInput
                       control={control}
-                      className="la"
+                      className=""
                       label="Aircraft Type"
-                      options={[
-                        {
-                          value: "privateJet",
-                          name: "Private jet",
-                        },
-                        { value: "helicopter", name: "Helicopter" },
-                      ]}
-                      rules={{
-                        required: "this field is required",
-                      }}
-                      name="serviceType"
-                      size="medium"
-                    />
-
-                    <SelectInput
-                      control={control}
-                      className="la"
-                      label="Service Type"
                       options={[
                         {
                           value: "privateJet",
@@ -135,8 +117,36 @@ const AircraftAdd = () => {
                       name="airCraftType"
                       size="medium"
                     />
+
+                    <SelectInput
+                      control={control}
+                      className="la"
+                      label="Service Type"
+                      options={[
+                        {
+                          value: "charter",
+                          name: "Charter",
+                        },
+                        { value: "jetPooling", name: "jet pooling" },
+                      ]}
+                      rules={{
+                        required: "this field is required",
+                      }}
+                      name="serviceType"
+                      size="medium"
+                    />
                   </div>
                   <SeatCapacity capacity={capacity} setCapacity={setCapacity} />
+                  <PerformanceInput
+                        label="Baggage Capacity"
+                        name="baggageCapacity"
+                        placeholder="kg"
+                        register={register}
+                        rule={{
+                          required: "this field is required",
+                        }}
+                        errors={errors.baggageCapacity}
+                      />
                 </div>
                 <div className="mb-10">
                   <p className="capitalize text-tertiary mb-3">travel fee</p>
@@ -147,7 +157,7 @@ const AircraftAdd = () => {
                           errors.travelFee &&
                           " border-red-700 focus:!border-red-700"
                         }`}
-                        {...register("travelFee", {
+                        {...register("price", {
                           required: "this field is required",
                         })}
                       />
@@ -189,10 +199,10 @@ const AircraftAdd = () => {
                     <p className="capitalize text-tertiary font-semibold font-hindBold text-sm mb-7">
                       performance
                     </p>
-                    <div className="flex items-center flex-wrap gap-y-8 justify-between">
+                    <div className="grid grid-cols-2 gap-10   justify-between">
                       <PerformanceInput
                         label="travel hours"
-                        name="travelHours"
+                        name="flightHours"
                         placeholder="Hours"
                         register={register}
                         rule={{
@@ -220,6 +230,17 @@ const AircraftAdd = () => {
                         }}
                         errors={errors.maxRange}
                       />
+                      <PerformanceInput
+                        label="max altitude"
+                        name="maxAltitude"
+                        placeholder="ft"
+                        register={register}
+                        rule={{
+                          required: "this field is required",
+                        }}
+                        errors={errors.maxAltitude}
+                      />
+                   
                       {/* <PerformanceInput label="max distance" placeholder="km" /> */}
                     </div>
                   </div>
@@ -271,7 +292,7 @@ const AircraftAdd = () => {
                     )}
                   </div>
                 </div>
-                <Button full>add</Button>
+                <Button full loading={createAircraft.isLoading}>add</Button>
               </form>
             ) : (
               <div className="w-[522px] mb-5 border-[#BDBDBD] px-12 border rounded-lg mx-auto ">

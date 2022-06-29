@@ -1,5 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import ButtonBase from "@mui/material/ButtonBase";
 import {
   CategoryActiveIcon,
   CategoryIcon,
@@ -30,21 +31,28 @@ const Sidebar = (props: Props) => {
         <img src={LogoIcon} alt="LogoIcon" />
       </div>
 
-      <nav>
-        <ul className="space-y-6 mr-5">
+      <nav className="">
+        <ul className="space-y-6 mr-5 ">
           {sidebarOptions.map(({ Icon, link, text, ActiveIcon }, id) => (
             <li key={id}>
-              <NavLink
-                to={link}
-                className="hover:bg-[#f3f3f3]  py-2 px-5 rounded-r-full   flex items-center gap-5 text-[#4F4F4F]  default-transition"
+              <ButtonBase
+                sx={{
+                  borderTopRightRadius: 30,
+                  borderBottomRightRadius: 30,
+                }}
               >
-                {({ isActive }) => (
-                  <>
-                    <img src={isActive ? ActiveIcon : Icon} alt={text} />
-                    <p className="capitalize text-lg font-medium ">{text}</p>
-                  </>
-                )}
-              </NavLink>
+                <NavLink
+                  to={link}
+                  className="hover:bg-[#f3f3f3] w-[212px]   py-2 px-5 rounded-r-full   flex items-center gap-5 text-[#4F4F4F]  default-transition"
+                >
+                  {({ isActive }) => (
+                    <>
+                      <img src={isActive ? ActiveIcon : Icon} alt={text} />
+                      <p className="capitalize text-lg font-medium ">{text}</p>
+                    </>
+                  )}
+                </NavLink>{" "}
+              </ButtonBase>
             </li>
           ))}
         </ul>

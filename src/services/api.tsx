@@ -41,7 +41,7 @@ export const forgotPassword = async (data: Record<string, unknown>) => {
   const response = await axios.post("user/forget-password", data);
   return response.data.data;
 };
-export const getVendorBooking = async () => {
+export const getVendorOrder = async () => {
   const response = await axios.get("vendor/orders");
   return response.data.data;
 };
@@ -64,8 +64,13 @@ export const editAircraft = async (
   const response = await axios.patch(`products/aircraft/${id}`, data);
   return response.data.data;
 };
-export const updateProfilePicture = async (data: Record<string, unknown>) => {
-  const response = await axios.post(`user/photo`, data);
+export const updateProfilePicture = async (data: any) => {
+  const response = await axios.post(`user/photo`, data,{
+    headers: {
+      Accept: "multipart/form-data",
+      "Content-Type": "multipart/form-data",
+    },
+  });
   return response.data.data;
 };
 export const RequestUpdatePhoneNumberOtp = async (
