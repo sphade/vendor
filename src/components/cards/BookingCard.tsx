@@ -20,11 +20,11 @@ const BookingCard = (props: any) => {
   return (
     <div className="w-64 min-h-[376px] border rounded-md shadow-lg p-4 bg-secondary  ">
       <div className=" rounded-t-md h-[100px] object-cover overflow-hidden">
-        <img
-          src={props.ProductImages[0].url}
+        {/* <img
+          src={props?.ProductImages[0]?.url}
           alt="bookingPic"
           className="w-full h-full bg-gray-300"
-        />
+        /> */}
       </div>
       <div className="divide-y ">
         <div className="flex items-center py-4 justify-between">
@@ -53,12 +53,12 @@ const BookingCard = (props: any) => {
               <p>Capacity :</p> <p> year :</p>
             </div>
             <div className="flex justify-between text-tertiary capitalize    font-semibold text-sm">
-              <p>{props?.capacity} passengers</p> <p> {props.year}</p>
+              <p>{props?.capacity} passengers</p> <p> {props?.year}</p>
             </div>
           </div>
         </div>
 
-        <div className="flex gap-3 justify-between items-center pt-5">
+        <div className="flex justify-between gap-3 items-center pt-5">
           <Button variant="outlinePrimary" size="medium">
             details
           </Button>

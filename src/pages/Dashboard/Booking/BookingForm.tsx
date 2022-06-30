@@ -13,6 +13,7 @@ import {
 } from "../../../assets/images/icons";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
+import BookingFormSkeleton from "../../../skeleton/BookingFormSkeleton";
 const BookingForm = () => {
   const [serviceType, setServiceType] = useState<any>("");
   const {
@@ -39,6 +40,7 @@ const BookingForm = () => {
         <NotificationProfileHeader />
       </header>
       <main className="mb-5">
+       <BookingFormSkeleton/>
         <div className="w-[920px] px-20 mx-auto border-[#BDBDBD] border rounded-lg pt-[32px] p-10">
           <img
             src={planeImg}

@@ -9,11 +9,14 @@ import {
 } from "../../../components";
 import BookingCard from "../../../components/cards/BookingCard";
 import { useAircraft } from "../../../hooks/queries";
-import JetCardSkeleton from "../../../skeleton/JetCardSkeleton";
+import BookingJetCardSkeleton from "../../../skeleton/BookingJetCardSkeleton";
 
 const BookingCreateOrder = () => {
   const [value, setValue] = useState<number>(0);
-  const privateJet = useAircraft({ isArchived: false, category: "private jet" });
+  const privateJet = useAircraft({
+    isArchived: false,
+    category: "private jet",
+  });
   const helicopter = useAircraft({ isArchived: false, category: "helicopter" });
   return (
     <div>
@@ -40,51 +43,30 @@ const BookingCreateOrder = () => {
         </div>
         <TabPanel value={value} index={0}>
           <div className="flex  justify-between flex-wrap p-2 border shadow rounded mt-5 gap-1">
-          {privateJet.isLoading ? (
-            [1, 2, 3, 4].map((id) => <JetCardSkeleton key={id} />)
-          ) : !privateJet.data?.length ? (
-            <NoAircraft />
-          ) : (
-            privateJet.data?.map((data: any, id: number) => (
-              <BookingCard {...data} key={id}/>
-            ))
-          )}
-          {privateJet.isFetching && <JetCardSkeleton />}
-            {/* <BookingCard />
-            <BookingCard />
-            <BookingCard />
-            <BookingCard />
-            <BookingCard />
-            <BookingCard />
-            <BookingCard />
-            <BookingCard />
-            <BookingCard /> */}
-
-            {/* <AircraftCardSkeleton /> */}
+            {privateJet.isLoading ? (
+              [1, 2, 3].map((id) => <BookingJetCardSkeleton key={id} />)
+            ) : !privateJet.data?.length ? (
+              <NoAircraft />
+            ) : (
+              privateJet.data?.map((data: any, id: number) => (
+                <BookingCard {...data} key={id} />
+              ))
+            )}
+            {privateJet.isFetching && <BookingJetCardSkeleton />}
           </div>
         </TabPanel>
         <TabPanel value={value} index={1}>
           <div className="flex  justify-between flex-wrap p-2 border shadow rounded mt-5 gap-1">
-            {/* <BookingCard />
-            <BookingCard />
-            <BookingCard />
-            <BookingCard />
-            <BookingCard />
-            <BookingCard />
-            <BookingCard />
-            <BookingCard />
-            <BookingCard />
-            <BookingCard />
-            <BookingCard />
-            <BookingCard />
-            <BookingCard />
-            <BookingCard />
-            <BookingCard />
-            <BookingCard />
-            <BookingCard />
-            <BookingCard />
-            <BookingCard />
-            <BookingCard /> */}
+            {helicopter.isLoading ? (
+              [1, 2, 3].map((id) => <BookingJetCardSkeleton key={id} />)
+            ) : !helicopter.data?.length ? (
+              <NoAircraft />
+            ) : (
+              helicopter.data?.map((data: any, id: number) => (
+                <BookingCard {...data} key={id} />
+              ))
+            )}
+            {helicopter.isFetching && <BookingJetCardSkeleton />}
           </div>
         </TabPanel>
       </main>
