@@ -18,15 +18,16 @@ import { useUser } from "../hooks/queries";
 import ImageUploading from "react-images-uploading";
 
 const Profile = () => {
-  const formData = new FormData();
-  formData.append("image", "imageList[0].image");
-
   const changeImage = useChangeProfilePicture();
   const [images, setImages] = useState<any[]>([]);
   const onImageChange = async (imageList: any, addUpdateIndex: any) => {
+    const formData = new FormData();
+
     setImages(imageList);
-    formData.append("image", "imageList[0].image");
-    console.log(imageList[0].image);
+    formData.append("image", imageList[0]);
+    
+    changeImage.mutate(formData);
+
   };
   const [edit, setEdit] = React.useState(false);
   // const [loading, setLoading] = React.useState(true);
@@ -81,7 +82,6 @@ const Profile = () => {
           </h1>
           {/* <img src={avatarIcon} alt={avatarIcon} className="h-32 mb-10 mx-auto" /> */}
           <ImageUploading
-            multiple
             value={images}
             onChange={onImageChange}
             maxNumber={1}
@@ -108,6 +108,20 @@ const Profile = () => {
                     onImageUpload();
                   }}
                 />
+                {imageList.map((image, index) => (
+                  <div className="w-[80px] mx-auto -mt-5">
+                    <Button
+                      full
+                      onClick={() => {
+                        onImageUpdate(index);
+                      }}
+                      size="small"
+                      variant="outlinePrimary"
+                    >
+                      update
+                    </Button>
+                  </div>
+                ))}
                 <img
                   src={ChangePictureIcon}
                   alt="uploadIcon"
@@ -177,8 +191,6 @@ const Profile = () => {
                 full
                 onClick={() => {
                   setEdit(false);
-                  changeImage.mutate(formData);
-                  console.log(formData);
                 }}
               >
                 save

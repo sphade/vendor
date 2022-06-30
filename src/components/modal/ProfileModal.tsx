@@ -38,7 +38,6 @@ export const EmailModal: FC<IModal> = ({ modalState, setModalState }) => {
   if (emailOtp.isSuccess) {
     closeModal();
     dispatch(setEmailVerificationModal());
-    console.log(emailOtp.isSuccess);
   }
   return (
     <Modal open={modalState} onClose={closeModal}>
@@ -92,15 +91,12 @@ export const EmailVerificationModal: FC<IModal> = () => {
     (state: RootState) => state.modal.emailVerificationModal
   );
   const [email, setEmail] = useState<any>("");
-  useEffect(() => {
-    startOtpCountdown();
-  },[startOtpCountdown, state]);
- 
+
   useEffect(() => {
     localforage.getItem("newEmail", (err, value) => {
       setEmail(value);
     });
-  }, []);
+  }, [email]);
 
   const [otp, setOtp] = useState("");
   const handleChange = (otpInput: string) => {
@@ -112,6 +108,9 @@ export const EmailVerificationModal: FC<IModal> = () => {
       otp: otp,
     });
   };
+  useEffect(() => {
+    state === true ? startOtpCountdown() : reset();
+  }, [state]);
   return (
     <Modal open={state} onClose={closeModal}>
       <div className="absolute top-[20%] space-y-10  px-[144px] text-center py-10 left-[50%] -translate-x-1/2 bg-white rounded-lg shadow-xl  w-[680px]  ">
@@ -156,9 +155,6 @@ export const EmailVerificationModal: FC<IModal> = () => {
               disabled={!isOver}
               onClick={() => {
                 emailOtp.mutate({ email: email });
-                if (emailOtp.isSuccess) {
-                  reset();
-                }
               }}
               loading={emailOtp.isLoading}
             >
@@ -177,7 +173,7 @@ export const EmailVerificationModal: FC<IModal> = () => {
           {/* <p className="text-base text-gray-600 pt-2">
             Didn't get code?{" "}
             <Link to="/verify/number">
-              <span className="text-primary font-hindBold font-semibold">
+              <span className="text-primary    font-semibold">
                 use phone number
               </span>
             </Link>

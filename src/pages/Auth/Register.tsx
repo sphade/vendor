@@ -26,20 +26,17 @@ const Register = () => {
   const signup = useSignup();
   const { enqueueSnackbar } = useSnackbar();
 
-
   const onSubmit = (data: any) => {
     if (!data.acceptTerms) {
-      enqueueSnackbar('please accept the terms and conditions', {
+      enqueueSnackbar("please accept the terms and conditions", {
         variant: "info",
       });
-      return
-    }
-    else {
+      return;
+    } else {
       dispatch(setSignUpInfo(data));
-      localforage.setItem('signUpInfo',data)
-    signup.mutate({ email: data.email, phone: `+${data.phone}` });
+      localforage.setItem("signUpInfo", data);
+      signup.mutate({ email: data.email, phone: `+${data.phone}` });
     }
-    
   };
   return (
     <div className="w-[664px] px-[100px] rounded-lg shadow-lg  mb-[100px] py-10 border  relative   bg-secondary">
@@ -61,9 +58,7 @@ const Register = () => {
           />
         </div>
         <div className="flex items-center justify-center gap-2 text-blue-600 text-xs">
-          <span className="font-semibold font-hindBold  uppercase">
-            add business logo
-          </span>
+          <span className="font-semibold     uppercase">add business logo</span>
           {/* <input type="file" /> */}
         </div>
       </div>
@@ -158,11 +153,12 @@ const Register = () => {
           <Controller
             name="acceptTerms"
             control={control}
-         
-            render={({ field }) => <Checkbox {...field} id='terms' name='terms' />}
+            render={({ field }) => (
+              <Checkbox {...field} id="terms" name="terms" />
+            )}
           />
-          
-          <label className="text-sm " id='terms'  htmlFor="terms"  >
+
+          <label className="text-sm " id="terms" htmlFor="terms">
             By creating a Bossbus Premium Account, I understand and agree to
             Bossbus’s Privacy Notice and Terms of Use
           </label>

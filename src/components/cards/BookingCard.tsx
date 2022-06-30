@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 import AircraftCardDropDown from "../dropDowns/AircraftCardDropDown";
 import localforage from "localforage";
 
-const BookingCard = (props:any) => {
+const BookingCard = (props: any) => {
   const [dropDownState, setDropDownState] =
     React.useState<HTMLButtonElement | null>(null);
 
@@ -20,12 +20,16 @@ const BookingCard = (props:any) => {
   return (
     <div className="w-64 min-h-[376px] border rounded-md shadow-lg p-4 bg-secondary  ">
       <div className=" rounded-t-md h-[100px] object-cover overflow-hidden">
-        <img src={props.ProductImages[0].url} alt="bookingPic" className="w-full h-full bg-gray-300" />
+        <img
+          src={props.ProductImages[0].url}
+          alt="bookingPic"
+          className="w-full h-full bg-gray-300"
+        />
       </div>
       <div className="divide-y ">
         <div className="flex items-center py-4 justify-between">
-          <h3 className="text-tertiary font-hindBold font-semibold capitalize text-base">
-          {props?.brand} {props?.model}
+          <h3 className="text-tertiary    font-semibold capitalize text-base">
+            {props?.brand} {props?.model}
           </h3>
           <IconButton onClick={handleClick}>
             <img src={DotIcon} alt="DotIcon" className="py-2 " />
@@ -40,7 +44,7 @@ const BookingCard = (props:any) => {
             <div className="flex justify-between text-xs text-gray-400">
               <p>Range :</p> <p> Speed :</p>
             </div>
-            <div className="flex justify-between text-tertiary capitalize font-hindBold font-semibold text-sm">
+            <div className="flex justify-between text-tertiary capitalize    font-semibold text-sm">
               <p>{props?.maxRange} tms</p> <p>{props?.maxSpeed} mah</p>
             </div>
           </div>
@@ -48,7 +52,7 @@ const BookingCard = (props:any) => {
             <div className="flex justify-between text-xs text-gray-400">
               <p>Capacity :</p> <p> year :</p>
             </div>
-            <div className="flex justify-between text-tertiary capitalize font-hindBold font-semibold text-sm">
+            <div className="flex justify-between text-tertiary capitalize    font-semibold text-sm">
               <p>{props?.capacity} passengers</p> <p> {props.year}</p>
             </div>
           </div>

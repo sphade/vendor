@@ -15,12 +15,16 @@ const AircraftCard = (props: any) => {
   return (
     <div className="w-64 border rounded-md shadow-lg  p-2 bg-secondary">
       <div className=" rounded-t-md h-[100px] overflow-hidden">
-        <img src={props.ProductImages[0].url} alt="jetPic" className="bg-gray-300" />
+        <img
+          src={props.ProductImages[0].url}
+          alt="jetPic"
+          className="bg-gray-300"
+        />
       </div>
       <div className="divide-y ">
         <div className="flex items-center py-2 justify-between">
-          <h3 className="text-[#1E1E1E] font-semibold font-hindBold capitalize text-base">
-          {props?.brand} {props?.model}
+          <h3 className="text-[#1E1E1E] font-semibold    capitalize text-base">
+            {props?.brand} {props?.model}
           </h3>
           <IconButton onClick={handleClick}>
             <img src={DotIcon} alt="DotIcon" className="py-2 " />
@@ -34,16 +38,14 @@ const AircraftCard = (props: any) => {
           <div className="flex justify-between text-xs text-[#828282]">
             <p>Service type :</p> <p> Aircraft type :</p>
           </div>
-          <div className="flex justify-between text-[#1E1E1E] capitalize font-semibold font-hindBold text-sm">
+          <div className="flex justify-between text-[#1E1E1E] capitalize font-semibold    text-sm">
             <p>{props.serviceType}</p> <p>{props.airCraftType}</p>
           </div>
         </div>
 
         <div className="py-4 center-element flex-col space-y-1">
           <p className="text-[#828282] text-xs capitalize">seat capacity:</p>
-          <p className="text-[#1E1E1E] font-semibold font-hindBold">
-            {props.capacity}
-          </p>
+          <p className="text-[#1E1E1E] font-semibold   ">{props.capacity}</p>
         </div>
         <div className="center-element py-4">
           <Link to={`/aircraft/details`}>

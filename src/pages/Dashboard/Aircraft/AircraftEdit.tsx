@@ -21,7 +21,7 @@ const AircraftEdit = () => {
         <NotificationProfileHeader />
       </header>
       <main>
-        <div className="rounded-lg  p-6 w-[522px] mx-auto font-semibold font-hindBold border mb-3 border-[#BDBDBD]">
+        <div className="rounded-lg  p-6 w-[522px] mx-auto font-semibold    border mb-3 border-[#BDBDBD]">
           <div>
             <p className="capitalize text-tertiary ">photos</p>
             <img
@@ -71,7 +71,7 @@ const AircraftEdit = () => {
             </div>
           </div>
           <div className="mb-5 pb-5 border-b border-[#BDBDBD]">
-            <p className="capitalize text-tertiary mb-3 font-semibold font-hindBold">
+            <p className="capitalize text-tertiary mb-3 font-semibold   ">
               description
             </p>
             <div className="px-5 py-4 border-[#BDBDBD] border rounded-lg">
@@ -83,11 +83,11 @@ const AircraftEdit = () => {
             </div>
           </div>
           {/* <div className="space-y-5 pb-10 mb-10 border-b border-[#BDBDBD]">
-            <p className="capitalize text-tertiary font-semibold font-hindBold ">
+            <p className="capitalize text-tertiary font-semibold    ">
               specification
             </p>
             <div>
-              <p className="capitalize text-tertiary font-semibold font-hindBold text-sm mb-3">
+              <p className="capitalize text-tertiary font-semibold    text-sm mb-3">
                 performance
               </p>
               <div className="flex flex-wrap gap-5 items-center">
@@ -117,7 +117,7 @@ const AircraftEdit = () => {
               </div>
             </div>
             <div>
-              <p className="capitalize text-tertiary font-semibold font-hindBold text-sm mb-3">
+              <p className="capitalize text-tertiary font-semibold    text-sm mb-3">
                 interior
               </p>
               <div className="flex flex-wrap gap-5 items-center">

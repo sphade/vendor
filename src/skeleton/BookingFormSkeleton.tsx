@@ -7,21 +7,17 @@ const BookingFormSkeleton = () => {
       <div className="w-[920px] px-20 mx-auto border-[#BDBDBD] border rounded-lg pt-[32px] p-10">
         <Skeleton width="760px" height="323px" />
         <div>
-          <h1 className="font-semibold font-hindBold capitalize text-tertiary text-2xl p-4 border-b border-[#BDBDBD]  ">
+          <h1 className="font-semibold    capitalize text-tertiary text-2xl p-4 border-b border-[#BDBDBD]  ">
             <Skeleton variant="text" width={100} />
             challenger 6000
           </h1>
           <div className="mt-10 flex items-center gap-10 mb-10 ">
             <div className="w-[158px] space-y-3">
-              <p className="font-semibold font-hindBold text-gray-700">
-                Service type
-              </p>
+              <p className="font-semibold    text-gray-700">Service type</p>
               {/* <SelectInput className="!-py-12" size="small" /> */}
             </div>
             <div className="w-[158px] space-y-3">
-              <p className="font-semibold font-hindBold text-gray-700">
-                Trip type
-              </p>
+              <p className="font-semibold    text-gray-700">Trip type</p>
               {/* <SelectInput className="!-py-12" size="small" /> */}
             </div>
           </div>

@@ -82,7 +82,7 @@ const EmailVerification = () => {
             {singUpInfo?.email || userInfo?.email}
           </span>
         </p>
-    
+
         <ReactCodeInput
           type="text"
           name={""}
@@ -133,7 +133,7 @@ const EmailVerification = () => {
         <p className="text-base text-gray-600 pt-2">
           Didn't get code?{" "}
           <Link to="/verify/number">
-            <span className="text-primary font-hindBold font-semibold">
+            <span className="text-primary    font-semibold">
               use phone number
             </span>
           </Link>

@@ -11,7 +11,6 @@ module.exports = {
     },
     fontFamily: {
       hind: ["hind", "san-serif"],
-      hindBold: ["hindBold", "san-serif"],
     },
   },
   plugins: [],

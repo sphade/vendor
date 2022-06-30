@@ -4,43 +4,41 @@ const AircraftDetailsSkeleton = () => {
   return (
     <div className="rounded-lg  p-6 w-[522px] mx-auto font-medium border mb-3 border-[#BDBDBD]">
       {/* <Skeleton animation="wave" width="100%" sx={{ height: 190 }} /> */}
-<div className='w-full h-[230px] animate-pulse bg-gray-300 rounded '>
-
-</div>
+      <div className="w-full h-[230px] animate-pulse bg-gray-300 rounded "></div>
       <div className="divide-y divide-[#BDBDBD] text-sm">
         <div className="py-4 flex items-center justify-between">
           <p className="capitalize text-[#828282]">aircraft Name: </p>
-          <p className="capitalize text-tertiary font-semibold font-hindBold">
+          <p className="capitalize text-tertiary font-semibold   ">
             <Skeleton animation="wave" variant="text" width={60} />
           </p>
         </div>{" "}
         <div className="py-4 flex items-center justify-between">
           <p className="capitalize text-[#828282]">Service type: </p>
-          <p className="capitalize text-tertiary font-semibold font-hindBold">
+          <p className="capitalize text-tertiary font-semibold   ">
             <Skeleton animation="wave" variant="text" width={60} />{" "}
           </p>
         </div>{" "}
         <div className="py-4 flex items-center justify-between">
           <p className="capitalize text-[#828282]">aircraft type: </p>
-          <p className="capitalize text-tertiary font-semibold font-hindBold">
+          <p className="capitalize text-tertiary font-semibold   ">
             <Skeleton animation="wave" variant="text" width={60} />{" "}
           </p>
         </div>{" "}
         <div className="py-4 flex items-center justify-between">
           <p className="capitalize text-[#828282]">seat capacity: </p>
-          <p className="capitalize text-tertiary font-semibold font-hindBold">
+          <p className="capitalize text-tertiary font-semibold   ">
             <Skeleton animation="wave" variant="text" width={60} />{" "}
           </p>
         </div>{" "}
         <div className="py-4 flex items-center justify-between ">
           <p className="capitalize text-[#828282]">total amount: </p>
-          <p className="capitalize text-tertiary font-semibold font-hindBold">
+          <p className="capitalize text-tertiary font-semibold   ">
             <Skeleton animation="wave" variant="text" width={60} />{" "}
           </p>
         </div>{" "}
         <div className="py-4 flex flex-col gap-3 ">
           <p className="capitalize text-[#828282]">description: </p>
-          <p className="capitalize text-tertiary font-semibold font-hindBold">
+          <p className="capitalize text-tertiary font-semibold   ">
             <Skeleton animation="wave" variant="text" />{" "}
             <Skeleton animation="wave" variant="text" />{" "}
             <Skeleton animation="wave" variant="text" />{" "}
@@ -67,19 +65,19 @@ const AircraftDetailsSkeleton = () => {
               <div className="space-y-2">
                 <div className=" flex items-center gap-3 ">
                   <p className="capitalize text-[#828282]">travel hour: </p>
-                  <p className="capitalize text-tertiary font-semibold font-hindBold">
+                  <p className="capitalize text-tertiary font-semibold   ">
                     <Skeleton width={40} animation="wave" variant="text" />
                   </p>
                 </div>
                 <div className=" flex items-center gap-3 ">
                   <p className="capitalize text-[#828282]">max speed: </p>
-                  <p className="capitalize text-tertiary font-semibold font-hindBold">
+                  <p className="capitalize text-tertiary font-semibold   ">
                     <Skeleton width={40} animation="wave" variant="text" />
                   </p>
                 </div>
                 <div className=" flex items-center gap-3 ">
                   <p className="capitalize text-[#828282]">max distance: </p>
-                  <p className="capitalize text-tertiary font-semibold font-hindBold">
+                  <p className="capitalize text-tertiary font-semibold   ">
                     <Skeleton width={40} animation="wave" variant="text" />
                   </p>
                 </div>
@@ -92,25 +90,25 @@ const AircraftDetailsSkeleton = () => {
               <div className="space-y-2">
                 <div className=" flex items-center gap-3 ">
                   <p className="capitalize text-[#828282]">bar: </p>
-                  <p className="capitalize text-tertiary font-semibold font-hindBold">
+                  <p className="capitalize text-tertiary font-semibold   ">
                     <Skeleton width={40} animation="wave" variant="text" />
                   </p>
                 </div>
                 <div className=" flex items-center gap-3 ">
                   <p className="capitalize text-[#828282]">cabin width: </p>
-                  <p className=" text-tertiary font-semibold font-hindBold">
+                  <p className=" text-tertiary font-semibold   ">
                     <Skeleton width={40} animation="wave" variant="text" />
                   </p>
                 </div>
                 <div className=" flex items-center gap-3 ">
                   <p className="capitalize text-[#828282]">cabin length: </p>
-                  <p className=" text-tertiary font-semibold font-hindBold">
+                  <p className=" text-tertiary font-semibold   ">
                     <Skeleton width={40} animation="wave" variant="text" />
                   </p>
                 </div>
                 <div className=" flex items-center gap-3 ">
                   <p className="capitalize text-[#828282]">cabin height: </p>
-                  <p className=" text-tertiary font-semibold font-hindBold">
+                  <p className=" text-tertiary font-semibold   ">
                     <Skeleton width={40} animation="wave" variant="text" />
                   </p>
                 </div>

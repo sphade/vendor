@@ -29,10 +29,13 @@ const NotificationProfileHeader = () => {
         {user.isLoading ? (
           <Skeleton variant="circular" width={40} height={40} />
         ) : (
-          <Avatar src={user.data?.photo || offlineUser?.photo} alt={user.data?.name || offlineUser?.name} />
+          <Avatar
+            src={user.data?.photo || offlineUser?.photo}
+            alt={user.data?.name || offlineUser?.name}
+          />
         )}
         <div>
-          <h3 className="text-tertiary font-semibold font-hindBold text-base">
+          <h3 className="text-tertiary font-semibold    text-base">
             {user.isLoading ? (
               <Skeleton variant="text" width={70} />
             ) : (

@@ -14,7 +14,7 @@ import {
 } from "../../../assets/images/icons";
 import { TextField } from "@mui/material";
 import { useState } from "react";
-import {  useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import ImageUploading from "react-images-uploading";
 import SelectInput from "../../../components/SelectInput";
 import { useCreateAircraft } from "../../../hooks/mutations";
@@ -28,13 +28,13 @@ const AircraftAdd = () => {
   const createAircraft = useCreateAircraft();
   const [showAddPic, setShowAddPic] = useState<boolean>(false);
   const [capacity, setCapacity] = useState<number>(0);
-  const [model, setModel] = useState<string>('3000');
+  const [model, setModel] = useState<string>("3000");
   const [bar, setBar] = useState<boolean>(true);
   const [images, setImages] = useState<any[]>([]);
-  const [year, setYear] = useState<any>('2000');
+  const [year, setYear] = useState<any>("2000");
 
   const onSubmit = (data: {}) => {
-    createAircraft.mutate({ ...data, capacity, bar, model,year  });
+    createAircraft.mutate({ ...data, capacity, bar, model, year });
   };
   const maxNumber = 4;
 
@@ -73,7 +73,7 @@ const AircraftAdd = () => {
             !showAddPic ? (
               <form
                 onSubmit={handleSubmit(onSubmit)}
-                className="rounded-lg  p-6 w-[522px] mx-auto font-semibold font-hindBold border mb-3 border-[#BDBDBD]"
+                className="rounded-lg  p-6 w-[522px] mx-auto font-semibold    border mb-3 border-[#BDBDBD]"
               >
                 <div>
                   <p className="capitalize text-tertiary ">photos</p>
@@ -138,15 +138,15 @@ const AircraftAdd = () => {
                   </div>
                   <SeatCapacity capacity={capacity} setCapacity={setCapacity} />
                   <PerformanceInput
-                        label="Baggage Capacity"
-                        name="baggageCapacity"
-                        placeholder="kg"
-                        register={register}
-                        rule={{
-                          required: "this field is required",
-                        }}
-                        errors={errors.baggageCapacity}
-                      />
+                    label="Baggage Capacity"
+                    name="baggageCapacity"
+                    placeholder="kg"
+                    register={register}
+                    rule={{
+                      required: "this field is required",
+                    }}
+                    errors={errors.baggageCapacity}
+                  />
                 </div>
                 <div className="mb-10">
                   <p className="capitalize text-tertiary mb-3">travel fee</p>
@@ -170,7 +170,7 @@ const AircraftAdd = () => {
                   </div>
                 </div>
                 <div className="mb-5 pb-5  border-[#BDBDBD]">
-                  <p className="capitalize text-tertiary mb-3 font-semibold font-hindBold">
+                  <p className="capitalize text-tertiary mb-3 font-semibold   ">
                     description
                   </p>
                   <TextField
@@ -192,11 +192,11 @@ const AircraftAdd = () => {
                   />
                 </div>
                 <div className="space-y-5  mb-10  border-[#BDBDBD]">
-                  <p className="capitalize text-tertiary font-semibold font-hindBold ">
+                  <p className="capitalize text-tertiary font-semibold    ">
                     specification
                   </p>
                   <div>
-                    <p className="capitalize text-tertiary font-semibold font-hindBold text-sm mb-7">
+                    <p className="capitalize text-tertiary font-semibold    text-sm mb-7">
                       performance
                     </p>
                     <div className="grid grid-cols-2 gap-10   justify-between">
@@ -240,12 +240,12 @@ const AircraftAdd = () => {
                         }}
                         errors={errors.maxAltitude}
                       />
-                   
+
                       {/* <PerformanceInput label="max distance" placeholder="km" /> */}
                     </div>
                   </div>
                   <div>
-                    <p className="capitalize text-tertiary font-semibold font-hindBold text-sm mt-3 mb-7">
+                    <p className="capitalize text-tertiary font-semibold    text-sm mt-3 mb-7">
                       interior
                     </p>
                     <div className="flex flex-col gap-5 items-center">
@@ -292,7 +292,9 @@ const AircraftAdd = () => {
                     )}
                   </div>
                 </div>
-                <Button full loading={createAircraft.isLoading}>add</Button>
+                <Button full loading={createAircraft.isLoading}>
+                  add
+                </Button>
               </form>
             ) : (
               <div className="w-[522px] mb-5 border-[#BDBDBD] px-12 border rounded-lg mx-auto ">
@@ -300,7 +302,7 @@ const AircraftAdd = () => {
                   <p className="text-tertiary font-bold">
                     Drag and drop to change photo order.
                   </p>
-                  <p className="font-semibold font-hindBold text-gray-500">
+                  <p className="font-semibold    text-gray-500">
                     {imageList.length}/
                     <span className="font-bold text-tertiary ">
                       {maxNumber}

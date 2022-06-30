@@ -35,7 +35,7 @@ const Button: FC<IButton> = ({
     >
       <button
         className={classNames(
-          "hover:opacity-80 default-transition   center-element font-hindBold  uppercase  text-secondary rounded-md cursor-pointer  h-fit disabled:opacity-50 disabled:cursor-not-allowed",
+          "hover:opacity-80 default-transition   center-element     uppercase  text-secondary rounded-md cursor-pointer  h-fit disabled:opacity-50 disabled:cursor-not-allowed",
           {
             " opacity-75": loading,
             "cursor-not-allowed !bg-[#d2d2d2]": disabled,

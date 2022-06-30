@@ -16,13 +16,13 @@ const DeleteModal: FC = () => {
 
   return (
     <Modal open={deleteModalState} onClose={closeModal}>
-      <div className="absolute top-[35%] font-hindBold     px-[24px] text-center py-5 left-[50%] -translate-x-1/2 bg-white rounded-lg   w-[450px] border-t-4 border-[#FF2A1C] min-h-[310px]">
+      <div className="absolute top-[35%]        px-[24px] text-center py-5 left-[50%] -translate-x-1/2 bg-white rounded-lg   w-[450px] border-t-4 border-[#FF2A1C] min-h-[310px]">
         <img
           src={TrashModalIcon}
           alt={TrashModalIcon}
           className="absolute -top-[40px] left-[190px]"
         />
-        <h1 className="text-2xl font-hindBold font-semibold text-tertiary mt-[24px] mb-[36px]">
+        <h1 className="text-2xl    font-semibold text-tertiary mt-[24px] mb-[36px]">
           Delete Aircraft?
         </h1>
         <p className="text-gray-500  text-justify ">

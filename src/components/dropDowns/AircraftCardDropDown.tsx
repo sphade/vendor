@@ -61,7 +61,7 @@ const AircraftCardDropDown = ({
       }}
       PaperProps={{ className: "!rounded-lg" }}
     >
-      <ul className="rounded-lg bg-white  w-[180px] font-hindBold   border divide-y flex flex-col">
+      <ul className="rounded-lg bg-white  w-[180px]      border divide-y flex flex-col">
         <li>
           <Link
             to="edit"

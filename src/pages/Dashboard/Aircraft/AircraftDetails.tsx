@@ -64,37 +64,37 @@ const AircraftDetails = () => {
             <div className="divide-y divide-[#BDBDBD] text-sm">
               <div className="py-4 flex items-center justify-between">
                 <p className="capitalize text-[#828282]">aircraft Name: </p>
-                <p className="capitalize text-tertiary font-semibold font-hindBold">
+                <p className="capitalize text-tertiary font-semibold   ">
                   {details?.brand} {details?.model}
                 </p>
               </div>{" "}
               <div className="py-4 flex items-center justify-between">
                 <p className="capitalize text-[#828282]">Service type: </p>
-                <p className="capitalize text-tertiary font-semibold font-hindBold">
+                <p className="capitalize text-tertiary font-semibold   ">
                   {details?.serviceType}
                 </p>
               </div>{" "}
               <div className="py-4 flex items-center justify-between">
                 <p className="capitalize text-[#828282]">aircraft type: </p>
-                <p className="capitalize text-tertiary font-semibold font-hindBold">
+                <p className="capitalize text-tertiary font-semibold   ">
                   {details?.airCraftType}
                 </p>
               </div>{" "}
               <div className="py-4 flex items-center justify-between">
                 <p className="capitalize text-[#828282]">seat capacity: </p>
-                <p className="capitalize text-tertiary font-semibold font-hindBold">
+                <p className="capitalize text-tertiary font-semibold   ">
                   {details.capacity}
                 </p>
               </div>{" "}
               <div className="py-4 flex items-center justify-between ">
                 <p className="capitalize text-[#828282]">total amount: </p>
-                <p className="capitalize text-tertiary font-semibold font-hindBold">
+                <p className="capitalize text-tertiary font-semibold   ">
                   {details?.price}
                 </p>
               </div>{" "}
               <div className="py-4 flex flex-col gap-3 ">
                 <p className="capitalize text-[#828282]">description: </p>
-                <p className="capitalize text-tertiary font-semibold font-hindBold">
+                <p className="capitalize text-tertiary font-semibold   ">
                   {details?.description}
                 </p>
               </div>
@@ -125,13 +125,13 @@ const AircraftDetails = () => {
                         <p className="capitalize text-[#828282]">
                           travel hour:{" "}
                         </p>
-                        <p className="capitalize text-tertiary font-semibold font-hindBold">
+                        <p className="capitalize text-tertiary font-semibold   ">
                           {details?.flightHours} hrs
                         </p>
                       </div>
                       <div className=" flex items-center gap-3 ">
                         <p className="capitalize text-[#828282]">max speed: </p>
-                        <p className="capitalize text-tertiary font-semibold font-hindBold">
+                        <p className="capitalize text-tertiary font-semibold   ">
                           {details?.maxSpeed} km/h
                         </p>
                       </div>
@@ -139,7 +139,7 @@ const AircraftDetails = () => {
                         <p className="capitalize text-[#828282]">
                           max distance:{" "}
                         </p>
-                        <p className="capitalize text-tertiary font-semibold font-hindBold">
+                        <p className="capitalize text-tertiary font-semibold   ">
                           {details?.maxRange} square miles
                         </p>
                       </div>
@@ -152,7 +152,7 @@ const AircraftDetails = () => {
                     <div className="space-y-2">
                       <div className=" flex items-center gap-3 ">
                         <p className="capitalize text-[#828282]">bar: </p>
-                        <p className="capitalize text-tertiary font-semibold font-hindBold">
+                        <p className="capitalize text-tertiary font-semibold   ">
                           {details?.isAvailable ? "available" : "Unavailable"}
                         </p>
                       </div>
@@ -160,7 +160,7 @@ const AircraftDetails = () => {
                         <p className="capitalize text-[#828282]">
                           cabin width:{" "}
                         </p>
-                        <p className=" text-tertiary font-semibold font-hindBold">
+                        <p className=" text-tertiary font-semibold   ">
                           {details?.cabinWidth} m
                         </p>
                       </div>
@@ -168,7 +168,7 @@ const AircraftDetails = () => {
                         <p className="capitalize text-[#828282]">
                           cabin length:{" "}
                         </p>
-                        <p className=" text-tertiary font-semibold font-hindBold">
+                        <p className=" text-tertiary font-semibold   ">
                           {details?.cabinLength} m
                         </p>
                       </div>
@@ -176,7 +176,7 @@ const AircraftDetails = () => {
                         <p className="capitalize text-[#828282]">
                           cabin height:{" "}
                         </p>
-                        <p className=" text-tertiary font-semibold font-hindBold">
+                        <p className=" text-tertiary font-semibold   ">
                           {details?.cabinHeight} m
                         </p>
                       </div>
