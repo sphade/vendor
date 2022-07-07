@@ -24,7 +24,7 @@ const MaintenanceForm = () => {
           <SelectInput
             control={control}
             className="la"
-            label="Aircraft Type"
+            label="choose aircraft"
             options={[
               {
                 value: "privateJet",
@@ -39,7 +39,7 @@ const MaintenanceForm = () => {
             size="medium"
           />
 
-          <div className="flex items-center  justify-between gap-2">
+          {/* <div className="flex items-center  justify-between gap-2">
             <div className="flex-1">
               {" "}
               <SelectInput
@@ -80,7 +80,7 @@ const MaintenanceForm = () => {
                 size="medium"
               />
             </div>
-          </div>
+          </div> */}
         </div>
         <div className="space-y-6">
           <h2 className="capitalize text-tertiary text-lg font-semibold    pt-6">

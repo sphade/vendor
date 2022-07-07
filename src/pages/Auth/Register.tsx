@@ -143,7 +143,7 @@ const Register = () => {
             required: "this field is required",
             validate: (val: string) => {
               if (watch("password") !== val) {
-                return "your password does not watch";
+                return "your password does not match";
               }
             },
           }}

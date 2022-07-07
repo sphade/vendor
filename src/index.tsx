@@ -28,7 +28,7 @@ root.render(
     <Router>
       <QueryClientProvider client={queryClient}>
         <Provider store={store}>
-          <SnackbarProvider maxSnack={3}
+          <SnackbarProvider maxSnack={3} 
             anchorOrigin={{
               vertical: 'top',
               horizontal: 'right',

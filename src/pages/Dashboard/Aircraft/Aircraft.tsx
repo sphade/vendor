@@ -11,14 +11,19 @@ import {
   DeleteModal,
   NoAircraft,
   Loading,
+  EmptyCard,
 } from "../../../components";
 import { ArchiveIcon } from "../../../assets/images/icons";
 import { Link } from "react-router-dom";
 import { useAircraft } from "../../../hooks/queries";
 import JetCardSkeleton from "../../../skeleton/JetCardSkeleton";
+import Error from "../../../components/Error";
 const Aircraft = () => {
   const [value, setValue] = useState<number>(0);
-  const privateJet = useAircraft({ isArchived: false, category: "private jet" });
+  const privateJet = useAircraft({
+    isArchived: false,
+    category: "private jet",
+  });
   const helicopter = useAircraft({ isArchived: false, category: "helicopter" });
 
   return (
@@ -56,31 +61,43 @@ const Aircraft = () => {
       </div>
 
       <TabPanel value={value} index={0}>
-        <div className="flex justify-between  flex-wrap p-2 border shadow rounded mt-5 gap-1">
+        <div className="flex justify-between min-h-[500px]  flex-wrap p-2 border shadow rounded mt-5 gap-1">
           {privateJet.isLoading ? (
-            [1, 2, 3, 4].map((id) => <JetCardSkeleton key={id} />)
+            [...new Array(3)].map((id) => <JetCardSkeleton key={id} />)
+          ) : privateJet.isError ? (
+            <div className=" w-full">
+              <Error />
+            </div>
           ) : !privateJet.data?.length ? (
-            <NoAircraft />
+            <div className=" w-full">
+              <EmptyCard header='you currently have no private jets' subtitle="start by adding one"/>
+            </div>
           ) : (
             privateJet.data?.map((data: any, id: number) => (
               <AircraftCard {...data} key={id} />
             ))
           )}
           {privateJet.isFetching && <JetCardSkeleton />}
-          {/* <AircraftCardSkeleton /> */}
         </div>
       </TabPanel>
       <TabPanel value={value} index={1}>
-        <div className="flex  justify-between  flex-wrap p-2 border shadow rounded mt-5 gap-1">
+        <div className="flex justify-between min-h-[500px]  flex-wrap p-2 border shadow rounded mt-5 gap-1">
           {helicopter.isLoading ? (
-            [1, 2, 3].map((id) => <JetCardSkeleton key={id} />)
-          ) : !helicopter.data?.length ? (
-            <NoAircraft />
-          ) : (
-            helicopter.data?.map((data: any, id: number) => (
-              <AircraftCard {...data} key={id} />
-            ))
-          )}
+            [...new Array(3)].map((id) => <JetCardSkeleton key={id} />)
+            ) : helicopter.isError ? (
+              <div className=" w-full">
+                <Error />
+              </div>
+            ) : !helicopter.data?.length ? (
+              <div className=" w-full">
+                <EmptyCard header='you currently have no helicopter' subtitle="start by adding one"/>
+              </div>
+            ) : (
+              helicopter.data?.map((data: any, id: number) => (
+                <AircraftCard {...data} key={id} />
+              ))
+            )}
+            {helicopter.isFetching && <JetCardSkeleton />}
         </div>
       </TabPanel>
     </div>

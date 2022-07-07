@@ -30,8 +30,8 @@ const NotificationProfileHeader = () => {
           <Skeleton variant="circular" width={40} height={40} />
         ) : (
           <Avatar
-            src={user.data?.photo || offlineUser?.photo}
-            alt={user.data?.name || offlineUser?.name}
+            src={user.data?.logo || offlineUser?.photo}
+            alt={user.data?.business_name || offlineUser?.name}
           />
         )}
         <div>
@@ -39,7 +39,7 @@ const NotificationProfileHeader = () => {
             {user.isLoading ? (
               <Skeleton variant="text" width={70} />
             ) : (
-              user.data?.name || offlineUser?.name
+              user.data?.business_name || offlineUser?.name
             )}
           </h3>
           <p className="text-gray-400 font-medium text-sm">
@@ -47,7 +47,7 @@ const NotificationProfileHeader = () => {
             {user.isLoading ? (
               <Skeleton variant="text" width={70} />
             ) : (
-              user.data?.name || offlineUser?.name
+              user.data?.business_name || offlineUser?.name
             )}
           </p>
         </div>

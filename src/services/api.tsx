@@ -34,7 +34,12 @@ export const getVendorAircraft = async ({ isArchived, category }: any) => {
   return response.data.data;
 };
 export const createAircraft = async (data: Record<string, unknown>) => {
-  const response = await axios.post("vendor/aircraft", data);
+  const response = await axios.post("vendor/aircraft", data, {
+    headers: {
+      Accept: "multipart/form-data",
+      "Content-Type": "multipart/form-data",
+    },
+  });
   return response.data.data;
 };
 export const forgotPassword = async (data: Record<string, unknown>) => {
@@ -46,7 +51,7 @@ export const getVendorOrder = async () => {
   return response.data.data;
 };
 export const getUser = async () => {
-  const response = await axios.get("user/profile");
+  const response = await axios.get("vendor/profile");
   return response.data.data;
 };
 export const getTransaction = async () => {

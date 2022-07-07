@@ -18,7 +18,7 @@ const EmailVerification = () => {
     reset,
     isOver,
     isRunning,
-  } = useCountdown({ seconds: 30 });
+  } = useCountdown({ minutes: 5 });
   const [userInfo, setUserInfo] = useState<any>();
   const [loading, setLoading] = useState<boolean>(true);
   useEffect(() => {
@@ -60,11 +60,14 @@ const EmailVerification = () => {
       email: userInfo?.email,
       phone: `+${userInfo?.phone}`,
     });
+  };
+  useEffect(() => {
     if (resendOtp.isSuccess) {
       reset();
-      return;
+      startOtpCountdown();
     }
-  };
+  }, [resendOtp.isSuccess, reset, startOtpCountdown]);
+
   if (loading) {
     return (
       <div className="w-[680px] h-[430px] py-10 bg-white   rounded-lg shadow-lg text-center ">

@@ -81,7 +81,7 @@ export const useChangeEmail = () => {
   const queryClient = useQueryClient();
 
   const { enqueueSnackbar } = useSnackbar();
-const dispatch = useDispatch()
+  const dispatch = useDispatch();
   return useMutation(changeEmail, {
     onSuccess(data) {
       enqueueSnackbar(" email has been changed", {
@@ -96,7 +96,6 @@ const dispatch = useDispatch()
     },
     onSettled() {
       queryClient.invalidateQueries("user");
-
     },
   });
 };
@@ -215,9 +214,9 @@ export const useChangeProfilePicture = () => {
 
   return useMutation(updateProfilePicture, {
     onSuccess(data) {
-      // enqueueSnackbar("Aircraft unArchived successfully", {
-      //   variant: "success",
-      // });
+      enqueueSnackbar("image upload successful", {
+        variant: "success",
+      });
     },
     onError(error) {
       enqueueSnackbar(error.response?.data?.error || error.message, {

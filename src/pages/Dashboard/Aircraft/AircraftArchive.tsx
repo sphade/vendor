@@ -66,7 +66,7 @@ const AircraftArchive = () => {
               </div>
             ))
           ) : !aircraftArchive.data?.length ? (
-            <NoAircraft />
+            <h1 className='text-gray-400 capitalize center-element w-full h-[70vh] font-semibold text-2xl'>archive is empty</h1>
           ) : (
             aircraftArchive.data?.map((data: any, id: number) => (
               <div className="flex gap-4 items-start" key={id}>

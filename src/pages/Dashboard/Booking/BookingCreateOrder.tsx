@@ -2,12 +2,13 @@ import { useState } from "react";
 import {
   BackButton,
   CTabs,
-  NoAircraft,
+  EmptyCard,
   NotificationProfileHeader,
   SearchBar,
   TabPanel,
 } from "../../../components";
 import BookingCard from "../../../components/cards/BookingCard";
+import Error from "../../../components/Error";
 import { useAircraft } from "../../../hooks/queries";
 import BookingJetCardSkeleton from "../../../skeleton/BookingJetCardSkeleton";
 
@@ -42,11 +43,20 @@ const BookingCreateOrder = () => {
           <SearchBar size="medium" />
         </div>
         <TabPanel value={value} index={0}>
-          <div className="flex  justify-between flex-wrap p-2 border shadow rounded mt-5 gap-1">
+          <div className="flex justify-between min-h-[500px]  flex-wrap p-2 border shadow rounded mt-5 gap-1">
             {privateJet.isLoading ? (
-              [1, 2, 3].map((id) => <BookingJetCardSkeleton key={id} />)
+              [...new Array(3)].map((id) => <BookingJetCardSkeleton key={id} />)
+            ) : privateJet.isError ? (
+              <div className=" w-full">
+                <Error />
+              </div>
             ) : !privateJet.data?.length ? (
-              <NoAircraft />
+              <div className=" w-full">
+                <EmptyCard
+                  header="you currently have no private jets"
+                  subtitle="start by adding one"
+                />
+              </div>
             ) : (
               privateJet.data?.map((data: any, id: number) => (
                 <BookingCard {...data} key={id} />
@@ -56,11 +66,20 @@ const BookingCreateOrder = () => {
           </div>
         </TabPanel>
         <TabPanel value={value} index={1}>
-          <div className="flex  justify-between flex-wrap p-2 border shadow rounded mt-5 gap-1">
+          <div className="flex justify-between min-h-[500px]  flex-wrap p-2 border shadow rounded mt-5 gap-1">
             {helicopter.isLoading ? (
-              [1, 2, 3].map((id) => <BookingJetCardSkeleton key={id} />)
+              [...new Array(3)].map((id) => <BookingJetCardSkeleton key={id} />)
+            ) : helicopter.isError ? (
+              <div className=" w-full">
+                <Error />
+              </div>
             ) : !helicopter.data?.length ? (
-              <NoAircraft />
+              <div className=" w-full">
+                <EmptyCard
+                  header="you currently have no helicopter"
+                  subtitle="start by adding one"
+                />
+              </div>
             ) : (
               helicopter.data?.map((data: any, id: number) => (
                 <BookingCard {...data} key={id} />

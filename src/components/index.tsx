@@ -27,3 +27,4 @@ export { default as SeatCapacity } from "./SeatCapacity";
 export { default as PerformanceInput } from "./PerformanceInput";
 export { default as InteriorInput } from "./InteriorInput";
 export { default as Loading } from "./Loading";
+export { default as EmptyCard } from "./EmptyCard";

@@ -32,9 +32,20 @@ const AircraftAdd = () => {
   const [bar, setBar] = useState<boolean>(true);
   const [images, setImages] = useState<any[]>([]);
   const [year, setYear] = useState<any>("2000");
+  const [baseAirport] = useState<any>("2000");
+  const [destinationAirport] = useState<any[]>([]);
 
   const onSubmit = (data: {}) => {
-    createAircraft.mutate({ ...data, capacity, bar, model, year });
+    createAircraft.mutate({
+      ...data,
+      capacity,
+      bar,
+      model,
+      year,
+      baseAirport,
+      destinationAirport,
+      image:images[0].file,
+    });
   };
   const maxNumber = 4;
 
@@ -148,10 +159,11 @@ const AircraftAdd = () => {
                     errors={errors.baggageCapacity}
                   />
                 </div>
-                <div className="mb-10">
+                <div className="my-10 ">
                   <p className="capitalize text-tertiary mb-3">travel fee</p>
                   <div className="flex  gap-5 relative">
-                    <div className="flex-1">
+                    <div className="flex-1 flex gap-5">
+                    <div className="bg-gray-200  px-6 flex items-center  h-full rounded-lg">NGN</div>
                       <input
                         className={` border w-full focus:ring-blue-500 h-10 px-3 rounded-lg border-[#828282] ${
                           errors.travelFee &&

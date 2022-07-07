@@ -3,7 +3,7 @@ import classNames from "classnames";
 const InteriorInput = ({ placeholder, register, name, rule, errors }) => {
   return (
     <div className="flex w-full items-center gap-5 h-[50px]">
-      <div className="bg-gray-300 p-3 px-7  h-full rounded-lg">Meter</div>
+      <div className="bg-gray-200  px-6 flex items-center  h-full rounded-lg">Meter</div>
       {/* <div className="border-2 px-2 flex-1 h-full rounded-lg flex items-center border-[#828282]">
         <p className="pr-2 border-r border-[#BDBDBD] text-gray-700  text-lg">
           cabin length

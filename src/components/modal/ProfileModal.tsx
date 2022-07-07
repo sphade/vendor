@@ -21,6 +21,7 @@ import { IModal } from "./interface";
 
 export const EmailModal: FC<IModal> = ({ modalState, setModalState }) => {
   const dispatch = useDispatch();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   function closeModal() {
     setModalState(false);
   }
@@ -35,10 +36,14 @@ export const EmailModal: FC<IModal> = ({ modalState, setModalState }) => {
     emailOtp.mutate(data);
     localforage.setItem("newEmail", data.email);
   };
-  if (emailOtp.isSuccess) {
+  useEffect(() => {
+    if (emailOtp.isSuccess) {
     closeModal();
     dispatch(setEmailVerificationModal());
   }
+  }, [closeModal, dispatch, emailOtp.isSuccess])
+  
+ 
   return (
     <Modal open={modalState} onClose={closeModal}>
       <form
@@ -96,7 +101,7 @@ export const EmailVerificationModal: FC<IModal> = () => {
     localforage.getItem("newEmail", (err, value) => {
       setEmail(value);
     });
-  }, [email]);
+  }, [email,state]);
 
   const [otp, setOtp] = useState("");
   const handleChange = (otpInput: string) => {
@@ -107,6 +112,7 @@ export const EmailVerificationModal: FC<IModal> = () => {
       email: email,
       otp: otp,
     });
+    localforage.removeItem('newEmail')
   };
   useEffect(() => {
     state === true ? startOtpCountdown() : reset();
@@ -155,6 +161,8 @@ export const EmailVerificationModal: FC<IModal> = () => {
               disabled={!isOver}
               onClick={() => {
                 emailOtp.mutate({ email: email });
+                reset()
+                startOtpCountdown()
               }}
               loading={emailOtp.isLoading}
             >

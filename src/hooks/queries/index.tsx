@@ -42,11 +42,7 @@ export const useAircraft = ({ isArchived, category }: any) => {
     ["aircraft", isArchived, category],
     () => getVendorAircraft({ isArchived, category }),
     {
-      onError(error: any) {
-        enqueueSnackbar(error.response?.data?.error || error.message, {
-          variant: "error",
-        });
-      },
+      onError(error: any) {},
     }
   );
 };
@@ -69,11 +65,7 @@ export const useUser = () => {
   const { enqueueSnackbar } = useSnackbar();
 
   return useQuery("user", getUser, {
-    onError(error: any) {
-      enqueueSnackbar(error.response?.data?.error || error.message, {
-        variant: "error",
-      });
-    },
+    onError(error: any) {},
   });
 };
 export const useOrder = () => {
