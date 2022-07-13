@@ -11,6 +11,7 @@ const SelectInput = ({
   label,
   name,
   rules,
+  defaultValue,
 }: {
   className?: string;
   control?: any;
@@ -19,6 +20,7 @@ const SelectInput = ({
   label?: string;
   name?: any;
   rules?: any;
+  defaultValue?: any;
 }) => {
   const {
     field: { onChange, onBlur, value, ref },
@@ -27,7 +29,6 @@ const SelectInput = ({
     name: name,
     control,
     rules: rules,
-    defaultValue: "",
   });
 
   return (
@@ -45,6 +46,7 @@ const SelectInput = ({
       className={className}
       fullWidth
       size={size}
+      defaultValue={defaultValue}
     >
       <MenuItem value="">
         <em>None</em>

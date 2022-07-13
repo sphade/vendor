@@ -12,6 +12,7 @@ import { useEffect, useState } from "react";
 import localforage from "localforage";
 import AircraftDetailsSkeleton from "../../../skeleton/AircraftDetailsSkeleton";
 import { Skeleton } from "@mui/material";
+import { Gallery, Item } from "react-photoswipe-gallery";
 const AircraftDetails = () => {
   const [details, setDetails] = useState<any>();
   const [error, setError] = useState<any>();
@@ -24,8 +25,6 @@ const AircraftDetails = () => {
       console.log(err);
     });
   }, []);
-
- 
 
   return (
     <div>
@@ -59,7 +58,7 @@ const AircraftDetails = () => {
             <img
               src={details?.ProductImages[0]?.url}
               alt="aircraftPicture"
-              className="h-[230px] w-full object-cover bg-gray-500"
+              className="h-[230px] w-full object-cover bg-gray-200"
             />
 
             <div className="divide-y divide-[#BDBDBD] text-sm">
@@ -102,14 +101,26 @@ const AircraftDetails = () => {
               <div className="py-4 flex flex-col gap-3 ">
                 <p className="capitalize text-[#828282]">photos: </p>
                 <div className=" flex gap-2 items-center">
-                  {details.ProductImages.map((image: any, id: number) => (
-                    <img
-                      src={image.url}
-                      alt="images"
-                      key={id}
-                      className="w-[103px] h-[69px] rounded bg-gray-500"
-                    />
-                  ))}
+                  <Gallery>
+                    {details.ProductImages.map((image: any, id: number) => (
+                      <Item
+                        original={image.url}
+                        thumbnail={image.url}
+                        width="1024"
+                        height="608"
+                      >
+                        {({ ref, open }) => (
+                          <img
+                            ref={ref as React.RefObject<HTMLImageElement>}
+                            onClick={open}
+                            className="w-[103px] h-[69px] cursor-pointer rounded bg-gray-200"
+                            src={image.url}
+                            alt=''
+                          />
+                        )}
+                      </Item>
+                    ))}
+                  </Gallery>
                 </div>
               </div>
               <div className="py-4 flex flex-col gap-3 ">

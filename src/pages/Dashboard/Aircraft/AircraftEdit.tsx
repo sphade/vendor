@@ -1,6 +1,7 @@
 import {
   BackButton,
   Button,
+  Loading,
   NotificationProfileHeader,
   SeatCapacity,
   SelectInput,
@@ -8,8 +9,36 @@ import {
 } from "../../../components";
 import aircraftPicture from "../../../assets/images/plane-4.png";
 import { TextField } from "@mui/material";
+import { useEffect, useState } from "react";
+import localforage from "localforage";
+import { useForm } from "react-hook-form";
 
 const AircraftEdit = () => {
+  const [details, setDetails] = useState<any>();
+  const [error, setError] = useState<any>();
+  const [loading, setLoading] = useState<boolean>(true);
+
+  useEffect(() => {
+    localforage.getItem("aircraftDetails", (err, val) => {
+      setDetails(val);
+      setError(err);
+      setLoading(false);
+      console.log(err);
+    });
+  }, []);
+  const {
+    register,
+    handleSubmit,
+    control,
+    formState: { errors },
+  } = useForm();
+  if (loading) {
+    return (
+      <div className="w-full h-screen">
+        <Loading />
+      </div>
+    );
+  }
   return (
     <div>
       <header className="header !mb-5">
@@ -25,40 +54,57 @@ const AircraftEdit = () => {
           <div>
             <p className="capitalize text-tertiary ">photos</p>
             <img
-              src={aircraftPicture}
+              src={details?.ProductImages[0]?.url}
               alt="icon"
-              className="h-[230px] w-full object-contain "
+              className="h-[230px] w-full object-cover "
             />
           </div>
 
           <div className=" text-sm mt-10">
             <TextField
-              value="sky night 3000"
               label="Aircraft Name"
               className="!mb-5"
               fullWidth
+              defaultValue={`${details?.brand} ${details?.model}`}
+              {...register("aircraftName")}
             />
             <div className="flex gap-5 mb-5">
-              {/* <SelectInput
-                label="what ever you wantwhat ever you want"
+              <SelectInput
+                control={control}
+                defaultValue={details?.airCraftType}
+                label="Aircraft Type"
                 options={[
                   {
-                    name: "try",
-                    value: "try",
+                    value: "privateJet",
+                    name: "Private jet",
                   },
-                  {
-                    name: "try",
-                    value: "try",
-                  },
-                  {
-                    name: "try",
-                    value: "try",
-                  },
+                  { value: "helicopter", name: "Helicopter" },
                 ]}
-              /> */}
-              {/* <SelectInput /> */}
+                rules={{
+                  required: "this field is required",
+                }}
+                name="airCraftType"
+                size="medium"
+              />
+
+              <SelectInput
+                defaultValue={details?.serviceType}
+                control={control}
+                label="Service Type"
+                options={[
+                  {
+                    value: "charter",
+                    name: "Charter",
+                  },
+                  { value: "jetPooling", name: "jet pooling" },
+                ]}
+                rules={{
+                  required: "this field is required",
+                }}
+                name="serviceType"
+                size="medium"
+              />
             </div>
-            {/* <SeatCapacity /> */}
           </div>
           <div className="mb-10">
             <p className="capitalize text-tertiary mb-3">travel fee</p>
@@ -73,14 +119,23 @@ const AircraftEdit = () => {
           <div className="mb-5 pb-5 border-b border-[#BDBDBD]">
             <p className="capitalize text-tertiary mb-3 font-semibold   ">
               description
-            </p>
-            <div className="px-5 py-4 border-[#BDBDBD] border rounded-lg">
-              <p className="text-sm text-[#333333]">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Similique pariatur possimus quo officia repellat quaerat quas
-                Similique pariatur possimus quo officia repellat quaerat quas
-              </p>
-            </div>
+            </p> 
+
+            <TextField
+              fullWidth
+              rows={4}
+              defaultValue={details?.description}
+              multiline
+              {...register("description", {
+                required: "this field is required",
+                maxLength: {
+                  value: 250,
+                  message: "no more than 250 characters",
+                },
+              })}
+              error={errors.description}
+              helperText={errors.description && errors.description.message}
+            />
           </div>
           {/* <div className="space-y-5 pb-10 mb-10 border-b border-[#BDBDBD]">
             <p className="capitalize text-tertiary font-semibold    ">

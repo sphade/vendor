@@ -12,6 +12,7 @@ import { SnackbarProvider } from 'notistack';
 import Zoom from '@mui/material/Zoom';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import 'photoswipe/dist/photoswipe.css'
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );

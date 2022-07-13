@@ -41,7 +41,6 @@ const Profile = () => {
     setImages(imageList);
   };
   const [edit, setEdit] = React.useState(false);
-  // const [loading, setLoading] = React.useState(true);
   const [emailModalState, setEmailModalState] = React.useState(false);
   const [emailVerificationModalState, setEmailVerificationModalState] =
     React.useState(false);
