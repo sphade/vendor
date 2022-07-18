@@ -49,6 +49,7 @@ const EmailVerification = () => {
       phone: `+${userInfo?.phone}`,
       otp: otp,
       address: userInfo?.businessAddress,
+      logo:userInfo?.images[0]?.file
     });
     localforage.removeItem("signUpInfo");
   };

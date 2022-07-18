@@ -9,6 +9,7 @@ import {
   RequestUpdateEmailOtp,
   changeEmail,
   updateProfilePicture,
+  editAircraft,
 } from "../../services/api";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useSnackbar } from "notistack";
@@ -183,18 +184,38 @@ export const useCreateAircraft = () => {
     onSettled() {},
   });
 };
+export const useEditAircraft = () => {
+  const { enqueueSnackbar } = useSnackbar();
+  const queryClient = useQueryClient();
+
+
+  return useMutation(editAircraft, {
+    onSuccess(data) {
+      enqueueSnackbar("Aircraft edited successfully", {
+        variant: "success",
+      });
+    },
+    onError(error) {
+      enqueueSnackbar(error.response?.data?.error || error.message, {
+        variant: "error",
+      });
+    },
+    onSettled() {
+      queryClient.invalidateQueries("aircraft");
+
+    },
+  });
+};
 export const useArchiveAircraft = (id) => {
   const queryClient = useQueryClient();
 
   const { enqueueSnackbar } = useSnackbar();
-  const navigate = useNavigate();
 
   return useMutation(() => archiveAircraft(id), {
     onSuccess(data) {
       // enqueueSnackbar("Aircraft unArchived successfully", {
       //   variant: "success",
       // });
-      navigate("/aircraft");
     },
     onError(error) {
       enqueueSnackbar(error.response?.data?.error || error.message, {

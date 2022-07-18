@@ -1,6 +1,6 @@
 import classNames from "classnames";
 
-const InteriorInput = ({ placeholder, register, name, rule, errors }) => {
+const InteriorInput = ({ placeholder, register, name, rule, errors,defaultValue }) => {
   return (
     <div className="flex w-full items-center gap-5 h-[50px]">
       <div className="bg-gray-200  px-6 flex items-center  h-full rounded-lg">Meter</div>
@@ -28,7 +28,7 @@ const InteriorInput = ({ placeholder, register, name, rule, errors }) => {
         <input
           {...register(name, rule)}
           type="text"
-          // defaultValue={0}
+          defaultValue={defaultValue}
           className=" text-tertiary flex-1 px-3 text-lg outline-none bg-transparent w-full"
         />
         <p className="text-red-700 font-normal absolute -bottom-5 text-xs">

@@ -40,12 +40,17 @@
       U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212,
       U+2215, U+FEFF, U+FFFD;
   }
-  
+
   html {
-    font-family: 'hind';
+    font-family: "hind";
   }
 }
 /* utility  classes */
+.slick-prev:before,
+.slick-next:before {
+  color: red !important;
+}
+
 .center-element {
   @apply flex justify-center items-center;
 }
@@ -57,7 +62,7 @@
   @apply flex items-center justify-between mb-3;
 }
 .header-heading {
-  @apply text-2xl text-tertiary capitalize font-semibold ;
+  @apply text-2xl text-tertiary capitalize font-semibold;
 }
 /* active nav-link */
 .active {
@@ -70,10 +75,10 @@
 }
 
 .Mui-selected {
-  @apply !text-primary ;
+  @apply !text-primary;
 }
 .MuiTabs-indicator {
-  @apply !bg-primary ;
+  @apply !bg-primary;
 }
 
 /* mui-checkbox override */

@@ -10,12 +10,12 @@ import {
   NotificationProfileHeader,
 } from "../../../components";
 import DeleteArchiveModal from "../../../components/modal/DeleteArchiveModal";
-import { useAircraftIsArchive } from "../../../hooks/queries";
+import { useAircraft } from "../../../hooks/queries";
 import { toggleDeleteArchiveModal } from "../../../redux/slices/ModalSlice";
 import JetCardSkeleton from "../../../skeleton/JetCardSkeleton";
 
 const AircraftArchive = () => {
-  const aircraftArchive = useAircraftIsArchive({ isArchived: true });
+  const aircraftArchive = useAircraft({ isArchived: true });
 
   const dispatch = useDispatch();
   const arc = [1, 2, 3, 4];

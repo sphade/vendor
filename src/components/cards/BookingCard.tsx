@@ -18,13 +18,13 @@ const BookingCard = (props: any) => {
     setDropDownState(event.currentTarget);
   };
   return (
-    <div className="w-64 min-h-[376px] border rounded-md shadow-lg p-4 bg-secondary  ">
+    <div className="w-64 h-[400px] border rounded-md shadow-lg p-4 bg-secondary  ">
       <div className=" rounded-t-md h-[100px] object-cover overflow-hidden">
-        {/* <img
+        <img
           src={props?.ProductImages[0]?.url}
           alt="bookingPic"
-          className="w-full h-full bg-gray-300"
-        /> */}
+          className="w-full h-full bg-gray-200"
+        />
       </div>
       <div className="divide-y ">
         <div className="flex items-center py-4 justify-between">

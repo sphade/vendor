@@ -63,7 +63,7 @@ const Aircraft = () => {
       <TabPanel value={value} index={0}>
         <div className="flex justify-between min-h-[500px]  flex-wrap p-2 border shadow rounded mt-5 gap-1">
           {privateJet.isLoading ? (
-            [...new Array(3)].map((id) => <JetCardSkeleton key={id} />)
+            [...new Array(4)].map((id) => <JetCardSkeleton key={id} />)
           ) : privateJet.isError ? (
             <div className=" w-full">
               <Error />
@@ -77,13 +77,12 @@ const Aircraft = () => {
               <AircraftCard {...data} key={id} />
             ))
           )}
-          {privateJet.isFetching && <JetCardSkeleton />}
         </div>
       </TabPanel>
       <TabPanel value={value} index={1}>
         <div className="flex justify-between min-h-[500px]  flex-wrap p-2 border shadow rounded mt-5 gap-1">
           {helicopter.isLoading ? (
-            [...new Array(3)].map((id) => <JetCardSkeleton key={id} />)
+            [...new Array(4)].map((id) => <JetCardSkeleton key={id} />)
             ) : helicopter.isError ? (
               <div className=" w-full">
                 <Error />
@@ -97,7 +96,6 @@ const Aircraft = () => {
                 <AircraftCard {...data} key={id} />
               ))
             )}
-            {helicopter.isFetching && <JetCardSkeleton />}
         </div>
       </TabPanel>
     </div>

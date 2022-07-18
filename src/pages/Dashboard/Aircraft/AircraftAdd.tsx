@@ -44,7 +44,7 @@ const AircraftAdd = () => {
       year,
       baseAirport,
       destinationAirport,
-      image:images[0].file,
+      image: images[0].file,
     });
   };
   const maxNumber = 4;
@@ -149,6 +149,7 @@ const AircraftAdd = () => {
                   </div>
                   <SeatCapacity capacity={capacity} setCapacity={setCapacity} />
                   <PerformanceInput
+                    defaultValue={0}
                     label="Baggage Capacity"
                     name="baggageCapacity"
                     placeholder="kg"
@@ -163,7 +164,9 @@ const AircraftAdd = () => {
                   <p className="capitalize text-tertiary mb-3">travel fee</p>
                   <div className="flex  gap-5 relative">
                     <div className="flex-1 flex gap-5">
-                    <div className="bg-gray-200  px-6 flex items-center  h-full rounded-lg">NGN</div>
+                      <div className="bg-gray-200  px-6 flex items-center  h-full rounded-lg">
+                        NGN
+                      </div>
                       <input
                         className={` border w-full focus:ring-blue-500 h-10 px-3 rounded-lg border-[#828282] ${
                           errors.travelFee &&
@@ -213,6 +216,7 @@ const AircraftAdd = () => {
                     </p>
                     <div className="grid grid-cols-2 gap-10   justify-between">
                       <PerformanceInput
+                        defaultValue={0}
                         label="travel hours"
                         name="flightHours"
                         placeholder="Hours"
@@ -223,6 +227,7 @@ const AircraftAdd = () => {
                         errors={errors.travelHours}
                       />
                       <PerformanceInput
+                        defaultValue={0}
                         label="max speed"
                         name="maxSpeed"
                         placeholder="km/h"
@@ -233,6 +238,7 @@ const AircraftAdd = () => {
                         errors={errors.maxSpeed}
                       />
                       <PerformanceInput
+                        defaultValue={0}
                         label="max distance"
                         name="maxRange"
                         placeholder="km"
@@ -243,6 +249,7 @@ const AircraftAdd = () => {
                         errors={errors.maxRange}
                       />
                       <PerformanceInput
+                        defaultValue={0}
                         label="max altitude"
                         name="maxAltitude"
                         placeholder="ft"
@@ -253,7 +260,8 @@ const AircraftAdd = () => {
                         errors={errors.maxAltitude}
                       />
 
-                      {/* <PerformanceInput label="max distance" placeholder="km" /> */}
+                      {/* <PerformanceInput 
+                      defaultValue={0} label="max distance" placeholder="km" /> */}
                     </div>
                   </div>
                   <div>
@@ -262,6 +270,8 @@ const AircraftAdd = () => {
                     </p>
                     <div className="flex flex-col gap-5 items-center">
                       <InteriorInput
+                  defaultValue={0}
+                        
                         name="cabinWidth"
                         placeholder="Cabin Width"
                         register={register}
@@ -271,6 +281,8 @@ const AircraftAdd = () => {
                         errors={errors.cabinWidth}
                       />
                       <InteriorInput
+                  defaultValue={0}
+
                         name="cabinLength"
                         placeholder="Cabin Length"
                         register={register}
@@ -280,6 +292,8 @@ const AircraftAdd = () => {
                         errors={errors.cabinLength}
                       />
                       <InteriorInput
+                  defaultValue={0}
+
                         name="cabinHeight"
                         placeholder="Cabin Height"
                         register={register}
@@ -292,7 +306,7 @@ const AircraftAdd = () => {
                   </div>
                 </div>
                 <div className="flex justify-between mb-5  border-[#BDBDBD]">
-                  <p className="text-xl text-gray-500 capitalize">win bar</p>
+                  <p className="text-xl text-gray-500 capitalize">wine bar</p>
                   <div className="flex flex-col justify-center items-center">
                     <SwitchCustomized checked={bar} setChecked={setBar} />
                     {bar ? (

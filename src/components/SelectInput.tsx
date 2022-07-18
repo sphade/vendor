@@ -48,9 +48,9 @@ const SelectInput = ({
       size={size}
       defaultValue={defaultValue}
     >
-      <MenuItem value="">
+      {/* <MenuItem value="">
         <em>None</em>
-      </MenuItem>
+      </MenuItem> */}
       {options?.map(({ value, name }) => (
         <MenuItem key={name} value={value}>
           {name}

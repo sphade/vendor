@@ -45,7 +45,7 @@ const BookingCreateOrder = () => {
         <TabPanel value={value} index={0}>
           <div className="flex justify-between min-h-[500px]  flex-wrap p-2 border shadow rounded mt-5 gap-1">
             {privateJet.isLoading ? (
-              [...new Array(3)].map((id) => <BookingJetCardSkeleton key={id} />)
+              [...new Array(4)].map((id) => <BookingJetCardSkeleton key={id} />)
             ) : privateJet.isError ? (
               <div className=" w-full">
                 <Error />
@@ -62,13 +62,12 @@ const BookingCreateOrder = () => {
                 <BookingCard {...data} key={id} />
               ))
             )}
-            {privateJet.isFetching && <BookingJetCardSkeleton />}
           </div>
         </TabPanel>
         <TabPanel value={value} index={1}>
-          <div className="flex justify-between min-h-[500px]  flex-wrap p-2 border shadow rounded mt-5 gap-1">
+          <div className="flex justify-between h-[500px]  flex-wrap p-2 border shadow rounded mt-5 gap-1">
             {helicopter.isLoading ? (
-              [...new Array(3)].map((id) => <BookingJetCardSkeleton key={id} />)
+              [...new Array(4)].map((id) => <BookingJetCardSkeleton key={id} />)
             ) : helicopter.isError ? (
               <div className=" w-full">
                 <Error />
@@ -85,7 +84,7 @@ const BookingCreateOrder = () => {
                 <BookingCard {...data} key={id} />
               ))
             )}
-            {helicopter.isFetching && <BookingJetCardSkeleton />}
+          
           </div>
         </TabPanel>
       </main>

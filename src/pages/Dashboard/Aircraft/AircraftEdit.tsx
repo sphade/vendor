@@ -1,37 +1,60 @@
 import {
   BackButton,
   Button,
+  InteriorInput,
   Loading,
   NotificationProfileHeader,
+  PerformanceInput,
   SeatCapacity,
   SelectInput,
   SwitchCustomized,
 } from "../../../components";
-import aircraftPicture from "../../../assets/images/plane-4.png";
 import { TextField } from "@mui/material";
 import { useEffect, useState } from "react";
 import localforage from "localforage";
 import { useForm } from "react-hook-form";
-
+import Slider from "react-slick";
+import { useEditAircraft } from "../../../hooks/mutations";
 const AircraftEdit = () => {
+  const editAircraft = useEditAircraft();
   const [details, setDetails] = useState<any>();
   const [error, setError] = useState<any>();
   const [loading, setLoading] = useState<boolean>(true);
+  const [capacity, setCapacity] = useState<any>(0);
+  const [bar, setBar] = useState<boolean>(true);
 
   useEffect(() => {
-    localforage.getItem("aircraftDetails", (err, val) => {
+    localforage.getItem("aircraftDetails", (err, val: any) => {
       setDetails(val);
       setError(err);
       setLoading(false);
-      console.log(err);
+      setCapacity(val?.capacity);
+      setBar(val?.bar);
     });
   }, []);
+
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+  };
   const {
     register,
     handleSubmit,
     control,
     formState: { errors },
   } = useForm();
+  const onSubmit = (data: any) => {
+    const nameSplit: any = data?.aircraftName.split(/[, ]+/);
+    delete data?.aircraftName;
+    editAircraft.mutate(details?.id, {
+      ...data,
+      brand: nameSplit[0],
+      model: nameSplit[1],
+    });
+  };
   if (loading) {
     return (
       <div className="w-full h-screen">
@@ -40,24 +63,33 @@ const AircraftEdit = () => {
     );
   }
   return (
-    <div>
+    <div className="">
       <header className="header !mb-5">
         <div className="space-x-3 flex items-center ">
           <BackButton />
-          <h1 className="header-heading">edit sky Night 9000</h1>
+          <h1 className="header-heading">
+            {`${details.brand}  ${details.model}`}
+          </h1>
         </div>
 
         <NotificationProfileHeader />
       </header>
       <main>
-        <div className="rounded-lg  p-6 w-[522px] mx-auto font-semibold    border mb-3 border-[#BDBDBD]">
+        <form
+          onSubmit={handleSubmit(onSubmit)}
+          className="rounded-lg  p-6 w-[522px] mx-auto font-semibold    border mb-3 border-[#BDBDBD]"
+        >
           <div>
             <p className="capitalize text-tertiary ">photos</p>
-            <img
-              src={details?.ProductImages[0]?.url}
-              alt="icon"
-              className="h-[230px] w-full object-cover "
-            />
+            <Slider {...settings}>
+              {details?.ProductImages.map((image: any) => (
+                <img
+                  src={image?.url}
+                  alt={""}
+                  className="h-[230px] w-full object-cover rounded"
+                />
+              ))}
+            </Slider>
           </div>
 
           <div className=" text-sm mt-10">
@@ -107,19 +139,47 @@ const AircraftEdit = () => {
             </div>
           </div>
           <div className="mb-10">
+            <SeatCapacity capacity={capacity} setCapacity={setCapacity} />
+            <PerformanceInput
+              label="Baggage Capacity"
+              name="baggageCapacity"
+              placeholder="kg"
+              register={register}
+              rule={{
+                required: "this field is required",
+              }}
+              errors={errors.baggageCapacity}
+              defaultValue={details?.baggageCapacity}
+            />
+          </div>
+          <div className="my-10 ">
             <p className="capitalize text-tertiary mb-3">travel fee</p>
-            <div className="flex items-center gap-5">
-              {/* <SelectInput
-                className="!w-[100px] !bg-gray-200 !outline-none !border-0"
-                size="small"
-              /> */}
-              <input className="flex-1 border h-10 px-3 rounded-lg border-[#828282]" />
+            <div className="flex  gap-5 relative">
+              <div className="flex-1 flex gap-5">
+                <div className="bg-gray-200  px-6 flex items-center  h-full rounded-lg">
+                  NGN
+                </div>
+                <input
+                  defaultValue={details?.price}
+                  className={` border w-full focus:ring-blue-500 h-10 px-3 rounded-lg border-[#828282] ${
+                    errors.travelFee && " border-red-700 focus:!border-red-700"
+                  }`}
+                  {...register("price", {
+                    required: "this field is required",
+                  })}
+                />
+                {errors.travelFee && (
+                  <p className=" absolute -bottom-3.5 text-xs text-red-700">
+                    {errors.travelFee.message}
+                  </p>
+                )}
+              </div>
             </div>
           </div>
           <div className="mb-5 pb-5 border-b border-[#BDBDBD]">
             <p className="capitalize text-tertiary mb-3 font-semibold   ">
               description
-            </p> 
+            </p>
 
             <TextField
               fullWidth
@@ -137,78 +197,114 @@ const AircraftEdit = () => {
               helperText={errors.description && errors.description.message}
             />
           </div>
-          {/* <div className="space-y-5 pb-10 mb-10 border-b border-[#BDBDBD]">
+          <div className="space-y-5  mb-10  border-[#BDBDBD]">
             <p className="capitalize text-tertiary font-semibold    ">
               specification
             </p>
             <div>
-              <p className="capitalize text-tertiary font-semibold    text-sm mb-3">
+              <p className="capitalize text-tertiary font-semibold    text-sm mb-7">
                 performance
               </p>
-              <div className="flex flex-wrap gap-5 items-center">
-                <TextField
-                  className="!w-[225]"
-                  InputProps={{
-                    startAdornment: (
-                      <SelectInput
-                        size="small"
-                        className="!w-24 !border-0 !outline-none"
-                      />
-                    ),
+              <div className="grid grid-cols-2 gap-10   justify-between">
+                <PerformanceInput
+                  defaultValue={details?.flightHours}
+                  label="travel hours"
+                  name="flightHours"
+                  placeholder="Hours"
+                  register={register}
+                  rule={{
+                    required: "this field is required",
                   }}
+                  errors={errors.travelHours}
                 />
-
-                <TextField
-                  className="!w-[225]"
-                  InputProps={{
-                    startAdornment: (
-                      <SelectInput
-                        size="small"
-                        className="!w-24 !border-0 !outline-none"
-                      />
-                    ),
+                <PerformanceInput
+                  defaultValue={details?.maxSpeed}
+                  label="max speed"
+                  name="maxSpeed"
+                  placeholder="km/h"
+                  register={register}
+                  rule={{
+                    required: "this field is required",
                   }}
+                  errors={errors.maxSpeed}
+                />
+                <PerformanceInput
+                  defaultValue={details?.maxRange}
+                  label="max distance"
+                  name="maxRange"
+                  placeholder="km"
+                  register={register}
+                  rule={{
+                    required: "this field is required",
+                  }}
+                  errors={errors.maxRange}
+                />
+                <PerformanceInput
+                  defaultValue={details?.maxAltitude}
+                  label="max altitude"
+                  name="maxAltitude"
+                  placeholder="ft"
+                  register={register}
+                  rule={{
+                    required: "this field is required",
+                  }}
+                  errors={errors.maxAltitude}
                 />
               </div>
             </div>
             <div>
-              <p className="capitalize text-tertiary font-semibold    text-sm mb-3">
+              <p className="capitalize text-tertiary font-semibold    text-sm mt-3 mb-7">
                 interior
               </p>
-              <div className="flex flex-wrap gap-5 items-center">
-                <div className="flex items-center gap-5 w-full">
-                  <SelectInput
-                    className="!w-[100px] !bg-gray-200 !outline-none !border-0"
-                    size="small"
-                  />
-                  <input className="flex-1 border h-10 px-3 w-full rounded-lg border-[#828282]" />
-                </div>
-                <div className="flex items-center gap-5 w-full">
-                  <SelectInput
-                    className="!w-[100px] !bg-gray-200 !outline-none !border-0"
-                    size="small"
-                  />
-                  <input className="flex-1 border h-10 px-3 w-full rounded-lg border-[#828282]" />
-                </div>
-                <div className="flex items-center gap-5 w-full">
-                  <SelectInput
-                    className="!w-[100px] !bg-gray-200 !outline-none !border-0"
-                    size="small"
-                  />
-                  <input className="flex-1 border h-10 px-3 w-full rounded-lg border-[#828282]" />
-                </div>
+              <div className="flex flex-col gap-5 items-center">
+                <InteriorInput
+                  defaultValue={details?.cabinWidth}
+                  name="cabinWidth"
+                  placeholder="Cabin Width"
+                  register={register}
+                  rule={{
+                    required: "this field is required",
+                  }}
+                  errors={errors.cabinWidth}
+                />
+                <InteriorInput
+                  defaultValue={details?.cabinLength}
+                  name="cabinLength"
+                  placeholder="Cabin Length"
+                  register={register}
+                  rule={{
+                    required: "this field is required",
+                  }}
+                  errors={errors.cabinLength}
+                />
+                <InteriorInput
+                  defaultValue={details?.cabinHeight}
+                  name="cabinHeight"
+                  placeholder="Cabin Height"
+                  register={register}
+                  rule={{
+                    required: "this field is required",
+                  }}
+                  errors={errors.cabinHeight}
+                />
               </div>
             </div>
-          </div> */}
-          <div className="flex justify-between mb-5 pb-5 border-b border-[#BDBDBD]">
+          </div>
+          <div className="flex justify-between mb-5  border-[#BDBDBD]">
             <p className="text-xl text-gray-500 capitalize">wine bar</p>
             <div className="flex flex-col justify-center items-center">
-              {/* <SwitchCustomized /> */}
-              <p className="capitalize -ml-5">available</p>
+              <SwitchCustomized checked={bar} setChecked={setBar} />
+              {bar ? (
+                <p className="capitalize -ml-5">available</p>
+              ) : (
+                <p className="capitalize -ml-5 text-gray-500">Unavailable</p>
+              )}
             </div>
           </div>
-          <Button full>save</Button>
-        </div>
+          <Button full loading={editAircraft.isLoading}>
+            save
+          </Button>
+        </form>
       </main>
     </div>
   );

@@ -6,7 +6,7 @@ const SeatCapacity = ({
   setCapacity,
 }: {
   capacity: number;
-  setCapacity: any;
+    setCapacity: any;
 }) => {
   return (
     <div className="bg-gray-200 rounded mb-10 flex justify-between items-center border-[#b9b9b9] border px-5 py-3 ">

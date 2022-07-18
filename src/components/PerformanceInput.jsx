@@ -8,6 +8,7 @@ const PerformanceInput = ({
   name,
   rule,
   errors,
+  defaultValue
 }) =>
   // }: {
   //   label: string;
@@ -36,7 +37,7 @@ const PerformanceInput = ({
         <input
           {...register(name, rule)}
           type="number"
-          // defaultValue={0}
+          defaultValue={defaultValue}
           className=" text-tertiary flex-1 px-3 text-lg outline-none bg-transparent w-full"
         />
         <p className="text-red-700 font-normal absolute -bottom-5 text-xs">

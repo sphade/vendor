@@ -5,16 +5,22 @@ import PhoneInput from "react-phone-input-2";
 import { Controller, useForm } from "react-hook-form";
 import { emailValidation } from "../../validation/emailValidation";
 import { Checkbox } from "@mui/material";
-import ImageUploading from "react-images-uploading";
 import { useSignup } from "../../hooks/mutations";
 import { useDispatch } from "react-redux";
 import { setSignUpInfo } from "../../redux/slices/SignUpInfoSlice";
 import { useSnackbar } from "notistack";
 import { useNavigate } from "react-router-dom";
 import localforage from "localforage";
+import ImageUploading from "react-images-uploading";
+import { useState } from "react";
 
 const Register = () => {
   // const [phone, setPhone] = useState("");
+  const [images, setImages] = useState<any[]>([]);
+  const formData = new FormData();
+  const onImageChange = async (imageList: any, addUpdateIndex: any) => {
+    setImages(imageList);
+  };
   const {
     register,
     handleSubmit,
@@ -32,11 +38,18 @@ const Register = () => {
         variant: "info",
       });
       return;
-    } else {
-      dispatch(setSignUpInfo(data));
-      localforage.setItem("signUpInfo", data);
-      signup.mutate({ email: data.email, phone: `+${data.phone}` });
-    }
+    } 
+    
+   if(images.length===0){
+    enqueueSnackbar("add a company logo", {
+      variant: "info",
+    });
+    return;
+  }
+     dispatch(setSignUpInfo(data));
+     localforage.setItem("signUpInfo", {...data,images});
+     signup.mutate({ email: data.email, phone: `+${data.phone}` });
+    
   };
   return (
     <div className="w-[664px] px-[100px] rounded-lg shadow-lg  mb-[100px] py-10 border  relative   bg-secondary">
@@ -44,23 +57,53 @@ const Register = () => {
         <h1 className="text-tertiary  uppercase text-lg font-bold mb-10">
           Sign Up
         </h1>
-
-        <div className=" relative h-[100px] ">
-          <img
-            src={CameraBoxIcon}
-            alt="CameraBoxIcon"
-            className="absolute top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2"
-          />
-          <img
-            src={CameraIcon}
-            alt="CameraIcon"
-            className="absolute top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2"
-          />
-        </div>
-        <div className="flex items-center justify-center gap-2 text-blue-600 text-xs">
-          <span className="font-semibold     uppercase">add business logo</span>
-          {/* <input type="file" /> */}
-        </div>
+        <ImageUploading
+          value={images}
+          onChange={onImageChange}
+          maxNumber={1}
+          dataURLKey="image"
+        >
+          {({
+            imageList,
+            onImageUpload,
+            onImageRemoveAll,
+            onImageUpdate,
+            onImageRemove,
+            isDragging,
+            dragProps,
+          }) => (
+            <div onClick={(_) => onImageUpload()}>
+              <div className=" relative h-[100px] ">
+                {!imageList?.length ? (
+                  <>
+                    <img
+                      src={CameraBoxIcon}
+                      alt="CameraBoxIcon"
+                      className="absolute top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2"
+                    />
+                    <img
+                      src={CameraIcon}
+                      alt="CameraIcon"
+                      className="absolute top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2"
+                    />
+                  </>
+                ) : (
+                  <img
+                    src={imageList[0]?.image}
+                    alt="const"
+                    className="w-[100px] mx-auto rounded h-[100px] "
+                  />
+                )}
+              </div>
+              <div className="flex items-center justify-center gap-2 text-blue-600 text-xs">
+                <span className="font-semibold     uppercase">
+                  add business logo
+                </span>
+                {/* <input type="file" /> */}
+              </div>
+            </div>
+          )}
+        </ImageUploading>
       </div>
 
       <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
