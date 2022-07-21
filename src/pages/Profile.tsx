@@ -187,14 +187,7 @@ const Profile = () => {
                     }}
                     label="Business Address"
                   />{" "}
-                  <TextField
-                    fullWidth
-                    value={user?.data?.address}
-                    InputProps={{
-                      readOnly: !edit,
-                    }}
-                    label="Business Address"
-                  />
+                  
                   <PasswordInput
                     rules={{
                       required: "this field is required",

@@ -22,7 +22,7 @@ import { format } from "date-fns";
 const Overview = () => {
   const { overviewData, overviewLoading } = useOverview();
   const overviewTable = useOverviewTable();
-
+console.log(overviewTable.data?.data)
   const formatedNum = useFormatNumber(1000000000);
 
   return (
@@ -115,7 +115,7 @@ const Overview = () => {
             </Link>
           </div>
           <DataGrid
-            rows={overviewTable.data || []}
+            rows={overviewTable.data?.data || []}
             getCellClassName={() =>
               "text-tertiary font-medium capitalize  !font-hind  "
             }

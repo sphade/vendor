@@ -1,6 +1,8 @@
 import { GridColDef } from "@mui/x-data-grid";
 import classNames from "classnames";
 import { CalenderDropDownActiveIcon } from "../assets/images/icons";
+import { format } from "date-fns";
+import parseJSON from "date-fns/parseJSON";
 const headerClass = "font-medium !font-hind  text-[#828282]";
 
 export const aircraftColumns: GridColDef[] = [
@@ -13,7 +15,7 @@ export const aircraftColumns: GridColDef[] = [
     flex: 1,
   },
   {
-    field: "aircraftType",
+    field: "airCraftType",
     headerName: "Aircraft Type",
     headerClassName: headerClass,
     hideSortIcons: true,
@@ -21,7 +23,7 @@ export const aircraftColumns: GridColDef[] = [
     flex: 1,
   },
   {
-    field: "noOfFlight",
+    field: "totalFlights",
     headerName: "No Of Flight",
     headerClassName: headerClass,
     hideSortIcons: true,
@@ -45,7 +47,7 @@ export const aircraftColumns: GridColDef[] = [
     flex: 1,
   },
   {
-    field: "amount",
+    field: "lastTripAmount",
     headerName: "Amount (last Trip)",
     headerClassName: headerClass,
     hideSortIcons: true,
@@ -53,7 +55,7 @@ export const aircraftColumns: GridColDef[] = [
     flex: 1,
   },
   {
-    field: "dateTime",
+    field: "createdAt",
     headerName: "Date & Time",
     headerClassName: headerClass,
     hideSortIcons: true,
@@ -61,9 +63,11 @@ export const aircraftColumns: GridColDef[] = [
     flex: 1,
     renderCell({ value }) {
       return (
-        <div className="flex flex-col">
-          <p>{value.date}</p>
-          <p className="text-xs font-medium text-gray-500">{value.time}</p>
+        <div className="items-center">
+          <p>{format(new Date(value), "dd/MMM/yyyy")}</p>
+          <p className="text-xs font-medium text-gray-500">
+            {format(new Date(value), "h:m aaa")}
+          </p>
         </div>
       );
     },
@@ -81,11 +85,12 @@ export const aircraftColumns: GridColDef[] = [
   },
 
   {
-    field: "availability",
+    field: "isAvailable",
     headerName: "Availability",
     hideSortIcons: true,
     disableColumnMenu: true,
     renderCell({ value }) {
+      
       return <img src={CalenderDropDownActiveIcon} alt={value} />;
     },
     headerClassName: headerClass,
@@ -121,7 +126,6 @@ export const transactionColumn: GridColDef[] = [
     disableColumnMenu: true,
     flex: 1,
     valueGetter: (params: any) => `${params.row.Aircraft.serviceType || ""}`,
-
   },
   {
     field: "destination",
@@ -130,11 +134,10 @@ export const transactionColumn: GridColDef[] = [
     hideSortIcons: true,
     disableColumnMenu: true,
     flex: 1,
-    valueGetter: (params: any) => `${params.row.destination[0]?.name || ""}`,
-
+    valueGetter: (params: any) => `${params.row.destination?.name || ""}`,
   },
   {
-    field: "createdAt",
+    field: "departureDate",
     headerName: "Date & Time",
     headerClassName: headerClass,
     hideSortIcons: true,
@@ -143,10 +146,11 @@ export const transactionColumn: GridColDef[] = [
 
     renderCell({ value }) {
       return (
-        <div className="flex flex-col">
-          {/* <p>{value.date}</p>
-          <p className="text-xs font-medium text-gray-500">{value.time}</p> */}
-          value
+        <div className="flex items-center">
+          <span>{format(new Date(value), "dd/MMM/yyyy - ")}</span>
+          <span className="text-xs font-medium text-gray-500">
+            {format(new Date(value), "h:m aaa")}
+          </span>
         </div>
       );
     },
@@ -168,13 +172,17 @@ export const transactionColumn: GridColDef[] = [
     flex: 1,
 
     renderCell({ value }) {
-
-      return <div className={classNames({
-        'text-green-500':value ==='successful',
-        'text-orange-500':value ==='pending',
-        'text-red-500':value ==='failed',
-      })
-    } >{value}</div>;
+      return (
+        <div
+          className={classNames({
+            "text-green-500": value === "successful",
+            "text-orange-500": value === "pending",
+            "text-red-500": value === "failed",
+          })}
+        >
+          {value}
+        </div>
+      );
     },
   },
 ];

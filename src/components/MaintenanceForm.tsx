@@ -6,8 +6,13 @@ import DateAndTimePicker from "./DateAndTimePicker";
 import SwitchCustomized from "./SwitchCustomized";
 import { useForm } from "react-hook-form";
 import SelectInput from "./SelectInput";
+import { useAircraft } from "../hooks/queries";
 const MaintenanceForm = () => {
   const [bar, setBar] = useState<boolean>(true);
+  const privateJet = useAircraft({
+    isArchived: false,
+  
+  });
   const {
     register,
     handleSubmit,
