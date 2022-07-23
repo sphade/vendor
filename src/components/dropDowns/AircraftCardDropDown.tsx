@@ -32,7 +32,7 @@ const AircraftCardDropDown = ({
   const { enqueueSnackbar } = useSnackbar();
   const archive = useArchiveAircraft(aircraft?.id);
   useEffect(() => {
-    localforage.getItem("selectedAircraft", (error, value) => {
+    localforage.getItem("selectedAircraftDetails", (error, value) => {
       setAircraft(value);
     });
   });

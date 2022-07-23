@@ -1,7 +1,12 @@
 import { useForm } from "react-hook-form";
 import { Button, PasswordInput } from "../../../components";
+import { useResetPassword } from "../../../hooks/mutations";
+import localforage from "localforage";
+import {  useState,useEffect } from "react";
 
 const ForgotPassword3 = () => {
+  const resetPassword = useResetPassword()
+  const [email,setEmail]= useState<any>('')
   const {
     register,
     control,
@@ -9,7 +14,16 @@ const ForgotPassword3 = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const onSubmit = (data: {}) => console.log(data);
+  useEffect(() => {
+    localforage.getItem('email', (err,value:any) => {
+      setEmail(value?.email)
+    })
+  }, [])
+  
+  const onSubmit = (data: any) => {
+    resetPassword.mutate({ newPassword:data.password,email})
+    
+  };
   return (
     <div className="w-[680px] py-[50px] rounded-lg shadow-lg bg-secondary center-element">
       <div className="w-[60%]">
@@ -19,8 +33,9 @@ const ForgotPassword3 = () => {
         <p className="text-center text-base text-gray-600 mb-10">
           You can now create a new password
         </p>
-        <form onSubmit={handleSubmit(onSubmit)} className="space-y-5 mb-10">
-          <PasswordInput
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <div className="space-y-5 mb-10">
+ <PasswordInput
             rules={{
               required: "this field is required",
               minLength: {
@@ -45,10 +60,12 @@ const ForgotPassword3 = () => {
               },
             }}
           />
-        </form>
-        <Button variant="tertiary" full>
+          </div>
+         
+          <Button variant="tertiary" full loading={resetPassword.isLoading}>
           reset password
         </Button>
+        </form>
       </div>
     </div>
   );

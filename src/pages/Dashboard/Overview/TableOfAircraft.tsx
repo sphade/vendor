@@ -1,9 +1,14 @@
 import { PolygonIcon } from "../../../assets/images/icons";
-import { BackButton, NotificationProfileHeader, SearchBar } from "../../../components";
+import { BackButton, Loading, NotificationProfileHeader, SearchBar } from "../../../components";
 import TableM from "../../../table/Table";
 import DataGridDemo from "../../../table/overview/OverviewTable";
+import { useOverviewTable } from "../../../hooks/queries";
+import { DataGrid } from "@mui/x-data-grid";
+import { aircraftColumns } from "../../../table/Columns";
 
 const TableOfAircraft = () => {
+  const overviewTable = useOverviewTable();
+
   return (
     <div>
           <header className="header">
@@ -25,7 +30,29 @@ const TableOfAircraft = () => {
         </div>
       </div>
       <div className="border rounded-lg mt-6">
-       <DataGridDemo/>
+      <DataGrid
+            rows={overviewTable.data?.data || []}
+            getCellClassName={() =>
+              "text-tertiary font-medium capitalize  !font-hind  "
+            }
+            rowHeight={70}
+            columns={aircraftColumns}
+            autoHeight={true}
+            // pageSize={4}
+            rowsPerPageOptions={[10]}
+            checkboxSelection
+            disableSelectionOnClick
+            // selectionModel={selectionModel}
+            // onSelectionModelChange={(newSelectionModel) => {
+            //   setSelectionModel(newSelectionModel);
+            //   console.log(newSelectionModel);
+            // }}
+            keepNonExistentRowsSelected
+            loading={overviewTable.isLoading}
+            components={{
+              LoadingOverlay: Loading,
+            }}
+          />
       </div>
     </div>
   );

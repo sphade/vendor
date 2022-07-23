@@ -13,7 +13,7 @@ const BookingCard = (props: any) => {
     React.useState<HTMLButtonElement | null>(null);
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-    localforage.setItem("selectedAircraft", props);
+    localforage.setItem("selectedAircraftDetails", props);
 
     setDropDownState(event.currentTarget);
   };
@@ -58,7 +58,7 @@ const BookingCard = (props: any) => {
           </div>
         </div>
 
-        <div className="flex justify-between gap-3 items-center pt-5">
+        {/* <div className="flex justify-between gap-3 items-center pt-5">
           <Button variant="outlinePrimary" size="medium">
             details
           </Button>
@@ -67,6 +67,23 @@ const BookingCard = (props: any) => {
               book
             </Button>
           </Link>
+        </div> */}
+        <div className="flex justify-between gap-3  items-center pt-5">
+          <Link to='/aircraft/details' >
+           <Button variant="outlinePrimary" onClick={async () => {
+                localforage.setItem("selectedAircraftDetails", props);
+              }} size="medium">
+            details
+          </Button>
+          </Link>
+         
+          
+          <Link to="../form" className="flex-1">
+            <Button full size="medium" iconRight={ArrowRight2Icon}>
+              book
+            </Button>
+          </Link>
+          
         </div>
       </div>
     </div>

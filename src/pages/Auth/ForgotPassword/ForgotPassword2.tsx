@@ -3,21 +3,23 @@ import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { Button } from "../../../components";
+import { useForgotPasswordSendCode } from "../../../hooks/mutations";
+import localforage from "localforage";
 
 const ForgotPassword2 = () => {
   const { option } = useParams();
+  const fpc =useForgotPasswordSendCode()
   const navigate = useNavigate();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const onSubmit = (data: {}) => console.log(data);
-  useEffect(() => {
-    if (!option) {
-      navigate("../");
-    }
-  }, [navigate, option]);
+  const onSubmit = (data: {}) => {
+localforage.setItem('email',data)
+fpc.mutate(data)
+  };
+
 
   return (
     <div className="w-[680px] py-[50px] rounded-md shadow-lg bg-secondary center-element">
@@ -44,7 +46,7 @@ const ForgotPassword2 = () => {
             (errors?.email?.message || errors?.phoneNumber?.message)
           }
         />
-        <Button variant="tertiary" full onClick={handleSubmit(onSubmit)}>
+        <Button variant="tertiary" full loading={fpc.isLoading} onClick={handleSubmit(onSubmit)}>
           send code
         </Button>
         <p className="text-center mt-3">

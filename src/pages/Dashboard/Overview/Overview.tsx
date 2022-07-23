@@ -19,12 +19,13 @@ import { Skeleton } from "@mui/material";
 import { aircraftColumns } from "../../../table/Columns";
 import { DataGrid } from "@mui/x-data-grid";
 import { format } from "date-fns";
+import { formatNumberToCurrency } from "../../../hooks/useFormatNumberToCurrency";
 const Overview = () => {
   const { overviewData, overviewLoading } = useOverview();
   const overviewTable = useOverviewTable();
-console.log(overviewTable.data?.data)
-  const formatedNum = useFormatNumber(1000000000);
 
+  const formatedNum = useFormatNumber(1000000000);
+  
   return (
     <div>
       <header className="flex items-center justify-between">
@@ -90,7 +91,8 @@ console.log(overviewTable.data?.data)
                   height={40}
                 />
               ) : (
-                overviewData?.totalAmount
+                formatNumberToCurrency({ number: overviewData?.totalAmount })
+                
               )
             }
             logo={TotalAmountIcon}

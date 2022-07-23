@@ -9,7 +9,7 @@ const AircraftCard = (props: any) => {
   const [dropDownState, setDropDownState] =
     React.useState<HTMLButtonElement | null>(null);
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-    localforage.setItem("selectedAircraft", props);
+    localforage.setItem("selectedAircraftDetails", props);
     setDropDownState(event.currentTarget);
   };
   return (
@@ -51,7 +51,7 @@ const AircraftCard = (props: any) => {
           <Link to={`/aircraft/details`}>
             <button
               onClick={async () => {
-                localforage.setItem("aircraftDetails", props);
+                localforage.setItem("selectedAircraftDetails", props);
               }}
               className="uppercase py-2 px-4 gap-2 shadow bg-orange-50 rounded-md text-primary font-bold text-sm w-[95px] flex items-center"
             >

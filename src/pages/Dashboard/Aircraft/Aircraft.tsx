@@ -25,6 +25,7 @@ const Aircraft = () => {
     category: "private jet",
   });
   const helicopter = useAircraft({ isArchived: false, category: "helicopter" });
+  const aircraft = useAircraft({ isArchived: false });
 
   return (
     <div>
@@ -32,7 +33,7 @@ const Aircraft = () => {
 
       <header className="header">
         <h1 className="header-heading">
-          Aircraft <span className="text-gray-400">(105)</span>
+          Aircraft <span className="text-gray-400">({aircraft?.data?.length})</span>
         </h1>
         <NotificationProfileHeader />
       </header>

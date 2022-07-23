@@ -46,6 +46,10 @@ export const forgotPassword = async (data: Record<string, unknown>) => {
   const response = await axios.post("user/forget-password", data);
   return response.data.data;
 };
+export const resetPassword = async (data: Record<string, unknown>) => {
+  const response = await axios.post("user/reset-password", data);
+  return response.data.data;
+};
 export const getVendorOrder = async () => {
   const response = await axios.get("vendor/orders");
   return response.data.data;

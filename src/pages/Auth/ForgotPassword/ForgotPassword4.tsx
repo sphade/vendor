@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import successIcon from "../../../assets/images/icons/success-icon.svg";
 import { Button } from "../../../components";
 const ForgotPassword4 = () => {
@@ -13,9 +14,12 @@ const ForgotPassword4 = () => {
         <p className="text-center text-base text-gray-600 mb-10">
           You can now sign into your Bossbus Premium Account
         </p>
-        <Button variant="primary" full>
+        <Link to='/login'>
+          <Button variant="primary" full>
           sign in
         </Button>
+        </Link>
+      
       </div>
     </div>
   );

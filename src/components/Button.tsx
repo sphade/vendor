@@ -28,11 +28,7 @@ const Button: FC<IButton> = ({
   onClick,
 }) => {
   return (
-    <ButtonBase
-      sx={{
-        width: "100%",
-      }}
-    >
+    
       <button
         className={classNames(
           "hover:opacity-80 default-transition   center-element     uppercase  text-secondary rounded-md cursor-pointer  h-fit disabled:opacity-50 disabled:cursor-not-allowed",
@@ -69,7 +65,7 @@ const Button: FC<IButton> = ({
         </span>
         {iconRight && <img src={iconRight} alt="icon" className="pl-3" />}
       </button>
-    </ButtonBase>
+   
   );
 };
 

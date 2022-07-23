@@ -1,8 +1,8 @@
 import { GridColDef } from "@mui/x-data-grid";
 import classNames from "classnames";
-import { CalenderDropDownActiveIcon } from "../assets/images/icons";
+import { CalenderDropDownActiveIcon,CalenderDropDownIcon } from "../assets/images/icons";
 import { format } from "date-fns";
-import parseJSON from "date-fns/parseJSON";
+import { formatNumberToCurrency } from "../hooks/useFormatNumberToCurrency";
 const headerClass = "font-medium !font-hind  text-[#828282]";
 
 export const aircraftColumns: GridColDef[] = [
@@ -13,6 +13,7 @@ export const aircraftColumns: GridColDef[] = [
     hideSortIcons: true,
     disableColumnMenu: true,
     flex: 1,
+    valueGetter: (params: any) => `${params.row.brand} ${params.row.model}`,
   },
   {
     field: "airCraftType",
@@ -53,6 +54,16 @@ export const aircraftColumns: GridColDef[] = [
     hideSortIcons: true,
     disableColumnMenu: true,
     flex: 1,
+    renderCell({ value }) {
+      return (
+        <div className="items-center">
+          {
+            formatNumberToCurrency({ number:value  })
+          }   
+        </div>
+      );
+    },
+    
   },
   {
     field: "createdAt",
@@ -91,7 +102,7 @@ export const aircraftColumns: GridColDef[] = [
     disableColumnMenu: true,
     renderCell({ value }) {
       
-      return <img src={CalenderDropDownActiveIcon} alt={value} />;
+      return <img src={value ?  CalenderDropDownActiveIcon : CalenderDropDownIcon} alt={value} />;
     },
     headerClassName: headerClass,
 

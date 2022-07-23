@@ -10,6 +10,8 @@ import {
   changeEmail,
   updateProfilePicture,
   editAircraft,
+  forgotPassword,
+  resetPassword,
 } from "../../services/api";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useSnackbar } from "notistack";
@@ -151,12 +153,28 @@ export const useForgotPasswordSendCode = () => {
 
   const navigate = useNavigate();
 
-  return useMutation(loginUser, {
+  return useMutation(forgotPassword, {
     async onSuccess(data) {
-      navigate(origin, { replace: true });
-      enqueueSnackbar(" successfully login", {
-        variant: "success",
+      navigate('step-3');
+      
+    },
+    onError(error) {
+      enqueueSnackbar(error.response?.data?.error || error.message, {
+        variant: "error",
       });
+    },
+    onSettled() {},
+  });
+};
+export const useResetPassword = () => {
+  const { enqueueSnackbar } = useSnackbar();
+
+  const navigate = useNavigate();
+
+  return useMutation(resetPassword, {
+    async onSuccess(data) {
+      navigate('step-4');
+      
     },
     onError(error) {
       enqueueSnackbar(error.response?.data?.error || error.message, {

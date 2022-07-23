@@ -73,7 +73,7 @@ const Register = () => {
             dragProps,
           }) => (
             <div onClick={(_) => onImageUpload()}>
-              <div className=" relative h-[100px] ">
+              <div className=" relative h-[100px] cursor-pointer ">
                 {!imageList?.length ? (
                   <>
                     <img

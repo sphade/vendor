@@ -18,7 +18,7 @@ const AircraftDetails = () => {
   const [error, setError] = useState<any>();
   const [loading, setLoading] = useState<boolean>(true);
   useEffect(() => {
-    localforage.getItem("aircraftDetails", (err, val) => {
+    localforage.getItem("selectedAircraftDetails", (err, val) => {
       setDetails(val);
       setError(err);
       setLoading(false);

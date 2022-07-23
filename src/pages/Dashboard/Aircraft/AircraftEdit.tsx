@@ -24,7 +24,7 @@ const AircraftEdit = () => {
   const [bar, setBar] = useState<boolean>(true);
 
   useEffect(() => {
-    localforage.getItem("aircraftDetails", (err, val: any) => {
+    localforage.getItem("selectedAircraftDetails", (err, val: any) => {
       setDetails(val);
       setError(err);
       setLoading(false);
