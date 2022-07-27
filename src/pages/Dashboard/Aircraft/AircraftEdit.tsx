@@ -10,28 +10,30 @@ import {
   SwitchCustomized,
 } from "../../../components";
 import { TextField } from "@mui/material";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import localforage from "localforage";
 import { useForm } from "react-hook-form";
 import Slider from "react-slick";
 import { useEditAircraft } from "../../../hooks/mutations";
 const AircraftEdit = () => {
-  const editAircraft = useEditAircraft();
   const [details, setDetails] = useState<any>();
-  const [error, setError] = useState<any>();
   const [loading, setLoading] = useState<boolean>(true);
   const [capacity, setCapacity] = useState<any>(0);
+  const [airCraftType, setAirCraftType] = useState<any>('');
+  // const [capacity, setCapacity] = useState<any>(0);
   const [bar, setBar] = useState<boolean>(true);
-
+  
   useEffect(() => {
     localforage.getItem("selectedAircraftDetails", (err, val: any) => {
       setDetails(val);
-      setError(err);
+     
       setLoading(false);
       setCapacity(val?.capacity);
       setBar(val?.bar);
+      setAirCraftType(val?.airCraftType)
     });
   }, []);
+  const editAircraft = useEditAircraft();
 
   const settings = {
     dots: true,
@@ -43,16 +45,46 @@ const AircraftEdit = () => {
   const {
     register,
     handleSubmit,
+    reset,
     control,
     formState: { errors },
-  } = useForm();
+  } = useForm<any>({
+    defaultValues: useMemo(() => {
+      return details
+    }, [details]) 
+      
+      
+    
+  });
+  useEffect(() => {
+    reset(details);
+  }, [details, reset]);
   const onSubmit = (data: any) => {
     const nameSplit: any = data?.aircraftName.split(/[, ]+/);
     delete data?.aircraftName;
-    editAircraft.mutate(details?.id, {
-      ...data,
+    delete data?.id;
+    delete data?.tag;
+    delete data?.isArchived;
+    delete data?.status;
+    delete data?.maintenanceFrom;
+    delete data?.maintenanceTo;
+    delete data?.createdAt;
+    delete data?.updatedAt;
+    delete data?.VendorId;
+    delete data?.AirportId;
+    delete data?.ProductImages;
+    console.log({...data,
       brand: nameSplit[0],
       model: nameSplit[1],
+    })
+    editAircraft.mutate({
+      id:details?.id,
+     data: {...data,
+      brand: nameSplit[0],
+      model: nameSplit[1],
+       capacity,
+    bar
+     }
     });
   };
   if (loading) {
@@ -87,6 +119,7 @@ const AircraftEdit = () => {
                   src={image?.url}
                   alt={""}
                   className="h-[230px] w-full object-cover rounded"
+                  key={image?.publicId}
                 />
               ))}
             </Slider>
@@ -107,14 +140,12 @@ const AircraftEdit = () => {
                 label="Aircraft Type"
                 options={[
                   {
-                    value: "privateJet",
+                    value: "private jet",
                     name: "Private jet",
                   },
                   { value: "helicopter", name: "Helicopter" },
                 ]}
-                rules={{
-                  required: "this field is required",
-                }}
+               
                 name="airCraftType"
                 size="medium"
               />
@@ -128,11 +159,9 @@ const AircraftEdit = () => {
                     value: "charter",
                     name: "Charter",
                   },
-                  { value: "jetPooling", name: "jet pooling" },
+                  { value: "jet pooling", name: "jet pooling" },
                 ]}
-                rules={{
-                  required: "this field is required",
-                }}
+               
                 name="serviceType"
                 size="medium"
               />

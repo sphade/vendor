@@ -7,9 +7,13 @@ import SwitchCustomized from "./SwitchCustomized";
 import { useForm } from "react-hook-form";
 import SelectInput from "./SelectInput";
 import { useAircraft } from "../hooks/queries";
+import { useSetMaintenance } from "../hooks/mutations";
 const MaintenanceForm = () => {
   const [bar, setBar] = useState<boolean>(true);
-  const privateJet = useAircraft({
+  const [starting, setStarting] = useState<any>('r');
+  const [ending, setEnding] = useState<any>('t');
+const setMaintenanceDate = useSetMaintenance()
+  const aircrafts = useAircraft({
     isArchived: false,
   
   });
@@ -19,73 +23,30 @@ const MaintenanceForm = () => {
     control,
     formState: { errors },
   } = useForm();
+
+  const onSubmit = (data: any) => {
+    setMaintenanceDate.mutate({id:data,data:{starting,ending}})
+  };
   return (
     <div className="px-[65px] py-10 border border-[#BDBDBD] w-[520px] rounded-md ">
       <h1 className="font-bold    capitalize text-tertiary text-2xl mb-6">
         maintenance form
       </h1>
-      <div className="divide-y space-y-6 divide-[#BDBDBD]">
+      <form className="divide-y space-y-6 divide-[#BDBDBD]" onSubmit={handleSubmit(onSubmit)}>
         <div className="space-y-6">
           <SelectInput
             control={control}
-            className="la"
+       
             label="choose aircraft"
-            options={[
-              {
-                value: "privateJet",
-                name: "Private jet",
-              },
-              { value: "helicopter", name: "Helicopter" },
-            ]}
+            options={aircrafts?.data?.map((aircraft: any)=>({value:aircraft?.id,name:`${aircraft?.brand} ${aircraft?.model}`}))}
             rules={{
               required: "this field is required",
             }}
-            name="serviceType"
+            name="id"
             size="medium"
-          />
+          />  
 
-          {/* <div className="flex items-center  justify-between gap-2">
-            <div className="flex-1">
-              {" "}
-              <SelectInput
-                control={control}
-                className="la"
-                label="Aircraft Type"
-                options={[
-                  {
-                    value: "privateJet",
-                    name: "Private jet",
-                  },
-                  { value: "helicopter", name: "Helicopter" },
-                ]}
-                rules={{
-                  required: "this field is required",
-                }}
-                name="serviceType"
-                size="medium"
-              />
-            </div>{" "}
-            <div className="flex-1">
-              {" "}
-              <SelectInput
-                control={control}
-                className="la"
-                label="Aircraft Type"
-                options={[
-                  {
-                    value: "privateJet",
-                    name: "Private jet",
-                  },
-                  { value: "helicopter", name: "Helicopter" },
-                ]}
-                rules={{
-                  required: "this field is required",
-                }}
-                name="serviceType"
-                size="medium"
-              />
-            </div>
-          </div> */}
+      
         </div>
         <div className="space-y-6">
           <h2 className="capitalize text-tertiary text-lg font-semibold    pt-6">
@@ -112,11 +73,11 @@ const MaintenanceForm = () => {
           </div>
         </div>
         <div className="py-6">
-          <Button full={true} disabled variant="primary">
+          <Button full={true}  variant="primary">
             set
           </Button>
         </div>
-      </div>
+      </form>
     </div>
   );
 };

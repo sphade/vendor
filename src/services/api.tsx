@@ -67,10 +67,10 @@ export const archiveAircraft = async (id: Record<string, unknown>) => {
   return response.data.data;
 };
 export const editAircraft = async (
-  id: Record<string, unknown>,
+ 
   data: Record<string, unknown>
 ) => {
-  const response = await axios.patch(`products/aircraft/${id}`, data);
+  const response = await axios.patch(`vendor/aircraft/${data.id}`, data.data);
   return response.data.data;
 };
 export const updateProfilePicture = async (data: any) => {
@@ -105,6 +105,14 @@ export const checkAircraftAvailability = async (
 ) => {
   const response = await axios.patch(
     `vendor/aircraft/${id}/check-availability`
+  );
+  return response.data.data;
+};
+export const setAircraftMaintenance = async (
+  data: Record<string, unknown>
+) => {
+  const response = await axios.patch(
+    `vendor/aircraft/${data.id}/set-maintenance`,data.data
   );
   return response.data.data;
 };

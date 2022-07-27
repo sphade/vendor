@@ -47,6 +47,8 @@ const SelectInput = ({
       fullWidth
       size={size}
       defaultValue={defaultValue}
+      
+
     >
       {/* <MenuItem value="">
         <em>None</em>

@@ -165,7 +165,7 @@ const AircraftDetails = () => {
                       <div className=" flex items-center gap-3 ">
                         <p className="capitalize text-[#828282]">bar: </p>
                         <p className="capitalize text-tertiary font-semibold   ">
-                          {details?.isAvailable ? "available" : "Unavailable"}
+                          {details?.bar ? "available" : "Unavailable"}
                         </p>
                       </div>
                       <div className=" flex items-center gap-3 ">

@@ -12,12 +12,14 @@ import {
   editAircraft,
   forgotPassword,
   resetPassword,
+  setAircraftMaintenance,
 } from "../../services/api";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useSnackbar } from "notistack";
 import localforage from "localforage";
 import { useDispatch } from "react-redux";
 import { toggleEmailVerificationModal } from "../../redux/slices/ModalSlice";
+import { useEffect, useState } from "react";
 
 export const useLogin = () => {
   const { enqueueSnackbar } = useSnackbar();
@@ -206,7 +208,6 @@ export const useEditAircraft = () => {
   const { enqueueSnackbar } = useSnackbar();
   const queryClient = useQueryClient();
 
-
   return useMutation(editAircraft, {
     onSuccess(data) {
       enqueueSnackbar("Aircraft edited successfully", {
@@ -242,7 +243,7 @@ export const useArchiveAircraft = (id) => {
     },
     onSettled() {
       queryClient.invalidateQueries("aircraft");
-      queryClient.invalidateQueries("aircraftArchive");
+      queryClient.invalidateQueries("overview");
     },
   });
 };
@@ -264,6 +265,27 @@ export const useChangeProfilePicture = () => {
     },
     onSettled() {
       queryClient.invalidateQueries("user");
+    },
+  });
+};
+export const useSetMaintenance = () => {
+  const queryClient = useQueryClient();
+
+  const { enqueueSnackbar } = useSnackbar();
+
+  return useMutation(setAircraftMaintenance, {
+    onSuccess(data) {
+      enqueueSnackbar("maintenance date set sucessfully", {
+        variant: "success",
+      });
+    },
+    onError(error) {
+      enqueueSnackbar(error.response?.data?.error || error.message, {
+        variant: "error",
+      });
+    },
+    onSettled() {
+      queryClient.invalidateQueries("aircraft");
     },
   });
 };

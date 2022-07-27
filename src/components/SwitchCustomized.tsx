@@ -68,7 +68,7 @@ const SwitchCustomized = ({
             checked={checked}
             onChange={() => setChecked(!checked)}
             sx={{ m: 1 }}
-            defaultChecked
+            
           />
         }
         label=""
