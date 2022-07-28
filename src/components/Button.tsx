@@ -13,7 +13,7 @@ interface IButton {
   disabled?: boolean;
 
   size?: "medium" | "small" | "big";
-  onClick?: () => void;
+  onClick?: (e?:any) => void;
 }
 const Button: FC<IButton> = ({
   children,

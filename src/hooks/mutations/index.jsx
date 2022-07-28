@@ -14,6 +14,7 @@ import {
   resetPassword,
   setAircraftMaintenance,
   toggleAircraftStatus,
+  updateBusinessInfo,
 } from "../../services/api";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useSnackbar } from "notistack";
@@ -308,6 +309,27 @@ export const useToggleStatus = () => {
     },
     onSettled() {
       queryClient.invalidateQueries("aircraft");
+    },
+  });
+};
+export const useUpdateBusinessInfo = () => {
+  const queryClient = useQueryClient();
+
+  const { enqueueSnackbar } = useSnackbar();
+
+  return useMutation(updateBusinessInfo, {
+    onSuccess(data) {
+      enqueueSnackbar("maintenance date set successfully", {
+        variant: "success",
+      });
+    },
+    onError(error) {
+      enqueueSnackbar(error.response?.data?.error || error.message, {
+        variant: "error",
+      });
+    },
+    onSettled() {
+      queryClient.invalidateQueries("user");
     },
   });
 };

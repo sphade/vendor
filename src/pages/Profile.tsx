@@ -13,10 +13,11 @@ import {
   PasswordInput,
   Loading,
 } from "../components";
-import { useChangeProfilePicture } from "../hooks/mutations";
+import { useChangeProfilePicture, useUpdateBusinessInfo } from "../hooks/mutations";
 import { useUser } from "../hooks/queries";
 import ImageUploading from "react-images-uploading";
 import { useForm } from "react-hook-form";
+
 
 const Profile = () => {
   const user = useUser();
@@ -26,7 +27,7 @@ const Profile = () => {
     handleSubmit,
     control,
     formState: { errors },
-  } = useForm({
+  } = useForm<any>({
     defaultValues: {
       password: password,
     },
@@ -35,6 +36,7 @@ const Profile = () => {
     setPassword(user.data?.password);
   }, [user.data?.password]);
   const changeImage = useChangeProfilePicture();
+  const changeBusinessInfo = useUpdateBusinessInfo();
   const [images, setImages] = useState<any[]>([]);
   const formData = new FormData();
   const onImageChange = async (imageList: any, addUpdateIndex: any) => {
@@ -71,6 +73,11 @@ const Profile = () => {
       </div>
     );
   }
+  const submit = (data: any) => {
+    delete data?.password
+    
+    changeBusinessInfo.mutate(data)
+  }
   return (
     <div className="flex gap-5 mx-auto items-start  w-fit py-20 relative  ">
       <BackButton />
@@ -103,53 +110,55 @@ const Profile = () => {
               dragProps,
             }) => (
               <>
-                <div className="relative  ">
-                  <Avatar
+                <div className="relative mb-5  ">
+                  <div className='relative w-fit mx-auto '>
+                     <Avatar
                     src={(imageList && imageList[0]?.image) || user?.data.logo}
                     alt="avatarIcon"
-                    className="!h-32 !w-32 mb-10 mx-auto"
+                    className="!h-32 !w-32 mx-auto !relative"
                     sx={{
                       h: "128px",
                     }}
-                  />
-                  {imageList.map((image, index) => (
-                    <div className="w-full   justify-center gap-5 mx-auto flex items-center -mt-7 mb-3">
-                      <button
-                        onClick={() => {
-                          onImageUpdate(index);
-                        }}
-                        className="px-1 border rounded text-primary border-primary"
-                      >
-                        update
-                      </button>
-                      <button
-                        onClick={() => {
-                          formData.append("image", images[0]?.file);
-                          changeImage.mutate(formData);
-                        }}
-                        className="px-1 text-white border default-transition rounded bg-primary border-primary"
-                      >
-                        {changeImage.isLoading ? "uploading..." : "upload"}
-                      </button>
-                    </div>
-                  ))}
-                  {(edit || !images) && (
+                    />
                     <img
                       src={ChangePictureIcon}
                       alt="uploadIcon"
-                      className="absolute bottom-[25px] cursor-pointer right-[280px]"
+                      className=" cursor-pointer absolute right-[13px] bottom-[0px] "
                       onClick={() => {
                         onImageUpload();
                       }}
-                    />
-                  )}
+                      />
+                  </div>
+                 {imageList.map((image, index) => (
+                      <div className="w-full   justify-center gap-5 mx-auto flex items-center  mb-3">
+                        <button
+                          onClick={() => {
+                            onImageUpdate(index);
+                          }}
+                          className="px-1 border rounded text-primary border-primary"
+                        >
+                          update
+                        </button>
+                        <button
+                          onClick={() => {
+                            formData.append("image", images[0]?.file);
+                            changeImage.mutate(formData);
+                          }}
+                          className="px-1 text-white border default-transition rounded bg-primary border-primary"
+                        >
+                          {changeImage.isLoading ? "uploading..." : "upload"}
+                        </button>
+                      </div>
+                    ))}
+                  
+                
+                    
+              
                 </div>
 
                 <form
                   className="space-y-5 w-[390px] mx-auto mb-10"
-                  onSubmit={(e: any) => {
-                    e.preventDefault();
-                  }}
+                  
                 >
                   <TextField
                     fullWidth
@@ -160,9 +169,18 @@ const Profile = () => {
                     InputProps={{
                       readOnly: !edit,
                     }}
+                    {...register("name", {
+                      required: "this field is required",
+                     
+                    })}
+                    error={errors.name}
+                    helperText={errors?.name && errors?.name?.message}
+                    
                   />
                   <TextField
-                    fullWidth
+                              
+                              fullWidth
+                    
                     label="Email Address"
                     value={user?.data.email}
                     type={"email"}
@@ -186,6 +204,12 @@ const Profile = () => {
                       readOnly: !edit,
                     }}
                     label="Business Address"
+                    {...register("address", {
+                      required: "this field is required",
+                     
+                    })}
+                    error={errors.address}
+                    helperText={errors?.address && errors?.address?.message}
                   />{" "}
                   
                   <PasswordInput
@@ -201,11 +225,15 @@ const Profile = () => {
                     label="password"
                   />
                   {!edit ? (
-                    <Button full onClick={() => setEdit(true)}>
+                    <Button full onClick={(e:any) => {
+                      e.preventDefault()
+                      setEdit(true)
+                    
+                    }}>
                       edit profile
                     </Button>
                   ) : (
-                    <Button full loading={changeImage.isLoading}>
+                      <Button full loading={changeBusinessInfo.isLoading }  onClick={handleSubmit(submit)}>
                       save
                     </Button>
                   )}

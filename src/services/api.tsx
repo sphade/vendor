@@ -86,6 +86,11 @@ export const updateProfilePicture = async (data: any) => {
   });
   return response.data.data;
 };
+export const updateBusinessInfo = async (data: any) => {
+  const response = await axios.patch(`vendor/profile`, data
+  );
+  return response.data.data;
+};
 export const RequestUpdatePhoneNumberOtp = async (
   data: Record<string, unknown>
 ) => {
