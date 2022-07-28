@@ -15,14 +15,14 @@ import { Skeleton } from "@mui/material";
 import { Gallery, Item } from "react-photoswipe-gallery";
 const AircraftDetails = () => {
   const [details, setDetails] = useState<any>();
-  const [error, setError] = useState<any>();
+
   const [loading, setLoading] = useState<boolean>(true);
   useEffect(() => {
     localforage.getItem("selectedAircraftDetails", (err, val) => {
       setDetails(val);
-      setError(err);
+    
       setLoading(false);
-      console.log(err);
+     
     });
   }, []);
 
@@ -108,6 +108,7 @@ const AircraftDetails = () => {
                         thumbnail={image.url}
                         width="1024"
                         height="608"
+                        key={id}
                       >
                         {({ ref, open }) => (
                           <img

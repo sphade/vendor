@@ -102,7 +102,7 @@ export const aircraftColumns: GridColDef[] = [
     disableColumnMenu: true,
     renderCell({ value }) {
       
-      return <img src={value ?  CalenderDropDownActiveIcon : CalenderDropDownIcon} alt={value} />;
+      return <img src={value ?  CalenderDropDownActiveIcon : CalenderDropDownIcon} alt={'calender'} />;
     },
     headerClassName: headerClass,
 
@@ -205,6 +205,8 @@ export const bookingColumn: GridColDef[] = [
     hideSortIcons: true,
     disableColumnMenu: true,
     flex: 1,
+    valueGetter: (params: any) => `${params.row.Aircraft.tag || ""}`,
+
   },
 
   {
@@ -214,6 +216,8 @@ export const bookingColumn: GridColDef[] = [
     hideSortIcons: true,
     disableColumnMenu: true,
     flex: 1,
+    valueGetter: (params: any) => `${params.row.Aircraft.serviceType || ""}`,
+
   },
   {
     field: "tripType",
@@ -230,6 +234,8 @@ export const bookingColumn: GridColDef[] = [
     hideSortIcons: true,
     disableColumnMenu: true,
     flex: 1,
+    valueGetter: (params: any) => `${params.row.departure.name || ""}`,
+
   },
   {
     field: "destination",
@@ -238,21 +244,27 @@ export const bookingColumn: GridColDef[] = [
     hideSortIcons: true,
     disableColumnMenu: true,
     flex: 1,
+    valueGetter: (params: any) => `${params.row.destination.name || ""}`,
+
   },
   {
-    field: "depatureDateTime",
-    headerName: "Depature Date & Time",
+    field: "departureDate",
+    headerName: "Departure Date & Time",
     headerClassName: headerClass,
     hideSortIcons: true,
     disableColumnMenu: true,
     flex: 1,
 
     renderCell({ value }) {
-      return (
-        <div className="flex flex-col">
-          <p>{value.date}</p>
-          <p className="text-xs font-medium text-gray-500">{value.time}</p>
-        </div>
+      
+        return (
+          <div className="flex items-center">
+            <span>{format(new Date(value), "dd/MMM/yyyy - ")}</span>
+            <span className="text-xs font-medium text-gray-500">
+              {format(new Date(value), "h:m aaa")}
+            </span>
+          </div>
+        
       );
     },
   },
@@ -266,7 +278,15 @@ export const bookingColumn: GridColDef[] = [
     flex: 1,
 
     renderCell({ value }) {
-      return <div className="text-green-500">{value}</div>;
+      return  <div
+      className={classNames({
+        "text-green-500": value === "successful",
+        "text-orange-500": value === "pending",
+        "text-red-500": value === "failed",
+      })}
+    >
+      {value}
+    </div>;
     },
   },
 ];

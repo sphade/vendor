@@ -116,6 +116,14 @@ export const setAircraftMaintenance = async (
   );
   return response.data.data;
 };
+export const toggleAircraftStatus = async (
+  id: Record<string, unknown>
+) => {
+  const response = await axios.patch(
+    `vendor/aircraft/${id}/status`
+  );
+  return response.data.data;
+};
 export const listAircraftForPooling = async (
   id: Record<string, unknown>,
   data: Record<string, unknown>

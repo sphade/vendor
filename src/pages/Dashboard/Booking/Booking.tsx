@@ -15,6 +15,7 @@ import { useOrder } from "../../../hooks/queries";
 
 const Booking = () => {
   const order = useOrder();
+  console.log(order)
   return (
     <div>
       <header className="header">
@@ -40,11 +41,13 @@ const Booking = () => {
         </Link>
       </div>
       <>
-        {!order.data?.length ? (
+     
+        {
+          
+          order.data?.length===0 ? (
           <NoOrder />
         ) : (
-          <DataGrid
-            rows={order.data}
+           <DataGrid
             getCellClassName={() =>
               "text-tertiary font-medium capitalize  !font-hind  "
             }
@@ -52,7 +55,8 @@ const Booking = () => {
             columns={bookingColumn}
             autoHeight={true}
             // pageSize={4}
-            rowsPerPageOptions={[10]}
+                rows={order.data || []}
+        rowsPerPageOptions={[10]}
             checkboxSelection
             disableSelectionOnClick
             // selectionModel={selectionModel}

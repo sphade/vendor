@@ -13,6 +13,7 @@ import {
   forgotPassword,
   resetPassword,
   setAircraftMaintenance,
+  toggleAircraftStatus,
 } from "../../services/api";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useSnackbar } from "notistack";
@@ -275,7 +276,28 @@ export const useSetMaintenance = () => {
 
   return useMutation(setAircraftMaintenance, {
     onSuccess(data) {
-      enqueueSnackbar("maintenance date set sucessfully", {
+      enqueueSnackbar("maintenance date set successfully", {
+        variant: "success",
+      });
+    },
+    onError(error) {
+      enqueueSnackbar(error.response?.data?.error || error.message, {
+        variant: "error",
+      });
+    },
+    onSettled() {
+      queryClient.invalidateQueries("aircraft");
+    },
+  });
+};
+export const useToggleStatus = () => {
+  const queryClient = useQueryClient();
+
+  const { enqueueSnackbar } = useSnackbar();
+
+  return useMutation(toggleAircraftStatus, {
+    onSuccess(data) {
+      enqueueSnackbar("maintenance date set successfully", {
         variant: "success",
       });
     },

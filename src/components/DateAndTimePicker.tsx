@@ -9,7 +9,7 @@ import { useRef, useState } from "react";
 import { DateTimePicker } from "@mui/x-date-pickers";
 import { format } from "date-fns";
 
-const DateAndTimePicker = ({ date,setDefault }:any) => {
+const DateAndTimePicker = ({ date,setDate }:any) => {
   const [value, setValue] = useState<any>(new Date());
   const [open, setOpen] = useState(false);
 
@@ -19,11 +19,11 @@ const DateAndTimePicker = ({ date,setDefault }:any) => {
         <MobileDatePicker
           label={"label"}
           inputFormat="dd/MM/yyyy"
-          value={value}
+          value={date}
           open={open}
           minDate={new Date()}
           onChange={(newValue) => {
-            setValue(newValue);
+            setDate(newValue);
            
           }}
           onClose={() => {
@@ -36,7 +36,7 @@ const DateAndTimePicker = ({ date,setDefault }:any) => {
             >
               <img src={CalenderIcon} alt="icon" />
               <p className="capitalize text-base">
-                {format(value, "dd/MMM/yyyy") || "departure date"}
+                {format(date, "dd/MMM/yyyy") || "departure date"}
               </p>
             </div>
           )}

@@ -6,7 +6,7 @@ import { transactionColumn } from "../../../table/Columns";
 import TransactionTable from "../../../table/transactions/Table";
 const Transactions = () => {
   const transactionTable = useTransactionTable();
-  console.log(transactionTable.data)
+ 
   return (
     <div>
       <header className="header">
