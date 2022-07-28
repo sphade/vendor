@@ -1,12 +1,13 @@
 import { DataGrid } from "@mui/x-data-grid";
+import { useState } from "react";
 import { PolygonIcon } from "../../../assets/images/icons";
 import { Loading, NotificationProfileHeader, SearchBar } from "../../../components";
 import { useTransactionTable } from "../../../hooks/queries";
 import { transactionColumn } from "../../../table/Columns";
 import TransactionTable from "../../../table/transactions/Table";
 const Transactions = () => {
-  const transactionTable = useTransactionTable();
- 
+  const [search,setSearch] = useState('')
+  const transactionTable = useTransactionTable({search});
   return (
     <div>
       <header className="header">
@@ -14,7 +15,7 @@ const Transactions = () => {
         <NotificationProfileHeader />
       </header>
       <div className="flex justify-end items-center space-x-5 mt-7">
-        <SearchBar size="medium" />
+        <SearchBar size="medium" value={search} setValue={setSearch} />
 
         <div className="  bg-gray-200 text-sm text-center flex items-center font-medium capitalize   rounded-md divide-gray-500  divide-x px-3 py-3">
           <p className="px-3">sort by</p>

@@ -32,8 +32,9 @@ export const useOverview = () => {
 export const useOverviewTable = () => {
   return useQuery("overviewTable", getOverviewTable);
 };
-export const useTransactionTable = () => {
-  return useQuery("transactionTable", getTransaction);
+export const useTransactionTable = ({search}:any) => {
+  return useQuery(["transactionTable",search], ()=>getTransaction({search}), { keepPreviousData : true });
+  
 };
 export const useAircraft = ({ isArchived, category }: any) => {
   const { enqueueSnackbar } = useSnackbar();

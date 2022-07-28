@@ -3,8 +3,10 @@ import SearchIcon from "../assets/images/icons/Search.png";
 import ClassNames from "classnames";
 interface ISearchBar {
   size?: "small" | "medium";
+  value?:string,
+  setValue?:any
 }
-const SearchBar: FC<ISearchBar> = ({ size = "small" }) => {
+const SearchBar: FC<ISearchBar> = ({ size = "small",value,setValue }) => {
   return (
     <div
       className={ClassNames(
@@ -20,6 +22,10 @@ const SearchBar: FC<ISearchBar> = ({ size = "small" }) => {
         type="text"
         className="outline-none bg-transparent w-full"
         placeholder="Search"
+        value={value}
+        onChange={(e) => {
+          setValue(e.target.value)
+        }}
       />
     </div>
   );

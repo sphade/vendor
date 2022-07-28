@@ -58,8 +58,12 @@ export const getUser = async () => {
   const response = await axios.get("vendor/profile");
   return response.data.data;
 };
-export const getTransaction = async () => {
-  const response = await axios.get("vendor/transactions");
+export const getTransaction = async ({search}:any) => {
+  const response = await axios.get("vendor/transactions", {
+    params: {
+      name:search
+    }
+  });
   return response.data.data;
 };
 export const archiveAircraft = async (id: Record<string, unknown>) => {
