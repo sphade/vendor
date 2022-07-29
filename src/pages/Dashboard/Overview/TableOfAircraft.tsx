@@ -5,9 +5,11 @@ import DataGridDemo from "../../../table/overview/OverviewTable";
 import { useOverviewTable } from "../../../hooks/queries";
 import { DataGrid } from "@mui/x-data-grid";
 import { aircraftColumns } from "../../../table/Columns";
+import { useState } from "react";
 
 const TableOfAircraft = () => {
-  const overviewTable = useOverviewTable();
+  const[search,setSearch] = useState('')
+  const overviewTable = useOverviewTable({search});
 
   return (
     <div>
@@ -19,7 +21,7 @@ const TableOfAircraft = () => {
         <NotificationProfileHeader />
       </header>
       <div className="flex justify-end items-center space-x-5 mt-7">
-        <SearchBar size="medium" />
+        <SearchBar size="medium"value={search} setValue={setSearch} />
 
         <div className="bg-gray-200 text-sm text-center flex items-center font-medium capitalize   rounded-md divide-gray-500  divide-x px-3 py-3">
           <p className="px-3">sort by</p>

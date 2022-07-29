@@ -17,6 +17,7 @@ import { useChangeProfilePicture, useUpdateBusinessInfo } from "../hooks/mutatio
 import { useUser } from "../hooks/queries";
 import ImageUploading from "react-images-uploading";
 import { useForm } from "react-hook-form";
+import { PhoneNumberModal, PhoneNumberVerificationModal } from "../components/modal/ProfileModal";
 
 
 const Profile = () => {
@@ -44,8 +45,8 @@ const Profile = () => {
   };
   const [edit, setEdit] = React.useState(false);
   const [emailModalState, setEmailModalState] = React.useState(false);
-  const [emailVerificationModalState, setEmailVerificationModalState] =
-    React.useState(false);
+  const [numberModalState, setNumberModalState] = React.useState(false);
+
   useEffect(() => {
     changeImage.isSuccess && setEdit(false);
   }, [changeImage.isSuccess]);
@@ -86,9 +87,15 @@ const Profile = () => {
           modalState={emailModalState}
           setModalState={setEmailModalState}
         />
+        <PhoneNumberModal
+          modalState={numberModalState}
+          setModalState={setNumberModalState}
+        />
         <EmailVerificationModal
-          modalState={emailVerificationModalState}
-          setModalState={setEmailVerificationModalState}
+         
+        />
+        <PhoneNumberVerificationModal 
+             
         />
         <div className="w-[684px]  text-center shadow-lg border bg-secondary rounded-lg ">
           <h1 className="text-2xl text-tertiary font-semibold capitalize my-10">
@@ -177,17 +184,19 @@ const Profile = () => {
                     helperText={errors?.name && errors?.name?.message}
                     
                   />
+        
+
                   <TextField
                               
-                              fullWidth
-                    
+                            fullWidth
                     label="Email Address"
                     value={user?.data.email}
                     type={"email"}
                     InputProps={{
                       readOnly: true,
                     }}
-                  />
+                    />
+                    
                   <PhoneInput
                     country={"ng"}
                     placeholder="phone Number"
@@ -245,14 +254,16 @@ const Profile = () => {
             <>
               <p
                 onClick={() => setEmailModalState(true)}
-                className="absolute top-[450px] cursor-pointer right-[80px] text-base text-primary font-semibold capitalze "
+                className="absolute top-[430px] cursor-pointer right-[80px] text-base text-primary font-semibold capitalze "
               >
                 change
               </p>
-              <p className="absolute top-[530px] cursor-pointer right-[80px] text-base text-primary font-semibold capitalze ">
+              <p
+              onClick={() => setNumberModalState(true)}
+                className="absolute top-[510px] cursor-pointer right-[80px] text-base text-primary font-semibold capitalze ">
                 change
               </p>
-              <p className="absolute top-[690px] cursor-pointer right-[80px] text-base text-primary font-semibold capitalze ">
+              <p className="absolute top-[670px] cursor-pointer right-[80px] text-base text-primary font-semibold capitalze ">
                 change
               </p>
             </>

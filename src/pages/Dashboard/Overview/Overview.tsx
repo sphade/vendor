@@ -22,7 +22,7 @@ import { format } from "date-fns";
 import { formatNumberToCurrency } from "../../../hooks/useFormatNumberToCurrency";
 const Overview = () => {
   const { overviewData, overviewLoading } = useOverview();
-  const overviewTable = useOverviewTable();
+  const overviewTable = useOverviewTable({search:''});
 
   const formatedNum = useFormatNumber(1000000000);
   

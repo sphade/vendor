@@ -4,11 +4,13 @@ interface IModalSlice {
   deleteModal: boolean;
   deleteArchiveModal: boolean;
   emailVerificationModal: boolean;
+  numberVerificationModal: boolean;
 }
 const initialState: IModalSlice = {
   deleteModal: false,
   deleteArchiveModal: false,
   emailVerificationModal: false,
+  numberVerificationModal: false,
 };
 
 const ModalSlice = createSlice({
@@ -24,8 +26,14 @@ const ModalSlice = createSlice({
     toggleEmailVerificationModal: (state) => {
       state.emailVerificationModal = !state.emailVerificationModal;
     },
+    toggleNumberVerificationModal: (state) => {
+      state.numberVerificationModal = !state.numberVerificationModal;
+    },
     setEmailVerificationModal: (state) => {
       state.emailVerificationModal = true;
+    },
+    setNumberVerificationModal: (state) => {
+      state.numberVerificationModal = true;
     },
   },
 });
@@ -34,7 +42,9 @@ export const {
   toggleDeleteModal,
   toggleDeleteArchiveModal,
   toggleEmailVerificationModal,
-  setEmailVerificationModal
+  setEmailVerificationModal,
+  toggleNumberVerificationModal,
+  setNumberVerificationModal
 } = ModalSlice.actions;
 
 export default ModalSlice.reducer;

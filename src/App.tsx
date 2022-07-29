@@ -31,7 +31,7 @@ function App(): JSX.Element {
 
   return (
     <>
-      <div className=" lg:block hiddenw bg-[#E5E5E5] min-h-screen">
+      <div className=" lg:block hiddenw bg-[#F2F2F2] min-h-screen">
         <Routes>
           {/* public routes */}
 

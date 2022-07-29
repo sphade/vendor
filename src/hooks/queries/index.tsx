@@ -29,8 +29,10 @@ export const useOverview = () => {
     overviewError,
   };
 };
-export const useOverviewTable = () => {
-  return useQuery("overviewTable", getOverviewTable);
+export const useOverviewTable = ({search}:any) => {
+  return useQuery(["overviewTable", search], () => getOverviewTable({ search }), {
+    keepPreviousData:true
+  });
 };
 export const useTransactionTable = ({search}:any) => {
   return useQuery(["transactionTable",search], ()=>getTransaction({search}), { keepPreviousData : true });

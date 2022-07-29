@@ -47,7 +47,7 @@ const NotificationProfileHeader = () => {
             {user.isLoading ? (
               <Skeleton variant="text" width={70} />
             ) : (
-              user.data?.business_name || offlineUser?.name
+              user.data?.email || offlineUser?.email
             )}
           </p>
         </div>

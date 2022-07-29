@@ -20,8 +20,12 @@ export const getOverview = async () => {
   const response = await axios.get("vendor/overview");
   return response.data.data;
 };
-export const getOverviewTable = async () => {
-  const response = await axios.get("vendor/aircraft/table");
+export const getOverviewTable = async ({search}:any) => {
+  const response = await axios.get("vendor/aircraft/table",{
+    params:{
+      name:search
+    }
+  });
   return response.data.data;
 };
 export const getVendorAircraft = async ({ isArchived, category }: any) => {

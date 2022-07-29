@@ -15,6 +15,8 @@ import {
   setAircraftMaintenance,
   toggleAircraftStatus,
   updateBusinessInfo,
+  RequestUpdatePhoneNumberOtp,
+  changePhoneNumber,
 } from "../../services/api";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useSnackbar } from "notistack";
@@ -319,7 +321,49 @@ export const useUpdateBusinessInfo = () => {
 
   return useMutation(updateBusinessInfo, {
     onSuccess(data) {
-      enqueueSnackbar("maintenance date set successfully", {
+      enqueueSnackbar("successful", {
+        variant: "success",
+      });
+    },
+    onError(error) {
+      enqueueSnackbar(error.response?.data?.error || error.message, {
+        variant: "error",
+      });
+    },
+    onSettled() {
+      queryClient.invalidateQueries("user");
+    },
+  });
+};
+export const useRequestNumberOtp = () => {
+  const queryClient = useQueryClient();
+
+  const { enqueueSnackbar } = useSnackbar();
+
+  return useMutation(RequestUpdatePhoneNumberOtp, {
+    onSuccess(data) {
+      enqueueSnackbar("check sms for otp", {
+        variant: "success",
+      });
+    },
+    onError(error) {
+      enqueueSnackbar(error.response?.data?.error || error.message, {
+        variant: "error",
+      });
+    },
+    onSettled() {
+      queryClient.invalidateQueries("user");
+    },
+  });
+};
+export const useChangeNumber = () => {
+  const queryClient = useQueryClient();
+
+  const { enqueueSnackbar } = useSnackbar();
+
+  return useMutation(changePhoneNumber, {
+    onSuccess(data) {
+      enqueueSnackbar("phone number has been updated", {
         variant: "success",
       });
     },
