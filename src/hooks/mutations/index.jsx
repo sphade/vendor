@@ -17,6 +17,8 @@ import {
   updateBusinessInfo,
   RequestUpdatePhoneNumberOtp,
   changePhoneNumber,
+  changePassword,
+  deleteAircraft,
 } from "../../services/api";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useSnackbar } from "notistack";
@@ -229,6 +231,27 @@ export const useEditAircraft = () => {
     },
   });
 };
+export const useDeleteAircraft = () => {
+  const { enqueueSnackbar } = useSnackbar();
+  const queryClient = useQueryClient();
+
+  return useMutation(deleteAircraft, {
+    onSuccess(data) {
+      enqueueSnackbar("Aircraft deleted successfully", {
+        variant: "success",
+      });
+    },
+    onError(error) {
+      enqueueSnackbar(error.response?.data?.error || error.message, {
+        variant: "error",
+      });
+    },
+    onSettled() {
+      queryClient.invalidateQueries("aircraft");
+
+    },
+  });
+};
 export const useArchiveAircraft = (id) => {
   const queryClient = useQueryClient();
 
@@ -364,6 +387,27 @@ export const useChangeNumber = () => {
   return useMutation(changePhoneNumber, {
     onSuccess(data) {
       enqueueSnackbar("phone number has been updated", {
+        variant: "success",
+      });
+    },
+    onError(error) {
+      enqueueSnackbar(error.response?.data?.error || error.message, {
+        variant: "error",
+      });
+    },
+    onSettled() {
+      queryClient.invalidateQueries("user");
+    },
+  });
+};
+export const useChangePassword = () => {
+  const queryClient = useQueryClient();
+
+  const { enqueueSnackbar } = useSnackbar();
+
+  return useMutation(changePassword, {
+    onSuccess(data) {
+      enqueueSnackbar("password has been updated", {
         variant: "success",
       });
     },

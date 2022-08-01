@@ -12,9 +12,29 @@ import {
   ToAndFroIcon,
 } from "../../../assets/images/icons";
 import { useForm } from "react-hook-form";
-import { useState } from "react";
 import BookingFormSkeleton from "../../../skeleton/BookingFormSkeleton";
+import { useEffect, useState } from "react";
+import Slider from "react-slick";
+import localforage from "localforage";
 const BookingForm = () => {
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+  };
+  const [details, setDetails] = useState<any>();
+
+  const [loading, setLoading] = useState<boolean>(true);
+  useEffect(() => {
+    localforage.getItem("selectedAircraftDetails", (err, val) => {
+      setDetails(val);
+    
+      setLoading(false);
+     
+    });
+  }, []);
   const [serviceType, setServiceType] = useState<any>("");
   const {
     register,
@@ -42,11 +62,17 @@ const BookingForm = () => {
       <main className="mb-5">
        <BookingFormSkeleton/>
         <div className="w-[920px] px-20 mx-auto border-[#BDBDBD] border rounded-lg pt-[32px] p-10">
-          <img
-            src={planeImg}
-            alt="icon"
-            className="w-[760px] h-[323px] object-cover "
-          />
+         
+            <Slider {...settings}>
+              {details?.ProductImages.map((image: any) => (
+                <img
+                  src={image?.url}
+                  alt={""}
+                  className="w-[760px] h-[323px] object-cover "
+                  key={image?.publicId}
+                />
+              ))}
+            </Slider>
           <div>
             <h1 className="font-semibold    capitalize text-tertiary text-2xl p-4 border-b border-[#BDBDBD]  ">
               challenger 6000
@@ -109,8 +135,8 @@ const BookingForm = () => {
             </div>
 
             <div className="flex items-center gap-6 mb-14">
-              <DateAndTimePicker />
-              <DateAndTimePicker />
+              <DateAndTimePicker date={new Date()} />
+              <DateAndTimePicker date={new Date()} />
             </div>
             <div className="w-[218px] mx-auto">
               <Button full>create order</Button>

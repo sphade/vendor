@@ -176,6 +176,10 @@ const Register = () => {
           name="password"
           rules={{
             required: "this field is required",
+            minLength: {
+              value: 8,
+              message: "password must be more than 8 characters",
+            },
           }}
         />
         <PasswordInput

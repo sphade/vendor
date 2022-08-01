@@ -13,7 +13,7 @@ const AircraftCard = (props: any) => {
     setDropDownState(event.currentTarget);
   };
   return (
-    <div className="w-64 h-fit border rounded-md shadow-lg  p-2 bg-secondary">
+    <div className="w-64 h-fit border rounded-md   p-2 bg-secondary">
       <div className=" rounded-t-md h-[100px] overflow-hidden">
         <img
           src={props.ProductImages[0].url}

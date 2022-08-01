@@ -54,6 +54,10 @@ export const resetPassword = async (data: Record<string, unknown>) => {
   const response = await axios.post("user/reset-password", data);
   return response.data.data;
 };
+export const changePassword = async (data: Record<string, unknown>) => {
+  const response = await axios.patch("user/change-password", data);
+  return response.data.data;
+};
 export const getVendorOrder = async () => {
   const response = await axios.get("vendor/orders");
   return response.data.data;
@@ -79,6 +83,13 @@ export const editAircraft = async (
   data: Record<string, unknown>
 ) => {
   const response = await axios.patch(`vendor/aircraft/${data.id}`, data.data);
+  return response.data.data;
+};
+export const deleteAircraft = async (
+ 
+  data: Record<string, unknown>
+) => {
+  const response = await axios.delete(`products/aircraft/${data.id}`);
   return response.data.data;
 };
 export const updateProfilePicture = async (data: any) => {

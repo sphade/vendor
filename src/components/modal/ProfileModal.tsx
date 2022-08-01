@@ -5,10 +5,9 @@ import { FC, useEffect, useState } from "react";
 import ReactCodeInput from "react-code-input";
 import { useForm, Controller} from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
-import { setTimeout } from "timers/promises";
 import { useCountdown } from "../../hooks";
-import { useChangeEmail, useChangeNumber, useEmailOtp, useRequestNumberOtp } from "../../hooks/mutations";
-import { useUser } from "../../hooks/queries";
+import { useChangeEmail, useChangeNumber, useChangePassword, useEmailOtp, useRequestNumberOtp } from "../../hooks/mutations";
+
 import PhoneInput from "react-phone-input-2";
 
 import {
@@ -22,6 +21,7 @@ import { emailValidation } from "../../validation/emailValidation";
 
 import Button from "../Button";
 import { IModal } from "./interface";
+import PasswordInput from "../PasswordInput";
 
 export const EmailModal: FC<IModal> = ({ modalState, setModalState }) => {
   const dispatch = useDispatch();
@@ -49,7 +49,8 @@ export const EmailModal: FC<IModal> = ({ modalState, setModalState }) => {
   
  
   return (
-    <Modal open={modalState} onClose={closeModal}>
+    <Modal open={modalState} onClose={closeModal} closeAfterTransition>
+      
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="absolute top-[20%] space-y-10  px-[144px] text-center py-10 left-[50%] -translate-x-1/2 bg-white rounded-lg shadow-xl  w-[680px] h-[310px]"
@@ -75,7 +76,8 @@ export const EmailModal: FC<IModal> = ({ modalState, setModalState }) => {
         <Button full loading={emailOtp.isLoading}>
           continue
         </Button>
-      </form>
+        </form>
+        
     </Modal>
   );
 };
@@ -377,6 +379,85 @@ export const PhoneNumberVerificationModal = () => {
           </p> */}
         </div>
       </div>
+    </Modal>
+  );
+};
+
+export const PasswordModal: FC<IModal> = ({ modalState, setModalState }) => {
+  
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const changePassword = useChangePassword()
+  function closeModal() {
+    setModalState(false);
+  }
+ 
+  const {
+    register,
+    handleSubmit,
+    control,
+    watch,
+    formState: { errors },
+  } = useForm();
+  const onSubmit = (data: any) => {
+    changePassword.mutate({
+      oldPassword: data?.oldPassword,
+      newPassword: data?.newPassword,
+
+    })
+  };
+ 
+  
+ 
+  return (
+    <Modal open={modalState} onClose={closeModal}>
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className="absolute top-[20%] space-y-10  px-[144px] text-center py-10 left-[50%] -translate-x-1/2 bg-white rounded-lg shadow-xl  w-[680px] min-h-[310px]"
+      >
+        <h1 className="capitalize text-tertiary font-semibold">
+          change your password
+        </h1>
+        <PasswordInput
+          rules={{
+            required: "this field is required",
+            minLength: {
+              value: 8,
+              message: "password must be more than 8 characters",
+            },
+          }}
+          control={control}
+          name={"oldPassword"}
+          label="old password"
+        />
+        <PasswordInput
+          rules={{
+            required: "this field is required",
+            minLength: {
+              value: 8,
+              message: "password must be more than 8 characters",
+            },
+          }}
+          control={control}
+          name={"newPassword"}
+          label="new password"
+        />
+        <PasswordInput
+           rules={{
+            required: "this field is required",
+            validate: (val: string) => {
+              if (watch("password") !== val) {
+                return "your password does not match";
+              }
+            },
+          }}
+          control={control}
+          name={"confirmPassword"}
+          label="confirm new password"
+        />
+        <Button full loading={changePassword.isLoading}>
+          save
+        </Button>
+      </form>
     </Modal>
   );
 };

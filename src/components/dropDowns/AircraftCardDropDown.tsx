@@ -68,6 +68,7 @@ const AircraftCardDropDown = ({
             className={classNames(
               "py-3 capitalize flex items-center justify-between text-sm  font-semibold px-4 text-gray-700 cursor-pointer default-transition hover:bg-gray-100 "
             )}
+            
           >
             <span className="flex items-center gap-2">
               <img src={EditIcon} alt="icon" />

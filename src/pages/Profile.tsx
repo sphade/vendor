@@ -17,7 +17,7 @@ import { useChangeProfilePicture, useUpdateBusinessInfo } from "../hooks/mutatio
 import { useUser } from "../hooks/queries";
 import ImageUploading from "react-images-uploading";
 import { useForm } from "react-hook-form";
-import { PhoneNumberModal, PhoneNumberVerificationModal } from "../components/modal/ProfileModal";
+import { PasswordModal, PhoneNumberModal, PhoneNumberVerificationModal } from "../components/modal/ProfileModal";
 
 
 const Profile = () => {
@@ -46,6 +46,7 @@ const Profile = () => {
   const [edit, setEdit] = React.useState(false);
   const [emailModalState, setEmailModalState] = React.useState(false);
   const [numberModalState, setNumberModalState] = React.useState(false);
+  const [passwordModalState, setPasswordModalState] = React.useState(false);
 
   useEffect(() => {
     changeImage.isSuccess && setEdit(false);
@@ -97,6 +98,7 @@ const Profile = () => {
         <PhoneNumberVerificationModal 
              
         />
+        <PasswordModal modalState={passwordModalState} setModalState={ setPasswordModalState} />
         <div className="w-[684px]  text-center shadow-lg border bg-secondary rounded-lg ">
           <h1 className="text-2xl text-tertiary font-semibold capitalize my-10">
             edit profile
@@ -263,7 +265,9 @@ const Profile = () => {
                 className="absolute top-[510px] cursor-pointer right-[80px] text-base text-primary font-semibold capitalze ">
                 change
               </p>
-              <p className="absolute top-[670px] cursor-pointer right-[80px] text-base text-primary font-semibold capitalze ">
+              <p
+                onClick={()=>setPasswordModalState(true)}
+                className="absolute top-[670px] cursor-pointer right-[80px] text-base text-primary font-semibold capitalze ">
                 change
               </p>
             </>

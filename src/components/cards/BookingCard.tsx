@@ -79,7 +79,12 @@ const BookingCard = (props: any) => {
          
           
           <Link to="../form" className="flex-1">
-            <Button full size="medium" iconRight={ArrowRight2Icon}>
+            <Button full size="medium" iconRight={ArrowRight2Icon}
+             onClick={async () => {
+              localforage.setItem("selectedAircraftDetails", props);
+            }}
+            >
+
               book
             </Button>
           </Link>

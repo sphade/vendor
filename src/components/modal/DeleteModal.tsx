@@ -2,10 +2,12 @@ import { Modal } from "@mui/material";
 import { FC } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { TrashModalIcon } from "../../assets/images/icons";
+import { useDeleteAircraft } from "../../hooks/mutations";
 import { toggleDeleteModal } from "../../redux/slices/ModalSlice";
 import { RootState } from "../../redux/store";
 
 const DeleteModal: FC = () => {
+  const deleteAircraft = useDeleteAircraft()
   const deleteModalState = useSelector(
     (state: RootState) => state.modal.deleteModal
   );

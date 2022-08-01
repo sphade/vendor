@@ -33,12 +33,10 @@ const BookingCreateOrder = () => {
       <main>
         <div className="flex items-center justify-between">
           <CTabs
-            tabLabel={[{ label: "Private jet" }, { label: "helicopiter" }]}
+            tabLabel={[{ label: "Private jet" }, { label: "helicopter" }]}
             value={value}
             setValue={setValue}
-            // setValue={function (value: SetStateAction<number>): void {
-            //   throw new Error("Function not implemented.");
-            // }}
+            
           />
           <SearchBar size="medium" />
         </div>
