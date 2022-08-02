@@ -5,7 +5,6 @@ import {
   NotificationProfileHeader,
   PerformanceInput,
   SeatCapacity,
-  // SelectInput,
   SwitchCustomized,
 } from "../../../components";
 import {
@@ -28,10 +27,10 @@ const AircraftAdd = () => {
   const createAircraft = useCreateAircraft();
   const [showAddPic, setShowAddPic] = useState<boolean>(false);
   const [capacity, setCapacity] = useState<number>(0);
-  const [model, setModel] = useState<string>("3000");
+  const [model] = useState<string>("3000");
   const [bar, setBar] = useState<boolean>(true);
   const [images, setImages] = useState<any[]>([]);
-  const [year, setYear] = useState<any>("2000");
+  const [year] = useState<any>("2000");
   const [baseAirport] = useState<any>("2000");
   const [destinationAirport] = useState<any[]>([]);
 
@@ -51,7 +50,7 @@ const AircraftAdd = () => {
 
   const onImageChange = (imageList: any, addUpdateIndex: any) => {
     setImages(imageList);
-    console.log(...imageList);
+  
   };
 
   return (
@@ -260,8 +259,7 @@ const AircraftAdd = () => {
                         errors={errors.maxAltitude}
                       />
 
-                      {/* <PerformanceInput 
-                      defaultValue={0} label="max distance" placeholder="km" /> */}
+                    
                     </div>
                   </div>
                   <div>

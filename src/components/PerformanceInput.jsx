@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import React from "react";
+
 
 const PerformanceInput = ({
   label,
@@ -10,13 +10,7 @@ const PerformanceInput = ({
   errors,
   defaultValue
 }) =>
-  // }: {
-  //   label: string;
-  //   placeholder: string;
-  //   register?:any;
-  //   name?: string;
-  //   rule?: any;
-  // }
+  
   {
     return (
       <div

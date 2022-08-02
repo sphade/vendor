@@ -90,7 +90,7 @@ export const EmailVerificationModal = () => {
     start: startOtpCountdown,
     reset,
     isOver,
-    isRunning,
+    
   } = useCountdown({ minutes: 5 });
   const emailOtp = useEmailOtp();
 
@@ -205,7 +205,7 @@ export const PhoneNumberModal: FC<IModal> = ({ modalState, setModalState }) => {
   }
   const numberOtp = useRequestNumberOtp();
   const {
-    register,
+    
     handleSubmit,
      control,
     formState: { errors },
@@ -275,7 +275,7 @@ export const PhoneNumberVerificationModal = () => {
     start: startOtpCountdown,
     reset,
     isOver,
-    isRunning,
+    
   } = useCountdown({ minutes: 5 });
 
   const numberOtp = useRequestNumberOtp();
@@ -392,11 +392,11 @@ export const PasswordModal: FC<IModal> = ({ modalState, setModalState }) => {
   }
  
   const {
-    register,
+   
     handleSubmit,
     control,
     watch,
-    formState: { errors },
+  
   } = useForm();
   const onSubmit = (data: any) => {
     changePassword.mutate({
@@ -445,7 +445,7 @@ export const PasswordModal: FC<IModal> = ({ modalState, setModalState }) => {
            rules={{
             required: "this field is required",
             validate: (val: string) => {
-              if (watch("password") !== val) {
+              if (watch("newPassword") !== val) {
                 return "your password does not match";
               }
             },

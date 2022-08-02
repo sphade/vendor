@@ -1,6 +1,5 @@
 import React from "react";
-// import bookingPic from "../../assets/images/icons/heli.svg";
-import bookingPic from "../../assets/images/plane5.png";
+
 import { ArrowRight2Icon, DotIcon } from "../../assets/images/icons";
 import Button from "../Button";
 import { IconButton } from "@mui/material";
@@ -18,7 +17,7 @@ const BookingCard = (props: any) => {
     setDropDownState(event.currentTarget);
   };
   return (
-    <div className="w-64 h-[400px] border rounded-md shadow-lg p-4 bg-secondary  ">
+    <div className="w-64 h-[400px] border rounded-md  p-4 bg-secondary  ">
       <div className=" rounded-t-md h-[100px] object-cover overflow-hidden">
         <img
           src={props?.ProductImages[0]?.url}
@@ -58,16 +57,7 @@ const BookingCard = (props: any) => {
           </div>
         </div>
 
-        {/* <div className="flex justify-between gap-3 items-center pt-5">
-          <Button variant="outlinePrimary" size="medium">
-            details
-          </Button>
-          <Link to="../form" className="flex-1">
-            <Button full size="medium" iconRight={ArrowRight2Icon}>
-              book
-            </Button>
-          </Link>
-        </div> */}
+    
         <div className="flex justify-between gap-3  items-center pt-5">
           <Link to='/aircraft/details' >
            <Button variant="outlinePrimary" onClick={async () => {

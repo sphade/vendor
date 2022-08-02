@@ -1,10 +1,10 @@
 import { Avatar } from "@mui/material";
 import TextField from "@mui/material/TextField";
-import localforage from "localforage";
+
 import React, { useEffect, useState } from "react";
 import PhoneInput from "react-phone-input-2";
 import { ChangePictureIcon } from "../assets/images/icons";
-import avatarIcon from "../assets/images/icons/avatar.png";
+
 import {
   Button,
   EmailModal,
@@ -22,7 +22,7 @@ import { PasswordModal, PhoneNumberModal, PhoneNumberVerificationModal } from ".
 
 const Profile = () => {
   const user = useUser();
-  const [password, setPassword] = useState(user.data?.password);
+ 
   const {
     register,
     handleSubmit,
@@ -30,12 +30,10 @@ const Profile = () => {
     formState: { errors },
   } = useForm<any>({
     defaultValues: {
-      password: password,
+      password: '************'
     },
   });
-  useEffect(() => {
-    setPassword(user.data?.password);
-  }, [user.data?.password]);
+ 
   const changeImage = useChangeProfilePicture();
   const changeBusinessInfo = useUpdateBusinessInfo();
   const [images, setImages] = useState<any[]>([]);

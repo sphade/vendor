@@ -7,22 +7,22 @@ import SwitchCustomized from "./SwitchCustomized";
 import { useForm } from "react-hook-form";
 import SelectInput from "./SelectInput";
 import { useAircraft } from "../hooks/queries";
-import { useSetMaintenance, useToggleStatus } from "../hooks/mutations";
+import { useSetMaintenance } from "../hooks/mutations";
 const MaintenanceForm = () => {
   const [bar, setBar] = useState<boolean>(true);
   const [starting, setStarting] = useState<any>(new Date());
   const [ending, setEnding] = useState<any>(new Date());
 const setMaintenanceDate = useSetMaintenance()
-const toggleStatus = useToggleStatus()
+//const toggleStatus = useToggleStatus()
   const aircrafts = useAircraft({
     isArchived: false,
   
   });
   const {
-    register,
+    
     handleSubmit,
     control,
-    formState: { errors },
+   
   } = useForm();
 
   const onSubmit = (data: any) => {

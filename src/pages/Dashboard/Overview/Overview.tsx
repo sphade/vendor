@@ -13,7 +13,7 @@ import {
 } from "../../../assets/images/icons";
 import { Link } from "react-router-dom";
 import { useOverview, useOverviewTable } from "../../../hooks/queries";
-import useFormatNumber from "../../../hooks/useFormatNumber";
+// import useFormatNumber from "../../../hooks/useFormatNumber";
 import { Skeleton } from "@mui/material";
 
 import { aircraftColumns } from "../../../table/Columns";
@@ -24,7 +24,7 @@ const Overview = () => {
   const { overviewData, overviewLoading } = useOverview();
   const overviewTable = useOverviewTable({search:''});
 
-  const formatedNum = useFormatNumber(1000000000);
+  // const formatedNum = useFormatNumber(1000000000);
   
   return (
     <div>

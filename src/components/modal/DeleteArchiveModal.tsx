@@ -23,10 +23,10 @@ const DeleteArchiveModal: FC = () => {
           className="absolute -top-[40px] left-[190px]"
         />
         <h1 className="text-2xl font-semibold text-tertiary mt-[24px] mb-[36px]">
-          Delete Aircrafts?
+          Delete aircraft's?
         </h1>
         <p className="text-gray-500  text-justify ">
-          You are trying to delete one or more archived aircrafts. This action
+          You are trying to delete one or more archived aircraft. This action
           can not be undone. Are you sure you want to delete this aircraft('s')?{" "}
         </p>
 

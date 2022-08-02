@@ -3,12 +3,10 @@ import Box from "@mui/material/Box";
 import {
   DataGrid,
   GridColDef,
-  GridValueGetterParams,
+  
   GridSelectionModel,
 } from "@mui/x-data-grid";
-import LinearProgress from "@mui/material/LinearProgress";
-import { Button } from "../../components";
-import { Skeleton } from "@mui/material";
+
 import { CalenderDropDownActiveIcon } from "../../assets/images/icons";
 const headerClass = 'font-medium !font-hind  text-[#828282]'
 const columns: GridColDef[] = [

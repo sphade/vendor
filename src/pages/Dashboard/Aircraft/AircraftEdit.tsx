@@ -19,7 +19,7 @@ const AircraftEdit = () => {
   const [details, setDetails] = useState<any>();
   const [loading, setLoading] = useState<boolean>(true);
   const [capacity, setCapacity] = useState<any>(0);
-  const [airCraftType, setAirCraftType] = useState<any>('');
+
   // const [capacity, setCapacity] = useState<any>(0);
   const [bar, setBar] = useState<boolean>(true);
   
@@ -30,7 +30,7 @@ const AircraftEdit = () => {
       setLoading(false);
       setCapacity(val?.capacity);
       setBar(val?.bar);
-      setAirCraftType(val?.airCraftType)
+      
     });
   }, []);
   const editAircraft = useEditAircraft();

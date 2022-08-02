@@ -4,15 +4,7 @@ const InteriorInput = ({ placeholder, register, name, rule, errors,defaultValue 
   return (
     <div className="flex w-full items-center gap-5 h-[50px]">
       <div className="bg-gray-200  px-6 flex items-center  h-full rounded-lg">Meter</div>
-      {/* <div className="border-2 px-2 flex-1 h-full rounded-lg flex items-center border-[#828282]">
-        <p className="pr-2 border-r border-[#BDBDBD] text-gray-700  text-lg">
-          cabin length
-        </p>
-        <input
-          type="text"
-          className="flex-1 pl-2 outline-none bg-transparent w-full"
-        />
-      </div> */}
+
       <div
         className={classNames(
           "text-[#828282]  border rounded focus-within:text-blue-500 focus-within:hover:border-blue-500 focus-within:ring-1  focus-within:border-blue-500 focus:border-blue-500  py-1 h-[50px] w-full items-center hover:border-tertiary default-transition relative flex   border-gray-400",

@@ -4,7 +4,7 @@ import { PolygonIcon } from "../../../assets/images/icons";
 import { Loading, NotificationProfileHeader, SearchBar } from "../../../components";
 import { useTransactionTable } from "../../../hooks/queries";
 import { transactionColumn } from "../../../table/Columns";
-import TransactionTable from "../../../table/transactions/Table";
+
 const Transactions = () => {
   const [search,setSearch] = useState('')
   const transactionTable = useTransactionTable({search});

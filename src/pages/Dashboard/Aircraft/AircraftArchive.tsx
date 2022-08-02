@@ -3,10 +3,10 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { TrashGrayIcon, UnArchiveIcon } from "../../../assets/images/icons";
 import {
-  AircraftArchivedCard,
+ 
   AircraftCard,
   BackButton,
-  NoAircraft,
+  
   NotificationProfileHeader,
 } from "../../../components";
 import DeleteArchiveModal from "../../../components/modal/DeleteArchiveModal";
@@ -19,17 +19,17 @@ const AircraftArchive = () => {
 
   const dispatch = useDispatch();
   const arc = [1, 2, 3, 4];
-  const [checkedState, setCheckedState] = useState(
+  const [checkedState] = useState(
     new Array(arc.length).fill(false)
   );
   let checker = (arr: any) => arr.some((arr: any) => arr === false);
-  const handleCheckChange = (position: any) => {
+ /*  const handleCheckChange = (position: any) => {
     const updateCheckedState = checkedState.map((item, index) =>
       index === position ? !item : item
     );
     setCheckedState(updateCheckedState);
     console.log(checkedState);
-  };
+  }; */
   return (
     <div>
       <header className="header !mb-5">

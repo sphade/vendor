@@ -5,7 +5,7 @@ import {
   NotificationProfileHeader,
   SelectInput,
 } from "../../../components";
-import planeImg from "../../../assets/images/plane-4.png";
+
 import {
   CompassIcon,
   LocationIcon,
@@ -26,22 +26,21 @@ const BookingForm = () => {
   };
   const [details, setDetails] = useState<any>();
 
-  const [loading, setLoading] = useState<boolean>(true);
+
   useEffect(() => {
     localforage.getItem("selectedAircraftDetails", (err, val) => {
       setDetails(val);
     
-      setLoading(false);
+     
      
     });
   }, []);
-  const [serviceType, setServiceType] = useState<any>("");
+  
   const {
-    register,
-    handleSubmit,
+    
     control,
     watch,
-    formState: { errors },
+
   } = useForm({
     defaultValues: {
       serviceType: "charter",

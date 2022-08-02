@@ -22,12 +22,4 @@ const Chip = ({
 };
 export default Chip;
 
-// export const ChipWarning = () => {
-//   return (
-//     <div
-//       className="rounded-xl text-red-700 bg-red-200 center-element w-fit px-2 py-1   capitalize text-base font-semibold"
-//     >
-//       startin
-//     </div>
-//   );
-// };
+

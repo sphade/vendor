@@ -5,17 +5,28 @@ import { TrashModalIcon } from "../../assets/images/icons";
 import { useDeleteAircraft } from "../../hooks/mutations";
 import { toggleDeleteModal } from "../../redux/slices/ModalSlice";
 import { RootState } from "../../redux/store";
-
+import { useEffect, useState } from "react";
+import localforage from "localforage";
+import { CircularProgress } from "@mui/material";
 const DeleteModal: FC = () => {
-  const deleteAircraft = useDeleteAircraft()
   const deleteModalState = useSelector(
     (state: RootState) => state.modal.deleteModal
-  );
-  const dispatch = useDispatch();
-  function closeModal() {
-    dispatch(toggleDeleteModal());
-  }
+    );
+    const dispatch = useDispatch();
+    function closeModal() {
+      dispatch(toggleDeleteModal());
+    }
+    const deleteAircraft = useDeleteAircraft()
+  const [details, setDetails] = useState<any>();
 
+  const [loading, setLoading] = useState<boolean>(true);
+  useEffect(() => {
+    localforage.getItem("selectedAircraftDetails", (err, val) => {
+      setDetails(val);
+       setLoading(false);
+     
+    });
+  }, []);
   return (
     <Modal open={deleteModalState} onClose={closeModal}>
       <div className="absolute top-[35%]        px-[24px] text-center py-5 left-[50%] -translate-x-1/2 bg-white rounded-lg   w-[450px] border-t-4 border-[#FF2A1C] min-h-[310px]">
@@ -40,8 +51,23 @@ const DeleteModal: FC = () => {
           >
             no,Cancel
           </button>
-          <button className=" bg-[#FF2A1C]  text-secondary px-2.5 rounded min-w-[189px] min-h-[49px] font-semibold capitalize">
-            yes, Delete aircraft
+          <button  onClick={()=>{
+            deleteAircraft.mutate({id:details?.id})
+          }
+        }className=" bg-[#FF2A1C]
+         
+          text-secondary px-2.5 rounded min-w-[189px] min-h-[49px] font-semibold capitalize">
+             {deleteAircraft.isLoading ? (
+            <CircularProgress
+              size={22}
+              sx={{
+                color: "white",
+              }}
+            />
+          ) : (
+   '       yes, Delete aircraft'
+          )}
+            
           </button>
         </div>
       </div>

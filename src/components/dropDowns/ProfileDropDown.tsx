@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import classNames from "classnames";
 import { ArrowRightSmallIcon } from "../../assets/images/icons";
 import localforage from "localforage";
-import { useLogout } from "../../hooks";
+
 const ProfileDropDown = ({
   anchorEl,
   setAnchorEl,
@@ -11,7 +11,7 @@ const ProfileDropDown = ({
   anchorEl: any;
   setAnchorEl: any;
 }) => {
-  const logout = useLogout();
+  
   const handleClose = () => {
     setAnchorEl(null);
   };
