@@ -1,16 +1,15 @@
-import { CalenderIcon, ClockIcon } from "../assets/images/icons";
+import { CalenderIcon } from "../assets/images/icons";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
-import { DatePicker } from "@mui/x-date-pickers/DatePicker";
-import { TimePicker } from "@mui/x-date-pickers/TimePicker";
+
 import { MobileDatePicker } from "@mui/x-date-pickers/MobileDatePicker";
-import { InputAdornment, TextField } from "@mui/material";
-import { useRef, useState } from "react";
-import { DateTimePicker } from "@mui/x-date-pickers";
+import {  useState } from "react";
+
 import { format } from "date-fns";
 
+
 const DateAndTimePicker = ({ date,setDate }:any) => {
-  const [value, setValue] = useState<any>(new Date());
+
   const [open, setOpen] = useState(false);
 
   return (

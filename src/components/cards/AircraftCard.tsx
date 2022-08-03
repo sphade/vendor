@@ -53,7 +53,7 @@ const AircraftCard = (props: any) => {
               onClick={async () => {
                 localforage.setItem("selectedAircraftDetails", props);
               }}
-              className="uppercase py-2 px-4 gap-2 shadow bg-orange-50 rounded-md text-primary font-bold text-sm w-[95px] flex items-center"
+              className="uppercase py-2 px-4 gap-2  bg-orange-50 rounded-md text-primary font-bold text-sm w-[95px] flex items-center"
             >
               more
               <img src={ArrowRightOrangeIcon} alt="ArrowRightOrangeIcon" />

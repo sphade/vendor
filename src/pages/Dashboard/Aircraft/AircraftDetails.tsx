@@ -1,13 +1,12 @@
 import {
   BackButton,
   Button,
-  Loading,
+ 
   NotificationProfileHeader,
 } from "../../../components";
-import aircraftPicture from "../../../assets/images/plane-4.png";
-import insidePlane from "../../../assets/images/plane-3.png";
+
 import { EditIcon } from "../../../assets/images/icons";
-import { Link, Navigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import localforage from "localforage";
 import AircraftDetailsSkeleton from "../../../skeleton/AircraftDetailsSkeleton";

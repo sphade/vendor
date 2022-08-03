@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import addCircleIcon from "../../../assets/images/icons/add-circle.svg";
-import BookingCard from "../../../components/cards/BookingCard";
+
 import NotificationProfileHeader from "../../../components/NotificationProfileHeader";
 import {
   Button,
@@ -9,8 +9,7 @@ import {
   SearchBar,
   TabPanel,
   DeleteModal,
-  NoAircraft,
-  Loading,
+  
   EmptyCard,
 } from "../../../components";
 import { ArchiveIcon } from "../../../assets/images/icons";
@@ -20,12 +19,20 @@ import JetCardSkeleton from "../../../skeleton/JetCardSkeleton";
 import Error from "../../../components/Error";
 const Aircraft = () => {
   const [value, setValue] = useState<number>(0);
+  const [search, setSearch] = useState<string>('');
+
+  useEffect(() => {
+    setSearch((value: string)=>value='')
+  }, [setSearch, value])
+  
+  
   const privateJet = useAircraft({
     isArchived: false,
     category: "private jet",
   });
   const helicopter = useAircraft({ isArchived: false, category: "helicopter" });
-  const aircraft = useAircraft({ isArchived: false });
+  
+  const aircraftNo = useAircraft({ isArchived: false });
 
   return (
     <div>
@@ -33,7 +40,7 @@ const Aircraft = () => {
 
       <header className="header">
         <h1 className="header-heading">
-          Aircraft <span className="text-gray-400">({aircraft?.data?.length})</span>
+          Aircraft <span className="text-gray-400">({aircraftNo?.data?.length})</span>
         </h1>
         <NotificationProfileHeader />
       </header>
@@ -52,7 +59,7 @@ const Aircraft = () => {
             <img src={ArchiveIcon} alt="ArchiveIcon" />
             <p className="capitalize  text-gray-700">archive</p>
           </Link>
-          <SearchBar />
+          <SearchBar value={search} setValue={setSearch} />
           <Link to="add">
             <Button size="medium" variant="primary" iconLeft={addCircleIcon}>
               add aircraft
