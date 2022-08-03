@@ -138,7 +138,7 @@ const BookingForm = () => {
               <DateAndTimePicker date={new Date()} />
             </div>
             <div className="w-[218px] mx-auto">
-              <Button full>create order</Button>
+              <Button full>schedule flight</Button>
             </div>
           </div>
         </div>

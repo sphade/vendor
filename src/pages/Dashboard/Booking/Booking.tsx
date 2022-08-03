@@ -36,7 +36,7 @@ const Booking = () => {
         />
         <Link to="create-order" className="flex gap-5">
           <Button size="medium" variant="primary" iconLeft={AddCircleIcon}>
-            Create order
+          schedule flight
           </Button>
         </Link>
       </div>

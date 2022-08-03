@@ -25,7 +25,7 @@ const BookingCreateOrder = () => {
         <div className="space-x-3 flex items-center">
           <BackButton />
 
-          <h1 className="header-heading">create order</h1>
+          <h1 className="header-heading">schedule flight</h1>
         </div>
 
         <NotificationProfileHeader />
