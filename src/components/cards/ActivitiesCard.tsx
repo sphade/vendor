@@ -29,12 +29,7 @@ const ActivitiesCard = ({
       </div>
 
       <div className=" text-xs flex items-center justify-between  w-[150px]">
-        <p className="  text-secondary">Revenues</p>
-        {loading ? (
-          <Skeleton width={30} height={10} className="!bg-slate-100" />
-        ) : (
-          <span className="text-[#FFC796]"> {formattedRevenue}</span>
-        )}
+       
       </div>
       <hr className="text-gray-400" />
       <div className=" text-xs flex items-center justify-between  w-[150px]">

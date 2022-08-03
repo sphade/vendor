@@ -208,7 +208,8 @@ const Profile = () => {
                   />
                   <TextField
                     fullWidth
-                    value={user?.data?.business_address}
+                    defaultValue={user?.data?.business_address}
+                    type='text'
                     InputProps={{
                       readOnly: !edit,
                     }}
