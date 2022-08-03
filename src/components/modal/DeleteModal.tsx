@@ -7,7 +7,9 @@ import { toggleDeleteModal } from "../../redux/slices/ModalSlice";
 import { RootState } from "../../redux/store";
 import { useEffect, useState } from "react";
 import localforage from "localforage";
+import { useArchiveAircraft } from "../../hooks/mutations";
 import { CircularProgress } from "@mui/material";
+import { useSnackbar } from "notistack";
 const DeleteModal: FC = () => {
   const deleteModalState = useSelector(
     (state: RootState) => state.modal.deleteModal
@@ -18,8 +20,9 @@ const DeleteModal: FC = () => {
     }
     const deleteAircraft = useDeleteAircraft()
   const [details, setDetails] = useState<any>();
-
-  const [loading, setLoading] = useState<boolean>(true);
+  const archive = useArchiveAircraft(details?.id);
+  const [loading, setLoading] = useState<boolean>( true);
+  const { enqueueSnackbar } = useSnackbar();
   useEffect(() => {
     localforage.getItem("selectedAircraftDetails", (err, val) => {
       setDetails(val);
@@ -27,6 +30,17 @@ const DeleteModal: FC = () => {
      
     });
   }, []);
+  useEffect(() => {
+    if (archive.isSuccess) {
+      enqueueSnackbar(
+        `Aircraft archived
+         successfully`,
+        {
+          variant: "success",
+        }
+      );
+    }
+  }, [archive.isSuccess, enqueueSnackbar]);
   return (
     <Modal open={deleteModalState} onClose={closeModal}>
       <div className="absolute top-[35%]        px-[24px] text-center py-5 left-[50%] -translate-x-1/2 bg-white rounded-lg   w-[450px] border-t-4 border-[#FF2A1C] min-h-[310px]">
@@ -41,7 +55,10 @@ const DeleteModal: FC = () => {
         <p className="text-gray-500  text-justify ">
           You are trying to delete an aircraft. This action can not be undone.
           Are you sure you want to delete this aircraft?{" "}
-          <span className="text-blue-500 underline">Archive Instead</span>
+          <span className="text-blue-500 underline cursor-pointer" onClick={() => {
+            archive.mutate()
+            closeModal()
+          }}>Archive Instead</span>
         </p>
 
         <div className="flex items-center mt-12 justify-between ">

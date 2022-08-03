@@ -38,7 +38,7 @@ const Overview = () => {
               {format(new Date(), "dd/MMM/yyyy")}
             </p>
           </div>
-          <SearchBar />
+          
         </div>
         <NotificationProfileHeader />
       </header>
@@ -105,9 +105,13 @@ const Overview = () => {
         </div>
         <div className="border rounded-lg mt-10">
           <div className="flex items-center justify-between py-5 px-5">
+            
             <h3 className="font-semibold    text-lg text-tertiary  capitalize">
               table of aircraft
             </h3>
+
+            
+            
             <Link
               to="table-of-aircraft"
               className="rounded-lg  py-2 cursor-pointer bg-[#FFF6F4] font-medium text-base text-primary border-2 border-[#FFDED6] flex gap-2 px-3"
