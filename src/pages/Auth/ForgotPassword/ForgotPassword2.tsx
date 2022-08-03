@@ -1,7 +1,6 @@
 import TextField from "@mui/material/TextField";
-import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { Button } from "../../../components";
 import { useForgotPasswordSendCode } from "../../../hooks/mutations";
 import localforage from "localforage";
@@ -9,7 +8,7 @@ import localforage from "localforage";
 const ForgotPassword2 = () => {
   const { option } = useParams();
   const fpc =useForgotPasswordSendCode()
-  const navigate = useNavigate();
+  //const navigate = useNavigate();
   const {
     register,
     handleSubmit,

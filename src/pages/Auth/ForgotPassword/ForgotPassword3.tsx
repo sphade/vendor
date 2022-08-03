@@ -8,11 +8,11 @@ const ForgotPassword3 = () => {
   const resetPassword = useResetPassword()
   const [email,setEmail]= useState<any>('')
   const {
-    register,
+    
     control,
     watch,
     handleSubmit,
-    formState: { errors },
+    
   } = useForm();
   useEffect(() => {
     localforage.getItem('email', (err,value:any) => {

@@ -9,7 +9,6 @@ import { useSignup } from "../../hooks/mutations";
 import { useDispatch } from "react-redux";
 import { setSignUpInfo } from "../../redux/slices/SignUpInfoSlice";
 import { useSnackbar } from "notistack";
-import { useNavigate } from "react-router-dom";
 import localforage from "localforage";
 import ImageUploading from "react-images-uploading";
 import { useState } from "react";
@@ -17,7 +16,7 @@ import { useState } from "react";
 const Register = () => {
   // const [phone, setPhone] = useState("");
   const [images, setImages] = useState<any[]>([]);
-  const formData = new FormData();
+  
   const onImageChange = async (imageList: any, addUpdateIndex: any) => {
     setImages(imageList);
   };

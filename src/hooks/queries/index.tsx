@@ -39,7 +39,7 @@ export const useTransactionTable = ({search}:any) => {
   
 };
 export const useAircraft = ({ isArchived, category }: any) => {
-  const { enqueueSnackbar } = useSnackbar();
+  
 
   return useQuery(
     ["aircraft", isArchived, category],
@@ -65,7 +65,7 @@ export const useAircraftIsArchive = ({ isArchived, category }: any) => {
   );
 };
 export const useUser = () => {
-  const { enqueueSnackbar } = useSnackbar();
+  
 
   return useQuery("user", getUser, {
     onError(error: any) {},

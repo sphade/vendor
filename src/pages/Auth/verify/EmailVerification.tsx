@@ -17,7 +17,7 @@ const EmailVerification = () => {
     start: startOtpCountdown,
     reset,
     isOver,
-    isRunning,
+    
   } = useCountdown({ minutes: 5 });
   const [userInfo, setUserInfo] = useState<any>();
   const [loading, setLoading] = useState<boolean>(true);

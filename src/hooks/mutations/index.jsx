@@ -23,9 +23,8 @@ import {
 import { useLocation, useNavigate } from "react-router-dom";
 import { useSnackbar } from "notistack";
 import localforage from "localforage";
-import { useDispatch } from "react-redux";
-import { toggleEmailVerificationModal } from "../../redux/slices/ModalSlice";
-import { useEffect, useState } from "react";
+
+
 
 export const useLogin = () => {
   const { enqueueSnackbar } = useSnackbar();
@@ -92,7 +91,7 @@ export const useChangeEmail = () => {
   const queryClient = useQueryClient();
 
   const { enqueueSnackbar } = useSnackbar();
-  const dispatch = useDispatch();
+  
   return useMutation(changeEmail, {
     onSuccess(data) {
       enqueueSnackbar(" email has been changed", {
