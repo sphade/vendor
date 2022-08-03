@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { Routes, Route, useNavigate, useLocation } from "react-router-dom";
+import EmailVerification from "./EmailVerification";
 import ForgotPassword1 from "./ForgotPassword1";
 import ForgotPassword2 from "./ForgotPassword2";
 import ForgotPassword3 from "./ForgotPassword3";
@@ -19,6 +20,7 @@ const ForgotPassword = () => {
       <Route path="step-2/:option" element={<ForgotPassword2 />} />
 
       <Route path="step-3" element={<ForgotPassword3 />} />
+      <Route path="otp" element={<EmailVerification />} />
       <Route path="step-4" element={<ForgotPassword4 />} />
     </Routes>
   );

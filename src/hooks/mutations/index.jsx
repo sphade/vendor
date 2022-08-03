@@ -162,7 +162,7 @@ export const useForgotPasswordSendCode = () => {
 
   return useMutation(forgotPassword, {
     async onSuccess(data) {
-      navigate('step-3');
+      navigate('/forgot-password/otp');
       
     },
     onError(error) {

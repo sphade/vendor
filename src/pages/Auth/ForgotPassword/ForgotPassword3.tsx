@@ -4,6 +4,7 @@ import { useResetPassword } from "../../../hooks/mutations";
 import localforage from "localforage";
 import {  useState,useEffect } from "react";
 
+
 const ForgotPassword3 = () => {
   const resetPassword = useResetPassword()
   const [email,setEmail]= useState<any>('')
@@ -34,6 +35,7 @@ const ForgotPassword3 = () => {
           You can now create a new password
         </p>
         <form onSubmit={handleSubmit(onSubmit)}>
+        
           <div className="space-y-5 mb-10">
  <PasswordInput
             rules={{

@@ -47,7 +47,7 @@ export const createAircraft = async (data: Record<string, unknown>) => {
   return response.data.data;
 };
 export const forgotPassword = async (data: Record<string, unknown>) => {
-  const response = await axios.post("user/forget-password", data);
+  const response = await axios.post("user/forgot-password", data);
   return response.data.data;
 };
 export const resetPassword = async (data: Record<string, unknown>) => {
