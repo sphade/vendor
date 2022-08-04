@@ -29,10 +29,7 @@ const BookingForm = () => {
 
   useEffect(() => {
     localforage.getItem("selectedAircraftDetails", (err, val) => {
-      setDetails(val);
-    
-     
-     
+      setDetails(val); 
     });
   }, []);
   

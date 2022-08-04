@@ -18,11 +18,12 @@ import GetHelp from "./pages/GetHelp";
 import RequireAuth from "./hoc/RequireAuth";
 import PublicRoute from "./hoc/PublicRoute";
 // import { ScreenNotSupported } from "./components";
+//import useMediaQuery from '@mui/material/useMediaQuery';
 
 function App(): JSX.Element {
   const navigate = useNavigate();
   const location = useLocation();
-
+  //const matches = useMediaQuery('(min-width:600px)');
   useEffect(() => {
     if (location.pathname === "/") {
       navigate("/overview", { replace: true });

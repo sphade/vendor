@@ -48,7 +48,7 @@
 /* utility  classes */
 .slick-prev:before,
 .slick-next:before {
-  color: red !important;
+  color: gray !important;
 }
 
 .center-element {

@@ -17,13 +17,20 @@ import { Link } from "react-router-dom";
 import { useAircraft } from "../../../hooks/queries";
 import JetCardSkeleton from "../../../skeleton/JetCardSkeleton";
 import Error from "../../../components/Error";
+import localforage from "localforage";
 const Aircraft = () => {
-  const [value, setValue] = useState<number>(0);
+  const [tabValue, setTabValue] = useState<number>(0);
   const [search, setSearch] = useState<string>('');
-
+  useEffect(() => {
+    localforage.setItem("selectedTag",tabValue);
+  }, [tabValue]);
+  useEffect(() => {
+    localforage.getItem("selectedTag",(err,val:any)=>setTabValue((value: number)=>value=val));
+  }, []);
+  
   useEffect(() => {
     setSearch((value: string)=>value='')
-  }, [setSearch, value])
+  }, [setSearch, tabValue])
   
   
   const privateJet = useAircraft({
@@ -47,8 +54,8 @@ const Aircraft = () => {
       <div className="flex items-center justify-between mt-10 ">
         <CTabs
           tabLabel={[{ label: "private jet" }, { label: "helicopter" }]}
-          value={value}
-          setValue={setValue}
+          value={tabValue}
+          setValue={setTabValue}
         />
 
         <div className="flex gap-5">
@@ -68,7 +75,7 @@ const Aircraft = () => {
         </div>
       </div>
 
-      <TabPanel value={value} index={0}>
+      <TabPanel value={tabValue} index={0}>
         <div className="flex justify-between min-h-[500px]  flex-wrap p-2 border shadow rounded mt-5 gap-1">
           {privateJet.isLoading ? (
             [...new Array(4)].map((id) => <JetCardSkeleton key={id} />)
@@ -87,7 +94,7 @@ const Aircraft = () => {
           )}
         </div>
       </TabPanel>
-      <TabPanel value={value} index={1}>
+      <TabPanel value={tabValue} index={1}>
         <div className="flex justify-between min-h-[500px]  flex-wrap p-2 border shadow rounded mt-5 gap-1">
           {helicopter.isLoading ? (
             [...new Array(4)].map((id) => <JetCardSkeleton key={id} />)
