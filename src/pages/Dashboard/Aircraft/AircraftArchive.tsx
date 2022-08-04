@@ -22,14 +22,11 @@ const AircraftArchive = () => {
   const [checkedState] = useState(
     new Array(arc.length).fill(false)
   );
-  let checker = (arr: any) => arr.some((arr: any) => arr === false);
- /*  const handleCheckChange = (position: any) => {
-    const updateCheckedState = checkedState.map((item, index) =>
-      index === position ? !item : item
-    );
-    setCheckedState(updateCheckedState);
-    console.log(checkedState);
-  }; */
+  const [checked,setChecked] = useState(
+    false
+  );
+  
+ 
   return (
     <div>
       <header className="header !mb-5">
@@ -42,7 +39,7 @@ const AircraftArchive = () => {
       </header>
       <main className="border rounded-lg p-3 ">
         <DeleteArchiveModal />
-        {checker(checkedState) ? (
+        {checked ? (
           <div className="py-5 rounded divide-gray-600 border shadow-lg divide-x flex items-center w-fit ml-3">
             <div className="px-5 flex items-center gap-2 cursor-pointer">
               <img src={UnArchiveIcon} alt="UnArchiveIcon" />
@@ -70,7 +67,7 @@ const AircraftArchive = () => {
           ) : (
             aircraftArchive.data?.map((data: any, id: number) => (
               <div className="flex gap-4 items-start" key={id}>
-                <Checkbox />
+                <Checkbox checked={ checked} onChange={()=>setChecked(!checked)} />
                 <AircraftCard {...data} />
               </div>
             ))
