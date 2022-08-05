@@ -31,13 +31,13 @@ const Button: FC<IButton> = ({
     
       <button
         className={classNames(
-          "hover:opacity-80 default-transition   center-element     uppercase  text-secondary rounded-md cursor-pointer  h-fit disabled:opacity-50 disabled:cursor-not-allowed",
+          "hover:opacity-80 default-transition   center-element     uppercase  text-secondary rounded-md cursor-pointer  h-[50px] disabled:opacity-50 disabled:cursor-not-allowed",
           {
             " opacity-75": loading,
             "cursor-not-allowed !bg-[#d2d2d2]": disabled,
             "w-full": full,
             "text-base py-3 px-5 font-semibold": size === "big",
-            "text-sm py-2 px-4 font-bold": size === "medium",
+            "text-sm py-2 px-4 h-[40px] font-bold": size === "medium",
             "text-xs py-1.5 px-3.5 font-bold": size === "small",
             "border  border-primary text-primary bg-secondary":
               variant === "outlinePrimary",

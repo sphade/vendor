@@ -36,7 +36,7 @@ const Aircraft = () => {
     category: "private jet",
     search
   });
-  const helicopter = useAircraft({ isArchived: false, category: "helicopter" });
+  const helicopter = useAircraft({ isArchived: false, category: "helicopter",search });
   
   const aircraftNo = useAircraft({ isArchived: false });
   

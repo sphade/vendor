@@ -12,6 +12,7 @@ const SelectInput = ({
   name,
   rules,
   defaultValue,
+
 }: {
   className?: string;
   control?: any;
@@ -21,6 +22,7 @@ const SelectInput = ({
   name?: any;
   rules?: any;
   defaultValue?: any;
+
 }) => {
   const {
     field: { onChange, onBlur, value, ref },
@@ -50,9 +52,7 @@ const SelectInput = ({
       
 
     >
-      {/* <MenuItem value="">
-        <em>None</em>
-      </MenuItem> */}
+      
       {options?.map(({ value, name }) => (
         <MenuItem key={name} value={value}>
           {name}

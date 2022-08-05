@@ -1,8 +1,18 @@
 import { EmailIcon, PhoneIcon } from "../assets/images/icons";
 import TextField from "@mui/material/TextField";
 import { BackButton, Button } from "../components";
+import PhoneInput from "react-phone-input-2";
+import { Controller, useForm } from "react-hook-form";
+import { emailValidation } from "../validation/emailValidation";
+
 const GetHelp = () => {
-  
+  const {
+    register,
+    handleSubmit,
+    control,
+    watch,
+    formState: { errors },
+  } = useForm();
   return (
     <div className="flex gap-5 mx-auto items-start  w-fit py-20 ">
       <BackButton />
@@ -35,7 +45,60 @@ const GetHelp = () => {
             message
           </h1>
           <form className="mb-20 space-y-5">
-            <TextField fullWidth label="subject" />
+            
+          <TextField
+          fullWidth
+          label="full Name"
+          type={"text"}
+          {...register("fullName", {
+            required: "this field is required",
+          })}
+          helperText={errors.fullName && errors.fullName.message}
+          error={errors.fullName}
+        />
+            <TextField
+          fullWidth
+          label="Email Address"
+          type={"email"}
+          {...register("email", {
+            required: "this field is required",
+            pattern: {
+              value: emailValidation,
+              message: "invalid email format",
+            },
+          })}
+          helperText={errors.email && errors.email.message}
+          error={errors.email}
+        />
+            <Controller
+          name="phone"
+          control={control}
+          rules={{
+            required: "this field is required",
+          }}
+          render={({ field }) => (
+            <PhoneInput
+              {...field}
+              country={"ng"}
+              placeholder="phone number"
+              enableSearch={true}
+              containerClass="!w-full "
+              inputClass="!w-full "
+              inputProps={{
+                name: "number",
+                required: true,
+              }}
+              isValid={() => {
+                if (errors.phone) {
+                  return errors.phone.message;
+                } else {
+                  return true;
+                }
+              }}
+            />
+          )}
+        />
+            
             <TextField fullWidth multiline rows={5} />
 
             <Button full>send</Button>
