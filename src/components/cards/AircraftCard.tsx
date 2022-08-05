@@ -18,7 +18,7 @@ const AircraftCard = (props: any) => {
         <img
           src={props.ProductImages[0].url}
           alt="jetPic"
-          className="bg-gray-300"
+          className="bg-gray-200 object-cover w-full h-full"
         />
       </div>
       <div className="divide-y ">

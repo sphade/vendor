@@ -32,7 +32,7 @@ const AircraftAdd = () => {
   const [images, setImages] = useState<any[]>([]);
   const [year] = useState<any>("2000");
   const [baseAirport] = useState<any>("2000");
-  const [destinationAirport] = useState<any[]>([]);
+
 
   const onSubmit = (data: {}) => {
     createAircraft.mutate({
@@ -42,7 +42,7 @@ const AircraftAdd = () => {
       model,
       year,
       baseAirport,
-      destinationAirport,
+      
       image: images[0].file,
     });
   };
@@ -120,6 +120,7 @@ const AircraftAdd = () => {
                           name: "Private jet",
                         },
                         { value: "helicopter", name: "Helicopter" },
+                        
                       ]}
                       rules={{
                         required: "this field is required",
@@ -137,7 +138,8 @@ const AircraftAdd = () => {
                           value: "charter",
                           name: "Charter",
                         },
-                        { value: "jetPooling", name: "jet pooling" },
+                        { value: "jetPooling", name: "Jet pooling" },
+                        { value: "any", name: "Any" },
                       ]}
                       rules={{
                         required: "this field is required",

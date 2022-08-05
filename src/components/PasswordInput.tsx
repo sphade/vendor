@@ -9,12 +9,14 @@ const PasswordInput = ({
   label,
   placeholder,
   rules,
+  disabled
 }: {
   control?: any;
   name?: any;
   label?: string;
   placeholder?: string;
-  rules?: {};
+    rules?: {};
+    disabled?:boolean
 }) => {
   const {
     field: { onChange, onBlur, value, ref },
@@ -41,6 +43,7 @@ const PasswordInput = ({
         fullWidth
         label={label}
         autoComplete="current-password"
+        disabled={disabled}
         InputProps={{
           endAdornment: (
             <InputAdornment position="end" className="cursor-pointer">

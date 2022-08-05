@@ -1,5 +1,8 @@
 import { Tab, Tabs } from "@mui/material";
 import React from "react";
+import { useDispatch } from "react-redux";
+import { setAirCraftTab } from "../../redux/slices/TabSlice";
+
 
 const CTabs = ({
   tabLabel,
@@ -8,15 +11,16 @@ const CTabs = ({
 }: {
   tabLabel: {}[];
   value: number;
-  setValue: React.Dispatch<React.SetStateAction<number>>;
+  setValue: any
 }) => {
-  
+  const dispatch =  useDispatch()
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
-    setValue(newValue);
+    dispatch(setValue(newValue))
+   
   };
   return (
     <>
-      <Tabs value={value} onChange={handleChange}>
+      <Tabs value={value}  onChange={handleChange}>
         {tabLabel.map(({ label }: { label?: string },id) => (
           <Tab label={label} key={ id}/>
         ))}

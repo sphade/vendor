@@ -18,29 +18,28 @@ import { useAircraft } from "../../../hooks/queries";
 import JetCardSkeleton from "../../../skeleton/JetCardSkeleton";
 import Error from "../../../components/Error";
 import localforage from "localforage";
+import { useSelector,useDispatch } from "react-redux";
+import { RootState } from "../../../redux/store";
+import { setAirCraftTab } from "../../../redux/slices/TabSlice";
 const Aircraft = () => {
-  const [tabValue, setTabValue] = useState<number>(0);
+  const airCraftTab = useSelector(
+    (state: RootState) => state.tab.airCraftTab
+    );
   const [search, setSearch] = useState<string>('');
   useEffect(() => {
-    localforage.setItem("selectedTag",tabValue);
-  }, [tabValue]);
-  useEffect(() => {
-    localforage.getItem("selectedTag",(err,val:any)=>setTabValue((value: number)=>value=val));
-  }, []);
-  
-  useEffect(() => {
     setSearch((value: string)=>value='')
-  }, [setSearch, tabValue])
+  }, [setSearch, airCraftTab])
   
-  
+
   const privateJet = useAircraft({
     isArchived: false,
     category: "private jet",
+    search
   });
   const helicopter = useAircraft({ isArchived: false, category: "helicopter" });
   
   const aircraftNo = useAircraft({ isArchived: false });
-
+  
   return (
     <div>
       <DeleteModal />
@@ -54,8 +53,8 @@ const Aircraft = () => {
       <div className="flex items-center justify-between mt-10 ">
         <CTabs
           tabLabel={[{ label: "private jet" }, { label: "helicopter" }]}
-          value={tabValue}
-          setValue={setTabValue}
+          value={airCraftTab}
+          setValue={setAirCraftTab}
         />
 
         <div className="flex gap-5">
@@ -75,8 +74,8 @@ const Aircraft = () => {
         </div>
       </div>
 
-      <TabPanel value={tabValue} index={0}>
-        <div className="flex justify-between min-h-[500px]  flex-wrap p-2 border shadow rounded mt-5 gap-1">
+      <TabPanel value={airCraftTab} index={0}>
+        <div className="flex  min-h-[500px]  flex-wrap p-2 border shadow rounded mt-5 gap-1">
           {privateJet.isLoading ? (
             [...new Array(4)].map((id) => <JetCardSkeleton key={id} />)
           ) : privateJet.isError ? (
@@ -94,8 +93,8 @@ const Aircraft = () => {
           )}
         </div>
       </TabPanel>
-      <TabPanel value={tabValue} index={1}>
-        <div className="flex justify-between min-h-[500px]  flex-wrap p-2 border shadow rounded mt-5 gap-1">
+      <TabPanel value={airCraftTab} index={1}>
+        <div className="flex  min-h-[500px]  flex-wrap p-2 border shadow rounded mt-5 gap-1">
           {helicopter.isLoading ? (
             [...new Array(4)].map((id) => <JetCardSkeleton key={id} />)
             ) : helicopter.isError ? (

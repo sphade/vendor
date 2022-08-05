@@ -38,16 +38,17 @@ export const useTransactionTable = ({search}:any) => {
   return useQuery(["transactionTable",search], ()=>getTransaction({search}), { keepPreviousData : true });
   
 };
-export const useAircraft = ({ isArchived, category }: any) => {
+export const useAircraft = ({ isArchived, category,search }: any) => {
   
 
   return useQuery(
-    ["aircraft", isArchived, category],
-    () => getVendorAircraft({ isArchived, category }),
+    ["aircraft", isArchived, category,search],
+    () => getVendorAircraft({ isArchived, category, search}),
     {
+       keepPreviousData : true ,
       onError(error: any) {},
     }
-  );
+  )
 };
 
 export const useUser = () => {

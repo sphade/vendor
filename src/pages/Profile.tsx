@@ -233,6 +233,7 @@ const Profile = () => {
                     control={control}
                     name={"password"}
                     label="password"
+                    disabled
                   />
                   {!edit ? (
                     <Button full onClick={(e:any) => {

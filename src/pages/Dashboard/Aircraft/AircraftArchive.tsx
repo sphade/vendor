@@ -67,7 +67,7 @@ const AircraftArchive = () => {
           ) : (
             aircraftArchive.data?.map((data: any, id: number) => (
               <div className="flex gap-4 items-start" key={id}>
-                <Checkbox checked={ checked} onChange={()=>setChecked(!checked)} />
+                <Checkbox checked={ checked} onChange={(e:any)=>setChecked(e.target.checked)} />
                 <AircraftCard {...data} />
               </div>
             ))

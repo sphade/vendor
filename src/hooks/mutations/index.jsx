@@ -36,6 +36,7 @@ export const useLogin = () => {
   return useMutation(loginUser, {
     async onSuccess(data) {
       localforage.setItem("user", data);
+      
       navigate(origin, { replace: true });
       enqueueSnackbar(" successfully login", {
         variant: "success",

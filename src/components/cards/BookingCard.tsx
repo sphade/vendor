@@ -22,7 +22,7 @@ const BookingCard = (props: any) => {
         <img
           src={props?.ProductImages[0]?.url}
           alt="bookingPic"
-          className="w-full h-full bg-gray-200"
+          className="w-full h-full object-cover bg-gray-200"
         />
       </div>
       <div className="divide-y ">

@@ -155,6 +155,14 @@ const AircraftDetails = () => {
                           {details?.maxRange} square miles
                         </p>
                       </div>
+                      <div className=" flex items-center gap-3 ">
+                        <p className="capitalize text-[#828282]">
+                          max altitude:{" "}
+                        </p>
+                        <p className="capitalize text-tertiary font-semibold   ">
+                          {details?.maxAltitude} ft
+                        </p>
+                      </div>
                     </div>
                   </div>
                   <div>

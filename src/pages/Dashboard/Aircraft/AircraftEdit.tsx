@@ -160,6 +160,7 @@ const AircraftEdit = () => {
                     name: "Charter",
                   },
                   { value: "jet pooling", name: "jet pooling" },
+                  { value: "any", name: "Any" },
                 ]}
                
                 name="serviceType"
