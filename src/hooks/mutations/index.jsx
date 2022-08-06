@@ -19,6 +19,7 @@ import {
   changePhoneNumber,
   changePassword,
   deleteAircraft,
+  getHelp,
 } from "../../services/api";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useSnackbar } from "notistack";
@@ -419,5 +420,24 @@ export const useChangePassword = () => {
     onSettled() {
       queryClient.invalidateQueries("user");
     },
+  });
+};
+export const useGetHelp = () => {
+ 
+
+  const { enqueueSnackbar } = useSnackbar();
+
+  return useMutation(getHelp, {
+    onSuccess(data) {
+      enqueueSnackbar("sent", {
+        variant: "success",
+      });
+    },
+    onError(error) {
+      enqueueSnackbar(error.response?.data?.error || error.message, {
+        variant: "error",
+      });
+    },
+   
   });
 };

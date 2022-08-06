@@ -4,15 +4,18 @@ import { BackButton, Button } from "../components";
 import PhoneInput from "react-phone-input-2";
 import { Controller, useForm } from "react-hook-form";
 import { emailValidation } from "../validation/emailValidation";
+import { useGetHelp } from "../hooks/mutations";
 
 const GetHelp = () => {
+ const getHelp = useGetHelp()
   const {
     register,
     handleSubmit,
     control,
-    watch,
+  
     formState: { errors },
   } = useForm();
+  const onSubmit = (data: any) => getHelp.mutate({...data,phone:`+${data?.phone}` });
   return (
     <div className="flex gap-5 mx-auto items-start  w-fit py-20 ">
       <BackButton />
@@ -44,7 +47,9 @@ const GetHelp = () => {
           <h1 className="text-2xl text-tertiary  font-semibold capitalize my-5">
             message
           </h1>
-          <form className="mb-20 space-y-5">
+          <form
+             onSubmit={handleSubmit(onSubmit)}
+            className="mb-20 space-y-5">
             
           <TextField
           fullWidth
@@ -99,9 +104,21 @@ const GetHelp = () => {
           )}
         />
             
-            <TextField fullWidth multiline rows={5} />
+            <TextField 
+             fullWidth
+             label="Message"
+             type={"text"}
+             {...register("message", {
+               required: "this field is required",
+              
+             })}
+             helperText={errors.message && errors.message.message}
+             error={errors.message}
+              multiline rows={5} />
 
-            <Button full>send</Button>
+            <Button
+            loading={getHelp.isLoading}
+              full>send</Button>
           </form>
         </div>
       </div>

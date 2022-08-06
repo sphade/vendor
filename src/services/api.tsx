@@ -157,3 +157,10 @@ export const listAircraftForPooling = async (
   const response = await axios.post(`/list-pooling/aircraft/${id}`, data);
   return response.data.data;
 };
+export const getHelp = async (
+ 
+  data: Record<string, unknown>
+) => {
+  const response = await axios.post(`/help`, data);
+  return response.data.data;
+};
