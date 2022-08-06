@@ -217,7 +217,7 @@ const AircraftAdd = () => {
                     </p>
                     <div className="grid grid-cols-2 gap-10   justify-between">
                       <PerformanceInput
-                        defaultValue={0}
+                             defaultValue={''}
                         label="travel hours"
                         name="flightHours"
                         placeholder="Hours"
@@ -228,7 +228,7 @@ const AircraftAdd = () => {
                         errors={errors.travelHours}
                       />
                       <PerformanceInput
-                        defaultValue={0}
+                        defaultValue={''}
                         label="max speed"
                         name="maxSpeed"
                         placeholder="km/h"
@@ -239,7 +239,7 @@ const AircraftAdd = () => {
                         errors={errors.maxSpeed}
                       />
                       <PerformanceInput
-                        defaultValue={0}
+                             defaultValue={''}
                         label="max distance"
                         name="maxRange"
                         placeholder="km"
@@ -250,7 +250,7 @@ const AircraftAdd = () => {
                         errors={errors.maxRange}
                       />
                       <PerformanceInput
-                        defaultValue={0}
+                            defaultValue={''}
                         label="max altitude"
                         name="maxAltitude"
                         placeholder="ft"
@@ -270,8 +270,7 @@ const AircraftAdd = () => {
                     </p>
                     <div className="flex flex-col gap-5 items-center">
                       <InteriorInput
-                  defaultValue={0}
-                        
+                       defaultValue={''}
                         name="cabinWidth"
                         placeholder="Cabin Width"
                         register={register}
@@ -281,7 +280,7 @@ const AircraftAdd = () => {
                         errors={errors.cabinWidth}
                       />
                       <InteriorInput
-                  defaultValue={0}
+                       defaultValue={''}
 
                         name="cabinLength"
                         placeholder="Cabin Length"
@@ -292,7 +291,7 @@ const AircraftAdd = () => {
                         errors={errors.cabinLength}
                       />
                       <InteriorInput
-                  defaultValue={0}
+                      defaultValue={''}
 
                         name="cabinHeight"
                         placeholder="Cabin Height"
