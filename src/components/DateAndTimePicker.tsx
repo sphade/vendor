@@ -15,7 +15,7 @@ const DateAndTimePicker = ({ date,setDate }:any) => {
   return (
     <LocalizationProvider dateAdapter={AdapterDateFns}>
       <div
-        onClick={() => setOpen(true)}
+        
         className="border divide-x divide-[#828282] cursor-pointer w-full py-3 rounded flex items-center  px-6 border-[#828282] ">
         <MobileDatePicker
           label={"label"}
@@ -33,7 +33,7 @@ const DateAndTimePicker = ({ date,setDate }:any) => {
           renderInput={() => (
             <div
               className="flex gap-2 items-center pr-6"
-              
+              onClick={() => setOpen(true)}
             >
               <CalenderIcon/>
               <p className="capitalize text-base">
