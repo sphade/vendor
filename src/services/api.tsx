@@ -91,7 +91,7 @@ export const deleteAircraft = async (
  
   data: Record<string, unknown>
 ) => {
-  const response = await axios.delete(`products/aircraft/${data.id}`);
+  const response = await axios.delete(`vendor/aircraft/${data.id}`);
   return response.data.data;
 };
 export const updateProfilePicture = async (data: any) => {
