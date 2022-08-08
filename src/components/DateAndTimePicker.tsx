@@ -35,7 +35,7 @@ const DateAndTimePicker = ({ date,setDate }:any) => {
               className="flex gap-2 items-center pr-6"
               
             >
-              <img src={CalenderIcon} alt="icon" />
+              <CalenderIcon/>
               <p className="capitalize text-base">
                 {format(date, "dd/MMM/yyyy") || "departure date"}
               </p>

@@ -6,7 +6,7 @@ const NoOrder = () => {
   return (
     <div className="center-element">
       <div className="w-[400px]  space-y-5 py-10">
-        <img src={NoOrderIcon} alt="noOrderIcon" />
+        <NoOrderIcon/>
         <h2 className="text-4xl text-tertiary    text-center font-semibold">
           No Upcoming Order
         </h2>
@@ -15,7 +15,7 @@ const NoOrder = () => {
           will appear here.
         </p>
         <Link to="create-order" className="block">
-          <Button variant="primary" full size="medium" iconLeft={AddCircleIcon}>
+          <Button variant="primary" full size="medium" IconLeft={AddCircleIcon}>
             Create order
           </Button>
         </Link>

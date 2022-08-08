@@ -71,10 +71,10 @@ const AircraftCardDropDown = ({
             
           >
             <span className="flex items-center gap-2">
-              <img src={EditIcon} alt="icon" />
+              <EditIcon  />
               edit
             </span>
-            <img src={ArrowRightSmallIcon} alt="icon" />
+            <ArrowRightSmallIcon/>
           </Link>
         </li>
         <li
@@ -88,7 +88,7 @@ const AircraftCardDropDown = ({
         >
           <>
             <span className="flex items-center gap-2">
-              <img src={FolderIcon} alt="icon" />
+              <FolderIcon/>
               {aircraft?.isArchived
                 ? "unArchive"
                 : !aircraft?.isArchived
@@ -96,7 +96,7 @@ const AircraftCardDropDown = ({
                 : ""}
             </span>
 
-            <img src={ArrowRightSmallIcon} alt="icon" />
+            <ArrowRightSmallIcon/>
           </>
         </li>
 
@@ -110,7 +110,7 @@ const AircraftCardDropDown = ({
           }}
         >
           <span className="flex items-center gap-2">
-            <img src={TrashIcon} alt="icon" />
+            <TrashIcon/>
             delete
           </span>
         </li>

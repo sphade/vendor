@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
-import notificationIcon from "../assets/images/icons/notification.png";
+import {ReactComponent as NotificationIcon} from "../assets/images/icons/notification.svg";
 import { IconButton, Skeleton } from "@mui/material";
-import dropdownIcon from "../assets/images/icons/dropdown.png";
+import {ReactComponent as  DropdownIcon} from "../assets/images/icons/dropdown.svg";
 import { Avatar } from "@mui/material";
 import ProfileDropDown from "./dropDowns/ProfileDropDown";
 import localforage from "localforage";
@@ -23,7 +23,7 @@ const NotificationProfileHeader = () => {
 
   return (
     <div className="flex space-x-2 items-center divide-x-2 divide-gray-400 pl-5">
-      <img src={notificationIcon} alt="notificationIcon" />
+      <NotificationIcon/>
 
       <div className="flex !relative items-center space-x-2 pl-2">
         {user.isLoading ? (
@@ -56,7 +56,7 @@ const NotificationProfileHeader = () => {
           component="span"
           onClick={handleIconClick}
         >
-          <img src={dropdownIcon} alt="avatarIcon" className="py-2" />
+          <DropdownIcon  className="w-5 h-5" />
         </IconButton>
 
         <ProfileDropDown anchorEl={anchorEl} setAnchorEl={setAnchorEl} />

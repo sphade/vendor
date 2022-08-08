@@ -1,7 +1,7 @@
 import { Skeleton } from "@mui/material";
 const BookingJetCardSkeleton = () => {
   return (
-    <div className="w-64 h-[400px] border rounded-md  p-4 bg-secondary  ">
+    <div className="w-[254px] h-[400px] border rounded-md  p-4 bg-secondary  ">
       <div className=" rounded-t-md h-[100px] object-cover animate-pulse bg-gray-200 overflow-hidden">
         
       </div>

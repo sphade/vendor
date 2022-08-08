@@ -42,7 +42,7 @@ const AircraftDetails = () => {
         </div>
         <div className="flex items-center gap-24">
           <div className="flex items-center">
-            <img src={EditIcon} alt="EditIcon" />
+            <EditIcon/>
             <p className="uppercase text-tertiary font-bold">Edit</p>
           </div>
 

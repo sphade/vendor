@@ -14,9 +14,8 @@ const SeatCapacity = ({
         seat capacity
       </span>
       <div className="flex items-center w-[150px] justify-between">
-        <img
-          src={capacity ? MinusIcon : MinusDisabledIcon}
-          alt="icon"
+        <MinusIcon 
+         
           onClick={() => {
             if (!capacity) return capacity;
             setCapacity(capacity - 1);
@@ -27,9 +26,8 @@ const SeatCapacity = ({
         <span className="text-tertiary  font-semibold    text-xl">
           {capacity}
         </span>
-        <img
-          src={PlusIcon}
-          alt="icon"
+        <PlusIcon
+  
           onClick={() => {
             setCapacity(capacity + 1);
           }}

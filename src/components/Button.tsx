@@ -6,8 +6,8 @@ import { FC } from "react";
 interface IButton {
   children: any;
   loading?: Boolean;
-  iconLeft?: string | any;
-  iconRight?: string | any;
+  IconLeft?: string | any;
+  IconRight?: string | any;
   variant?: "primary" | "outlinePrimary" | "tertiary" | "outlineTertiary";
   full?: Boolean;
   disabled?: boolean;
@@ -18,8 +18,8 @@ interface IButton {
 const Button: FC<IButton> = ({
   children,
   loading,
-  iconLeft,
-  iconRight,
+  IconLeft,
+  IconRight,
   full,
   variant = "primary",
   disabled,
@@ -50,7 +50,7 @@ const Button: FC<IButton> = ({
         onClick={onClick}
         disabled={disabled}
       >
-        {iconLeft && <img src={iconLeft} alt="icon" className="pr-3" />}
+        {IconLeft && <IconLeft className="pr-3 h-9 w-9" />}
         <span>
           {loading ? (
             <CircularProgress
@@ -63,7 +63,7 @@ const Button: FC<IButton> = ({
             children
           )}
         </span>
-        {iconRight && <img src={iconRight} alt="icon" className="pl-3" />}
+        {IconRight && <IconRight className="pl-3 h-5 w-5" />}
       </button>
    
   );

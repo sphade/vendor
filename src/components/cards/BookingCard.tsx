@@ -17,7 +17,7 @@ const BookingCard = (props: any) => {
     setDropDownState(event.currentTarget);
   };
   return (
-    <div className="w-64 h-[400px] border rounded-md  p-4 bg-secondary  ">
+    <div className="w-[254px] h-[400px] border rounded-md  p-4 bg-secondary  ">
       <div className=" rounded-t-md h-[100px] object-cover overflow-hidden">
         <img
           src={props?.ProductImages[0]?.url}
@@ -31,7 +31,7 @@ const BookingCard = (props: any) => {
             {props?.brand} {props?.model}
           </h3>
           <IconButton onClick={handleClick}>
-            <img src={DotIcon} alt="DotIcon" className="py-2 " />
+            <DotIcon className="py-2 " />
           </IconButton>
           <AircraftCardDropDown
             dropDownState={dropDownState}
@@ -69,7 +69,7 @@ const BookingCard = (props: any) => {
          
           
           <Link to="../form" className="flex-1">
-            <Button full size="medium" iconRight={ArrowRight2Icon}
+            <Button full size="medium" IconRight={ArrowRight2Icon}
              onClick={async () => {
               localforage.setItem("selectedAircraftDetails", props);
             }}

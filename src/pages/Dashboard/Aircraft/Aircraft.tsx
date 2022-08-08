@@ -1,5 +1,5 @@
 import { useState,useEffect } from "react";
-import addCircleIcon from "../../../assets/images/icons/add-circle.svg";
+import {AddCircleIcon} from "../../../assets/images/icons";
 
 import NotificationProfileHeader from "../../../components/NotificationProfileHeader";
 import {
@@ -62,14 +62,14 @@ const Aircraft = () => {
             to="archive"
             className="border rounded flex items-center px-3.5  gap-2.5 border-gray-300"
           >
-            <img src={ArchiveIcon} alt="ArchiveIcon" />
+            <ArchiveIcon />
             <p className="capitalize  text-gray-700">archive</p>
           </Link>
           <SearchBar value={search} setValue={setSearch} />
           <Link to="add">
-            <Button size="medium" variant="primary" iconLeft={addCircleIcon}>
+             <Button size="medium" variant="primary" IconLeft={AddCircleIcon}>
               add aircraft
-            </Button>
+            </Button> 
           </Link>
         </div>
       </div>

@@ -102,7 +102,12 @@ export const aircraftColumns: GridColDef[] = [
     disableColumnMenu: true,
     renderCell({ value }) {
       
-      return <img src={value ?  CalenderDropDownActiveIcon : CalenderDropDownIcon} alt={'calender'} />;
+      return (
+        
+          value ? <CalenderDropDownActiveIcon/> : <CalenderDropDownIcon/>
+        
+      )
+      
     },
     headerClassName: headerClass,
 

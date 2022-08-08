@@ -44,9 +44,7 @@ const DeleteModal: FC = () => {
   return (
     <Modal open={deleteModalState} onClose={closeModal}>
       <div className="absolute top-[35%]        px-[24px] text-center py-5 left-[50%] -translate-x-1/2 bg-white rounded-lg   w-[450px] border-t-4 border-[#FF2A1C] min-h-[310px]">
-        <img
-          src={TrashModalIcon}
-          alt={TrashModalIcon}
+        <TrashModalIcon
           className="absolute -top-[40px] left-[190px]"
         />
         <h1 className="text-2xl    font-semibold text-tertiary mt-[24px] mb-[36px]">

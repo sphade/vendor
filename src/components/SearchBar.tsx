@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import SearchIcon from "../assets/images/icons/Search.png";
+import {ReactComponent as SearchIcon} from "../assets/images/icons/Search.svg";
 import ClassNames from "classnames";
 interface ISearchBar {
   size?: "small" | "medium";
@@ -17,7 +17,7 @@ const SearchBar: FC<ISearchBar> = ({ size = "small",value,setValue }) => {
         }
       )}
     >
-      <img src={SearchIcon} alt="icon" className="mx-2 py-1" />
+      <SearchIcon className="mx-2 py-1 h-7 w-7" />
       <input
         type="text"
         className="outline-none bg-transparent w-full"

@@ -26,7 +26,7 @@ const TableOfAircraft = () => {
           <p className="px-3">sort by</p>
           <div className="px-3 flex items-center">
             <p>Latest date</p>
-            <img src={PolygonIcon} alt="PolygonIcon" className="ml-1" />
+            <PolygonIcon className="ml-2 mb-1" />
           </div>
         </div>
       </div>

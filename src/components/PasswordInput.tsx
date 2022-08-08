@@ -51,15 +51,12 @@ const PasswordInput = ({
                 onClick={() => setShowPassword((showPassword) => !showPassword)}
               >
                 {showPassword ? (
-                  <img
-                    src={EyeIcon}
-                    alt={EyeIcon}
+                  <EyeIcon
                     className="w-[25px] h-[25px] "
                   />
                 ) : (
-                  <img
-                    src={EyeCloseIcon}
-                    alt={EyeCloseIcon}
+                  <EyeCloseIcon
+                    
                     className="w-[25px] h-[25px]"
                   />
                 )}

@@ -27,7 +27,7 @@ const AircraftCard = (props: any) => {
             {props?.brand} {props?.model}
           </h3>
           <IconButton onClick={handleClick}>
-            <img src={DotIcon} alt="DotIcon" className="py-2 " />
+            <DotIcon className=" h-5 w-5" />
           </IconButton>
           <AircraftCardDropDown
             dropDownState={dropDownState}
@@ -56,7 +56,7 @@ const AircraftCard = (props: any) => {
               className="uppercase py-2 px-4 gap-2  bg-orange-50 rounded-md text-primary font-bold text-sm w-[95px] flex items-center"
             >
               more
-              <img src={ArrowRightOrangeIcon} alt="ArrowRightOrangeIcon" />
+              <ArrowRightOrangeIcon/>
             </button>
           </Link>
         </div>

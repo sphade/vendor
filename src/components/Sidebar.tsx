@@ -19,8 +19,8 @@ interface IState {
   sidebarOptions: {
     text: string;
     link: string;
-    Icon: string;
-    ActiveIcon: string;
+    Icon: any;
+    ActiveIcon: any;
   }[];
 }
 
@@ -28,7 +28,7 @@ const Sidebar = (props: Props) => {
   return (
     <section className="w-[230px] z-50 bg-secondary h-screen  sticky top-0 left-0">
       <div className="font-bold text-2xl pl-5 pt-10 h-[160px] ">
-        <img src={LogoIcon} alt="LogoIcon" />
+        <LogoIcon/>
       </div>
 
       <nav className="">
@@ -47,7 +47,11 @@ const Sidebar = (props: Props) => {
                 >
                   {({ isActive }) => (
                     <>
-                      <img src={isActive ? ActiveIcon : Icon} alt={text} />
+                      {
+                        
+                        isActive ?
+                          <ActiveIcon /> : <Icon/>
+                    }
                       <p className="capitalize text-lg font-medium ">{text}</p>
                     </>
                   )}

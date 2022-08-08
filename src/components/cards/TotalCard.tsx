@@ -1,11 +1,11 @@
 const TotalCard = ({
   text,
-  logo,
+  Logo,
   num,
   color,
 }: {
   text: string;
-  logo: string;
+  Logo: any;
   num: any;
   color: string;
 }) => {
@@ -18,7 +18,7 @@ const TotalCard = ({
     >
       <div className=" flex items-center justify-between">
         <p className="text-tertiary    font-semibold text-base ">{text}</p>
-        <img src={logo} alt={logo} />
+        <Logo/>
       </div>
       <p className="font-bold    text-2xl">{num || "0"}</p>
     </div>

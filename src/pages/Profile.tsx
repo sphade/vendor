@@ -1,10 +1,8 @@
 import { Avatar } from "@mui/material";
 import TextField from "@mui/material/TextField";
-
 import React, { useEffect, useState } from "react";
 import PhoneInput from "react-phone-input-2";
 import { ChangePictureIcon } from "../assets/images/icons";
-
 import {
   Button,
   EmailModal,
@@ -127,9 +125,8 @@ const Profile = () => {
                       h: "128px",
                     }}
                     />
-                    <img
-                      src={ChangePictureIcon}
-                      alt="uploadIcon"
+                    <ChangePictureIcon
+                 
                       className=" cursor-pointer absolute right-[13px] bottom-[0px] "
                       onClick={() => {
                         onImageUpload();

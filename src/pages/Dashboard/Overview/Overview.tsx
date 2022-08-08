@@ -59,7 +59,7 @@ const Overview = () => {
                 overviewData?.totalAircraft
               )
             }
-            logo={TotalAirIcon}
+            Logo={TotalAirIcon}
           />
           <TotalCard
             color="#FFF9E5"
@@ -76,7 +76,7 @@ const Overview = () => {
                 overviewData?.trips
               )
             }
-            logo={NoOfTripsIcon}
+            Logo={NoOfTripsIcon}
           />
           {/* format the response */}
           <TotalCard
@@ -95,7 +95,7 @@ const Overview = () => {
                 
               )
             }
-            logo={TotalAmountIcon}
+            Logo={TotalAmountIcon}
           />
           <ActivitiesCard
             loading={overviewLoading}
@@ -114,10 +114,10 @@ const Overview = () => {
             
             <Link
               to="table-of-aircraft"
-              className="rounded-lg  py-2 cursor-pointer bg-[#FFF6F4] font-medium text-base text-primary border-2 border-[#FFDED6] flex gap-2 px-3"
+              className="rounded-lg py-2 cursor-pointer bg-[#FFF6F4] font-medium text-base text-primary border-2 border-[#FFDED6] flex gap-2 px-3 items-center"
             >
               <span>View more</span>
-              <img src={PolygonOrangeIcon} alt="icon" />
+              <PolygonOrangeIcon/>
             </Link>
           </div>
           <DataGrid

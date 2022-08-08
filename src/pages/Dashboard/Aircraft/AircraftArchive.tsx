@@ -42,14 +42,14 @@ const AircraftArchive = () => {
         {checked ? (
           <div className="py-5 rounded divide-gray-600 border shadow-lg divide-x flex items-center w-fit ml-3">
             <div className="px-5 flex items-center gap-2 cursor-pointer">
-              <img src={UnArchiveIcon} alt="UnArchiveIcon" />
+              <UnArchiveIcon/>
               <p className="capitalize">unarchive</p>
             </div>
             <div
               className="px-5  flex items-center gap-2 cursor-pointer"
               onClick={() => dispatch(toggleDeleteArchiveModal())}
             >
-              <img src={TrashGrayIcon} alt="TrashGrayIcon" />
+              <TrashGrayIcon/>
               <p className="capitalize">delete permanently</p>
             </div>
           </div>

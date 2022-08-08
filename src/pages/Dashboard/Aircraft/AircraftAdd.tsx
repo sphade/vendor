@@ -87,15 +87,28 @@ const AircraftAdd = () => {
               >
                 <div>
                   <p className="capitalize text-tertiary ">photos</p>
-                  <img
-                    src={(imageList && imageList[0]?.image) || AddAircraftIcon}
-                    alt="aircraftPicture"
+                  {
+                    imageList.length 
+                      ?
+                      <img
+                      src={ imageList[0]?.image}
+                      alt="aircraftPicture"
+                      onClick={() => {
+                        onImageUpload();
+                        setShowAddPic(true);
+                      }}
+                      className="h-[230px] w-full cursor-pointer object-cover "
+                    />
+                      :
+                    <AddAircraftIcon
                     onClick={() => {
                       onImageUpload();
                       setShowAddPic(true);
-                    }}
-                    className="h-[230px] w-full cursor-pointer object-cover "
-                  />
+                        }}
+                        className="h-[230px] w-full cursor-pointer scale-y-[1.3]"
+                    />
+                  }
+                 
                 </div>
 
                 <div className=" text-sm mt-10">
@@ -335,11 +348,28 @@ const AircraftAdd = () => {
                     photos
                   </p>
                 </div>
-                <img
-                  src={(imageList && imageList[0]?.image) || AddAircraftIcon}
-                  alt="planeAdd"
-                  className="w-full mb-6 rounded-lg h-[205px] object-fit "
-                />
+                
+                   {
+                    imageList.length
+                      ?
+                      <img
+                      src={ imageList[0]?.image}
+                      alt="aircraftPicture"
+                     
+                      className="w-full mb-6 rounded-lg h-[205px] object-fit "
+                    />
+                      :
+                      <div
+                      className="w-full mb-6  h-[205px]   "
+                      >
+                      <AddAircraftIcon
+                         
+                         
+                        className="w-full mb-6 scale-y-[1.3] h-full  "
+                    />  
+                      </div>
+                    
+                  }
                 <div className="flex gap-2 mb-[164px] flex-wrap">
                   {imageList.map((image, index) => {
                     return (
@@ -367,9 +397,8 @@ const AircraftAdd = () => {
                     );
                   })}
                   {imageList.length < 4 && (
-                    <img
-                      src={AddAircraftSmallIcon}
-                      alt="AddAircraftSmallIcon"
+                    <AddAircraftSmallIcon
+                  
                       onClick={onImageUpload}
                       {...dragProps}
                       className={`w-[133px] cursor-pointer rounded-lg h-[90px] object-fit   ${

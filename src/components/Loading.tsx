@@ -3,8 +3,8 @@ import { LoadingLogoIcon } from "../assets/images/icons";
 const Loading = () => {
   return (
     <div className="w-full h-full center-element relative">
-      <img src={LoadingLogoIcon} loading='eager' className="z-50 h-14 w-14 " alt="loading..." />
 
+<LoadingLogoIcon className="z-50 scale-125"/>
       <div className="w-14 h-14 bg-primary rounded-full absolute animate-ping opacity-75 "></div>
     </div>
   );

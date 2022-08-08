@@ -120,12 +120,12 @@ const BookingForm = () => {
             </div>
             <div className="flex mb-8">
               <div className="border w-full py-3 rounded flex items-center gap-4 px-6 border-[#828282] ">
-                <img src={CompassIcon} alt="icon" />
+                <CompassIcon/>
                 <p className="capitalize text-base">departure</p>
               </div>
-              <img src={ToAndFroIcon} alt="icon" className="-mx-1  z-50" />
+              <ToAndFroIcon className="-mx-1  z-50" />
               <div className="border w-full py-3 rounded flex items-center gap-4 px-6 border-[#828282] ">
-                <img src={LocationIcon} alt="icon" />
+                <LocationIcon />
                 <p className="capitalize text-base">departure</p>
               </div>
             </div>

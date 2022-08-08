@@ -75,14 +75,10 @@ const Register = () => {
               <div className=" relative h-[100px] cursor-pointer ">
                 {!imageList?.length ? (
                   <>
-                    <img
-                      src={CameraBoxIcon}
-                      alt="CameraBoxIcon"
+                    <CameraBoxIcon
                       className="absolute top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2"
                     />
-                    <img
-                      src={CameraIcon}
-                      alt="CameraIcon"
+                    <CameraIcon
                       className="absolute top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2"
                     />
                   </>

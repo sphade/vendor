@@ -66,7 +66,7 @@ const ProfileDropDown = ({
             {name === "logout" ? (
               ""
             ) : (
-              <img src={ArrowRightSmallIcon} alt="icon" />
+              <ArrowRightSmallIcon/>
             )}
           </Link>
         ))}

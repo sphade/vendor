@@ -26,7 +26,7 @@ const GetHelp = () => {
         </h1>
 
         <div className="flex items-center mb-10 gap-3">
-          <img src={EmailIcon} alt="ArrowBackIcon" />
+          <EmailIcon/>
           <p className="text-gray-500 font-semibold">
             Email: {' '}
             <span className=" text-tertiary">
@@ -36,7 +36,7 @@ const GetHelp = () => {
         </div>
 
         <div className="flex items-center mb-8 gap-5">
-          <img src={PhoneIcon} alt="PhoneIcon" />
+          <PhoneIcon />
           <p className="text-gray-500 font-semibold">
             mobile:{' '}
             <span className=" text-tertiary">+234 81 000 34511</span>
