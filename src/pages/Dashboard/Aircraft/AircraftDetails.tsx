@@ -12,6 +12,7 @@ import localforage from "localforage";
 import AircraftDetailsSkeleton from "../../../skeleton/AircraftDetailsSkeleton";
 import { Skeleton } from "@mui/material";
 import { Gallery, Item } from "react-photoswipe-gallery";
+import { formatNumberToCurrency } from "../../../hooks/useFormatNumberToCurrency";
 const AircraftDetails = () => {
   const [details, setDetails] = useState<any>();
 
@@ -87,8 +88,9 @@ const AircraftDetails = () => {
               </div>{" "}
               <div className="py-4 flex items-center justify-between ">
                 <p className="capitalize text-[#828282]">total amount: </p>
-                <p className="capitalize text-tertiary font-semibold   ">
-                  {details?.price}
+                  <p className="capitalize text-tertiary font-semibold   ">
+                  {formatNumberToCurrency({ number:details?.price  })}
+                  
                 </p>
               </div>{" "}
               <div className="py-4 flex flex-col gap-3 ">

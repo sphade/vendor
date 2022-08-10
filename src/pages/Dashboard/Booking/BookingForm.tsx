@@ -2,6 +2,7 @@ import {
   BackButton,
   Button,
   DateAndTimePicker,
+  Loading,
   NotificationProfileHeader,
   SelectInput,
 } from "../../../components";
@@ -25,11 +26,13 @@ const BookingForm = () => {
     slidesToScroll: 1,
   };
   const [details, setDetails] = useState<any>();
+  const [loading, setLoading] = useState(true);
 
 
   useEffect(() => {
     localforage.getItem("selectedAircraftDetails", (err, val) => {
       setDetails(val); 
+      setLoading(false); 
     });
   }, []);
   
@@ -44,6 +47,14 @@ const BookingForm = () => {
       tripType: "roundtrip",
     },
   });
+  if (loading) {
+    return (
+      <div className="w-full h-screen">
+        
+        <Loading />
+      </div>
+    );
+  }
   return (
     <div>
       <header className="header !mb-5">
@@ -56,7 +67,7 @@ const BookingForm = () => {
         <NotificationProfileHeader />
       </header>
       <main className="mb-5">
-       <BookingFormSkeleton/>
+       
         <div className="w-[920px] px-20 mx-auto border-[#BDBDBD] border rounded-lg pt-[32px] p-10">
          
             <Slider {...settings}>
@@ -123,7 +134,7 @@ const BookingForm = () => {
                 <CompassIcon/>
                 <p className="capitalize text-base">departure</p>
               </div>
-              <ToAndFroIcon className="-mx-1  z-50" />
+              <ToAndFroIcon className="-mx-1  z-50 mt-2 w-20" />
               <div className="border w-full py-3 rounded flex items-center gap-4 px-6 border-[#828282] ">
                 <LocationIcon />
                 <p className="capitalize text-base">departure</p>

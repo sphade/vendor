@@ -178,6 +178,15 @@ export const transactionColumn: GridColDef[] = [
     hideSortIcons: true,
     disableColumnMenu: true,
     flex: 1,
+    renderCell({ value }) {
+      return (
+        <div className="items-center">
+          {
+            formatNumberToCurrency({ number:value  })
+          }   
+        </div>
+      );
+    },
   },
   {
     field: "status",

@@ -19,7 +19,8 @@ const InteriorInput = ({ placeholder, register, name, rule, errors,defaultValue 
         </div>
         <input
           {...register(name, rule)}
-          type="text"
+          type="number"
+          min={1}
           defaultValue={defaultValue}
           className=" text-tertiary flex-1 px-3 text-lg outline-none bg-transparent w-full"
         />

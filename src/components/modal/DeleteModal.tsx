@@ -21,12 +21,12 @@ const DeleteModal: FC = () => {
     const deleteAircraft = useDeleteAircraft()
   const [details, setDetails] = useState<any>();
   const archive = useArchiveAircraft(details?.id);
-  const [loading, setLoading] = useState<boolean>( true);
+ 
   const { enqueueSnackbar } = useSnackbar();
   useEffect(() => {
     localforage.getItem("selectedAircraftDetails", (err, val) => {
       setDetails(val);
-       setLoading(false);
+    
      
     });
   }, []);

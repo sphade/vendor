@@ -31,7 +31,7 @@ const AircraftAdd = () => {
   const [bar, setBar] = useState<boolean>(true);
   const [images, setImages] = useState<any[]>([]);
   const [year] = useState<any>("2000");
-  const [baseAirport] = useState<any>("2000");
+  const [baseAirport] = useState<any>("200135230");
 
 
   const onSubmit = (data: {}) => {
@@ -129,7 +129,7 @@ const AircraftAdd = () => {
                       label="Aircraft Type"
                       options={[
                         {
-                          value: "privateJet",
+                          value: "private Jet",
                           name: "Private jet",
                         },
                         { value: "helicopter", name: "Helicopter" },
@@ -182,6 +182,7 @@ const AircraftAdd = () => {
                         NGN
                       </div>
                       <input
+                        
                         className={` border w-full focus:ring-blue-500 h-10 px-3 rounded-lg border-[#828282] ${
                           errors.travelFee &&
                           " border-red-700 focus:!border-red-700"
