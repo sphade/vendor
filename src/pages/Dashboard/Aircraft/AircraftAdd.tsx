@@ -94,10 +94,10 @@ const AircraftAdd = () => {
                       src={ imageList[0]?.image}
                       alt="aircraftPicture"
                       onClick={() => {
-                        onImageUpload();
+                       
                         setShowAddPic(true);
                       }}
-                      className="h-[230px] w-full cursor-pointer object-cover "
+                      className="h-[230px] rounded-lg w-full cursor-pointer object-cover "
                     />
                       :
                     <AddAircraftIcon
@@ -163,7 +163,7 @@ const AircraftAdd = () => {
                   </div>
                   <SeatCapacity capacity={capacity} setCapacity={setCapacity} />
                   <PerformanceInput
-                    defaultValue={0}
+                    defaultValue={''}
                     label="Baggage Capacity"
                     name="baggageCapacity"
                     placeholder="kg"
@@ -184,16 +184,16 @@ const AircraftAdd = () => {
                       <input
                         
                         className={` border w-full focus:ring-blue-500 h-10 px-3 rounded-lg border-[#828282] ${
-                          errors.travelFee &&
+                          errors.price &&
                           " border-red-700 focus:!border-red-700"
                         }`}
                         {...register("price", {
                           required: "this field is required",
                         })}
                       />
-                      {errors.travelFee && (
+                      {errors.price && (
                         <p className=" absolute -bottom-3.5 text-xs text-red-700">
-                          {errors.travelFee.message}
+                          {errors.price.message}
                         </p>
                       )}
                     </div>
@@ -239,7 +239,7 @@ const AircraftAdd = () => {
                         rule={{
                           required: "this field is required",
                         }}
-                        errors={errors.travelHours}
+                        errors={errors.flightHours}
                       />
                       <PerformanceInput
                         defaultValue={''}
