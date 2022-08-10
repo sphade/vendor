@@ -17,6 +17,7 @@ import Profile from "./pages/Profile";
 import GetHelp from "./pages/GetHelp";
 import RequireAuth from "./hoc/RequireAuth";
 import PublicRoute from "./hoc/PublicRoute";
+import { DeleteModal } from "./components";
 // import { ScreenNotSupported } from "./components";
 //import useMediaQuery from '@mui/material/useMediaQuery';
 
@@ -32,6 +33,7 @@ function App(): JSX.Element {
 
   return (
     <>
+          <DeleteModal />
       <div className=" lg:block hiddenw bg-[#F2F2F2] min-h-screen">
         <Routes>
           {/* public routes */}

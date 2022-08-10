@@ -64,7 +64,7 @@ const AircraftCardDropDown = ({
       <ul className="rounded-lg bg-white  w-[180px]      border divide-y flex flex-col">
         <li>
           <Link
-            to="edit"
+            to="/aircraft/edit"
             className={classNames(
               "py-3 capitalize flex items-center justify-between text-sm  font-semibold px-4 text-gray-700 cursor-pointer default-transition hover:bg-gray-100 "
             )}

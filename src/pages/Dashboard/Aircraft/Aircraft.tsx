@@ -8,7 +8,6 @@ import {
   AircraftCard,
   SearchBar,
   TabPanel,
-  DeleteModal,
   
   EmptyCard,
 } from "../../../components";
@@ -42,7 +41,7 @@ const Aircraft = () => {
   
   return (
     <div>
-      <DeleteModal />
+      
 
       <header className="header">
         <h1 className="header-heading">

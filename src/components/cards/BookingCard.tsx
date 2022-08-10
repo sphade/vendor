@@ -31,7 +31,7 @@ const BookingCard = (props: any) => {
             {props?.brand} {props?.model}
           </h3>
           <IconButton onClick={handleClick}>
-            <DotIcon className="py-2 " />
+            <DotIcon className="h-5 w-5 " />
           </IconButton>
           <AircraftCardDropDown
             dropDownState={dropDownState}

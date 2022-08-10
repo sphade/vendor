@@ -1,11 +1,10 @@
 import { Modal } from "@mui/material";
-import { FC } from "react";
+import { FC, useCallback,useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { TrashModalIcon } from "../../assets/images/icons";
 import { useDeleteAircraft } from "../../hooks/mutations";
 import { toggleDeleteModal } from "../../redux/slices/ModalSlice";
 import { RootState } from "../../redux/store";
-import { useEffect, useState } from "react";
 import localforage from "localforage";
 import { useArchiveAircraft } from "../../hooks/mutations";
 import { CircularProgress } from "@mui/material";
@@ -15,9 +14,12 @@ const DeleteModal: FC = () => {
     (state: RootState) => state.modal.deleteModal
     );
     const dispatch = useDispatch();
-    function closeModal() {
+    const closeModal = useCallback(()=> {
       dispatch(toggleDeleteModal());
-    }
+    },[dispatch]
+    )
+  
+    
     const deleteAircraft = useDeleteAircraft()
   const [details, setDetails] = useState<any>();
   const archive = useArchiveAircraft(details?.id);
@@ -34,13 +36,20 @@ const DeleteModal: FC = () => {
     if (archive.isSuccess) {
       enqueueSnackbar(
         `Aircraft archived
-         successfully`,
+        successfully`,
         {
           variant: "success",
         }
-      );
+        );
+       
     }
   }, [archive.isSuccess, enqueueSnackbar]);
+  useEffect(() => {
+    if (deleteAircraft.isSuccess) {
+     
+      closeModal()
+    }
+  }, [closeModal, deleteAircraft.isSuccess]);
   return (
     <Modal open={deleteModalState} onClose={closeModal}>
       <div className="absolute top-[35%]        px-[24px] text-center py-5 left-[50%] -translate-x-1/2 bg-white rounded-lg   w-[450px] border-t-4 border-[#FF2A1C] min-h-[310px]">
