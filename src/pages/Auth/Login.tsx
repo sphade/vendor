@@ -32,7 +32,7 @@ const Login = () => {
             },
           })}
           fullWidth
-          error={errors.email}
+          error={errors?.email}
           helperText={errors?.email && errors?.email?.message}
           label="Email Address"
           type="email"

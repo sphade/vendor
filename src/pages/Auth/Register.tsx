@@ -123,8 +123,8 @@ const Register = () => {
               message: "invalid email format",
             },
           })}
-          helperText={errors.email && errors.email.message}
-          error={errors.email}
+          helperText={errors?.email && errors?.email.message}
+          error={errors?.email}
         />
         <Controller
           name="phone"
