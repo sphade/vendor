@@ -50,7 +50,7 @@ const Sidebar = (props: Props) => {
                       {
                         
                         isActive ?
-                          <ActiveIcon /> : <Icon/>
+                          <ActiveIcon /> : <Icon className=''/>
                     }
                       <p className="capitalize text-lg font-medium ">{text}</p>
                     </>
