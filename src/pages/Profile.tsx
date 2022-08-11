@@ -177,7 +177,7 @@ const Profile = () => {
                       required: "this field is required",
                      
                     })}
-                    error={errors.name}
+                     error={errors?.name}
                     helperText={errors?.name && errors?.name?.message}
                     
                   />
