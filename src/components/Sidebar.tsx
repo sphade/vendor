@@ -86,12 +86,12 @@ const sidebarOptions: IState["sidebarOptions"] = [
     Icon: ProfileIcon,
     ActiveIcon: ProfileActiveIcon,
   },
-  {
+ /*  {
     text: "transactions",
     link: "/transactions",
     Icon: WalletIcon,
     ActiveIcon: WalletActiveIcon,
-  },
+  }, */
   {
     text: "calender",
     link: "/calender",
