@@ -10,7 +10,7 @@ import {
   Booking,
   Calender,
   Overview,
-  Transactions,
+  // Transactions,
 } from "./pages/Dashboard";
 import { ForgotPassword, Login, Register, Verify } from "./pages/Auth";
 import Profile from "./pages/Profile";
@@ -53,7 +53,7 @@ function App(): JSX.Element {
               <Route path="aircraft/*" element={<Aircraft />} />
               <Route path="booking/*" element={<Booking />} />
               <Route path="calender" element={<Calender />} />
-              <Route path="transactions" element={<Transactions />} />
+              {/* <Route path="transactions" element={<Transactions />} /> */}
             </Route>
             <Route path="profile" element={<Profile />} />
             <Route path="get-help" element={<GetHelp />} />

@@ -12,17 +12,17 @@ import {
   TotalAmountIcon,
 } from "../../../assets/images/icons";
 import { Link } from "react-router-dom";
-import { useOverview, useOverviewTable } from "../../../hooks/queries";
+import { useOverview, useTransactionTable } from "../../../hooks/queries";
 // import useFormatNumber from "../../../hooks/useFormatNumber";
 import { Skeleton } from "@mui/material";
 
-import { aircraftColumns } from "../../../table/Columns";
+import { transactionColumn } from "../../../table/Columns";
 import { DataGrid } from "@mui/x-data-grid";
 import { format } from "date-fns";
 import { formatNumberToCurrency } from "../../../hooks/useFormatNumberToCurrency";
 const Overview = () => {
   const { overviewData, overviewLoading } = useOverview();
-  const overviewTable = useOverviewTable({search:''});
+  const transactionTable = useTransactionTable({search: ''});
 
   // const formatedNum = useFormatNumber(1000000000);
   
@@ -107,7 +107,7 @@ const Overview = () => {
           <div className="flex items-center justify-between py-5 px-5">
             
             <h3 className="font-semibold    text-lg text-tertiary  capitalize">
-              table of aircraft
+           aircraft Transactions
             </h3>
 
             
@@ -121,28 +121,29 @@ const Overview = () => {
             </Link>
           </div>
           <DataGrid
-            rows={overviewTable.data?.data || []}
-            getCellClassName={() =>
-              "text-tertiary font-medium capitalize  !font-hind  "
-            }
-            rowHeight={70}
-            columns={aircraftColumns}
-            autoHeight={true}
-            // pageSize={4}
-            rowsPerPageOptions={[10]}
-            checkboxSelection
-            disableSelectionOnClick
-            // selectionModel={selectionModel}
-            // onSelectionModelChange={(newSelectionModel) => {
-            //   setSelectionModel(newSelectionModel);
-            //   console.log(newSelectionModel);
-            // }}
-            keepNonExistentRowsSelected
-            loading={overviewTable.isLoading}
-            components={{
-              LoadingOverlay: Loading,
-            }}
-          />
+          rows={transactionTable.data || []}
+          getCellClassName={() =>
+            "text-tertiary font-medium capitalize  !font-hind  "
+          }
+          rowHeight={70}
+          columns={transactionColumn}
+          autoHeight={true}
+          // pageSize={4}
+          rowsPerPageOptions={[10]}
+          checkboxSelection
+          disableSelectionOnClick
+          // selectionModel={selectionModel}
+          // onSelectionModelChange={(newSelectionModel) => {
+          //   setSelectionModel(newSelectionModel);
+          //   console.log(newSelectionModel);
+          // }}
+          keepNonExistentRowsSelected
+          loading={transactionTable.isLoading}
+          components={{
+            LoadingOverlay: Loading,
+
+          }}
+        />
         </div>
       </main>
     </div>

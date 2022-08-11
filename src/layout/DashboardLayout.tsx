@@ -17,7 +17,7 @@ const DashboardLayout = () => {
     
       <div className="flex bg-[#F2F2F2] min-h-screen">
         <Sidebar />
-        <main className="ml-5 flex-1 pt-10 px-5 bg-secondary ">
+        <main className="ml-[250px] flex-1 pt-10 px-5 bg-secondary ">
           <Outlet />
         </main>
       </div>

@@ -11,8 +11,8 @@ import {
   PlaneIcon,
   ProfileActiveIcon,
   ProfileIcon,
-  WalletActiveIcon,
-  WalletIcon,
+  /* WalletActiveIcon,
+  WalletIcon, */
 } from "../assets/images/icons";
 type Props = {};
 interface IState {
@@ -26,7 +26,7 @@ interface IState {
 
 const Sidebar = (props: Props) => {
   return (
-    <section className="w-[230px] z-50 bg-secondary h-screen  sticky top-0 left-0">
+    <section className="w-[230px] z-50 bg-secondary h-screen  fixed top-0 left-0">
       <div className="font-bold text-2xl pl-5 pt-10 h-[160px] ">
         <LogoIcon/>
       </div>
