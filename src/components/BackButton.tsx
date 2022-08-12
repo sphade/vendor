@@ -7,7 +7,8 @@ const BackButton = () => {
   return (
     <ArrowLeftIcon
       
-      className="cursor-pointer   "
+    className="cursor-pointer border-primary border rounded-full h-10 w-10  "
+
       
       onClick={() => {
         navigate(-1);

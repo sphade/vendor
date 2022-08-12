@@ -1,5 +1,4 @@
-// import { useDispatch, useSelector } from "react-redux";
-// import { RootState } from "./app/store";
+
 import { Routes, Route, useNavigate, useLocation } from "react-router-dom";
 import DashboardLayout from "./layout/DashboardLayout";
 import AuthLayout from "./layout/AuthLayout";
