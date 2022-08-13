@@ -6,7 +6,7 @@ import {
   NoOrder,
   NotificationProfileHeader,
 } from "../../../components";
-import { SetStateAction } from "react";
+import {  useEffect, useState } from "react";
 import { AddCircleIcon } from "../../../assets/images/icons";
 import { Link } from "react-router-dom";
 import { DataGrid } from "@mui/x-data-grid";
@@ -14,8 +14,15 @@ import { bookingColumn } from "../../../table/Columns";
 import { useOrder } from "../../../hooks/queries";
 
 const Booking = () => {
-  const order = useOrder();
-  console.log(order)
+  const [value, setValue] = useState<number>(0);
+  const [status, setStatus] = useState<string>(()=>value === 0 ? 'pending':value === 1? 'completed':'');
+  useEffect(() => {
+    setStatus(()=>value === 0 ? 'pending':value === 1? 'completed':'')
+  }, [value])
+  
+
+  const order = useOrder(status);
+
   return (
     <div>
       <header className="header">
@@ -29,10 +36,8 @@ const Booking = () => {
             { label: "upcoming orders" },
             { label: "completed orders" },
           ]}
-          value={0}
-          setValue={function (value: SetStateAction<number>): void {
-            throw new Error("Function not implemented.");
-          }}
+          value={value}
+          setValue={setValue}
         />
         <Link to="create-order" className="flex gap-5">
           <Button size="medium" variant="primary" IconLeft={AddCircleIcon}>

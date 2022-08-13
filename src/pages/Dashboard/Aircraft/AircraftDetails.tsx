@@ -42,9 +42,7 @@ const AircraftDetails = () => {
           </h1>
         </div>
         <div className="flex items-center gap-24">
-         
-
-          <NotificationProfileHeader />
+<NotificationProfileHeader />
         </div>
       </header>
       <main>

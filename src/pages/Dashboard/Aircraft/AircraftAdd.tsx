@@ -31,7 +31,7 @@ const AircraftAdd = () => {
   const [bar, setBar] = useState<boolean>(true);
   const [images, setImages] = useState<any[]>([]);
   const [year] = useState<any>("2000");
-  const [baseAirport] = useState<any>("200135230");
+  const [baseAirport] = useState<any>("1a0dda58-dc1e5f830c1e1aac");
 
 
   const onSubmit = (data: {}) => {
@@ -43,7 +43,8 @@ const AircraftAdd = () => {
       year,
       baseAirport,
       
-      image: images[0].file,
+      image: images[0]?.file,
+      
     });
   };
   const maxNumber = 4;

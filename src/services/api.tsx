@@ -71,8 +71,12 @@ export const changePassword = async (data: Record<string, unknown>) => {
   return response.data.data;
 };
 
-export const getVendorOrder = async () => {
-  const response = await axios.get("vendor/orders");
+export const getVendorOrder = async (data:any) => {
+  const response = await axios.get("vendor/orders", {
+    params: {
+      status:data,
+    }
+  });
   return response.data.data;
 };
 

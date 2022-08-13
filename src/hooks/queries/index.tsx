@@ -58,10 +58,10 @@ export const useUser = () => {
     onError(error: any) {},
   });
 };
-export const useOrder = () => {
+export const useOrder = (status:any) => {
   const { enqueueSnackbar } = useSnackbar();
 
-  return useQuery("order", getVendorOrder, {
+  return useQuery(  ["order",status],()=> getVendorOrder(status), {
     onError(error: any) {
       enqueueSnackbar(error.response?.data?.error || error.message, {
         variant: "error",
