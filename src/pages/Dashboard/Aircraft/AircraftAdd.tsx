@@ -33,7 +33,7 @@ const AircraftAdd = () => {
   const [bar, setBar] = useState<boolean>(true);
   const [images, setImages] = useState<any[]>([]);
   const [year] = useState<any>("2000");
-  const [baseAirport] = useState<any>("1a0dda58-dc1e5f830c1e1aac");
+  const [baseAirport] = useState<any>("dfd779f4-eeed-46ee-833d-f77f66b37e3f");
   const { enqueueSnackbar } = useSnackbar();
 
   const onSubmit = (data: {}) => {
