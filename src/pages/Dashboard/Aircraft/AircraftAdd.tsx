@@ -13,6 +13,8 @@ import {
 } from "../../../assets/images/icons";
 import { TextField } from "@mui/material";
 import { useState } from "react";
+import { useSnackbar } from "notistack";
+
 import { useForm } from "react-hook-form";
 import ImageUploading from "react-images-uploading";
 import SelectInput from "../../../components/SelectInput";
@@ -32,9 +34,21 @@ const AircraftAdd = () => {
   const [images, setImages] = useState<any[]>([]);
   const [year] = useState<any>("2000");
   const [baseAirport] = useState<any>("1a0dda58-dc1e5f830c1e1aac");
-
+  const { enqueueSnackbar } = useSnackbar();
 
   const onSubmit = (data: {}) => {
+    if (!images.length) {
+      enqueueSnackbar(" please select a photo", {
+        variant: "error",
+      });
+      return;
+    }
+    if (capacity === 0) {
+      enqueueSnackbar("seat capacity cannot be zero", {
+        variant: "error",
+      });
+      return;
+    }
     createAircraft.mutate({
       ...data,
       capacity,
@@ -42,16 +56,14 @@ const AircraftAdd = () => {
       model,
       year,
       baseAirport,
-      
+
       image: images[0]?.file,
-      
     });
   };
   const maxNumber = 4;
 
   const onImageChange = (imageList: any, addUpdateIndex: any) => {
     setImages(imageList);
-  
   };
 
   return (
@@ -88,28 +100,24 @@ const AircraftAdd = () => {
               >
                 <div>
                   <p className="capitalize text-tertiary ">photos</p>
-                  {
-                    imageList.length 
-                      ?
-                      <img
-                      src={ imageList[0]?.image}
+                  {imageList.length ? (
+                    <img
+                      src={imageList[0]?.image}
                       alt="aircraftPicture"
                       onClick={() => {
-                       
                         setShowAddPic(true);
                       }}
                       className="h-[230px] rounded-lg w-full cursor-pointer object-cover "
                     />
-                      :
+                  ) : (
                     <AddAircraftIcon
-                    onClick={() => {
-                      onImageUpload();
-                      setShowAddPic(true);
-                        }}
-                        className="h-[230px] w-full cursor-pointer scale-y-[1.3]"
+                      onClick={() => {
+                        onImageUpload();
+                        setShowAddPic(true);
+                      }}
+                      className="h-[230px] w-full cursor-pointer scale-y-[1.3]"
                     />
-                  }
-                 
+                  )}
                 </div>
 
                 <div className=" text-sm mt-10">
@@ -134,7 +142,6 @@ const AircraftAdd = () => {
                           name: "Private jet",
                         },
                         { value: "helicopter", name: "Helicopter" },
-                        
                       ]}
                       rules={{
                         required: "this field is required",
@@ -164,7 +171,7 @@ const AircraftAdd = () => {
                   </div>
                   <SeatCapacity capacity={capacity} setCapacity={setCapacity} />
                   <PerformanceInput
-                    defaultValue={''}
+                    defaultValue={""}
                     label="Baggage Capacity"
                     name="baggageCapacity"
                     placeholder="kg"
@@ -179,24 +186,27 @@ const AircraftAdd = () => {
                   <p className="capitalize text-tertiary mb-3">travel fee</p>
                   <div className="flex  gap-5 relative">
                     <div className="flex-1 flex gap-5">
-                      <div className="bg-gray-200  px-6 flex items-center  h-full rounded-lg">
+                      <div className="bg-gray-200  px-6 flex items-center  h-fit py-2.5 rounded-lg">
                         NGN
                       </div>
-                      <input
-                        
-                        className={` border w-full focus:ring-blue-500 h-10 px-3 rounded-lg border-[#828282] ${
-                          errors.price &&
-                          " border-red-700 focus:!border-red-700"
-                        }`}
+
+                      <TextField
+                        fullWidth
                         {...register("price", {
                           required: "this field is required",
                         })}
+                        size="small"
+                        error={errors.price}
+                        type='number'
+                        InputProps={{ inputProps: { min: 1 } }}
+
+                        helperText={errors.price && errors.price.message}
                       />
-                      {errors.price && (
+                      {/* {errors.price && (
                         <p className=" absolute -bottom-3.5 text-xs text-red-700">
                           {errors.price.message}
                         </p>
-                      )}
+                      )} */}
                     </div>
                   </div>
                 </div>
@@ -232,7 +242,7 @@ const AircraftAdd = () => {
                     </p>
                     <div className="grid grid-cols-2 gap-10   justify-between">
                       <PerformanceInput
-                             defaultValue={''}
+                        defaultValue={""}
                         label="travel hours"
                         name="flightHours"
                         placeholder="Hours"
@@ -243,7 +253,7 @@ const AircraftAdd = () => {
                         errors={errors.flightHours}
                       />
                       <PerformanceInput
-                        defaultValue={''}
+                        defaultValue={""}
                         label="max speed"
                         name="maxSpeed"
                         placeholder="km/h"
@@ -254,7 +264,7 @@ const AircraftAdd = () => {
                         errors={errors.maxSpeed}
                       />
                       <PerformanceInput
-                             defaultValue={''}
+                        defaultValue={""}
                         label="max distance"
                         name="maxRange"
                         placeholder="km"
@@ -265,7 +275,7 @@ const AircraftAdd = () => {
                         errors={errors.maxRange}
                       />
                       <PerformanceInput
-                            defaultValue={''}
+                        defaultValue={""}
                         label="max altitude"
                         name="maxAltitude"
                         placeholder="ft"
@@ -275,8 +285,6 @@ const AircraftAdd = () => {
                         }}
                         errors={errors.maxAltitude}
                       />
-
-                    
                     </div>
                   </div>
                   <div>
@@ -285,7 +293,7 @@ const AircraftAdd = () => {
                     </p>
                     <div className="flex flex-col gap-5 items-center">
                       <InteriorInput
-                       defaultValue={''}
+                        defaultValue={""}
                         name="cabinWidth"
                         placeholder="Cabin Width"
                         register={register}
@@ -295,8 +303,7 @@ const AircraftAdd = () => {
                         errors={errors.cabinWidth}
                       />
                       <InteriorInput
-                       defaultValue={''}
-
+                        defaultValue={""}
                         name="cabinLength"
                         placeholder="Cabin Length"
                         register={register}
@@ -306,8 +313,7 @@ const AircraftAdd = () => {
                         errors={errors.cabinLength}
                       />
                       <InteriorInput
-                      defaultValue={''}
-
+                        defaultValue={""}
                         name="cabinHeight"
                         placeholder="Cabin Height"
                         register={register}
@@ -350,28 +356,18 @@ const AircraftAdd = () => {
                     photos
                   </p>
                 </div>
-                
-                   {
-                    imageList.length
-                      ?
-                      <img
-                      src={ imageList[0]?.image}
-                      alt="aircraftPicture"
-                     
-                      className="w-full mb-6 rounded-lg h-[205px] object-fit "
-                    />
-                      :
-                      <div
-                      className="w-full mb-6  h-[205px]   "
-                      >
-                      <AddAircraftIcon
-                         
-                         
-                        className="w-full mb-6 scale-y-[1.3] h-full  "
-                    />  
-                      </div>
-                    
-                  }
+
+                {imageList.length ? (
+                  <img
+                    src={imageList[0]?.image}
+                    alt="aircraftPicture"
+                    className="w-full mb-6 rounded-lg h-[205px] object-fit "
+                  />
+                ) : (
+                  <div className="w-full mb-6  h-[205px]   ">
+                    <AddAircraftIcon className="w-full mb-6 scale-y-[1.3] h-full  " />
+                  </div>
+                )}
                 <div className="flex gap-2 mb-[164px] flex-wrap">
                   {imageList.map((image, index) => {
                     return (
@@ -400,7 +396,6 @@ const AircraftAdd = () => {
                   })}
                   {imageList.length < 4 && (
                     <AddAircraftSmallIcon
-                  
                       onClick={onImageUpload}
                       {...dragProps}
                       className={`w-[133px] cursor-pointer rounded-lg h-[90px] object-fit   ${

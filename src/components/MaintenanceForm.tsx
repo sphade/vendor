@@ -9,49 +9,65 @@ import SelectInput from "./SelectInput";
 import { useAircraft } from "../hooks/queries";
 import { useSetMaintenance } from "../hooks/mutations";
 const MaintenanceForm = () => {
- 
   const [bar, setBar] = useState<boolean>(true);
   const [starting, setStarting] = useState<any>(new Date());
   const [ending, setEnding] = useState<any>(new Date());
-const setMaintenanceDate = useSetMaintenance()
-//const toggleStatus = useToggleStatus()
+  const setMaintenanceDate = useSetMaintenance();
+  //const toggleStatus = useToggleStatus()
   const aircrafts = useAircraft({
     isArchived: false,
-  
   });
-  const {
-    
-    handleSubmit,
-    control,
-   
-  } = useForm();
+  const { handleSubmit, control } = useForm();
 
   const onSubmit = (data: any) => {
-    
-    setMaintenanceDate.mutate({ id: data?.id, data: { starting, ending } })
-
+    setMaintenanceDate.mutate({ id: data?.id, data: { starting, ending } });
   };
   return (
     <div className="px-[65px] py-10 border border-[#BDBDBD] w-[520px] rounded-md ">
       <h1 className="font-bold    capitalize text-tertiary text-2xl mb-6">
         maintenance form
       </h1>
-      <form className="divide-y space-y-6 divide-[#BDBDBD]" onSubmit={handleSubmit(onSubmit)}>
+      <form
+        className="divide-y space-y-6 divide-[#BDBDBD]"
+        onSubmit={handleSubmit(onSubmit)}
+      >
         <div className="space-y-6">
           <SelectInput
             control={control}
-       
             label="choose aircraft"
-            options={aircrafts?.data?.map((aircraft: any)=>({value:aircraft?.id,name:`${aircraft?.brand} ${aircraft?.model}`}))}
+            options={aircrafts?.data?.map((aircraft: any) => ({
+              value: aircraft?.id,
+              name: `${aircraft?.brand} ${aircraft?.model}`,
+            }))}
             rules={{
               required: "this field is required",
             }}
             name="id"
             size="medium"
-        
-          />  
-
-      
+          />
+          {/* <Autocomplete
+            disablePortal
+            id="combo-box-demo"
+          
+            
+            getOptionLabel={(option: any) => `${option.brand} ${option.model}`}
+            // value={(option: any) => option.id}
+            options={aircrafts?.data}
+            loading={aircrafts.isLoading}
+            sx={{ width: 300 }}
+            renderInput={(params) => (
+              <TextField
+                {...params}
+                {...register("email", {
+                  required: "this field is required",
+                })}
+                label="choose aircraft"
+                error={errors?.id}
+                fullWidth
+                helperText={errors?.id && errors?.id?.message}
+              />
+            )}
+          /> */}
         </div>
         <div className="space-y-6">
           <h2 className="capitalize text-tertiary text-lg font-semibold    pt-6">
@@ -69,27 +85,27 @@ const setMaintenanceDate = useSetMaintenance()
         </div>
         <div>
           <h2 className="capitalize text-tertiary text-lg font-semibold    py-6">
-          Set Aircraft Availability Status
+            Set Aircraft Availability Status
           </h2>
           <div className="flex items-center justify-between">
             <p className="text-gray-700">status</p>
-           
+
             <div>
-             <SwitchCustomized checked={bar} setChecked={setBar} />
-            {bar ? (
-                      <p className="capitalize -ml-5">available</p>
-                    ) : (
-                      <p className="capitalize -ml-5 text-gray-500">
-                        Unavailable
-                      </p>
-                    )} 
+              <SwitchCustomized checked={bar} setChecked={setBar} />
+              {bar ? (
+                <p className="capitalize -ml-5">available</p>
+              ) : (
+                <p className="capitalize -ml-5 text-gray-500">Unavailable</p>
+              )}
             </div>
-            
-                  
           </div>
         </div>
         <div className="py-6">
-          <Button full={true}  variant="primary" loading={setMaintenanceDate.isLoading}>
+          <Button
+            full={true}
+            variant="primary"
+            loading={setMaintenanceDate.isLoading}
+          >
             set
           </Button>
         </div>
