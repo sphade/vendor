@@ -202,11 +202,7 @@ const AircraftAdd = () => {
 
                         helperText={errors.price && errors.price.message}
                       />
-                      {/* {errors.price && (
-                        <p className=" absolute -bottom-3.5 text-xs text-red-700">
-                          {errors.price.message}
-                        </p>
-                      )} */}
+                  
                     </div>
                   </div>
                 </div>

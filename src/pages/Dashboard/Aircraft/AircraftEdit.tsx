@@ -186,23 +186,22 @@ const AircraftEdit = () => {
             <p className="capitalize text-tertiary mb-3">travel fee</p>
             <div className="flex  gap-5 relative">
               <div className="flex-1 flex gap-5">
-                <div className="bg-gray-200  px-6 flex items-center  h-full rounded-lg">
-                  NGN
-                </div>
-                <input
-                  defaultValue={details?.price}
-                  className={` border w-full focus:ring-blue-500 h-10 px-3 rounded-lg border-[#828282] ${
-                    errors.travelFee && " border-red-700 focus:!border-red-700"
-                  }`}
-                  {...register("price", {
-                    required: "this field is required",
-                  })}
-                />
-                {errors.travelFee && (
-                  <p className=" absolute -bottom-3.5 text-xs text-red-700">
-                    {errors.travelFee.message}
-                  </p>
-                )}
+              <div className="bg-gray-200  px-6 flex items-center  h-fit py-2.5 rounded-lg">
+                        NGN
+                      </div>
+
+                      <TextField
+                        fullWidth
+                        {...register("price", {
+                          required: "this field is required",
+                        })}
+                        size="small"
+                        error={errors.price}
+                        type='number'
+                        InputProps={{ inputProps: { min: 1 } }}
+defaultValue={details.price}
+                        helperText={errors.price && errors.price.message}
+                      />
               </div>
             </div>
           </div>
