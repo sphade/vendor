@@ -22,7 +22,7 @@ const ActivitiesCard = ({
       <div className=" text-xs flex items-center justify-between  w-[150px]">
         <p className="  text-secondary">Total Bookings</p>
         {loading ? (
-          <Skeleton width={30} height={10} className="!bg-slate-100" />
+          <Skeleton width={30} height={10} className="!bg-[#fcfcfc4b]" />
         ) : (
           <span className="text-[#FFC796]"> {booking || 0}</span>
         )}
@@ -35,7 +35,7 @@ const ActivitiesCard = ({
       <div className=" text-xs flex items-center justify-between  w-[150px]">
         <p className="  text-secondary">Gross Income</p>
         {loading ? (
-          <Skeleton width={30} height={10} className="!bg-slate-100" />
+          <Skeleton width={30} height={10} className="!bg-[#fcfcfc4b]" />
         ) : (
           <span className="text-[#FFC796]"> {formattedRevenue}</span>
         )}

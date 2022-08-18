@@ -42,6 +42,7 @@ const EmailVerification = () => {
     setOtp(otpInput);
   };
   const onSubmit = () => {
+    
     createVendor.mutate({
       email: userInfo?.email,
       password: userInfo?.password,

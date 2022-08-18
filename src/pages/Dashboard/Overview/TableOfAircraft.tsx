@@ -5,6 +5,7 @@ import { useTransactionTable } from "../../../hooks/queries";
 import { DataGrid } from "@mui/x-data-grid";
 import { transactionColumn } from "../../../table/Columns";
 import { useState } from "react";
+import CustomPagination from "../../../components/CustomPagination";
 
 const TableOfAircraft = () => {
   const[search,setSearch] = useState('')
@@ -39,20 +40,16 @@ const TableOfAircraft = () => {
           rowHeight={70}
           columns={transactionColumn}
           autoHeight={true}
-          // pageSize={4}
           rowsPerPageOptions={[10]}
           checkboxSelection
           disableSelectionOnClick
-          // selectionModel={selectionModel}
-          // onSelectionModelChange={(newSelectionModel) => {
-          //   setSelectionModel(newSelectionModel);
-          //   console.log(newSelectionModel);
-          // }}
+          pagination
+          pageSize={5}
           keepNonExistentRowsSelected
           loading={transactionTable.isLoading}
           components={{
             LoadingOverlay: Loading,
-
+            Pagination: CustomPagination,
           }}
         />
       </div>

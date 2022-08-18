@@ -49,6 +49,10 @@ const AircraftAdd = () => {
       });
       return;
     }
+    const formData = new FormData()
+    for (let i = 0; i === images.length;i++){
+      formData.append('image',images[i]?.image)
+    }
     createAircraft.mutate({
       ...data,
       capacity,
@@ -56,14 +60,14 @@ const AircraftAdd = () => {
       model,
       year,
       baseAirport,
-
-      image: images[0]?.file,
+      formData
     });
   };
   const maxNumber = 4;
 
   const onImageChange = (imageList: any, addUpdateIndex: any) => {
     setImages(imageList);
+    console.log(imageList)
   };
 
   return (
