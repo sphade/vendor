@@ -1,15 +1,12 @@
-
-import { Routes, Route, useNavigate, useLocation } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import DashboardLayout from "./layout/DashboardLayout";
 import AuthLayout from "./layout/AuthLayout";
-import { useEffect } from "react";
 
 import {
   Aircraft,
   Booking,
   Calender,
   Overview,
-  // Transactions,
 } from "./pages/Dashboard";
 import { ForgotPassword, Login, Register, Verify } from "./pages/Auth";
 import Profile from "./pages/Profile";
@@ -17,23 +14,16 @@ import GetHelp from "./pages/GetHelp";
 import RequireAuth from "./hoc/RequireAuth";
 import PublicRoute from "./hoc/PublicRoute";
 import { DeleteModal } from "./components";
-// import { ScreenNotSupported } from "./components";
-//import useMediaQuery from '@mui/material/useMediaQuery';
+import { ScreenNotSupported } from "./components";
+import useMediaQuery from "@mui/material/useMediaQuery";
 
 function App(): JSX.Element {
-  const navigate = useNavigate();
-  const location = useLocation();
-  //const matches = useMediaQuery('(min-width:600px)');
-  useEffect(() => {
-    if (location.pathname === "/") {
-      navigate("/overview", { replace: true });
-    }
-  }, [location, navigate]);
+  const matches = useMediaQuery("(min-width:1100px)");
 
-  return (
+  return matches ? (
     <>
-          <DeleteModal />
-      <div className=" lg:block hiddenw bg-[#F2F2F2] min-h-screen">
+      <DeleteModal />
+      <div className=" block  bg-[#F2F2F2] min-h-screen">
         <Routes>
           {/* public routes */}
 
@@ -48,21 +38,23 @@ function App(): JSX.Element {
           {/* protected routes */}
           <Route element={<RequireAuth />}>
             <Route element={<DashboardLayout />}>
+              <Route path="/" element={<Navigate to="overview/" replace />} />
               <Route path="overview/*" element={<Overview />} />
               <Route path="aircraft/*" element={<Aircraft />} />
               <Route path="booking/*" element={<Booking />} />
               <Route path="calender" element={<Calender />} />
-              {/* <Route path="transactions" element={<Transactions />} /> */}
             </Route>
             <Route path="profile" element={<Profile />} />
             <Route path="get-help" element={<GetHelp />} />
           </Route>
+          {/*  page not found */}
 
-          {/* <Route path="*" element={<h1>page not found</h1>} /> */}
+          <Route path="/*" element={<Navigate to="overview/" replace />} />
         </Routes>
       </div>
-      {/* <ScreenNotSupported /> */}
     </>
+  ) : (
+    <ScreenNotSupported />
   );
 }
 
