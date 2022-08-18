@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { Modal } from "@mui/material";
 import TextField from "@mui/material/TextField";
 import localforage from "localforage";

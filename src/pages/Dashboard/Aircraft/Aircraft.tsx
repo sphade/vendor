@@ -16,8 +16,7 @@ import { Link } from "react-router-dom";
 import { useAircraft } from "../../../hooks/queries";
 import JetCardSkeleton from "../../../skeleton/JetCardSkeleton";
 import Error from "../../../components/Error";
-import localforage from "localforage";
-import { useSelector,useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { RootState } from "../../../redux/store";
 import { setAirCraftTab } from "../../../redux/slices/TabSlice";
 const Aircraft = () => {

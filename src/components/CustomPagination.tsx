@@ -1,7 +1,6 @@
 import React from 'react'
 import Pagination from '@mui/material/Pagination';
 import {
-  DataGrid,
   gridPageCountSelector,
   gridPageSelector,
   useGridApiContext,

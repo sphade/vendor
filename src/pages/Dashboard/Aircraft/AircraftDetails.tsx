@@ -5,7 +5,6 @@ import {
   NotificationProfileHeader,
 } from "../../../components";
 
-import { EditIcon } from "../../../assets/images/icons";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import localforage from "localforage";

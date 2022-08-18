@@ -13,7 +13,6 @@ import {
   ToAndFroIcon,
 } from "../../../assets/images/icons";
 import { useForm } from "react-hook-form";
-import BookingFormSkeleton from "../../../skeleton/BookingFormSkeleton";
 import { useEffect, useState } from "react";
 import Slider from "react-slick";
 import localforage from "localforage";

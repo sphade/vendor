@@ -18,10 +18,10 @@ const AircraftArchive = () => {
   const aircraftArchive = useAircraft({ isArchived: true });
 
   const dispatch = useDispatch();
-  const arc = [1, 2, 3, 4];
-  const [checkedState] = useState(
-    new Array(arc.length).fill(false)
-  );
+  // const arc = [1, 2, 3, 4];
+  // const [checkedState] = useState(
+  //   new Array(arc.length).fill(false)
+  // );
   const [checked,setChecked] = useState(
     false
   );

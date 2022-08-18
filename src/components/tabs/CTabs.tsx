@@ -1,7 +1,6 @@
 import { Tab, Tabs } from "@mui/material";
 import React from "react";
 import { useDispatch } from "react-redux";
-import { setAirCraftTab } from "../../redux/slices/TabSlice";
 
 
 const CTabs = ({

@@ -2,7 +2,6 @@ import {
   ActivitiesCard,
   Loading,
   NotificationProfileHeader,
-  SearchBar,
   TotalCard,
 } from "../../../components";
 import {
