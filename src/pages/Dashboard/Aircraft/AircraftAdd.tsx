@@ -19,7 +19,9 @@ import { useForm } from "react-hook-form";
 import ImageUploading from "react-images-uploading";
 import SelectInput from "../../../components/SelectInput";
 import { useCreateAircraft } from "../../../hooks/mutations";
+import { useAirport } from "../../../hooks/queries";
 const AircraftAdd = () => {
+  const airports = useAirport();
   const {
     register,
     handleSubmit,
@@ -29,14 +31,13 @@ const AircraftAdd = () => {
   const createAircraft = useCreateAircraft();
   const [showAddPic, setShowAddPic] = useState<boolean>(false);
   const [capacity, setCapacity] = useState<number>(0);
-  const [model] = useState<string>("3000");
+
   const [bar, setBar] = useState<boolean>(true);
   const [images, setImages] = useState<any[]>([]);
-  const [year] = useState<any>("2000");
-  const [baseAirport] = useState<any>("dfd779f4-eeed-46ee-833d-f77f66b37e3f");
+
   const { enqueueSnackbar } = useSnackbar();
 
-  const onSubmit = (data: {}) => {
+  const onSubmit = (data: any) => {
     if (!images.length) {
       enqueueSnackbar(" please select a photo", {
         variant: "error",
@@ -49,25 +50,40 @@ const AircraftAdd = () => {
       });
       return;
     }
-    const formData = new FormData()
-    for (let i = 0; i === images.length;i++){
-      formData.append('image',images[i]?.image)
+    const formData = new FormData();
+    for (let i = 0; i === images.length; i++) {
+      formData.append("image", images[i]?.image);
     }
+
+    const lastIndex = data?.aircraftName.lastIndexOf(" ");
+
+    const brand = data?.aircraftName.slice(0, lastIndex);
+    const model = data?.aircraftName.slice(lastIndex + 1);
+    delete data?.aircraftName;
+
+    console.log({
+      ...data,
+      capacity,
+      bar,
+      model,
+      brand,
+
+      ...formData,
+    });
     createAircraft.mutate({
       ...data,
       capacity,
       bar,
       model,
-      year,
-      baseAirport,
-      formData
+      brand,
+
+      ...formData,
     });
   };
   const maxNumber = 4;
 
   const onImageChange = (imageList: any, addUpdateIndex: any) => {
     setImages(imageList);
-    console.log(imageList)
   };
 
   return (
@@ -119,7 +135,7 @@ const AircraftAdd = () => {
                         onImageUpload();
                         setShowAddPic(true);
                       }}
-                      className="h-[230px] w-full cursor-pointer scale-y-[1.3]"
+                      className="h-[230px] w-full cursor-pointer scale-y-[1.3] object-contain"
                     />
                   )}
                 </div>
@@ -129,11 +145,13 @@ const AircraftAdd = () => {
                     label="Aircraft Name"
                     className="!mb-5"
                     fullWidth
-                    {...register("brand", {
+                    {...register("aircraftName", {
                       required: "this field is required",
                     })}
-                    error={errors.brand}
-                    helperText={errors.brand && errors.brand.message}
+                    error={errors.aircraftName}
+                    helperText={
+                      errors.aircraftName && errors.aircraftName.message
+                    }
                   />
                   <div className="flex gap-5 mb-5">
                     <SelectInput
@@ -201,16 +219,14 @@ const AircraftAdd = () => {
                         })}
                         size="small"
                         error={errors.price}
-                        type='number'
+                        type="number"
                         InputProps={{ inputProps: { min: 1 } }}
-
                         helperText={errors.price && errors.price.message}
                       />
-                  
                     </div>
                   </div>
                 </div>
-                <div className="mb-5 pb-5  border-[#BDBDBD]">
+                <div className="mb-5   border-[#BDBDBD]">
                   <p className="capitalize text-tertiary mb-3 font-semibold   ">
                     description
                   </p>
@@ -230,6 +246,33 @@ const AircraftAdd = () => {
                     helperText={
                       errors.description && errors.description.message
                     }
+                  />
+                </div>
+
+                <div className="space-y-5 mb-10">
+                  <TextField
+                    fullWidth
+                    {...register("year", {
+                      required: "this field is required",
+                    })}
+                    label="year"
+                    error={errors.year}
+                    type="number"
+                    InputProps={{ inputProps: { min: 1 } }}
+                    helperText={errors.year && errors.year.message}
+                  />
+                  <SelectInput
+                    control={control}
+                    label="choose airport"
+                    options={airports?.data?.map((airport: any) => ({
+                      value: airport?.id,
+                      name: `${airport?.name} `,
+                    }))}
+                    rules={{
+                      required: "this field is required",
+                    }}
+                    name="baseAirport"
+                    size="medium"
                   />
                 </div>
                 <div className="space-y-5  mb-10  border-[#BDBDBD]">

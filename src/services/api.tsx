@@ -25,22 +25,25 @@ export const getOverview = async () => {
   return response.data.data;
 };
 
-export const getOverviewTable = async ({search}:any) => {
-  const response = await axios.get("vendor/aircraft/table",{
-    params:{
-      name:search
-    }
+export const getOverviewTable = async ({ search }: any) => {
+  const response = await axios.get("vendor/aircraft/table", {
+    params: {
+      name: search,
+    },
   });
   return response.data.data;
 };
 
-export const getVendorAircraft = async ({ isArchived, category, search }: any) => {
+export const getVendorAircraft = async ({
+  isArchived,
+  category,
+  search,
+}: any) => {
   const response = await axios.get("vendor/aircraft", {
     params: {
       isArchived,
       category,
-      name:search,
-
+      name: search,
     },
   });
   return response.data.data;
@@ -71,11 +74,11 @@ export const changePassword = async (data: Record<string, unknown>) => {
   return response.data.data;
 };
 
-export const getVendorOrder = async (data:any) => {
+export const getVendorOrder = async (data: any) => {
   const response = await axios.get("vendor/orders", {
     params: {
-      status:data,
-    }
+      status: data,
+    },
   });
   return response.data.data;
 };
@@ -85,11 +88,11 @@ export const getUser = async () => {
   return response.data.data;
 };
 
-export const getTransaction = async ({search}:any) => {
+export const getTransaction = async ({ search }: any) => {
   const response = await axios.get("vendor/transactions", {
     params: {
-      name:search
-    }
+      name: search,
+    },
   });
   return response.data.data;
 };
@@ -99,24 +102,18 @@ export const archiveAircraft = async (id: Record<string, unknown>) => {
   return response.data.data;
 };
 
-export const editAircraft = async (
- 
-  data: Record<string, unknown>
-) => {
+export const editAircraft = async (data: Record<string, unknown>) => {
   const response = await axios.patch(`vendor/aircraft/${data.id}`, data.data);
   return response.data.data;
 };
 
-export const deleteAircraft = async (
- 
-  data: Record<string, unknown>
-) => {
+export const deleteAircraft = async (data: Record<string, unknown>) => {
   const response = await axios.delete(`vendor/aircraft/${data.id}`);
   return response.data.data;
 };
 
 export const updateProfilePicture = async (data: any) => {
-  const response = await axios.post(`user/photo`, data,{
+  const response = await axios.post(`user/photo`, data, {
     headers: {
       Accept: "multipart/form-data",
       "Content-Type": "multipart/form-data",
@@ -126,8 +123,7 @@ export const updateProfilePicture = async (data: any) => {
 };
 
 export const updateBusinessInfo = async (data: any) => {
-  const response = await axios.patch(`vendor/profile`, data
-  );
+  const response = await axios.patch(`vendor/profile`, data);
   return response.data.data;
 };
 
@@ -162,21 +158,16 @@ export const checkAircraftAvailability = async (
   return response.data.data;
 };
 
-export const setAircraftMaintenance = async (
-  data: Record<string, unknown>
-) => {
+export const setAircraftMaintenance = async (data: Record<string, unknown>) => {
   const response = await axios.patch(
-    `vendor/aircraft/${data.id}/set-maintenance`,data.data
+    `vendor/aircraft/${data.id}/set-maintenance`,
+    data.data
   );
   return response.data.data;
 };
 
-export const toggleAircraftStatus = async (
-  id: Record<string, unknown>
-) => {
-  const response = await axios.patch(
-    `vendor/aircraft/${id}/status`
-  );
+export const toggleAircraftStatus = async (id: Record<string, unknown>) => {
+  const response = await axios.patch(`vendor/aircraft/${id}/status`);
   return response.data.data;
 };
 
@@ -188,10 +179,11 @@ export const listAircraftForPooling = async (
   return response.data.data;
 };
 
-export const getHelp = async (
- 
-  data: Record<string, unknown>
-) => {
+export const getHelp = async (data: Record<string, unknown>) => {
   const response = await axios.post(`/help`, data);
+  return response.data.data;
+};
+export const getAirport = async () => {
+  const response = await axios.post(`/airport`);
   return response.data.data;
 };

@@ -2,12 +2,7 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import DashboardLayout from "./layout/DashboardLayout";
 import AuthLayout from "./layout/AuthLayout";
 
-import {
-  Aircraft,
-  Booking,
-  Calender,
-  Overview,
-} from "./pages/Dashboard";
+import { Aircraft, Booking, Calender, Overview } from "./pages/Dashboard";
 import { ForgotPassword, Login, Register, Verify } from "./pages/Auth";
 import Profile from "./pages/Profile";
 import GetHelp from "./pages/GetHelp";
@@ -39,7 +34,7 @@ function App(): JSX.Element {
           <Route element={<RequireAuth />}>
             <Route element={<DashboardLayout />}>
               <Route path="/" element={<Navigate to="overview/" replace />} />
-              <Route path="overview/*" element={<Overview />} />
+              <Route path="overview/*"  element={<Overview />} />
               <Route path="aircraft/*" element={<Aircraft />} />
               <Route path="booking/*" element={<Booking />} />
               <Route path="calender" element={<Calender />} />

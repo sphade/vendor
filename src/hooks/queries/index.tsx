@@ -1,5 +1,6 @@
 import { useQuery } from "react-query";
 import {
+  getAirport,
   getOverview,
   getOverviewTable,
   getTransaction,
@@ -29,39 +30,53 @@ export const useOverview = () => {
     overviewError,
   };
 };
-export const useOverviewTable = ({search}:any) => {
-  return useQuery(["overviewTable", search], () => getOverviewTable({ search }), {
-    keepPreviousData:true
-  });
-};
-export const useTransactionTable = ({search}:any) => {
-  return useQuery(["transactionTable",search], ()=>getTransaction({search}), { keepPreviousData : true });
-  
-};
-export const useAircraft = ({ isArchived, category,search }: any) => {
-  
-
+export const useOverviewTable = ({ search }: any) => {
   return useQuery(
-    ["aircraft", isArchived, category,search],
-    () => getVendorAircraft({ isArchived, category, search}),
+    ["overviewTable", search],
+    () => getOverviewTable({ search }),
     {
-       keepPreviousData : true ,
+      keepPreviousData: true,
+    }
+  );
+};
+export const useTransactionTable = ({ search }: any) => {
+  return useQuery(
+    ["transactionTable", search],
+    () => getTransaction({ search }),
+    { keepPreviousData: true }
+  );
+};
+export const useAircraft = ({ isArchived, category, search }: any) => {
+  return useQuery(
+    ["aircraft", isArchived, category, search],
+    () => getVendorAircraft({ isArchived, category, search }),
+    {
+      keepPreviousData: true,
       onError(error: any) {},
     }
-  )
+  );
 };
 
 export const useUser = () => {
-  
-
   return useQuery("user", getUser, {
     onError(error: any) {},
   });
 };
-export const useOrder = (status:any) => {
+export const useOrder = (status: any) => {
   const { enqueueSnackbar } = useSnackbar();
 
-  return useQuery(  ["order",status],()=> getVendorOrder(status), {
+  return useQuery(["order", status], () => getVendorOrder(status), {
+    onError(error: any) {
+      enqueueSnackbar(error.response?.data?.error || error.message, {
+        variant: "error",
+      });
+    },
+  });
+};
+export const useAirport = () => {
+  const { enqueueSnackbar } = useSnackbar();
+
+  return useQuery("airport", getAirport, {
     onError(error: any) {
       enqueueSnackbar(error.response?.data?.error || error.message, {
         variant: "error",

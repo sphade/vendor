@@ -60,7 +60,10 @@ const AircraftEdit = () => {
     reset(details);
   }, [details, reset]);
   const onSubmit = (data: any) => {
-    const nameSplit: any = data?.aircraftName.split(/[, ]+/);
+    const lastIndex = data?.aircraftName.lastIndexOf(" ");
+
+    const brand = data?.aircraftName.slice(0, lastIndex);
+    const model = data?.aircraftName.slice(lastIndex + 1);
     delete data?.aircraftName;
     delete data?.id;
     delete data?.tag;
@@ -73,15 +76,12 @@ const AircraftEdit = () => {
     delete data?.VendorId;
     delete data?.AirportId;
     delete data?.ProductImages;
-    console.log({...data,
-      brand: nameSplit[0],
-      model: nameSplit[1],
-    })
+   
     editAircraft.mutate({
       id:details?.id,
      data: {...data,
-      brand: nameSplit[0],
-      model: nameSplit[1],
+      brand,
+      model,
        capacity,
     bar
      }

@@ -1,6 +1,5 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import ButtonBase from "@mui/material/ButtonBase";
 import {
   CategoryActiveIcon,
   CategoryIcon,
@@ -35,12 +34,7 @@ const Sidebar = (props: Props) => {
         <ul className="space-y-6 mr-5 ">
           {sidebarOptions.map(({ Icon, link, text, ActiveIcon }, id) => (
             <li key={id}>
-              <ButtonBase
-                sx={{
-                  borderTopRightRadius: 30,
-                  borderBottomRightRadius: 30,
-                }}
-              >
+             
                 <NavLink
                   to={link}
                   className="hover:bg-[#f3f3f3] w-[212px]   py-2 px-5 rounded-r-full   flex items-center gap-5 text-[#4F4F4F]  default-transition"
@@ -56,7 +50,7 @@ const Sidebar = (props: Props) => {
                     </>
                   )}
                 </NavLink>{" "}
-              </ButtonBase>
+             
             </li>
           ))}
         </ul>

@@ -19,17 +19,18 @@
 
 // const defaultData: Person[] = [
 //   {
-//     firstName: "tanner",
-//     lastName: "linsley",
-//     age: 24,
-//     visits: 100,
-//     status: "In Relationship",
-//     progress: 50,
+//     status: "tanner",
+//     amount: "linsley",
+//     depatureDate: 24,
+//     destination: 100,
+//     serviceType: "In Relationship",
+//     aircraftType: 50,
+//     aircraftName: 50,
 //   },
 //   {
 //     firstName: "tandy",
 //     lastName: "miller",
-//     age: 40,
+//     age: 40,3
 //     visits: 40,
 //     status: "Single",
 //     progress: 80,
