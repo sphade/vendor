@@ -16,7 +16,12 @@ export const signup = async (data: Record<string, unknown>) => {
 };
 
 export const createVendor = async (data: Record<string, unknown>) => {
-  const response = await axios.post("vendor/create", data);
+  const response = await axios.post("vendor/create", data, {
+    headers: {
+      Accept: "multipart/form-data",
+      "Content-Type": "multipart/form-data",
+    },
+  });
   return response.data.data;
 };
 

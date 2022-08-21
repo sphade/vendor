@@ -12,6 +12,7 @@ import { Link } from "react-router-dom";
 import { DataGrid } from "@mui/x-data-grid";
 import { bookingColumn } from "../../../table/Columns";
 import { useOrder } from "../../../hooks/queries";
+import CustomPagination from "../../../components/CustomPagination";
 
 const Booking = () => {
   const [value, setValue] = useState<number>(0);
@@ -64,15 +65,13 @@ const Booking = () => {
         rowsPerPageOptions={[10]}
             checkboxSelection
             disableSelectionOnClick
-            // selectionModel={selectionModel}
-            // onSelectionModelChange={(newSelectionModel) => {
-            //   setSelectionModel(newSelectionModel);
-            //   console.log(newSelectionModel);
-            // }}
+         
             keepNonExistentRowsSelected
             loading={order.isLoading}
             components={{
               LoadingOverlay: Loading,
+            Pagination: CustomPagination,
+
             }}
           />
         )}

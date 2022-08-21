@@ -19,6 +19,7 @@ import { transactionColumn } from "../../../table/Columns";
 import { DataGrid } from "@mui/x-data-grid";
 import { format } from "date-fns";
 import { formatNumberToCurrency } from "../../../hooks/useFormatNumberToCurrency";
+import CustomPagination from "../../../components/CustomPagination";
 const Overview = () => {
   const { overviewData, overviewLoading } = useOverview();
   const transactionTable = useTransactionTable({search: ''});
@@ -131,15 +132,12 @@ const Overview = () => {
           rowsPerPageOptions={[10]}
           checkboxSelection
           disableSelectionOnClick
-          // selectionModel={selectionModel}
-          // onSelectionModelChange={(newSelectionModel) => {
-          //   setSelectionModel(newSelectionModel);
-          //   console.log(newSelectionModel);
-          // }}
+     
           keepNonExistentRowsSelected
           loading={transactionTable.isLoading}
           components={{
             LoadingOverlay: Loading,
+            Pagination: CustomPagination,
 
           }}
         />

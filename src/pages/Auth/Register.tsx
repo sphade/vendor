@@ -44,7 +44,7 @@ const Register = () => {
       variant: "info",
     });
     return;
-  }
+    }
      dispatch(setSignUpInfo(data));
      localforage.setItem("signUpInfo", {...data,images});
      signup.mutate({ email: data.email, phone: `+${data.phone}` });
