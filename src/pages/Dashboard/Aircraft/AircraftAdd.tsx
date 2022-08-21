@@ -30,9 +30,9 @@ const AircraftAdd = () => {
   } = useForm();
   const createAircraft = useCreateAircraft();
   const [showAddPic, setShowAddPic] = useState<boolean>(false);
-  const [capacity, setCapacity] = useState<number>(0);
+  const [capacity, setCapacity] = useState<any>(0);
 
-  const [bar, setBar] = useState<boolean>(true);
+  const [bar, setBar] = useState<any>(true);
   const [images, setImages] = useState<any[]>([]);
 
   const { enqueueSnackbar } = useSnackbar();
@@ -50,35 +50,26 @@ const AircraftAdd = () => {
       });
       return;
     }
-    const formData = new FormData();
-    for (let i = 0; i === images.length; i++) {
-      formData.append("image", images[i]?.image);
-    }
-
     const lastIndex = data?.aircraftName.lastIndexOf(" ");
 
     const brand = data?.aircraftName.slice(0, lastIndex);
     const model = data?.aircraftName.slice(lastIndex + 1);
     delete data?.aircraftName;
 
-    console.log({
-      ...data,
-      capacity,
-      bar,
-      model,
-      brand,
+    const formData = new FormData();
+    for (let key in data) {
+      formData.append(key, data[key]);
+    }
 
-      ...formData,
-    });
-    createAircraft.mutate({
-      ...data,
-      capacity,
-      bar,
-      model,
-      brand,
+    formData.append("capacity", capacity);
+    formData.append("bar", bar);
+    formData.append("model", model);
+    formData.append("brand", brand);
+    for (let i = 0; i < images.length; i++) {
+      formData.append("image", images[i]?.file);
+    }
 
-      ...formData,
-    });
+    createAircraft.mutate(formData);
   };
   const maxNumber = 4;
 
@@ -181,7 +172,7 @@ const AircraftAdd = () => {
                           value: "charter",
                           name: "Charter",
                         },
-                        { value: "jetPooling", name: "Jet pooling" },
+                        { value: "jet Pooling", name: "Jet pooling" },
                         { value: "any", name: "Any" },
                       ]}
                       rules={{

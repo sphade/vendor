@@ -49,7 +49,7 @@ export const getVendorAircraft = async ({
   return response.data.data;
 };
 
-export const createAircraft = async (data: Record<string, unknown>) => {
+export const createAircraft = async (data: any) => {
   const response = await axios.post("vendor/aircraft", data, {
     headers: {
       Accept: "multipart/form-data",
@@ -184,6 +184,6 @@ export const getHelp = async (data: Record<string, unknown>) => {
   return response.data.data;
 };
 export const getAirport = async () => {
-  const response = await axios.post(`/airport`);
+  const response = await axios.get(`/airport`);
   return response.data.data;
 };

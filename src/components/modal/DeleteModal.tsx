@@ -28,10 +28,11 @@ const DeleteModal: FC = () => {
   useEffect(() => {
     localforage.getItem("selectedAircraftDetails", (err, val) => {
       setDetails(val);
-    
+
      
     });
-  }, []);
+    console.log('mounted')
+  }, [deleteModalState]);
   useEffect(() => {
     if (archive.isSuccess) {
       enqueueSnackbar(

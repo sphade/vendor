@@ -12,7 +12,8 @@ const CustomPagination = () => {
   const pageCount = useGridSelector(apiRef, gridPageCountSelector);
   return (
     <Pagination
-    color="primary"
+      // color="standard"
+      className='!text-black'
     count={pageCount}
     page={page + 1}
     onChange={(event, value) => apiRef.current.setPage(value - 1)}

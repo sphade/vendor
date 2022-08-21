@@ -15,6 +15,7 @@ import localforage from "localforage";
 import { useForm } from "react-hook-form";
 import Slider from "react-slick";
 import { useEditAircraft } from "../../../hooks/mutations";
+// import { useAirport } from "../../../hooks/queries";
 const AircraftEdit = () => {
   const [details, setDetails] = useState<any>();
   const [loading, setLoading] = useState<boolean>(true);
@@ -22,6 +23,7 @@ const AircraftEdit = () => {
 
   // const [capacity, setCapacity] = useState<any>(0);
   const [bar, setBar] = useState<boolean>(true);
+  // const airports = useAirport();
   
   useEffect(() => {
     localforage.getItem("selectedAircraftDetails", (err, val: any) => {
@@ -205,7 +207,7 @@ defaultValue={details.price}
               </div>
             </div>
           </div>
-          <div className="mb-5 pb-5 border-b border-[#BDBDBD]">
+          <div className="mb-5  border-b border-[#BDBDBD]">
             <p className="capitalize text-tertiary mb-3 font-semibold   ">
               description
             </p>
@@ -226,6 +228,32 @@ defaultValue={details.price}
               helperText={errors.description && errors.description.message}
             />
           </div>
+          <div className="space-y-5 mb-10">
+                  <TextField
+                    fullWidth
+                    {...register("year", {
+                      required: "this field is required",
+                    })}
+                    label="year"
+                    error={errors.year}
+                    type="number"
+                    InputProps={{ inputProps: { min: 1 } }}
+                    helperText={errors.year && errors.year.message}
+                  />
+                  {/* <SelectInput
+                defaultValue={details?.AirportId}
+
+                    control={control}
+                    label="choose airport"
+                    options={airports?.data?.map((airport: any) => ({
+                      value: airport?.id,
+                      name: `${airport?.name} `,
+                    }))}
+                    
+                    name="AirportId"
+                    size="medium"
+                  /> */}
+                </div>
           <div className="space-y-5  mb-10  border-[#BDBDBD]">
             <p className="capitalize text-tertiary font-semibold    ">
               specification

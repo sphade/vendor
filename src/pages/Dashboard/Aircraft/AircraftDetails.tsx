@@ -80,6 +80,12 @@ const AircraftDetails = () => {
                   {details.capacity}
                 </p>
               </div>{" "}
+              <div className="py-4 flex items-center justify-between">
+                <p className="capitalize text-[#828282]">year: </p>
+                <p className="capitalize text-tertiary font-semibold   ">
+                  {details.year}
+                </p>
+              </div>{" "}
               <div className="py-4 flex items-center justify-between ">
                 <p className="capitalize text-[#828282]">total amount: </p>
                   <p className="capitalize text-tertiary font-semibold   ">
