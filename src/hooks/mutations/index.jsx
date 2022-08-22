@@ -196,6 +196,7 @@ export const useResetPassword = () => {
 
 export const useCreateAircraft = () => {
   const { enqueueSnackbar } = useSnackbar();
+  const queryClient = useQueryClient();
 
   return useMutation(createAircraft, {
     onSuccess(data) {
@@ -208,7 +209,11 @@ export const useCreateAircraft = () => {
         variant: "error",
       });
     },
-    onSettled() {},
+    onSettled() {
+      queryClient.invalidateQueries("overview");
+
+      queryClient.invalidateQueries("aircraft");
+    },
   });
 };
 export const useEditAircraft = () => {

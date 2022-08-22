@@ -73,7 +73,7 @@ const Aircraft = () => {
       </div>
 
       <TabPanel value={airCraftTab} index={0}>
-        <div className="flex  min-h-[500px]  flex-wrap p-2 border shadow rounded mt-5 gap-1">
+        <div className="flex  min-h-[500px]   flex-wrap p-2 border shadow rounded mt-5 gap-1">
           {privateJet.isLoading ? (
             [...new Array(4)].map((id) => <JetCardSkeleton key={id} />)
           ) : privateJet.isError ? (

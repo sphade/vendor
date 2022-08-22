@@ -151,7 +151,7 @@ const AircraftAdd = () => {
                       label="Aircraft Type"
                       options={[
                         {
-                          value: "private Jet",
+                          value: "private jet",
                           name: "Private jet",
                         },
                         { value: "helicopter", name: "Helicopter" },
@@ -172,7 +172,7 @@ const AircraftAdd = () => {
                           value: "charter",
                           name: "Charter",
                         },
-                        { value: "jet Pooling", name: "Jet pooling" },
+                        { value: "jet pooling", name: "jet pooling" },
                         { value: "any", name: "Any" },
                       ]}
                       rules={{
