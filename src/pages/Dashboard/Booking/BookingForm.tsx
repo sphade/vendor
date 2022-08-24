@@ -23,7 +23,7 @@ const BookingForm = () => {
   const [passengers, setPassengers] = useState<number>(1);
 
   useEffect(() => {
-    localforage.getItem("selectedAircraftDetails", (err, val) => {
+    localforage.getItem("selectedAircraftDetails", (_err, val) => {
       setDetails(val);
       setLoading(false);
     });
@@ -63,7 +63,8 @@ const BookingForm = () => {
 
           <div>
             <h1 className="font-semibold    capitalize text-tertiary text-2xl p-4 border-b border-[#BDBDBD]  ">
-              challenger 6000
+            {`${details.brand}  ${details.model}`}
+
             </h1>
             <div className="mt-10 flex   mb-10 justify-between items-center">
               <div className='flex gap-10 items-center'>

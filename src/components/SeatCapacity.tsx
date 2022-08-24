@@ -1,5 +1,4 @@
-import React from "react";
-import {  MinusIcon, PlusIcon } from "../assets/images/icons";
+import { MinusIcon, PlusIcon } from "../assets/images/icons";
 
 const SeatCapacity = ({
   capacity,

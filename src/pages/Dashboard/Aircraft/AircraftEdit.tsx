@@ -1,3 +1,9 @@
+import { TextField } from "@mui/material";
+import localforage from "localforage";
+import { useEffect, useMemo, useState } from "react";
+import { useForm } from "react-hook-form";
+import Slider from "react-slick";
+import { AddAircraftIcon, AddAircraftSmallIcon, ArrowRight, EditImageIcon } from "../../../assets/images/icons";
 import {
   BackButton,
   Button,
@@ -7,15 +13,9 @@ import {
   PerformanceInput,
   SeatCapacity,
   SelectInput,
-  SwitchCustomized,
+  SwitchCustomized
 } from "../../../components";
-import { TextField } from "@mui/material";
-import { useEffect, useMemo, useState } from "react";
-import localforage from "localforage";
-import { useForm } from "react-hook-form";
-import Slider from "react-slick";
 import { useEditAircraft } from "../../../hooks/mutations";
-import {  AddAircraftIcon, AddAircraftSmallIcon, ArrowRight, EditImageIcon } from "../../../assets/images/icons";
 // import { useAirport } from "../../../hooks/queries";
 const AircraftEdit = () => {
   const [details, setDetails] = useState<any>();
@@ -28,7 +28,7 @@ const AircraftEdit = () => {
   // const airports = useAirport();
 
   useEffect(() => {
-    localforage.getItem("selectedAircraftDetails", (err, val: any) => {
+    localforage.getItem("selectedAircraftDetails", (_err, val: any) => {
       setDetails(val);
 
       setLoading(false);
