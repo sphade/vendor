@@ -30,7 +30,7 @@ const AircraftAdd = () => {
   } = useForm();
   const createAircraft = useCreateAircraft();
   const [showAddPic, setShowAddPic] = useState<boolean>(false);
-  const [capacity, setCapacity] = useState<any>(0);
+  const [capacity, setCapacity] = useState<any>(1);
 
   const [bar, setBar] = useState<any>(true);
   const [images, setImages] = useState<any[]>([]);
