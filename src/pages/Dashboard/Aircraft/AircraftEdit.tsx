@@ -240,19 +240,7 @@ defaultValue={details.price}
                     InputProps={{ inputProps: { min: 1 } }}
                     helperText={errors.year && errors.year.message}
                   />
-                  {/* <SelectInput
-                defaultValue={details?.AirportId}
-
-                    control={control}
-                    label="choose airport"
-                    options={airports?.data?.map((airport: any) => ({
-                      value: airport?.id,
-                      name: `${airport?.name} `,
-                    }))}
-                    
-                    name="AirportId"
-                    size="medium"
-                  /> */}
+                
                 </div>
           <div className="space-y-5  mb-10  border-[#BDBDBD]">
             <p className="capitalize text-tertiary font-semibold    ">

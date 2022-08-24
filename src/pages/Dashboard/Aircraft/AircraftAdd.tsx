@@ -240,8 +240,9 @@ const AircraftAdd = () => {
                   />
                 </div>
 
-                <div className="space-y-5 mb-10">
+                <div className="space-x-5 flex mb-10">
                   <TextField
+                  size='medium'
                     fullWidth
                     {...register("year", {
                       required: "this field is required",
@@ -253,6 +254,7 @@ const AircraftAdd = () => {
                     helperText={errors.year && errors.year.message}
                   />
                   <SelectInput
+                    size='medium'
                     control={control}
                     label="choose airport"
                     options={airports?.data?.map((airport: any) => ({
@@ -263,7 +265,6 @@ const AircraftAdd = () => {
                       required: "this field is required",
                     }}
                     name="baseAirport"
-                    size="medium"
                   />
                 </div>
                 <div className="space-y-5  mb-10  border-[#BDBDBD]">

@@ -71,16 +71,16 @@
 
 /* mui-tabs override */
 .MuiTab-root {
-  @apply !text-xs !font-semibold !capitalize;
+  @apply !text-xs !font-semibold !capitalize !font-hind;
 }
 
 .Mui-selected {
   @apply !text-primary;
 }
+
 .MuiTabs-indicator {
   @apply !bg-primary;
 }
-
 /* mui-checkbox override */
 /* .MuiCheckbox-root {
   @apply !text-primary;

@@ -3,7 +3,7 @@ import classNames from "classnames";
 import { CalenderDropDownActiveIcon,CalenderDropDownIcon } from "../assets/images/icons";
 import { format } from "date-fns";
 import { formatNumberToCurrency } from "../hooks/useFormatNumberToCurrency";
-const headerClass = "font-medium !font-hind  text-[#828282]";
+const headerClass = "font-medium   text-[#828282]";
 
 export const aircraftColumns: GridColDef[] = [
   {

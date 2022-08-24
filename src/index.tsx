@@ -13,6 +13,8 @@ import Zoom from '@mui/material/Zoom';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import 'photoswipe/dist/photoswipe.css'
+import { theme } from './Theme';
+import { ThemeProvider } from '@mui/material';
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
@@ -27,6 +29,8 @@ const queryClient = new QueryClient({
 root.render(
   <React.StrictMode>
     <Router>
+      <ThemeProvider theme={theme}>
+       
       <QueryClientProvider client={queryClient}>
         <Provider store={store}>
           <SnackbarProvider maxSnack={3} 
@@ -41,7 +45,8 @@ root.render(
             </Routes>
             </SnackbarProvider>
         </Provider>
-      </QueryClientProvider>
+        </QueryClientProvider>
+        </ThemeProvider>
     </Router>
   </React.StrictMode>
 );
