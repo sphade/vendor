@@ -52,3 +52,5 @@ export { ReactComponent as NoteTextIcon } from "./note-text.svg";
 export { ReactComponent as NoteTextActiveIcon } from "./note-textA.svg";
 export { ReactComponent as LoadingLogoIcon } from "./loadingLogo.svg";
 export { ReactComponent as ChangePictureIcon } from "./changePicture.svg";
+export { ReactComponent as EditImageIcon } from "./EditImageIcon.svg";
+export { ReactComponent as ArrowRight } from "./arrow-right.svg";

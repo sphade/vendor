@@ -9,7 +9,7 @@ const SeatCapacity = ({
     setCapacity: any;
 }) => {
   return (
-    <div className="bg-gray-200 rounded mb-10 flex justify-between items-center border-[#b9b9b9] border px-5 py-3 ">
+    <div className="bg-gray-200 font-[500] rounded mb-10 flex justify-between items-center border-[#b9b9b9] border px-5 py-3 ">
       <span className="pr-5 capitalize text-base  border-r text-[#828282] border-[#828282]">
         seat capacity
       </span>

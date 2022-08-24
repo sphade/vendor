@@ -7,7 +7,7 @@ const InteriorInput = ({ placeholder, register, name, rule, errors,defaultValue 
 
       <div
         className={classNames(
-          "text-[#828282]  border rounded focus-within:text-blue-500 focus-within:hover:border-blue-500 focus-within:ring-1  focus-within:border-blue-500 focus:border-blue-500  py-1 h-[50px] w-full items-center hover:border-tertiary default-transition relative flex   border-[#cac8c8]",
+          "text-[#828282] font-[500]  border rounded focus-within:text-blue-500 focus-within:hover:border-blue-500 focus-within:ring-1  focus-within:border-blue-500 focus:border-blue-500  py-1 h-[50px] w-full items-center hover:border-tertiary default-transition relative flex   border-[#cac8c8]",
           {
             " border border-red-700 hover:!border-red-700 focus-within:ring-1 ring-red-700 focus-within:border-red-700  focus:border-red-700 !text-red-700":
               errors,

@@ -46,10 +46,24 @@
   }
 }
 /* utility  classes */
-.slick-prev:before,
-.slick-next:before {
-  color: gray !important;
+
+.slick-next{
+  position: absolute;
+  z-index: 1;
+  right: 1px !important;
+  height: 15% !important;
+  width: 15% !important;
 }
+.slick-prev{
+  position: absolute;
+  z-index: 1;
+  left: 1px !important;
+  height: 15% !important;
+  width: 15% !important;
+  transform: rotate(180deg) translateY(10px) !important;
+
+}
+
 
 .center-element {
   @apply flex justify-center items-center;
@@ -81,7 +95,3 @@
 .MuiTabs-indicator {
   @apply !bg-primary;
 }
-/* mui-checkbox override */
-/* .MuiCheckbox-root {
-  @apply !text-primary;
-} */

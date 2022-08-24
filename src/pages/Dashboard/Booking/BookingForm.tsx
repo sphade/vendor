@@ -14,16 +14,9 @@ import {
 } from "../../../assets/images/icons";
 import { useForm } from "react-hook-form";
 import { useEffect, useState } from "react";
-import Slider from "react-slick";
 import localforage from "localforage";
 const BookingForm = () => {
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-  };
+
   const [details, setDetails] = useState<any>();
   const [loading, setLoading] = useState(true);
 
@@ -68,17 +61,13 @@ const BookingForm = () => {
       <main className="mb-5">
        
         <div className="w-[920px] px-20 mx-auto border-[#BDBDBD] border rounded-lg pt-[32px] p-10">
-         
-            <Slider {...settings}>
-              {details?.ProductImages.map((image: any) => (
-                <img
-                  src={image?.url}
+        <img
+                  src={details?.ProductImages[0].url}
                   alt={""}
-                  className="w-[760px] h-[323px] object-cover "
-                  key={image?.publicId}
+                  className="w-[760px] h-[323px] object-cover rounded "
+                  
                 />
-              ))}
-            </Slider>
+           
           <div>
             <h1 className="font-semibold    capitalize text-tertiary text-2xl p-4 border-b border-[#BDBDBD]  ">
               challenger 6000

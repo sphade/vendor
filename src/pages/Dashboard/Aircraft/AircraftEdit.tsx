@@ -15,6 +15,7 @@ import localforage from "localforage";
 import { useForm } from "react-hook-form";
 import Slider from "react-slick";
 import { useEditAircraft } from "../../../hooks/mutations";
+import {  ArrowRight, EditImageIcon } from "../../../assets/images/icons";
 // import { useAirport } from "../../../hooks/queries";
 const AircraftEdit = () => {
   const [details, setDetails] = useState<any>();
@@ -24,25 +25,26 @@ const AircraftEdit = () => {
   // const [capacity, setCapacity] = useState<any>(0);
   const [bar, setBar] = useState<boolean>(true);
   // const airports = useAirport();
-  
+
   useEffect(() => {
     localforage.getItem("selectedAircraftDetails", (err, val: any) => {
       setDetails(val);
-     
+
       setLoading(false);
       setCapacity(val?.capacity);
       setBar(val?.bar);
-      
     });
   }, []);
   const editAircraft = useEditAircraft();
-
+ 
   const settings = {
     dots: true,
     infinite: true,
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
+    nextArrow: <ArrowRight />,
+    prevArrow: <ArrowRight/>
   };
   const {
     register,
@@ -52,11 +54,8 @@ const AircraftEdit = () => {
     formState: { errors },
   } = useForm<any>({
     defaultValues: useMemo(() => {
-      return details
-    }, [details]) 
-      
-      
-    
+      return details;
+    }, [details]),
   });
   useEffect(() => {
     reset(details);
@@ -78,15 +77,10 @@ const AircraftEdit = () => {
     delete data?.VendorId;
     delete data?.AirportId;
     delete data?.ProductImages;
-   
+
     editAircraft.mutate({
-      id:details?.id,
-     data: {...data,
-      brand,
-      model,
-       capacity,
-    bar
-     }
+      id: details?.id,
+      data: { ...data, brand, model, capacity, bar },
     });
   };
   if (loading) {
@@ -113,8 +107,9 @@ const AircraftEdit = () => {
           onSubmit={handleSubmit(onSubmit)}
           className="rounded-lg  p-6 w-[522px] mx-auto font-semibold    border mb-3 border-[#BDBDBD]"
         >
-          <div>
+          <div className='relative'>
             <p className="capitalize text-tertiary ">photos</p>
+              <EditImageIcon  className='absolute top-[50px] right-[10px] cursor-pointer z-10'/>
             <Slider {...settings}>
               {details?.ProductImages.map((image: any) => (
                 <img
@@ -147,7 +142,6 @@ const AircraftEdit = () => {
                   },
                   { value: "helicopter", name: "Helicopter" },
                 ]}
-               
                 name="airCraftType"
                 size="medium"
               />
@@ -164,7 +158,6 @@ const AircraftEdit = () => {
                   { value: "jet pooling", name: "jet pooling" },
                   { value: "any", name: "Any" },
                 ]}
-               
                 name="serviceType"
                 size="medium"
               />
@@ -188,22 +181,22 @@ const AircraftEdit = () => {
             <p className="capitalize text-tertiary mb-3">travel fee</p>
             <div className="flex  gap-5 relative">
               <div className="flex-1 flex gap-5">
-              <div className="bg-gray-200  px-6 flex items-center  h-fit py-2.5 rounded-lg">
-                        NGN
-                      </div>
+                <div className="bg-gray-200  px-6 flex items-center  h-fit py-2.5 rounded-lg">
+                  NGN
+                </div>
 
-                      <TextField
-                        fullWidth
-                        {...register("price", {
-                          required: "this field is required",
-                        })}
-                        size="small"
-                        error={errors.price}
-                        type='number'
-                        InputProps={{ inputProps: { min: 1 } }}
-defaultValue={details.price}
-                        helperText={errors.price && errors.price.message}
-                      />
+                <TextField
+                  fullWidth
+                  {...register("price", {
+                    required: "this field is required",
+                  })}
+                  size="small"
+                  error={errors.price}
+                  type="number"
+                  InputProps={{ inputProps: { min: 1 } }}
+                  defaultValue={details.price}
+                  helperText={errors.price && errors.price.message}
+                />
               </div>
             </div>
           </div>
@@ -229,19 +222,18 @@ defaultValue={details.price}
             />
           </div>
           <div className="space-y-5 mb-10">
-                  <TextField
-                    fullWidth
-                    {...register("year", {
-                      required: "this field is required",
-                    })}
-                    label="year"
-                    error={errors.year}
-                    type="number"
-                    InputProps={{ inputProps: { min: 1 } }}
-                    helperText={errors.year && errors.year.message}
-                  />
-                
-                </div>
+            <TextField
+              fullWidth
+              {...register("year", {
+                required: "this field is required",
+              })}
+              label="year"
+              error={errors.year}
+              type="number"
+              InputProps={{ inputProps: { min: 1 } }}
+              helperText={errors.year && errors.year.message}
+            />
+          </div>
           <div className="space-y-5  mb-10  border-[#BDBDBD]">
             <p className="capitalize text-tertiary font-semibold    ">
               specification
