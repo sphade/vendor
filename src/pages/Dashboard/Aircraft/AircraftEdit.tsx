@@ -15,12 +15,13 @@ import localforage from "localforage";
 import { useForm } from "react-hook-form";
 import Slider from "react-slick";
 import { useEditAircraft } from "../../../hooks/mutations";
-import {  ArrowRight, EditImageIcon } from "../../../assets/images/icons";
+import {  AddAircraftIcon, AddAircraftSmallIcon, ArrowRight, EditImageIcon } from "../../../assets/images/icons";
 // import { useAirport } from "../../../hooks/queries";
 const AircraftEdit = () => {
   const [details, setDetails] = useState<any>();
   const [loading, setLoading] = useState<boolean>(true);
   const [capacity, setCapacity] = useState<any>(0);
+  const [showAddPic, setShowAddPic] = useState<boolean>(false);
 
   // const [capacity, setCapacity] = useState<any>(0);
   const [bar, setBar] = useState<boolean>(true);
@@ -83,6 +84,10 @@ const AircraftEdit = () => {
       data: { ...data, brand, model, capacity, bar },
     });
   };
+  const maxNumber = 4;
+  // const onImageChange = (imageList: any, addUpdateIndex: any) => {
+  //   setImages(imageList);
+  // };
   if (loading) {
     return (
       <div className="w-full h-screen">
@@ -103,13 +108,16 @@ const AircraftEdit = () => {
         <NotificationProfileHeader />
       </header>
       <main>
+        {
+          !showAddPic ?
+       
         <form
           onSubmit={handleSubmit(onSubmit)}
           className="rounded-lg  p-6 w-[522px] mx-auto font-semibold    border mb-3 border-[#BDBDBD]"
         >
           <div className='relative'>
             <p className="capitalize text-tertiary ">photos</p>
-              <EditImageIcon  className='absolute top-[50px] right-[10px] cursor-pointer z-10'/>
+              <EditImageIcon onClick={()=>setShowAddPic(true)} className='absolute top-[50px] right-[10px] cursor-pointer z-10'/>
             <Slider {...settings}>
               {details?.ProductImages.map((image: any) => (
                 <img
@@ -341,7 +349,80 @@ const AircraftEdit = () => {
           <Button full loading={editAircraft.isLoading}>
             save
           </Button>
-        </form>
+        </form> :
+         <div className="w-[522px] mb-5 border-[#BDBDBD] px-12 border rounded-lg mx-auto ">
+         <div className="flex items-center justify-between py-5">
+           <p className="text-tertiary font-bold">
+             Drag and drop to change photo order.
+           </p>
+           <p className="font-semibold    text-gray-500">
+             {details?.ProductImages.length}/
+             <span className="font-bold text-tertiary ">
+               {maxNumber}
+             </span>{" "}
+             photos
+           </p>
+         </div>
+
+         {details?.ProductImages.length ? (
+           <img
+             src={details?.ProductImages[0]?.url}
+             alt="aircraftPicture"
+             className="w-full mb-6 rounded-lg h-[205px] object-fit "
+           />
+         ) : (
+           <div className="w-full mb-6  h-[205px]   ">
+             <AddAircraftIcon className="w-full mb-6 scale-y-[1.3] h-full  " />
+           </div>
+         )}
+         <div className="flex gap-2 mb-[164px] flex-wrap">
+           {details?.ProductImages.map((image:any, index:any) => {
+             return (
+               <div key={index}>
+                 <img
+                   src={image.url}
+                   alt=""
+                   className="w-[133px] rounded-lg h-[90px] object-fit"
+                 />
+                 <div className="flex flex-col gap-1 mt-1">
+                   <button
+                    //  onClick={() => onImageUpdate(index)}
+                     className="rounded text-xs bg-blue-500 p-1 text-white"
+                   >
+                     Update
+                   </button>
+                   <button
+                    //  onClick={() => onImageRemove(index)}
+                     className="rounded text-xs bg-red-500 p-1 text-white"
+                   >
+                     Remove
+                   </button>
+                 </div>
+               </div>
+             );
+           })}
+           {details?.ProductImages.length < 4 && (
+             <AddAircraftSmallIcon
+              //  onClick={onImageUpload}
+              //  {...dragProps}
+              //  className={`w-[133px] cursor-pointer rounded-lg h-[90px] object-fit   ${
+              //    isDragging && " !cursor-grabbing"
+              //  } `}
+             />
+           )}
+         </div>
+         <div className="mb-[32px]">
+           <Button
+             full
+             onClick={() => {
+               setShowAddPic(false);
+             }}
+           >
+             save
+           </Button>
+         </div>
+       </div>
+        }
       </main>
     </div>
   );
