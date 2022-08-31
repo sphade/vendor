@@ -1,5 +1,6 @@
 import { useQuery } from "react-query";
 import {
+  getAircraftDetails,
   getAirport,
   getOverview,
   getOverviewTable,
@@ -77,6 +78,17 @@ export const useAirport = () => {
   const { enqueueSnackbar } = useSnackbar();
 
   return useQuery("airport", getAirport, {
+    onError(error: any) {
+      enqueueSnackbar(error.response?.data?.error || error.message, {
+        variant: "error",
+      });
+    },
+  });
+};
+export const useAirCraftDetails = ({id}:any) => {
+  const { enqueueSnackbar } = useSnackbar();
+
+  return useQuery(["aircraftDetails",id], ()=> getAircraftDetails({id}), {
     onError(error: any) {
       enqueueSnackbar(error.response?.data?.error || error.message, {
         variant: "error",

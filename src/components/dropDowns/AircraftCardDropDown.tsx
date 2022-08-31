@@ -9,17 +9,19 @@ import {
 } from "../../assets/images/icons";
 import { useDispatch } from "react-redux";
 import { toggleDeleteModal } from "../../redux/slices/ModalSlice";
-import { useEffect, useState } from "react";
-import localforage from "localforage";
+import { useEffect } from "react";
 import { useArchiveAircraft } from "../../hooks/mutations";
 import { useSnackbar } from "notistack";
+import localforage from "localforage";
 
 const AircraftCardDropDown = ({
   dropDownState,
   setDropDownState,
+  aircraft,
 }: {
   dropDownState: any;
   setDropDownState: any;
+  aircraft: any;
 }) => {
   const handleClose = () => {
     setDropDownState(null);
@@ -28,14 +30,9 @@ const AircraftCardDropDown = ({
 
   const open = Boolean(dropDownState);
   const id = open ? "simple-popover" : undefined;
-  const [aircraft, setAircraft] = useState<any>("");
   const { enqueueSnackbar } = useSnackbar();
   const archive = useArchiveAircraft(aircraft?.id);
-  useEffect(() => {
-    localforage.getItem("selectedAircraftDetails", (error, value) => {
-      setAircraft(value);
-    });
-  });
+ 
   useEffect(() => {
     if (archive.isSuccess) {
       enqueueSnackbar(
@@ -64,17 +61,16 @@ const AircraftCardDropDown = ({
       <ul className="rounded-lg bg-white  w-[180px]      border divide-y flex flex-col">
         <li>
           <Link
-            to="/aircraft/edit"
+            to={`/aircraft/edit/${aircraft.id}`}
             className={classNames(
               "py-3 capitalize flex items-center justify-between text-sm  font-semibold px-4 text-gray-700 cursor-pointer default-transition hover:bg-gray-100 "
             )}
-            
           >
             <span className="flex items-center gap-2">
-              <EditIcon  />
+              <EditIcon />
               edit
             </span>
-            <ArrowRightSmallIcon/>
+            <ArrowRightSmallIcon />
           </Link>
         </li>
         <li
@@ -88,7 +84,7 @@ const AircraftCardDropDown = ({
         >
           <>
             <span className="flex items-center gap-2">
-              <FolderIcon/>
+              <FolderIcon />
               {aircraft?.isArchived
                 ? "unArchive"
                 : !aircraft?.isArchived
@@ -96,7 +92,7 @@ const AircraftCardDropDown = ({
                 : ""}
             </span>
 
-            <ArrowRightSmallIcon/>
+            <ArrowRightSmallIcon />
           </>
         </li>
 
@@ -106,11 +102,12 @@ const AircraftCardDropDown = ({
           )}
           onClick={() => {
             dispatch(toggleDeleteModal());
+            localforage.setItem("selectedAircraftDetails", aircraft);
             handleClose();
           }}
         >
           <span className="flex items-center gap-2">
-            <TrashIcon/>
+            <TrashIcon />
             delete
           </span>
         </li>

@@ -44,7 +44,7 @@ function App(): JSX.Element {
           </Route>
           {/*  page not found */}
 
-          <Route path="/*" element={<Navigate to="overview/" replace />} />
+          <Route path="*" element={<Navigate to="overview/" replace />} />
         </Routes>
       </div>
     </>

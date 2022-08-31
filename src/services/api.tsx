@@ -63,6 +63,10 @@ export const createAircraft = async (data: any) => {
   });
   return response.data.data;
 };
+export const getAircraftDetails = async ({id}: any) => {
+  const response = await axios.get(`/products/aircraft/${id}`);
+  return response.data.data;
+};
 
 export const forgotPassword = async (data: Record<string, unknown>) => {
   const response = await axios.post("user/forgot-password", data);
@@ -112,6 +116,26 @@ export const editAircraft = async (data: Record<string, unknown>) => {
   return response.data.data;
 };
 
+export const editAircraftImage = async (data: Record<string, unknown>) => {
+  const response = await axios.post(
+    `vendor/aircraft/${data.id}/image`,
+    data.data
+  );
+  return response.data.data;
+};
+
+// export const deleteAircraftImage = async (data: Record<string, unknown>) => {
+//   const response = await axios.delete(`vendor/aircraft/${data.id}/image `, data.data);
+//   return response.data.data;
+// };
+
+export const deleteAircraftImage = async (data: any) => {
+  const response = await axios.delete(
+    `vendor/aircraft/${data.id}/image `,
+    data.data
+  );
+  return response.data.data;
+};
 export const deleteAircraft = async (data: Record<string, unknown>) => {
   const response = await axios.delete(`vendor/aircraft/${data.id}`);
   return response.data.data;

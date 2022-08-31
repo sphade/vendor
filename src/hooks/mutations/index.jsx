@@ -20,6 +20,8 @@ import {
   changePassword,
   deleteAircraft,
   getHelp,
+  editAircraftImage,
+  deleteAircraftImage,
 } from "../../services/api";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useSnackbar } from "notistack";
@@ -223,6 +225,49 @@ export const useEditAircraft = () => {
   return useMutation(editAircraft, {
     onSuccess(data) {
       enqueueSnackbar("Aircraft edited successfully", {
+        variant: "success",
+      });
+    },
+    onError(error) {
+      enqueueSnackbar(error.response?.data?.error || error.message, {
+        variant: "error",
+      });
+    },
+    onSettled() {
+      queryClient.invalidateQueries("aircraft");
+
+    },
+  });
+};
+export const useEditAircraftImages = () => {
+  const { enqueueSnackbar } = useSnackbar();
+  const queryClient = useQueryClient();
+
+  return useMutation(editAircraftImage, {
+    onSuccess(data) {
+      enqueueSnackbar("image uploaded successfully", {
+        variant: "success",
+      });
+    },
+    onError(error) {
+      enqueueSnackbar(error.response?.data?.error || error.message, {
+        variant: "error",
+      });
+    },
+    onSettled() {
+      queryClient.invalidateQueries("aircraft");
+      queryClient.invalidateQueries("aircraftDetails");
+
+    },
+  });
+};
+export const useDeleteAircraftImages = () => {
+  const { enqueueSnackbar } = useSnackbar();
+  const queryClient = useQueryClient();
+
+  return useMutation(deleteAircraftImage, {
+    onSuccess(data) {
+      enqueueSnackbar("image deleted successfully", {
         variant: "success",
       });
     },

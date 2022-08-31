@@ -14,6 +14,7 @@ const AircraftCard = (props: any) => {
   };
   return (
     <div className="w-64 h-fit border rounded-md   p-2 bg-secondary">
+      
       <div className=" rounded-t-md h-[100px] overflow-hidden">
         <img
           src={props.ProductImages[0].url}
@@ -32,6 +33,7 @@ const AircraftCard = (props: any) => {
           <AircraftCardDropDown
             dropDownState={dropDownState}
             setDropDownState={setDropDownState}
+            aircraft={props}
           />
         </div>
         <div className="py-2 space-y-2">
@@ -48,7 +50,7 @@ const AircraftCard = (props: any) => {
           <p className="text-[#1E1E1E] font-semibold   ">{props.capacity}</p>
         </div>
         <div className="center-element py-4">
-          <Link to={`/aircraft/details`}>
+          <Link to={`/aircraft/details/${props.id}`}>
             <button
               onClick={async () => {
                 localforage.setItem("selectedAircraftDetails", props);

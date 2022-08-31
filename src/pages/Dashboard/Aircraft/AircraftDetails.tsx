@@ -5,25 +5,17 @@ import {
   NotificationProfileHeader,
 } from "../../../components";
 
-import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
-import localforage from "localforage";
+import { Link, useParams } from "react-router-dom";
+// import { useEffect } from "react";
 import AircraftDetailsSkeleton from "../../../skeleton/AircraftDetailsSkeleton";
 import { Skeleton } from "@mui/material";
 import { Gallery, Item } from "react-photoswipe-gallery";
 import { formatNumberToCurrency } from "../../../hooks/useFormatNumberToCurrency";
+import { useAirCraftDetails } from "../../../hooks/queries";
 const AircraftDetails = () => {
-  const [details, setDetails] = useState<any>();
-
-  const [loading, setLoading] = useState<boolean>(true);
-  useEffect(() => {
-    localforage.getItem("selectedAircraftDetails", (err, val) => {
-      setDetails(val);
-    
-      setLoading(false);
-     
-    });
-  }, []);
+  const { id } = useParams();
+  const { data: details, isLoading } = useAirCraftDetails({id});
+ 
 
   return (
     <div>
@@ -33,7 +25,7 @@ const AircraftDetails = () => {
           <BackButton />
 
           <h1 className="header-heading">
-            {loading ? (
+            {isLoading ? (
               <Skeleton variant={"text"} animation="wave" width="200px" />
             ) : (
               `${details.brand}  ${details.model}`
@@ -45,7 +37,7 @@ const AircraftDetails = () => {
         </div>
       </header>
       <main>
-        {loading ? (
+        {isLoading ? (
           <AircraftDetailsSkeleton />
         ) : (
           <div className="rounded-lg  p-6 w-[522px] mx-auto font-medium border mb-3 border-[#BDBDBD]">
@@ -205,7 +197,7 @@ const AircraftDetails = () => {
                     </div>
                   </div>
                 </div>
-                <Link to="../edit" className="mt-5">
+                  <Link to={`../edit/${details.id}`} className="mt-5">
                   <Button full>edit</Button>
                 </Link>
               </div>

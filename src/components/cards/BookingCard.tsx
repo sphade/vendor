@@ -36,6 +36,7 @@ const BookingCard = (props: any) => {
           <AircraftCardDropDown
             dropDownState={dropDownState}
             setDropDownState={setDropDownState}
+            aircraft={props}
           />
         </div>
         <div>
@@ -59,7 +60,7 @@ const BookingCard = (props: any) => {
 
     
         <div className="flex justify-between gap-3  items-center pt-5">
-          <Link to='/aircraft/details' >
+          <Link to={`/aircraft/details/${props.id}`} >
            <Button variant="outlinePrimary" onClick={async () => {
                 localforage.setItem("selectedAircraftDetails", props);
               }} size="medium">
