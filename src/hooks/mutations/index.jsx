@@ -278,6 +278,7 @@ export const useDeleteAircraftImages = () => {
     },
     onSettled() {
       queryClient.invalidateQueries("aircraft");
+      queryClient.invalidateQueries("aircraftDetails");
 
     },
   });

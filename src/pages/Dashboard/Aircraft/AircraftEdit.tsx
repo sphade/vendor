@@ -30,7 +30,7 @@ import { useAirCraftDetails } from "../../../hooks/queries";
 import { useParams } from "react-router-dom";
 const AircraftEdit = () => {
   const { id } = useParams();
-  const { data: details, isLoading } = useAirCraftDetails({id});
+  const { data: details, isLoading } = useAirCraftDetails({ id });
   const [capacity, setCapacity] = useState<any>(0);
   const [showAddPic, setShowAddPic] = useState<boolean>(false);
 
@@ -96,8 +96,11 @@ const AircraftEdit = () => {
     editAircraft.mutate({
       id: details?.id,
       data: {
-        ...data
-        , brand, model, capacity, bar
+        ...data,
+        brand,
+        model,
+        capacity,
+        bar,
       },
     });
   };
@@ -425,7 +428,7 @@ const AircraftEdit = () => {
                           </button> */}
                           <button
                             onClick={() => {
-                              const data = { publicId: image.publicId };
+                              const data: any = { publicId: image?.publicId };
                               deleteAircarftImage.mutate({
                                 id: details?.id,
                                 data: data,
@@ -433,9 +436,7 @@ const AircraftEdit = () => {
                             }}
                             className="rounded text-xs bg-red-500 p-1 text-white"
                           >
-                            {deleteAircarftImage.isLoading
-                              ? "Deleting.."
-                              : "Delete"}
+                            Delete
                           </button>
                         </div>
                       </div>
@@ -473,7 +474,7 @@ const AircraftEdit = () => {
                       </div>
                     </div>
                   ))}
-                  {images.length < 1 && (
+                  {images.length < 1 && details?.ProductImages.length < 4 && (
                     <AddAircraftSmallIcon
                       onClick={onImageUpload}
                       {...dragProps}

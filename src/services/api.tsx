@@ -124,20 +124,18 @@ export const editAircraftImage = async (data: Record<string, unknown>) => {
   return response.data.data;
 };
 
-// export const deleteAircraftImage = async (data: Record<string, unknown>) => {
-//   const response = await axios.delete(`vendor/aircraft/${data.id}/image `, data.data);
-//   return response.data.data;
-// };
+
 
 export const deleteAircraftImage = async (data: any) => {
   const response = await axios.delete(
-    `vendor/aircraft/${data.id}/image `,
-    data.data
+    `vendor/aircraft/${data.id}/image`,data
+    
   );
   return response.data.data;
 };
+
 export const deleteAircraft = async (data: Record<string, unknown>) => {
-  const response = await axios.delete(`vendor/aircraft/${data.id}`);
+  const response = await axios.delete(`vendor/aircraft/${data.id}`) ;
   return response.data.data;
 };
 
