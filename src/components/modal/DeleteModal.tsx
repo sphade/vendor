@@ -1,5 +1,5 @@
 import { Modal } from "@mui/material";
-import { FC, useCallback, useEffect, useState } from "react";
+import {  useCallback, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { TrashModalIcon } from "../../assets/images/icons";
 import { useDeleteAircraft } from "../../hooks/mutations";
