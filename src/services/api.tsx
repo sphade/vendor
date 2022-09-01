@@ -97,10 +97,11 @@ export const getUser = async () => {
   return response.data.data;
 };
 
-export const getTransaction = async ({ search }: any) => {
+export const getTransaction = async ({ search,page }: any) => {
   const response = await axios.get("vendor/transactions", {
     params: {
       name: search,
+      page:page
     },
   });
   return response.data.data;

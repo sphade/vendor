@@ -40,10 +40,10 @@ export const useOverviewTable = ({ search }: any) => {
     }
   );
 };
-export const useTransactionTable = ({ search }: any) => {
+export const useTransactionTable = ({ search,page }: any) => {
   return useQuery(
-    ["transactionTable", search],
-    () => getTransaction({ search }),
+    ["transactionTable", search,page],
+    () => getTransaction({ search,page }),
     { keepPreviousData: true }
   );
 };

@@ -10,6 +10,7 @@ const CustomPagination = () => {
   const apiRef = useGridApiContext();
   const page = useGridSelector(apiRef, gridPageSelector);
   const pageCount = useGridSelector(apiRef, gridPageCountSelector);
+  console.log(page,pageCount,apiRef)
   return (
     <Pagination
       // color="standard"

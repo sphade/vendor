@@ -47,23 +47,21 @@
 }
 /* utility  classes */
 
-.slick-next{
+.slick-next {
   position: absolute;
   z-index: 1;
   right: 1px !important;
   height: 15% !important;
   width: 15% !important;
 }
-.slick-prev{
+.slick-prev {
   position: absolute;
   z-index: 1;
   left: 1px !important;
   height: 15% !important;
   width: 15% !important;
   transform: rotate(180deg) translateY(10px) !important;
-
 }
-
 
 .center-element {
   @apply flex justify-center items-center;
@@ -88,7 +86,7 @@
   @apply !text-xs !font-semibold !capitalize !font-hind;
 }
 
-.Mui-selected {
+.MuiTab-root.Mui-selected {
   @apply !text-primary;
 }
 

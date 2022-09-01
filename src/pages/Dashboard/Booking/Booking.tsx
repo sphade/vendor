@@ -51,7 +51,7 @@ const Booking = () => {
         {
           
           order.data?.length===0 ? (
-          <NoOrder />
+          <NoOrder type={status} />
         ) : (
            <DataGrid
             getCellClassName={() =>

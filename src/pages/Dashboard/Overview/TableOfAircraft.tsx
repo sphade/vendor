@@ -9,8 +9,9 @@ import CustomPagination from "../../../components/CustomPagination";
 
 const TableOfAircraft = () => {
   const[search,setSearch] = useState('')
+  const[page,setPage] = useState(1)
 
-  const transactionTable = useTransactionTable({search});
+  const transactionTable = useTransactionTable({search,page});
   return (
     <div>
           <header className="header">
@@ -44,7 +45,10 @@ const TableOfAircraft = () => {
           checkboxSelection
           disableSelectionOnClick
           pagination
-          pageSize={5}
+          // pageSize={5}
+          page={page}
+          paginationMode="server"
+          onPageChange={(newPage) => setPage(newPage)}
           keepNonExistentRowsSelected
           loading={transactionTable.isLoading}
           components={{
