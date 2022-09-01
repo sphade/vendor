@@ -235,6 +235,8 @@ export const useEditAircraft = () => {
     },
     onSettled() {
       queryClient.invalidateQueries("aircraft");
+      queryClient.invalidateQueries("aircraftDetails");
+
 
     },
   });
