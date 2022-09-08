@@ -9,7 +9,6 @@ import { useSignup } from "../../hooks/mutations";
 import { useDispatch } from "react-redux";
 import { setSignUpInfo } from "../../redux/slices/SignUpInfoSlice";
 import { useSnackbar } from "notistack";
-import localforage from "localforage";
 import ImageUploading from "react-images-uploading";
 import { useState } from "react";
 
@@ -45,8 +44,8 @@ const Register = () => {
     });
     return;
     }
-     dispatch(setSignUpInfo(data));
-     localforage.setItem("signUpInfo", {...data,images});
+     dispatch(setSignUpInfo({...data,images}));
+    //  localforage.setItem("signUpInfo", {...data,images});
      signup.mutate({ email: data.email, phone: `+${data.phone}` });
     
   };

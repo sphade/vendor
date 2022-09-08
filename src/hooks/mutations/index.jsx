@@ -162,13 +162,13 @@ export const useResendVerifyOtp = () => {
 export const useForgotPasswordSendCode = () => {
   const { enqueueSnackbar } = useSnackbar();
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   return useMutation(forgotPassword, {
-    async onSuccess(data) {
-      navigate('/forgot-password/otp');
+    // async onSuccess(data) {
+    //   navigate('/forgot-password/otp');
       
-    },
+    // },
     onError(error) {
       enqueueSnackbar(error.response?.data?.error || error.message, {
         variant: "error",

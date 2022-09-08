@@ -1,11 +1,10 @@
 // import { useState } from "react";
-import localforage from "localforage";
 import { useEffect, useState } from "react";
 import ReactCodeInput from "react-code-input";
 import { useSelector } from "react-redux";
 // import OtpInput from "react-otp-input";
 import { Link } from "react-router-dom";
-import { Button, Loading } from "../../../components";
+import { Button } from "../../../components";
 import { useCountdown } from "../../../hooks";
 import { useCreateVendor, useResendVerifyOtp } from "../../../hooks/mutations";
 import { RootState } from "../../../redux/store";
@@ -19,14 +18,11 @@ const EmailVerification = () => {
     isOver,
     
   } = useCountdown({ minutes: 5 });
-  const [userInfo, setUserInfo] = useState<any>();
-  const [loading, setLoading] = useState<boolean>(true);
-  useEffect(() => {
-    localforage.getItem("signUpInfo", (err, value) => {
-      setUserInfo(value);
-      setLoading(false);
-    });
-  }, []);
+ 
+  const singUpInfo = useSelector(
+    (state: RootState) => state.signUpInfo.signUpInfo
+  );
+
 
   useEffect(() => {
     startOtpCountdown();
@@ -42,25 +38,23 @@ const EmailVerification = () => {
     setOtp(otpInput);
   };
   const onSubmit = () => {
+    const formData = new FormData();
+    formData.append("email", singUpInfo?.email);
+    formData.append("password", singUpInfo?.password);
+    formData.append("name", singUpInfo?.businessName);
+    formData.append("phone", singUpInfo?.phone);
+    formData.append("address", singUpInfo?.businessAddress);
+    formData.append("logo", singUpInfo?.images[0]?.file);
+    formData.append("otp", otp);
+
+    createVendor.mutate(formData);
     
-    createVendor.mutate({
-      email: userInfo?.email,
-      password: userInfo?.password,
-      name: userInfo?.businessName,
-      phone: `+${userInfo?.phone}`,
-      otp: otp,
-      address: userInfo?.businessAddress,
-      logo:userInfo?.images[0]?.file
-    });
-    localforage.removeItem("signUpInfo");
   };
-  const singUpInfo = useSelector(
-    (state: RootState) => state.signUpInfo.signUpInfo
-  );
+ 
   const onResendOtp = () => {
     resendOtp.mutate({
-      email: userInfo?.email,
-      phone: `+${userInfo?.phone}`,
+      email: singUpInfo?.email,
+      phone: `+${singUpInfo?.phone}`,
     });
   };
   useEffect(() => {
@@ -70,13 +64,7 @@ const EmailVerification = () => {
     }
   }, [resendOtp.isSuccess, reset, startOtpCountdown]);
 
-  if (loading) {
-    return (
-      <div className="w-[680px] h-[430px] py-10 bg-white   rounded-lg shadow-lg text-center ">
-        <Loading />
-      </div>
-    );
-  }
+
   return (
     <div className="w-[680px] py-10 bg-white   rounded-lg shadow-lg text-center ">
       <div className=" space-y-3 w-[400px] mx-auto">
@@ -84,7 +72,7 @@ const EmailVerification = () => {
         <p className="text-base text-gray-600 pb-6">
           Enter the 6 digit verification code sent to: <br />
           <span className="text-primary font-semibold">
-            {singUpInfo?.email || userInfo?.email}
+            {singUpInfo?.email }
           </span>
         </p>
 

@@ -20,7 +20,7 @@ const ForgotPassword = () => {
       <Route path="step-2/:option" element={<ForgotPassword2 />} />
 
       <Route path="step-3" element={<ForgotPassword3 />} />
-      <Route path="otp" element={<EmailVerification />} />
+      <Route path="otp/:option" element={<EmailVerification />} />
       <Route path="step-4" element={<ForgotPassword4 />} />
     </Routes>
   );

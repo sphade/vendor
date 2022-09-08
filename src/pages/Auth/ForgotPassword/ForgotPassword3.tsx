@@ -8,6 +8,7 @@ import {  useState,useEffect } from "react";
 const ForgotPassword3 = () => {
   const resetPassword = useResetPassword()
   const [email,setEmail]= useState<any>('')
+  const [otp,setOtp]= useState<any>('')
   const {
     
     control,
@@ -17,12 +18,15 @@ const ForgotPassword3 = () => {
   } = useForm();
   useEffect(() => {
     localforage.getItem('email', (err,value:any) => {
-      setEmail(value?.email)
+      setEmail(value)
+    })
+    localforage.getItem('forgotPasswordOtp', (err,value:any) => {
+      setOtp(value)
     })
   }, [])
   
   const onSubmit = (data: any) => {
-    resetPassword.mutate({ newPassword:data.password,email})
+    resetPassword.mutate({ newPassword:data.password,email,otp})
     
   };
   return (

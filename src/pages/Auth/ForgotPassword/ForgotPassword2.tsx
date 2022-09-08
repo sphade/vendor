@@ -1,24 +1,35 @@
 import TextField from "@mui/material/TextField";
 import { useForm } from "react-hook-form";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { Button } from "../../../components";
 import { useForgotPasswordSendCode } from "../../../hooks/mutations";
 import localforage from "localforage";
-
+import {useEffect} from 'react'
 const ForgotPassword2 = () => {
   const { option } = useParams();
-  const fpc =useForgotPasswordSendCode()
-  //const navigate = useNavigate();
+  const fpc = useForgotPasswordSendCode();
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const onSubmit = (data: {}) => {
-localforage.setItem('email',data)
-fpc.mutate(data)
+  const onSubmit = (data: any) => {
+   
+    if (option === "email") {
+      fpc.mutate({ email: data?.email });
+      localforage.setItem("email", data?.email);
+    }
+    if (option === "phoneNumber") {
+      fpc.mutate({ phone: data?.phoneNumber });
+      localforage.setItem("phoneNumber", data?.phoneNumber);
+    }
   };
-
+  useEffect(() => {
+    if (fpc.isSuccess) {
+    navigate(`/forgot-password/otp/${option}`)
+  }
+}, [fpc.isSuccess, navigate, option])
 
   return (
     <div className="w-[680px] py-[50px] rounded-md shadow-lg bg-secondary center-element">
@@ -45,7 +56,12 @@ fpc.mutate(data)
             (errors?.email?.message || errors?.phoneNumber?.message)
           }
         />
-        <Button variant="tertiary" full loading={fpc.isLoading} onClick={handleSubmit(onSubmit)}>
+        <Button
+          variant="tertiary"
+          full
+          loading={fpc.isLoading}
+          onClick={handleSubmit(onSubmit)}
+        >
           send code
         </Button>
         <p className="text-center mt-3">

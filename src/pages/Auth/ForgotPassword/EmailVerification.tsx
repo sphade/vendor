@@ -3,29 +3,29 @@ import localforage from "localforage";
 import { useEffect, useState } from "react";
 import ReactCodeInput from "react-code-input";
 
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { Button } from "../../../components";
 import { useCountdown } from "../../../hooks";
 import { useCreateVendor, useResendVerifyOtp } from "../../../hooks/mutations";
 
-
 const EmailVerification = () => {
+  const { option } = useParams();
+
   const {
     minutesLeft,
     secondsLeft,
     start: startOtpCountdown,
     reset,
     isOver,
-    
   } = useCountdown({ minutes: 5 });
-  const navigate=useNavigate()
+  const navigate = useNavigate();
 
   useEffect(() => {
     startOtpCountdown();
   }, [startOtpCountdown]);
   const resendOtp = useResendVerifyOtp();
-  const createVendor = useCreateVendor();
- 
+  // const createVendor = useCreateVendor();
+
   const [otp, setOtp] = useState<string>("");
 
   const handleChange = (otpInput: string) => {
@@ -33,10 +33,10 @@ const EmailVerification = () => {
   };
   const onSubmit = () => {
     localforage.setItem("forgotPasswordOtp", otp);
-   navigate('/forgot-password/step-3')
+    navigate("/forgot-password/step-3");
   };
 
-/*   const onResendOtp = () => {
+  /*   const onResendOtp = () => {
     resendOtp.mutate();
   }; */
   useEffect(() => {
@@ -46,14 +46,25 @@ const EmailVerification = () => {
     }
   }, [resendOtp.isSuccess, reset, startOtpCountdown]);
 
- 
   return (
     <div className="w-[680px] py-10 bg-white   rounded-lg shadow-lg text-center ">
       <div className=" space-y-3 w-[400px] mx-auto">
-        <h1 className=" uppercase text-lg font-bold ">email verification</h1>
+        <h1 className=" uppercase text-lg font-bold ">
+          {option === "email"
+            ? "email"
+            : option === "phoneNumber"
+            ? "phone number"
+            : ""}{" "}
+          verification
+        </h1>
         <p className="text-base text-gray-600 pb-6">
           Enter the 6 digit verification code sent to <br />
-          your email address
+          your{" "}
+          {option === "email"
+            ? "email address"
+            : option === "phoneNumber"
+            ? "phone number"
+            : ""}
         </p>
 
         <ReactCodeInput
@@ -88,7 +99,7 @@ const EmailVerification = () => {
           <Button
             full={true}
             disabled={!isOver}
-          //  onClick={onResendOtp}
+            //  onClick={onResendOtp}
             loading={resendOtp.isLoading}
           >
             resend code
@@ -97,7 +108,7 @@ const EmailVerification = () => {
             full={true}
             disabled={otp.length < 6 || isOver}
             onClick={onSubmit}
-            loading={createVendor.isLoading}
+            // loading={createVendor.isLoading}
           >
             send otp
           </Button>
@@ -105,9 +116,22 @@ const EmailVerification = () => {
 
         <p className="text-base text-gray-600 pt-2">
           Didn't get code?{" "}
-          <Link to="/verify/number">
+          <Link
+            to={`/forgot-password/otp/${
+              option === "email"
+                ? "phoneNumber"
+                : option === "phoneNumber"
+                ? "email"
+                : ""
+            }`}
+          >
             <span className="text-primary    font-semibold">
-              use phone number
+              use{" "}
+              {option === "email"
+                ? "phone number"
+                : option === "phoneNumber"
+                ? "email"
+                : ""}
             </span>
           </Link>
         </p>
