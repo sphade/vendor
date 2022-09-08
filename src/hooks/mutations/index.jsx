@@ -27,8 +27,6 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { useSnackbar } from "notistack";
 import localforage from "localforage";
 
-
-
 export const useLogin = () => {
   const { enqueueSnackbar } = useSnackbar();
   const queryClient = useQueryClient();
@@ -39,7 +37,7 @@ export const useLogin = () => {
   return useMutation(loginUser, {
     async onSuccess(data) {
       localforage.setItem("user", data);
-      
+
       navigate(origin, { replace: true });
       enqueueSnackbar(" successfully login", {
         variant: "success",
@@ -95,7 +93,7 @@ export const useChangeEmail = () => {
   const queryClient = useQueryClient();
 
   const { enqueueSnackbar } = useSnackbar();
-  
+
   return useMutation(changeEmail, {
     onSuccess(data) {
       enqueueSnackbar(" email has been changed", {
@@ -167,7 +165,7 @@ export const useForgotPasswordSendCode = () => {
   return useMutation(forgotPassword, {
     // async onSuccess(data) {
     //   navigate('/forgot-password/otp');
-      
+
     // },
     onError(error) {
       enqueueSnackbar(error.response?.data?.error || error.message, {
@@ -184,8 +182,7 @@ export const useResetPassword = () => {
 
   return useMutation(resetPassword, {
     async onSuccess(data) {
-      navigate('step-4');
-      
+      navigate("step-4");
     },
     onError(error) {
       enqueueSnackbar(error.response?.data?.error || error.message, {
@@ -236,8 +233,6 @@ export const useEditAircraft = () => {
     onSettled() {
       queryClient.invalidateQueries("aircraft");
       queryClient.invalidateQueries("aircraftDetails");
-
-
     },
   });
 };
@@ -259,7 +254,6 @@ export const useEditAircraftImages = () => {
     onSettled() {
       queryClient.invalidateQueries("aircraft");
       queryClient.invalidateQueries("aircraftDetails");
-
     },
   });
 };
@@ -281,7 +275,6 @@ export const useDeleteAircraftImages = () => {
     onSettled() {
       queryClient.invalidateQueries("aircraft");
       queryClient.invalidateQueries("aircraftDetails");
-
     },
   });
 };
@@ -302,7 +295,6 @@ export const useDeleteAircraft = () => {
     },
     onSettled() {
       queryClient.invalidateQueries("aircraft");
-
     },
   });
 };
@@ -476,8 +468,6 @@ export const useChangePassword = () => {
   });
 };
 export const useGetHelp = () => {
- 
-
   const { enqueueSnackbar } = useSnackbar();
 
   return useMutation(getHelp, {
@@ -491,6 +481,5 @@ export const useGetHelp = () => {
         variant: "error",
       });
     },
-   
   });
 };

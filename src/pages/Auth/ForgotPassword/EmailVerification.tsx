@@ -6,7 +6,7 @@ import ReactCodeInput from "react-code-input";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { Button } from "../../../components";
 import { useCountdown } from "../../../hooks";
-import { useCreateVendor, useResendVerifyOtp } from "../../../hooks/mutations";
+import {  useResendVerifyOtp } from "../../../hooks/mutations";
 
 const EmailVerification = () => {
   const { option } = useParams();
