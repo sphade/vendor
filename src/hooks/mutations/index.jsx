@@ -182,7 +182,7 @@ export const useResetPassword = () => {
 
   return useMutation(resetPassword, {
     async onSuccess(data) {
-      navigate("step-4");
+      navigate("/forgot-password/step-4");
     },
     onError(error) {
       enqueueSnackbar(error.response?.data?.error || error.message, {

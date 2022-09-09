@@ -4,8 +4,12 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { Button } from "../../../components";
 import { useForgotPasswordSendCode } from "../../../hooks/mutations";
 import localforage from "localforage";
-import {useEffect} from 'react'
+import { useSnackbar } from "notistack";
+
+import { useEffect } from "react";
 const ForgotPassword2 = () => {
+  const { enqueueSnackbar } = useSnackbar();
+
   const { option } = useParams();
   const fpc = useForgotPasswordSendCode();
   const navigate = useNavigate();
@@ -15,7 +19,6 @@ const ForgotPassword2 = () => {
     formState: { errors },
   } = useForm();
   const onSubmit = (data: any) => {
-   
     if (option === "email") {
       fpc.mutate({ email: data?.email });
       localforage.setItem("email", data?.email);
@@ -27,9 +30,12 @@ const ForgotPassword2 = () => {
   };
   useEffect(() => {
     if (fpc.isSuccess) {
-    navigate(`/forgot-password/otp/${option}`)
-  }
-}, [fpc.isSuccess, navigate, option])
+      enqueueSnackbar(" otp sent successfully", {
+        variant: "success",
+      });
+      navigate(`/forgot-password/otp/${option}`);
+    }
+  }, [enqueueSnackbar, fpc.isSuccess, navigate, option]);
 
   return (
     <div className="w-[680px] py-[50px] rounded-md shadow-lg bg-secondary center-element">
