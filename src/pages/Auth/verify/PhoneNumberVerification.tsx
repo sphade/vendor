@@ -48,7 +48,7 @@ const PhoneNumberVerification = () => {
     formData.append("email", singUpInfo?.email);
     formData.append("password", singUpInfo?.password);
     formData.append("name", singUpInfo?.businessName);
-    formData.append("phone", singUpInfo?.phone);
+    formData.append("phone", `+${singUpInfo?.phone}`);
     formData.append("address", singUpInfo?.businessAddress);
     formData.append("logo", singUpInfo?.images[0]?.file);
     formData.append("otp", otp);
@@ -64,7 +64,7 @@ const PhoneNumberVerification = () => {
         <p className="text-base text-gray-600 pb-6">
           Enter the 6 digit verification code sent to: <br />
           <span className="text-primary font-semibold">
-            +234 {singUpInfo.phone.slice(1)}
+            +234 {singUpInfo.phone?.slice(1)}
           </span>
         </p>
 

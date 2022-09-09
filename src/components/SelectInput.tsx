@@ -12,7 +12,7 @@ const SelectInput = ({
   name,
   rules,
   defaultValue,
-
+  
 }: {
   className?: string;
   control?: any;
@@ -49,10 +49,8 @@ const SelectInput = ({
       fullWidth
       size={size}
       defaultValue={defaultValue}
-      
-
+   
     >
-      
       {options?.map(({ value, name }) => (
         <MenuItem key={name} value={value}>
           {name}

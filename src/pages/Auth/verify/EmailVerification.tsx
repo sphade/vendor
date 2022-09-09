@@ -16,14 +16,11 @@ const EmailVerification = () => {
     start: startOtpCountdown,
     reset,
     isOver,
-    
   } = useCountdown({ minutes: 5 });
- 
+
   const singUpInfo = useSelector(
     (state: RootState) => state.signUpInfo.signUpInfo
   );
-
-
   useEffect(() => {
     startOtpCountdown();
   }, [startOtpCountdown]);
@@ -42,15 +39,13 @@ const EmailVerification = () => {
     formData.append("email", singUpInfo?.email);
     formData.append("password", singUpInfo?.password);
     formData.append("name", singUpInfo?.businessName);
-    formData.append("phone", singUpInfo?.phone);
+    formData.append("phone", `+${singUpInfo?.phone}`);
     formData.append("address", singUpInfo?.businessAddress);
     formData.append("logo", singUpInfo?.images[0]?.file);
     formData.append("otp", otp);
-
     createVendor.mutate(formData);
-    
   };
- 
+
   const onResendOtp = () => {
     resendOtp.mutate({
       email: singUpInfo?.email,
@@ -64,7 +59,6 @@ const EmailVerification = () => {
     }
   }, [resendOtp.isSuccess, reset, startOtpCountdown]);
 
-
   return (
     <div className="w-[680px] py-10 bg-white   rounded-lg shadow-lg text-center ">
       <div className=" space-y-3 w-[400px] mx-auto">
@@ -72,7 +66,7 @@ const EmailVerification = () => {
         <p className="text-base text-gray-600 pb-6">
           Enter the 6 digit verification code sent to: <br />
           <span className="text-primary font-semibold">
-            {singUpInfo?.email }
+            {singUpInfo?.email}
           </span>
         </p>
 
