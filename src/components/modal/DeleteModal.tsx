@@ -1,11 +1,10 @@
 import { Modal } from "@mui/material";
-import {  useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { TrashModalIcon } from "../../assets/images/icons";
 import { useDeleteAircraft } from "../../hooks/mutations";
 import { toggleDeleteModal } from "../../redux/slices/ModalSlice";
 import { RootState } from "../../redux/store";
-import localforage from "localforage";
 import { useArchiveAircraft } from "../../hooks/mutations";
 import { CircularProgress } from "@mui/material";
 import { useSnackbar } from "notistack";
@@ -19,17 +18,13 @@ const DeleteModal = () => {
   }, [dispatch]);
 
   const deleteAircraft = useDeleteAircraft();
-  const [details, setDetails] = useState<any>();
-  const archive = useArchiveAircraft(details?.id);
+  const details = useSelector(
+    (state: RootState) => state.aircraftDetails.aircraftDetails
+  );
+  const archive = useArchiveAircraft();
 
   const { enqueueSnackbar } = useSnackbar();
-  useEffect(() => {
-    localforage.getItem("selectedAircraftDetails", (err, val) => {
-      setDetails(val);
 
-    });
-    console.log('mounted')
-  }, [deleteModalState]);
   useEffect(() => {
     if (archive.isSuccess) {
       enqueueSnackbar(
@@ -46,6 +41,7 @@ const DeleteModal = () => {
       closeModal();
     }
   }, [closeModal, deleteAircraft.isSuccess]);
+ 
   return (
     <Modal open={deleteModalState} onClose={closeModal}>
       <div className="absolute top-[35%]        px-[24px] text-center py-5 left-[50%] -translate-x-1/2 bg-white rounded-lg   w-[450px] border-t-4 border-[#FF2A1C] min-h-[310px]">
@@ -56,15 +52,17 @@ const DeleteModal = () => {
         <p className="text-gray-500  text-justify ">
           You are trying to delete an aircraft. This action can not be undone.
           Are you sure you want to delete this aircraft?{" "}
-          <span
-            className="text-blue-500 underline cursor-pointer"
-            onClick={() => {
-              archive.mutate();
-              closeModal();
-            }}
-          >
-            Archive Instead
-          </span>
+          {!details?.isArchived && (
+            <span
+              className="text-blue-500 underline cursor-pointer"
+              onClick={() => {
+                archive.mutate(details?.id);
+                closeModal();
+              }}
+            >
+              Archive Instead
+            </span>
+          )}
         </p>
 
         <div className="flex items-center mt-12 justify-between ">

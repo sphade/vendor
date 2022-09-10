@@ -1,11 +1,16 @@
-import { Modal } from "@mui/material";
-import { FC } from "react";
+import { CircularProgress, Modal } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { TrashModalIcon } from "../../assets/images/icons";
 import { toggleDeleteArchiveModal } from "../../redux/slices/ModalSlice";
 import { RootState } from "../../redux/store";
 
-const DeleteArchiveModal: FC = () => {
+const DeleteArchiveModal = ({
+  deleteAircraftFc,
+  loading
+}: {
+    deleteAircraftFc: () => void;
+  loading:boolean
+}) => {
   const deleteArchiveModalState = useSelector(
     (state: RootState) => state.modal.deleteArchiveModal
   );
@@ -17,9 +22,7 @@ const DeleteArchiveModal: FC = () => {
   return (
     <Modal open={deleteArchiveModalState} onClose={closeModal}>
       <div className="absolute top-[35%]     px-[24px] text-center py-5 left-[50%] -translate-x-1/2 bg-white rounded-lg   w-[450px] border-t-4 border-[#FF2A1C] min-h-[310px]">
-        <TrashModalIcon
-          className="absolute -top-[40px] left-[190px]"
-        />
+        <TrashModalIcon className="absolute -top-[40px] left-[190px]" />
         <h1 className="text-2xl font-semibold text-tertiary mt-[24px] mb-[36px]">
           Delete aircraft's?
         </h1>
@@ -35,8 +38,22 @@ const DeleteArchiveModal: FC = () => {
           >
             no,Cancel
           </button>
-          <button className=" bg-[#FF2A1C]  text-secondary px-2.5 rounded min-w-[189px] min-h-[49px] font-semibold capitalize">
-            yes, Delete aircraft
+          <button
+            onClick={() => {
+              deleteAircraftFc();
+            }}
+            className=" bg-[#FF2A1C]  text-secondary px-2.5 rounded min-w-[189px] min-h-[49px] font-semibold capitalize"
+          >
+           {loading ? (
+              <CircularProgress
+                size={22}
+                sx={{
+                  color: "white",
+                }}
+              />
+            ) : (
+              "       yes, Delete aircraft(s)"
+            )}
           </button>
         </div>
       </div>

@@ -31,7 +31,7 @@ const AircraftCardDropDown = ({
   const open = Boolean(dropDownState);
   const id = open ? "simple-popover" : undefined;
   const { enqueueSnackbar } = useSnackbar();
-  const archive = useArchiveAircraft(aircraft?.id);
+  const archive = useArchiveAircraft();
  
   useEffect(() => {
     if (archive.isSuccess) {
@@ -75,7 +75,7 @@ const AircraftCardDropDown = ({
         </li>
         <li
           onClick={() => {
-            archive.mutate();
+            archive.mutate(aircraft?.id);
             handleClose();
           }}
           className={classNames(

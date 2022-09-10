@@ -1,14 +1,18 @@
 import { IconButton } from "@mui/material";
 import localforage from "localforage";
 import React from "react";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { ArrowRightOrangeIcon, DotIcon } from "../../assets/images/icons";
+import { setAircraftDetails } from "../../redux/slices/AircraftDetailsSlice";
 import AircraftCardDropDown from "../dropDowns/AircraftCardDropDown";
 
 const AircraftCard = (props: any) => {
+  const dispatch = useDispatch()
   const [dropDownState, setDropDownState] =
     React.useState<HTMLButtonElement | null>(null);
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    dispatch(setAircraftDetails(props))
     localforage.setItem("selectedAircraftDetails", props);
     setDropDownState(event.currentTarget);
   };

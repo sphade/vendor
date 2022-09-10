@@ -1,4 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
+import AircraftDetailsSlice from "./slices/AircraftDetailsSlice";
 import AuthSlice from "./slices/AuthSlice";
 import DropDownSlice from "./slices/DropDownSlice";
 import ModalSlice from "./slices/ModalSlice";
@@ -11,6 +12,7 @@ export const store = configureStore({
     auth: AuthSlice,
     signUpInfo: SignUpInfoSlice,
     tab: TabSlice,
+    aircraftDetails: AircraftDetailsSlice,
   },
 });
 

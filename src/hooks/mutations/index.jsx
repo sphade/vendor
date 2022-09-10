@@ -298,12 +298,12 @@ export const useDeleteAircraft = () => {
     },
   });
 };
-export const useArchiveAircraft = (id) => {
+export const useArchiveAircraft = () => {
   const queryClient = useQueryClient();
 
   const { enqueueSnackbar } = useSnackbar();
 
-  return useMutation(() => archiveAircraft(id), {
+  return useMutation( archiveAircraft, {
     onSuccess(data) {
       // enqueueSnackbar("Aircraft unArchived successfully", {
       //   variant: "success",
