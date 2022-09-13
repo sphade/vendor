@@ -21,7 +21,7 @@ const AircraftCard = (props: any) => {
       
       <div className=" rounded-t-md h-[100px] overflow-hidden">
         <img
-          src={props.ProductImages[0].url}
+          src={props?.ProductImages[0]?.url}
           alt="jetPic"
           className="bg-gray-200 object-cover w-full h-full"
         />
