@@ -1,5 +1,5 @@
 import Axios from "axios";
-import localforage from "localforage";
+// import localforage from "localforage";
 import { useAppStorage } from "../hooks";
 const baseUrl = "https://bossbus-premium-api-staging.herokuapp.com/api/v1/";
 const axios = Axios.create({
@@ -16,14 +16,14 @@ axios.interceptors.request.use(async (config: any) => {
   }
   return config;
 });
-axios.interceptors.response.use(
-  async (response) => {
-    return response;
-  },
-  async (error) => {
-    if (error.response.status === 401) {
-      localforage.clear();
-    }
-  }
-);
+// axios.interceptors.response.use(
+//   async (response) => {
+//     return response;
+//   },
+//   async (error) => {
+//     if (error.response.status === 401) {
+//       localforage.clear();
+//     }
+//   }
+// );
 export default axios;
