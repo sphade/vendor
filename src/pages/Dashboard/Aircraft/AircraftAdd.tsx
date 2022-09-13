@@ -126,7 +126,7 @@ const AircraftAdd = () => {
                         onImageUpload();
                         setShowAddPic(true);
                       }}
-                      className="h-[230px] w-full cursor-pointer scale-y-[1.3] object-contain"
+                      // className="h-[230px] w-full cursor-pointer scale-y-[1.3] object-cover"
                     />
                   )}
                 </div>
