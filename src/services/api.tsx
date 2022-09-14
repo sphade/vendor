@@ -101,7 +101,7 @@ export const getTransaction = async ({ search,page }: any) => {
   const response = await axios.get("vendor/transactions", {
     params: {
       name: search,
-      page:page
+      pageNo:page
     },
   });
   return response.data.data;
@@ -215,3 +215,18 @@ export const getAirport = async () => {
   const response = await axios.get(`/airport`);
   return response.data.data;
 };
+export const getAirCraftType = async () => {
+  const response = await axios.get(`/products/type`, {
+    params: {
+      product:'aircraft'
+    }
+  });
+  return response.data.data;
+};
+export const getPhoneNumber = async () => {
+  const response = await axios.get(`/help/phone`
+  );
+  return response.data.data;
+};
+
+// chater api endpoint

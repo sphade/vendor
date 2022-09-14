@@ -19,9 +19,10 @@ import { useForm } from "react-hook-form";
 import ImageUploading from "react-images-uploading";
 import SelectInput from "../../../components/SelectInput";
 import { useCreateAircraft } from "../../../hooks/mutations";
-import { useAirport } from "../../../hooks/queries";
+import { useAirCraftType, useAirport } from "../../../hooks/queries";
 const AircraftAdd = () => {
   const airports = useAirport();
+  const airCraftType = useAirCraftType();
   const {
     register,
     handleSubmit,
@@ -149,13 +150,13 @@ const AircraftAdd = () => {
                       control={control}
                       className=""
                       label="Aircraft Type"
-                      options={[
-                        {
-                          value: "private jet",
-                          name: "Private jet",
-                        },
-                        { value: "helicopter", name: "Helicopter" },
-                      ]}
+                      options={
+                        airCraftType?.data?.map((type: any) => ({
+                          value: type?.name,
+                          name: type?.name ,
+                        }))
+                      
+                      }
                       rules={{
                         required: "this field is required",
                       }}

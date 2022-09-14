@@ -1,9 +1,11 @@
 import { useQuery } from "react-query";
 import {
   getAircraftDetails,
+  getAirCraftType,
   getAirport,
   getOverview,
   getOverviewTable,
+  getPhoneNumber,
   getTransaction,
   getUser,
   getVendorAircraft,
@@ -89,6 +91,28 @@ export const useAirCraftDetails = ({id}:any) => {
   const { enqueueSnackbar } = useSnackbar();
 
   return useQuery(["aircraftDetails",id], ()=> getAircraftDetails({id}), {
+    onError(error: any) {
+      enqueueSnackbar(error.response?.data?.error || error.message, {
+        variant: "error",
+      });
+    },
+  });
+};
+export const useAirCraftType = () => {
+  const { enqueueSnackbar } = useSnackbar();
+
+  return useQuery("aircraftType", getAirCraftType, {
+    onError(error: any) {
+      enqueueSnackbar(error.response?.data?.error || error.message, {
+        variant: "error",
+      });
+    },
+  });
+};
+export const usePhoneNumber = () => {
+  const { enqueueSnackbar } = useSnackbar();
+
+  return useQuery("phoneNumber", getPhoneNumber, {
     onError(error: any) {
       enqueueSnackbar(error.response?.data?.error || error.message, {
         variant: "error",

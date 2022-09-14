@@ -26,9 +26,11 @@ import {
   useEditAircraft,
   useEditAircraftImages,
 } from "../../../hooks/mutations";
-import { useAirCraftDetails } from "../../../hooks/queries";
+import { useAirCraftDetails, useAirCraftType } from "../../../hooks/queries";
 import { useParams } from "react-router-dom";
 const AircraftEdit = () => {
+  const airCraftType = useAirCraftType();
+
   const { id } = useParams();
   const { data: details, isLoading } = useAirCraftDetails({ id });
   const [capacity, setCapacity] = useState<any>(0);
@@ -162,13 +164,14 @@ const AircraftEdit = () => {
                   control={control}
                   defaultValue={details?.airCraftType}
                   label="Aircraft Type"
-                  options={[
-                    {
-                      value: "private jet",
-                      name: "Private jet",
-                    },
-                    { value: "helicopter", name: "Helicopter" },
-                  ]}
+                
+                  options={
+                    airCraftType?.data?.map((type: any) => ({
+                      value: type?.name,
+                      name: type?.name ,
+                    }))
+                  
+                  }
                   name="airCraftType"
                   size="medium"
                 />
