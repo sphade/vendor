@@ -166,7 +166,7 @@ const BookingForm = () => {
             <div className="flex mb-8">
               <div
                 onClick={handleClickDeparture}
-                className="border w-full cursor-pointer py-3 rounded flex items-center gap-4 px-6 border-[#828282] "
+                className="border  max-w-[330px]  cursor-pointer w-full py-3 rounded flex items-center gap-4 px-6 border-[#828282] "
               >
                 <CompassIcon />
                 <p className="capitalize text-base truncate">
@@ -198,7 +198,7 @@ const BookingForm = () => {
               <ToAndFroIcon className="-mx-1  z-50 mt-2 w-20" />
               <div
                 onClick={handleClickDestination}
-                className="border w-full py-3 rounded cursor-pointer flex items-center gap-4 px-6 border-[#828282] "
+                className="border w-full  max-w-[330px] py-3 rounded cursor-pointer flex items-center gap-4 px-6 border-[#828282] "
               >
                 <LocationIcon />
                 <p className="capitalize text-base truncate">
