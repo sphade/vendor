@@ -46,7 +46,6 @@ const BookingForm = () => {
   const openDeparture = Boolean(departureEl);
   const handleClickDeparture = (event: any) => {
     setDepartureEl(event.currentTarget);
-   
   };
   const handleCloseDeparture = () => {
     setDepartureEl(null);
@@ -58,7 +57,6 @@ const BookingForm = () => {
   const openDestination = Boolean(destinationEl);
   const handleClickDestination = (event: any) => {
     setDestinationEl(event.currentTarget);
-   
   };
   const handleCloseDestination = () => {
     setDestinationEl(null);
@@ -82,7 +80,7 @@ const BookingForm = () => {
         <NotificationProfileHeader />
       </header>
       <main className="mb-5">
-        <div className="w-[920px] px-20 mx-auto border-[#BDBDBD] border rounded-lg pt-[32px] p-10">
+        <div className="w-[850px] px-20 mx-auto border-[#BDBDBD] border rounded-lg pt-[32px] p-10">
           <img
             src={details?.ProductImages[0].url}
             alt={""}
@@ -146,11 +144,11 @@ const BookingForm = () => {
               <div className="flex items-center gap-5">
                 <MinusIcon
                   onClick={() => {
-                    if (!passengers) return passengers;
+                    if (passengers <= 1) return passengers;
                     setPassengers(passengers - 1);
                   }}
                   className={`cursor-pointer ${
-                    !passengers && "cursor-not-allowed"
+                    passengers<= 1 && "cursor-not-allowed"
                   }`}
                 />
 
@@ -171,7 +169,9 @@ const BookingForm = () => {
                 className="border w-full cursor-pointer py-3 rounded flex items-center gap-4 px-6 border-[#828282] "
               >
                 <CompassIcon />
-                <p className="capitalize text-base truncate">{departure?.name || 'departure' } </p>
+                <p className="capitalize text-base truncate">
+                  {departure?.name || "departure"}{" "}
+                </p>
               </div>
               <Menu
                 className="!w-full"
@@ -184,11 +184,12 @@ const BookingForm = () => {
                 }}
               >
                 {airports?.data?.map((airport: any) => (
-                  <MenuItem onClick={()=>{
-                    setDeparture({name:airport?.name,id:airport?.id})
-                    handleCloseDeparture()
-          
-                }}>
+                  <MenuItem
+                    onClick={() => {
+                      setDeparture({ name: airport?.name, id: airport?.id });
+                      handleCloseDeparture();
+                    }}
+                  >
                     {airport?.name}
                   </MenuItem>
                 ))}
@@ -200,7 +201,9 @@ const BookingForm = () => {
                 className="border w-full py-3 rounded cursor-pointer flex items-center gap-4 px-6 border-[#828282] "
               >
                 <LocationIcon />
-                <p className="capitalize text-base truncate">{destination?.name || 'destination'}</p>
+                <p className="capitalize text-base truncate">
+                  {destination?.name || "destination"}
+                </p>
               </div>
             </div>
             <Menu
@@ -214,10 +217,15 @@ const BookingForm = () => {
               }}
             >
               {airports?.data?.map((airport: any) => (
-                <MenuItem key={airport?.id} onClick={()=>{
-                  setDestination({name:airport?.name,id:airport?.id})
-                  handleCloseDestination()
-                }}>{airport?.name}</MenuItem>
+                <MenuItem
+                  key={airport?.id}
+                  onClick={() => {
+                    setDestination({ name: airport?.name, id: airport?.id });
+                    handleCloseDestination();
+                  }}
+                >
+                  {airport?.name}
+                </MenuItem>
               ))}
             </Menu>
 

@@ -77,7 +77,10 @@ const AircraftArchive = () => {
         <NotificationProfileHeader />
       </header>
       <main className="border rounded-lg p-3 ">
-        <DeleteArchiveModal deleteAircraftFc={deleteAircraftFc} loading={deleteAircraft.isLoading} />
+        <DeleteArchiveModal
+          deleteAircraftFc={deleteAircraftFc}
+          loading={deleteAircraft.isLoading}
+        />
         {checkedState.every((element) => element === false) ? null : (
           <div className="py-5 rounded divide-gray-600 border shadow-lg divide-x flex items-center w-fit ml-3">
             <div
