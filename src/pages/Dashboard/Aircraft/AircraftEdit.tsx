@@ -406,7 +406,7 @@ const AircraftEdit = () => {
                   <img
                     src={details?.ProductImages[0]?.url}
                     alt="aircraftPicture"
-                    className="w-full mb-6 rounded-lg h-[205px] object-fit "
+                    className="w-full mb-6 rounded-lg h-[205px] object-cover "
                   />
                 ) : (
                   <div className="w-full mb-6  h-[205px]   ">

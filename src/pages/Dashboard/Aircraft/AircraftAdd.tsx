@@ -127,7 +127,7 @@ const AircraftAdd = () => {
                         onImageUpload();
                         setShowAddPic(true);
                       }}
-                      className="h-[230px] w-full cursor-pointer scale-y-[1.3] object-cover"
+                      className=" w-full cursor-pointer "
                     />
                   )}
                 </div>
@@ -397,11 +397,11 @@ const AircraftAdd = () => {
                   <img
                     src={imageList[0]?.image}
                     alt="aircraftPicture"
-                    className="w-full mb-6 rounded-lg h-[205px] object-fit "
+                    className="w-full mb-6 rounded-lg h-[205px] object-cover "
                   />
                 ) : (
                   <div className="w-full mb-6  h-[205px]   ">
-                    <AddAircraftIcon className="w-full mb-6 scale-y-[1.3] h-full  " />
+                    <AddAircraftIcon className="w-full mb-6 object-fit h-full  " />
                   </div>
                 )}
                 <div className="flex gap-2 mb-[164px] flex-wrap">
