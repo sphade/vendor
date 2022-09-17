@@ -13,7 +13,7 @@ const RequireAuth = () => {
       setUser(val);
       setLoading(false);
     });
-  }, []);
+  }, [location]);
   if (loading) {
     return (
       <div className="w-full h-screen">
