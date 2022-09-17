@@ -12,7 +12,7 @@ const PublicRoute = () => {
       setUser(val);
       setLoading(false);
     });
-  }, []);
+  }, [location]);
     
   if (loading) {
     return (

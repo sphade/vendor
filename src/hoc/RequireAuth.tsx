@@ -13,6 +13,7 @@ const RequireAuth = () => {
       setUser(val);
       setLoading(false);
     });
+    
   }, [location]);
   if (loading) {
     return (
