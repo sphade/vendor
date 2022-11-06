@@ -8,17 +8,16 @@ import { setAircraftDetails } from "../../redux/slices/AircraftDetailsSlice";
 import AircraftCardDropDown from "../dropDowns/AircraftCardDropDown";
 
 const AircraftCard = (props: any) => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const [dropDownState, setDropDownState] =
     React.useState<HTMLButtonElement | null>(null);
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-    dispatch(setAircraftDetails(props))
+    dispatch(setAircraftDetails(props));
     localforage.setItem("selectedAircraftDetails", props);
     setDropDownState(event.currentTarget);
   };
   return (
     <div className="w-64 h-fit border rounded-md   p-2 bg-secondary">
-      
       <div className=" rounded-t-md h-[100px] overflow-hidden">
         <img
           src={props?.ProductImages[0]?.url}
@@ -62,7 +61,7 @@ const AircraftCard = (props: any) => {
               className="uppercase py-2 px-4 gap-2  bg-orange-50 rounded-md text-primary font-bold text-sm w-[95px] flex items-center"
             >
               more
-              <ArrowRightOrangeIcon/>
+              <ArrowRightOrangeIcon />
             </button>
           </Link>
         </div>

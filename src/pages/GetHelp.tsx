@@ -23,7 +23,6 @@ const GetHelp = () => {
   return (
     <div className="flex gap-5 mx-auto items-start  w-fit py-20 ">
       <BackButton />
-
       <div className="w-[520px]  shadow px-[75px] bg-secondary rounded-lg ">
         <h1 className="text-2xl text-tertiary  text-center font-semibold capitalize my-10">
           get help

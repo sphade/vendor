@@ -31,6 +31,7 @@ const LocationDropDown = ({ Icon, value, setValue, placeHolder }: any) => {
         onClose={handleClose}
         MenuListProps={{
           "aria-labelledby": "basic-button",
+          
         }}
       >
         {airports?.data?.map((airport: any) => (

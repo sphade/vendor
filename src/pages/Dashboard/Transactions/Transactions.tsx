@@ -1,3 +1,4 @@
+import { Button } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 import { useState } from "react";
 import { PolygonIcon } from "../../../assets/images/icons";
@@ -26,6 +27,9 @@ const Transactions = () => {
         </div>
       </div>
       <div className="border rounded-lg mt-6">
+        <Button
+        variant='outlined'
+        ></Button>
         <DataGrid
           rows={transactionTable.data || []}
           getCellClassName={() =>

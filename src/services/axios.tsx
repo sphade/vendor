@@ -5,6 +5,7 @@ const baseUrl = "https://bossbus-premium-api-staging.herokuapp.com/api/v1/";
 const axios = Axios.create({
   baseURL: baseUrl,
   timeout: 3 * 60 * 1000, // Set timeout at 3 minutes
+  
 });
 
 axios.interceptors.request.use(async (config: any) => {

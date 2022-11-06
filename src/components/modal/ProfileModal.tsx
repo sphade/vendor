@@ -3,9 +3,7 @@ import { Avatar, Modal } from "@mui/material";
 import TextField from "@mui/material/TextField";
 import { FC, useEffect, useState } from "react";
 import ReactCodeInput from "react-code-input";
-import { useForm, Controller } from "react-hook-form";
-import { useDispatch } from "react-redux";
-import { useCountdown } from "../../hooks";
+import { useForm, Controller } from "react-hook-form";import { useCountdown } from "../../hooks";
 import {
   useChangeEmail,
   useChangeNumber,
@@ -166,7 +164,6 @@ export const EmailModal: FC<IModal> = ({ modalState, setModalState }) => {
 };
 
 export const PhoneNumberModal: FC<IModal> = ({ modalState, setModalState }) => {
-  const dispatch = useDispatch();
   const numberOtp = useRequestNumberOtp();
   const [number, setNumber] = useState<any>("");
 

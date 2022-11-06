@@ -11,6 +11,7 @@ import {
   getVendorAircraft,
   getVendorOrder,
 } from "../../services/api";
+import localforage from "localforage";
 import { useSnackbar } from "notistack";
 
 export const useOverview = () => {
@@ -62,7 +63,11 @@ export const useAircraft = ({ isArchived, category, search }: any) => {
 
 export const useUser = () => {
   return useQuery("user", getUser, {
-    onError(error: any) {},
+    onError(error: any) {
+      if (error?.response?.status=== 401) {
+        localforage.clear()
+      }
+    },
   });
 };
 export const useOrder = (status: any) => {
