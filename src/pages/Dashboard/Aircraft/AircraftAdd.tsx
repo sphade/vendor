@@ -23,6 +23,7 @@ import { useAirCraftType, useAirport } from "../../../hooks/queries";
 const AircraftAdd = () => {
   const airports = useAirport();
   const airCraftType = useAirCraftType();
+  // this is just a text
   const {
     register,
     handleSubmit,
